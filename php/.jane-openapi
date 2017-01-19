@@ -1,0 +1,9 @@
+<?php
+
+return [
+    'openapi-file' => __DIR__ . '/swagger.json',
+    'namespace' => 'SellerLabs\Promote',
+    'directory' => __DIR__ . '/src/SellerLabs/Promote',
+    'date-format' => \DateTime::RFC3339,
+    'reference' => false,
+];

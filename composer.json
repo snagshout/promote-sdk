@@ -1,0 +1,27 @@
+{
+  "name": "sellerlabs/promote-sdk",
+  "description": "Promote SDK",
+  "type": "library",
+  "require": {
+    "guzzlehttp/guzzle": "^6.2",
+    "jane/open-api": "^1.3",
+    "php-http/guzzle6-adapter": "^1.1"
+  },
+  "license": "Apache 2",
+  "authors": [
+    {
+      "name": "Eduardo Trujillo",
+      "email": "ed@sellerlabs.com"
+    },
+    {
+      "name": "Mark Vaughn",
+      "email": "mark@sellerlabs.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "SellerLabs\\Promote\\": "php/src/SellerLabs/Promote"
+    }
+  },
+  "minimum-stability": "stable"
+}
