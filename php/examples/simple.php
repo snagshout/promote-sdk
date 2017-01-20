@@ -9,5 +9,5 @@ $client = new Client(
 var_export(
     $client
         ->front()
-        ->getVersion()
+        ->getApiV1Version()->getBody()->getContents()
 );

@@ -21,6 +21,8 @@ use GuzzleHttp\Psr7\Uri;
 use Http\Message\MessageFactory\GuzzleMessageFactory;
 use Joli\Jane\Runtime\Encoder\RawEncoder;
 use Psr\Http\Message\RequestInterface;
+use SellerLabs\Promote\Normalizer\NormalizerFactory;
+use SellerLabs\Promote\Resource\DefaultResource;
 use Symfony\Component\Serializer\Encoder\JsonDecode;
 use Symfony\Component\Serializer\Encoder\JsonEncode;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
@@ -50,7 +52,6 @@ class Client
      */
     protected $endpoint;
 
-
     protected $baseUrl = 'http://localhost:8000';
 
     /**
@@ -72,9 +73,11 @@ class Client
 
         $stack->push($this->makeAuthHandler());
 
-        $this->client = new HttpClient([
-            'handler' => $stack,
-        ]);
+        $this->client = new HttpClient(
+            [
+                'handler' => $stack,
+            ]
+        );
     }
 
     /**
@@ -169,17 +172,23 @@ class Client
             new GuzzleAdapter($this->client),
             new GuzzleMessageFactory(),
             new Serializer(
-                [
-                    // Todo Normalizers
-                ],
+                NormalizerFactory::create(),
                 [
                     new JsonEncoder(
                         new JsonEncode(),
                         new JsonDecode()
                     ),
-                    new RawEncoder()
+                    new RawEncoder(),
                 ]
             )
         );
+    }
+
+    /**
+     * @return DefaultResource
+     */
+    public function front()
+    {
+        return $this->buildResource(DefaultResource::class);
     }
 }
