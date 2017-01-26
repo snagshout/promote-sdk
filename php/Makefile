@@ -5,7 +5,7 @@ clean:
 
 all:
 	curl -o swagger.json http://localhost:8000/documentation
-	php ../vendor/bin/jane-openapi generate
+	php ../vendor/bin/jane-openapi generate -vvv
 	rm swagger.json
 
 docs:
