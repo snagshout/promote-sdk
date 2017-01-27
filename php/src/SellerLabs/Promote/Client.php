@@ -19,10 +19,13 @@ use GuzzleHttp\Handler\CurlHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Uri;
 use Http\Message\MessageFactory\GuzzleMessageFactory;
+use Joli\Jane\OpenApi\Runtime\Client\Resource;
 use Joli\Jane\Runtime\Encoder\RawEncoder;
 use Psr\Http\Message\RequestInterface;
 use SellerLabs\Promote\Normalizer\NormalizerFactory;
+use SellerLabs\Promote\Resource\DealsResource;
 use SellerLabs\Promote\Resource\DefaultResource;
+use SellerLabs\Promote\Resource\FrontResource;
 use Symfony\Component\Serializer\Encoder\JsonDecode;
 use Symfony\Component\Serializer\Encoder\JsonEncode;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
@@ -185,10 +188,18 @@ class Client
     }
 
     /**
-     * @return DefaultResource
+     * @return FrontResource|Resource
      */
     public function front()
     {
-        return $this->buildResource(DefaultResource::class);
+        return $this->buildResource(FrontResource::class);
+    }
+
+    /**
+     * @return DealsResource|Resource
+     */
+    public function deals()
+    {
+        return $this->buildResource(DealsResource::class);
     }
 }
