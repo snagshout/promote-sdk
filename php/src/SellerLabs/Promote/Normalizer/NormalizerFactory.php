@@ -12,6 +12,8 @@ class NormalizerFactory
         $normalizers[] = new MediumNormalizer();
         $normalizers[] = new DealNormalizer();
         $normalizers[] = new VersionNormalizer();
+        $normalizers[] = new ErrorNormalizer();
+        $normalizers[] = new PayloadNormalizer();
         return $normalizers;
     }
 }
