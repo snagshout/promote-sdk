@@ -93,6 +93,10 @@ class Deal
      */
     protected $remainingQuantity;
     /**
+     * @var bool
+     */
+    protected $dailyLimitReached;
+    /**
      * @return int
      */
     public function getCampaignId()
@@ -464,6 +468,23 @@ class Deal
     public function setRemainingQuantity($remainingQuantity = null)
     {
         $this->remainingQuantity = $remainingQuantity;
+        return $this;
+    }
+    /**
+     * @return bool
+     */
+    public function getDailyLimitReached()
+    {
+        return $this->dailyLimitReached;
+    }
+    /**
+     * @param bool $dailyLimitReached
+     *
+     * @return self
+     */
+    public function setDailyLimitReached($dailyLimitReached = null)
+    {
+        $this->dailyLimitReached = $dailyLimitReached;
         return $this;
     }
 }

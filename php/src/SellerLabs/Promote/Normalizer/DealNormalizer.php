@@ -99,6 +99,9 @@ class DealNormalizer extends SerializerAwareNormalizer implements DenormalizerIn
         if (property_exists($data, 'remainingQuantity')) {
             $object->setRemainingQuantity($data->{'remainingQuantity'});
         }
+        if (property_exists($data, 'dailyLimitReached')) {
+            $object->setDailyLimitReached($data->{'dailyLimitReached'});
+        }
         return $object;
     }
     public function normalize($object, $format = null, array $context = array())
@@ -177,6 +180,9 @@ class DealNormalizer extends SerializerAwareNormalizer implements DenormalizerIn
         }
         if (null !== $object->getRemainingQuantity()) {
             $data->{'remainingQuantity'} = $object->getRemainingQuantity();
+        }
+        if (null !== $object->getDailyLimitReached()) {
+            $data->{'dailyLimitReached'} = $object->getDailyLimitReached();
         }
         return $data;
     }
