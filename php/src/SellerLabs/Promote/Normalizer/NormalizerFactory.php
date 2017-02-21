@@ -8,6 +8,8 @@ class NormalizerFactory
     {
         $normalizers = array();
         $normalizers[] = new \Joli\Jane\Runtime\Normalizer\ArrayDenormalizer();
+        $normalizers[] = new SyncDealRequestBodyNormalizer();
+        $normalizers[] = new UnsyncDealRequestBodyNormalizer();
         $normalizers[] = new CategoryNormalizer();
         $normalizers[] = new MediumNormalizer();
         $normalizers[] = new DealNormalizer();
