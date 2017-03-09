@@ -10,6 +10,7 @@ class NormalizerFactory
         $normalizers[] = new \Joli\Jane\Runtime\Normalizer\ArrayDenormalizer();
         $normalizers[] = new SyncDealRequestBodyNormalizer();
         $normalizers[] = new UnsyncDealRequestBodyNormalizer();
+        $normalizers[] = new DealImpressionsRequestBodyNormalizer();
         $normalizers[] = new CategoryNormalizer();
         $normalizers[] = new MediumNormalizer();
         $normalizers[] = new DealNormalizer();
