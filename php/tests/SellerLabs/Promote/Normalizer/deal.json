@@ -1,0 +1,40 @@
+{
+  "campaignId": 123,
+  "productName": "Acai Keratin Nail & Cuticle Kit",
+  "productDescription": "GREAT, ANOTHER BROKEN NAIL....\n\nIt\u2019s an all too common problem, and one that with the right stuff, is easily avoidable. Now, where to look for the \u201cright stuff\u201d...\n\nYOU\u2019VE FOUND US!\n\nGEEK Beauty Lab\u2019s 3-step buffer, repair, and shine Nail & Cuticle Set is your solution to weak, brittle, and lack-luster nails!",
+  "categories": [
+    {
+      "id": 123,
+      "name": "Health & Beauty"
+    }
+  ],
+  "media": [
+    {
+      "id": 1234,
+      "url": "https:\/\/images-na.ssl-images-amazon.com\/images\/I\/51RRQj5PZOL.jpg",
+      "type": "IMAGE",
+      "metadata": {
+        "original_src": null,
+        "extension": "jpg"
+      }
+    }
+  ],
+  "listingUrl": "https:\/\/www.amazon.com\/dp\/BLIPEDIBLUBLA",
+  "currency": "USD",
+  "listingPrice": 19.99,
+  "discountPrice": 8,
+  "shippingPrice": 1.01,
+  "shippingDaysMin": 2,
+  "shippingDaysMax": 5,
+  "shippingType": "FBA",
+  "marketplace": "amazon.com",
+  "payloadType": "SINGLE_CODE",
+  "requireEmail": true,
+  "startsAt": "2017-04-03 15:00:00",
+  "returnAt": null,
+  "endsAt": "2017-05-03 15:00:00",
+  "updatedAt": "2017-04-03 17:41:18",
+  "available": true,
+  "remainingQuantity": 270,
+  "dailyLimitReached": false
+}
