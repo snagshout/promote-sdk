@@ -29,6 +29,10 @@ class Deal
      */
     protected $listingUrl;
     /**
+     * @var mixed
+     */
+    protected $listingMetadata;
+    /**
      * @var string
      */
     protected $currency;
@@ -196,6 +200,23 @@ class Deal
     public function setListingUrl($listingUrl = null)
     {
         $this->listingUrl = $listingUrl;
+        return $this;
+    }
+    /**
+     * @return mixed
+     */
+    public function getListingMetadata()
+    {
+        return $this->listingMetadata;
+    }
+    /**
+     * @param mixed $listingMetadata
+     *
+     * @return self
+     */
+    public function setListingMetadata($listingMetadata = null)
+    {
+        $this->listingMetadata = $listingMetadata;
         return $this;
     }
     /**
