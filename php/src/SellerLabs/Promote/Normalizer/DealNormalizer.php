@@ -51,6 +51,9 @@ class DealNormalizer extends SerializerAwareNormalizer implements DenormalizerIn
         if (property_exists($data, 'listingUrl')) {
             $object->setListingUrl($data->{'listingUrl'});
         }
+        if (property_exists($data, 'listingMetadata')) {
+            $object->setListingMetadata($data->{'listingMetadata'});
+        }
         if (property_exists($data, 'currency')) {
             $object->setCurrency($data->{'currency'});
         }
@@ -132,6 +135,9 @@ class DealNormalizer extends SerializerAwareNormalizer implements DenormalizerIn
         }
         if (null !== $object->getListingUrl()) {
             $data->{'listingUrl'} = $object->getListingUrl();
+        }
+        if (null !== $object->getListingMetadata()) {
+            $data->{'listingMetadata'} = $object->getListingMetadata();
         }
         if (null !== $object->getCurrency()) {
             $data->{'currency'} = $object->getCurrency();
