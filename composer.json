@@ -1,5 +1,5 @@
 {
-  "name": "sellerlabs/promote-sdk",
+  "name": "snagshout/promote-sdk",
   "description": "Promote SDK",
   "type": "library",
   "require": {
@@ -18,7 +18,7 @@
     },
     {
       "name": "Mark Vaughn",
-      "email": "mark@sellerlabs.com"
+      "email": "mark@snagshout.com"
     }
   ],
   "autoload": {
