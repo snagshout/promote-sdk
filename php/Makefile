@@ -1,7 +1,7 @@
 clean:
-	rm -rf src/SellerLabs/Promote/Model
-	rm -rf src/SellerLabs/Promote/Normalizer
-	rm -rf src/SellerLabs/Promote/Resource
+	rm -rf src/Snagshout/Promote/Model
+	rm -rf src/Snagshout/Promote/Normalizer
+	rm -rf src/Snagshout/Promote/Resource
 
 all:
 	curl -o swagger.json http://localhost:8000/documentation
