@@ -4,7 +4,7 @@ date_default_timezone_set('UTC');
 
 require_once __DIR__ . '/../../vendor/autoload.php';
 
-use SellerLabs\Promote\Client;
+use Snagshout\Promote\Client;
 
 $client = new Client(
     "b7b8c99469b430c3f4c8132527c7fab6c5963416db63425ca4dd7df2f09ce1bb7ca9581463f4844c733a073434ab419cee9d63f44435bea65c0799b083a9bddf",

@@ -23,8 +23,8 @@
   ],
   "autoload": {
     "psr-4": {
-      "SellerLabs\\Promote\\": "php/src/SellerLabs/Promote",
-      "Tests\\SellerLabs\\Promote\\": "php/tests/SellerLabs/Promote"
+      "Snagshout\\Promote\\": "php/src/Snagshout/Promote",
+      "Tests\\Snagshout\\Promote\\": "php/tests/Snagshout/Promote"
     }
   },
   "minimum-stability": "stable"

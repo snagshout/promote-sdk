@@ -2,8 +2,8 @@
 
 return [
     'openapi-file' => __DIR__ . '/swagger.json',
-    'namespace' => 'SellerLabs\Promote',
-    'directory' => __DIR__ . '/src/SellerLabs/Promote',
+    'namespace' => 'Snagshout\Promote',
+    'directory' => __DIR__ . '/src/Snagshout/Promote',
     'date-format' => \DateTime::RFC3339,
     'reference' => false,
 ];
