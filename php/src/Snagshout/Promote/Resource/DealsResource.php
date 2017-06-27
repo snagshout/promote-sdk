@@ -120,7 +120,7 @@ class DealsResource extends Resource
      * 
      *
      * @param int $campaign ID of campaign to fetch
-     * @param \Snagshout\Promote\Model\UnsyncDealRequestBody $body
+     * @param \Snagshout\Promote\Model\UnsyncDealRequestBody $body 
      * @param array  $parameters List of parameters
      * @param string $fetch      Fetch mode (object or response)
      *
@@ -147,7 +147,7 @@ class DealsResource extends Resource
      * 
      *
      * @param int $campaign ID of campaign to fetch
-     * @param \Snagshout\Promote\Model\SyncDealRequestBody $body
+     * @param \Snagshout\Promote\Model\SyncDealRequestBody $body 
      * @param array  $parameters List of parameters
      * @param string $fetch      Fetch mode (object or response)
      *
@@ -174,7 +174,7 @@ class DealsResource extends Resource
      * 
      *
      * @param int $campaign ID of campaign to fetch
-     * @param \Snagshout\Promote\Model\DealImpressionsRequestBody $body
+     * @param \Snagshout\Promote\Model\DealImpressionsRequestBody $body 
      * @param array  $parameters List of parameters
      * @param string $fetch      Fetch mode (object or response)
      *

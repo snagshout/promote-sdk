@@ -26,6 +26,7 @@ class NormalizerFactory
         $normalizers[] = new VersionNormalizer();
         $normalizers[] = new ErrorNormalizer();
         $normalizers[] = new PayloadNormalizer();
+        $normalizers[] = new CheckEmailRequestBodyNormalizer();
 
         return $normalizers;
     }
