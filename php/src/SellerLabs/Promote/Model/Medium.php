@@ -17,7 +17,7 @@ class Medium
      */
     protected $type;
     /**
-     * @var int
+     * @var mixed
      */
     protected $metadata;
     /**
@@ -72,14 +72,14 @@ class Medium
         return $this;
     }
     /**
-     * @return int
+     * @return mixed
      */
     public function getMetadata()
     {
         return $this->metadata;
     }
     /**
-     * @param int $metadata
+     * @param mixed $metadata
      *
      * @return self
      */
