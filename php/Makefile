@@ -4,7 +4,7 @@ clean:
 	rm -rf src/Snagshout/Promote/Resource
 
 all:
-	curl -o swagger.json http://localhost:8000/documentation
+	curl -o swagger.json http://localhost:8001/documentation
 	php ../vendor/bin/jane-openapi generate -vvv
 	rm swagger.json
 

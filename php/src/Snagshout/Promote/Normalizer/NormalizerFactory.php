@@ -25,6 +25,7 @@ class NormalizerFactory
         $normalizers[] = new DealNormalizer();
         $normalizers[] = new VersionNormalizer();
         $normalizers[] = new ErrorNormalizer();
+        $normalizers[] = new InitializeMigrationBodyNormalizer();
         $normalizers[] = new PayloadNormalizer();
         $normalizers[] = new CheckEmailRequestBodyNormalizer();
 
