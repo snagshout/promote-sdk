@@ -82,6 +82,10 @@ class Deal
      */
     protected $requireEmail;
     /**
+     * @var bool
+     */
+    protected $isUnlimited;
+    /**
      * @var string
      */
     protected $startsAt;
@@ -412,6 +416,24 @@ class Deal
     public function setRequireEmail($requireEmail = null)
     {
         $this->requireEmail = $requireEmail;
+
+        return $this;
+    }
+    /**
+     * @return bool
+     */
+    public function getIsUnlimited()
+    {
+        return $this->isUnlimited;
+    }
+    /**
+     * @param bool $isUnlimited
+     *
+     * @return self
+     */
+    public function setIsUnlimited($isUnlimited = null)
+    {
+        $this->isUnlimited = $isUnlimited;
 
         return $this;
     }

@@ -95,6 +95,9 @@ class DealNormalizer extends SerializerAwareNormalizer implements DenormalizerIn
         if (property_exists($data, 'requireEmail')) {
             $object->setRequireEmail($data->{'requireEmail'});
         }
+        if (property_exists($data, 'isUnlimited')) {
+            $object->setIsUnlimited($data->{'isUnlimited'});
+        }
         if (property_exists($data, 'startsAt')) {
             $object->setStartsAt($data->{'startsAt'});
         }
@@ -180,6 +183,9 @@ class DealNormalizer extends SerializerAwareNormalizer implements DenormalizerIn
         }
         if (null !== $object->getRequireEmail()) {
             $data->{'requireEmail'} = $object->getRequireEmail();
+        }
+        if (null !== $object->getIsUnlimited()) {
+            $data->{'isUnlimited'} = $object->getIsUnlimited();
         }
         if (null !== $object->getStartsAt()) {
             $data->{'startsAt'} = $object->getStartsAt();
