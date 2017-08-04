@@ -228,13 +228,13 @@ class DealsResource extends Resource
      * 
      *
      * @param int $campaign ID of campaign to flag
-     * @param \Snagshout\Promote\Model\NotifyDealRequestBody $body 
+     * @param \Snagshout\Promote\Model\FlagDealRequestBody $body 
      * @param array  $parameters List of parameters
      * @param string $fetch      Fetch mode (object or response)
      *
      * @return \Psr\Http\Message\ResponseInterface
      */
-    public function flagDeal($campaign, \Snagshout\Promote\Model\NotifyDealRequestBody $body, $parameters = [], $fetch = self::FETCH_OBJECT)
+    public function flagDeal($campaign, \Snagshout\Promote\Model\FlagDealRequestBody $body, $parameters = [], $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $url = '/api/v1/deals/{campaign}/flag';

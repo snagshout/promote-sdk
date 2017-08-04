@@ -7,6 +7,7 @@ all:
 	curl -o swagger.json http://localhost:8001/documentation
 	php ../vendor/bin/jane-openapi generate -vvv
 	rm swagger.json
+	phpstd style:clean -vvv
 
 docs:
 	apigen generate -s src -d ../docs/php
