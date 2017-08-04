@@ -21,6 +21,7 @@ class NormalizerFactory
         $normalizers[] = new UnsyncDealRequestBodyNormalizer();
         $normalizers[] = new DealImpressionsRequestBodyNormalizer();
         $normalizers[] = new NotifyDealRequestBodyNormalizer();
+        $normalizers[] = new FlagDealRequestBodyNormalizer();
         $normalizers[] = new CategoryNormalizer();
         $normalizers[] = new MediumNormalizer();
         $normalizers[] = new DealNormalizer();
