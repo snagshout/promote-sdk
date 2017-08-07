@@ -18,6 +18,10 @@ class Error
      */
     protected $message;
     /**
+     * @var int
+     */
+    protected $status;
+    /**
      * @return string
      */
     public function getMessage()
@@ -32,6 +36,24 @@ class Error
     public function setMessage($message = null)
     {
         $this->message = $message;
+
+        return $this;
+    }
+    /**
+     * @return int
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+    /**
+     * @param int $status
+     *
+     * @return self
+     */
+    public function setStatus($status = null)
+    {
+        $this->status = $status;
 
         return $this;
     }

@@ -39,6 +39,9 @@ class ErrorNormalizer extends SerializerAwareNormalizer implements DenormalizerI
         if (property_exists($data, 'message')) {
             $object->setMessage($data->{'message'});
         }
+        if (property_exists($data, 'status')) {
+            $object->setStatus($data->{'status'});
+        }
 
         return $object;
     }
@@ -47,6 +50,9 @@ class ErrorNormalizer extends SerializerAwareNormalizer implements DenormalizerI
         $data = new \stdClass();
         if (null !== $object->getMessage()) {
             $data->{'message'} = $object->getMessage();
+        }
+        if (null !== $object->getStatus()) {
+            $data->{'status'} = $object->getStatus();
         }
 
         return $data;
