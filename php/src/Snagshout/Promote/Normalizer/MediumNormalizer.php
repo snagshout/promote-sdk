@@ -45,6 +45,9 @@ class MediumNormalizer extends SerializerAwareNormalizer implements Denormalizer
         if (property_exists($data, 'type')) {
             $object->setType($data->{'type'});
         }
+        if (property_exists($data, 'title')) {
+            $object->setTitle($data->{'title'});
+        }
         if (property_exists($data, 'metadata')) {
             $object->setMetadata($data->{'metadata'});
         }
@@ -62,6 +65,9 @@ class MediumNormalizer extends SerializerAwareNormalizer implements Denormalizer
         }
         if (null !== $object->getType()) {
             $data->{'type'} = $object->getType();
+        }
+        if (null !== $object->getTitle()) {
+            $data->{'title'} = $object->getTitle();
         }
         if (null !== $object->getMetadata()) {
             $data->{'metadata'} = $object->getMetadata();

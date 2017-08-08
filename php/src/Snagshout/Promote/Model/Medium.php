@@ -26,6 +26,10 @@ class Medium
      */
     protected $type;
     /**
+     * @var string
+     */
+    protected $title;
+    /**
      * @var mixed
      */
     protected $metadata;
@@ -80,6 +84,24 @@ class Medium
     public function setType($type = null)
     {
         $this->type = $type;
+
+        return $this;
+    }
+    /**
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+    /**
+     * @param string $title
+     *
+     * @return self
+     */
+    public function setTitle($title = null)
+    {
+        $this->title = $title;
 
         return $this;
     }
