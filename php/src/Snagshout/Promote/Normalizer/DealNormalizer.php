@@ -98,6 +98,9 @@ class DealNormalizer extends SerializerAwareNormalizer implements DenormalizerIn
         if (property_exists($data, 'isUnlimited')) {
             $object->setIsUnlimited($data->{'isUnlimited'});
         }
+        if (property_exists($data, 'code')) {
+            $object->setCode($data->{'code'});
+        }
         if (property_exists($data, 'startsAt')) {
             $object->setStartsAt($data->{'startsAt'});
         }
@@ -186,6 +189,9 @@ class DealNormalizer extends SerializerAwareNormalizer implements DenormalizerIn
         }
         if (null !== $object->getIsUnlimited()) {
             $data->{'isUnlimited'} = $object->getIsUnlimited();
+        }
+        if (null !== $object->getCode()) {
+            $data->{'code'} = $object->getCode();
         }
         if (null !== $object->getStartsAt()) {
             $data->{'startsAt'} = $object->getStartsAt();

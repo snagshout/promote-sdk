@@ -88,6 +88,10 @@ class Deal
     /**
      * @var string
      */
+    protected $code;
+    /**
+     * @var string
+     */
     protected $startsAt;
     /**
      * @var string
@@ -434,6 +438,24 @@ class Deal
     public function setIsUnlimited($isUnlimited = null)
     {
         $this->isUnlimited = $isUnlimited;
+
+        return $this;
+    }
+    /**
+     * @return string
+     */
+    public function getCode()
+    {
+        return $this->code;
+    }
+    /**
+     * @param string $code
+     *
+     * @return self
+     */
+    public function setCode($code = null)
+    {
+        $this->code = $code;
 
         return $this;
     }
