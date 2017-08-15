@@ -25,6 +25,7 @@ class NormalizerFactory
         $normalizers[] = new CategoryNormalizer();
         $normalizers[] = new MediumNormalizer();
         $normalizers[] = new DealNormalizer();
+        $normalizers[] = new FollowupNormalizer();
         $normalizers[] = new VersionNormalizer();
         $normalizers[] = new ErrorNormalizer();
         $normalizers[] = new InitializeMigrationBodyNormalizer();

@@ -118,6 +118,14 @@ class Deal
      */
     protected $dailyLimitReached;
     /**
+     * @var mixed
+     */
+    protected $immediateFollowup;
+    /**
+     * @var mixed
+     */
+    protected $scheduledFollowup;
+    /**
      * @return int
      */
     public function getCampaignId()
@@ -582,6 +590,42 @@ class Deal
     public function setDailyLimitReached($dailyLimitReached = null)
     {
         $this->dailyLimitReached = $dailyLimitReached;
+
+        return $this;
+    }
+    /**
+     * @return mixed
+     */
+    public function getImmediateFollowup()
+    {
+        return $this->immediateFollowup;
+    }
+    /**
+     * @param mixed $immediateFollowup
+     *
+     * @return self
+     */
+    public function setImmediateFollowup($immediateFollowup = null)
+    {
+        $this->immediateFollowup = $immediateFollowup;
+
+        return $this;
+    }
+    /**
+     * @return mixed
+     */
+    public function getScheduledFollowup()
+    {
+        return $this->scheduledFollowup;
+    }
+    /**
+     * @param mixed $scheduledFollowup
+     *
+     * @return self
+     */
+    public function setScheduledFollowup($scheduledFollowup = null)
+    {
+        $this->scheduledFollowup = $scheduledFollowup;
 
         return $this;
     }
