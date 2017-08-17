@@ -39,11 +39,11 @@ class FollowupNormalizer extends SerializerAwareNormalizer implements Denormaliz
         if (property_exists($data, 'days')) {
             $object->setDays($data->{'days'});
         }
-        if (property_exists($data, 'template')) {
-            $object->setTemplate($data->{'template'});
+        if (property_exists($data, 'subject')) {
+            $object->setSubject($data->{'subject'});
         }
-        if (property_exists($data, 'values')) {
-            $object->setValues($data->{'values'});
+        if (property_exists($data, 'body')) {
+            $object->setBody($data->{'body'});
         }
 
         return $object;
@@ -54,11 +54,11 @@ class FollowupNormalizer extends SerializerAwareNormalizer implements Denormaliz
         if (null !== $object->getDays()) {
             $data->{'days'} = $object->getDays();
         }
-        if (null !== $object->getTemplate()) {
-            $data->{'template'} = $object->getTemplate();
+        if (null !== $object->getSubject()) {
+            $data->{'subject'} = $object->getSubject();
         }
-        if (null !== $object->getValues()) {
-            $data->{'values'} = $object->getValues();
+        if (null !== $object->getBody()) {
+            $data->{'body'} = $object->getBody();
         }
 
         return $data;

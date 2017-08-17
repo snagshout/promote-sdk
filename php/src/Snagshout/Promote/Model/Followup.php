@@ -20,11 +20,11 @@ class Followup
     /**
      * @var string
      */
-    protected $template;
+    protected $subject;
     /**
-     * @var mixed
+     * @var string
      */
-    protected $values;
+    protected $body;
     /**
      * @return int
      */
@@ -46,36 +46,36 @@ class Followup
     /**
      * @return string
      */
-    public function getTemplate()
+    public function getSubject()
     {
-        return $this->template;
+        return $this->subject;
     }
     /**
-     * @param string $template
+     * @param string $subject
      *
      * @return self
      */
-    public function setTemplate($template = null)
+    public function setSubject($subject = null)
     {
-        $this->template = $template;
+        $this->subject = $subject;
 
         return $this;
     }
     /**
-     * @return mixed
+     * @return string
      */
-    public function getValues()
+    public function getBody()
     {
-        return $this->values;
+        return $this->body;
     }
     /**
-     * @param mixed $values
+     * @param string $body
      *
      * @return self
      */
-    public function setValues($values = null)
+    public function setBody($body = null)
     {
-        $this->values = $values;
+        $this->body = $body;
 
         return $this;
     }
