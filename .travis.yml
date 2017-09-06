@@ -1,7 +1,11 @@
 language: php
 php:
-  - 7.1
+- 7.1
 branches:
   only:
-    - master
+  - master
 install: composer install
+notifications:
+  slack:
+    rooms:
+      secure: KvSts7LYg5txaIklUDgMhx7E2pTAIUcy5TFPYrerMOI2mDRZ6TP7OsHmjwlkQku5e378d0hBjC9+Wz8FmEIul/iLFo3mSQPDj6INxP3lbPmt5wm3KG/morihIbxlnUUTRk3ogS/enqSJuw9uB0Lb9au9QANMezKbeS5KBLbzFaIQonicWYe+8LopZJDUW0TXVombACfHW1ZB5UWOFKqkLqozvYbmnGfhx46DQArP81b9nV0ONpQ+t587YUMdi/YgMtakSdlVteQaL5Fn4lzZpt2Qi+f37tDg3sA62iNDAne2dvhQgV2hlf4T3uE8dbc5D2ve2nBvGdi06mK2ABZyccUlGlr+yecfV9gs12aCRrO/h/vKKB1GIGOLkL6AYnyZ1p+2TOJNt/I6yORHsflWd7D4KBv4ciRON1kZp7ck43J4X9/UiOtoNNVY+thBTdBi2JBoUIi9UiKIs3sbtwvKXyfOjlsmWaw80w+2zWUUc8m+0Nt2k21BQ9gxf81x3d69RP5Mqeo00HQD8PfoeTFhx9eU+LuUqW9t9KbalGmTB1yACtKlK/24HJMuLOAUG4a6o4WnA4H/robGuvKmITbR2liXCaRu8hLbe9nifQ2R2STFPcPOTAzi84o7nHRscsbFq66zaZwGHVIAB1K9FqxwAcN67c3HJAwGjVT1kNO4mLI=
