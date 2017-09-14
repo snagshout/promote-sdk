@@ -62,6 +62,13 @@ class DealNormalizer extends SerializerAwareNormalizer implements DenormalizerIn
         if (property_exists($data, 'listingUrl')) {
             $object->setListingUrl($data->{'listingUrl'});
         }
+        if (property_exists($data, 'boost')) {
+            $values_2 = [];
+            foreach ($data->{'boost'} as $value_2) {
+                $values_2[] = $value_2;
+            }
+            $object->setBoost($values_2);
+        }
         if (property_exists($data, 'listingMetadata')) {
             $object->setListingMetadata($data->{'listingMetadata'});
         }
@@ -159,6 +166,13 @@ class DealNormalizer extends SerializerAwareNormalizer implements DenormalizerIn
         }
         if (null !== $object->getListingUrl()) {
             $data->{'listingUrl'} = $object->getListingUrl();
+        }
+        if (null !== $object->getBoost()) {
+            $values_2 = [];
+            foreach ($object->getBoost() as $value_2) {
+                $values_2[] = $value_2;
+            }
+            $data->{'boost'} = $values_2;
         }
         if (null !== $object->getListingMetadata()) {
             $data->{'listingMetadata'} = $object->getListingMetadata();

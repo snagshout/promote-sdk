@@ -38,6 +38,10 @@ class Deal
      */
     protected $listingUrl;
     /**
+     * @var mixed[]
+     */
+    protected $boost;
+    /**
      * @var mixed
      */
     protected $listingMetadata;
@@ -230,6 +234,24 @@ class Deal
     public function setListingUrl($listingUrl = null)
     {
         $this->listingUrl = $listingUrl;
+
+        return $this;
+    }
+    /**
+     * @return mixed[]
+     */
+    public function getBoost()
+    {
+        return $this->boost;
+    }
+    /**
+     * @param mixed[] $boost
+     *
+     * @return self
+     */
+    public function setBoost(array $boost = null)
+    {
+        $this->boost = $boost;
 
         return $this;
     }

@@ -24,7 +24,6 @@ class NormalizerFactory
         $normalizers[] = new FlagDealRequestBodyNormalizer();
         $normalizers[] = new CategoryNormalizer();
         $normalizers[] = new MediumNormalizer();
-        $normalizers[] = new BoostNormalizer();
         $normalizers[] = new DealNormalizer();
         $normalizers[] = new FollowupNormalizer();
         $normalizers[] = new VersionNormalizer();
