@@ -18,6 +18,10 @@ class UnsyncDealRequestBody
      */
     protected $note;
     /**
+     * @var string
+     */
+    protected $state;
+    /**
      * @return string
      */
     public function getNote()
@@ -32,6 +36,24 @@ class UnsyncDealRequestBody
     public function setNote($note = null)
     {
         $this->note = $note;
+
+        return $this;
+    }
+    /**
+     * @return string
+     */
+    public function getState()
+    {
+        return $this->state;
+    }
+    /**
+     * @param string $state
+     *
+     * @return self
+     */
+    public function setState($state = null)
+    {
+        $this->state = $state;
 
         return $this;
     }

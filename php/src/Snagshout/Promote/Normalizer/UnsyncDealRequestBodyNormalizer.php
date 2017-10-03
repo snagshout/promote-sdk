@@ -39,6 +39,9 @@ class UnsyncDealRequestBodyNormalizer extends SerializerAwareNormalizer implemen
         if (property_exists($data, 'note')) {
             $object->setNote($data->{'note'});
         }
+        if (property_exists($data, 'state')) {
+            $object->setState($data->{'state'});
+        }
 
         return $object;
     }
@@ -47,6 +50,9 @@ class UnsyncDealRequestBodyNormalizer extends SerializerAwareNormalizer implemen
         $data = new \stdClass();
         if (null !== $object->getNote()) {
             $data->{'note'} = $object->getNote();
+        }
+        if (null !== $object->getState()) {
+            $data->{'state'} = $object->getState();
         }
 
         return $data;

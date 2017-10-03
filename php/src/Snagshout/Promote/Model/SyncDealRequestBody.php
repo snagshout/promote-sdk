@@ -18,6 +18,10 @@ class SyncDealRequestBody
      */
     protected $url;
     /**
+     * @var string
+     */
+    protected $state;
+    /**
      * @return string
      */
     public function getUrl()
@@ -32,6 +36,24 @@ class SyncDealRequestBody
     public function setUrl($url = null)
     {
         $this->url = $url;
+
+        return $this;
+    }
+    /**
+     * @return string
+     */
+    public function getState()
+    {
+        return $this->state;
+    }
+    /**
+     * @param string $state
+     *
+     * @return self
+     */
+    public function setState($state = null)
+    {
+        $this->state = $state;
 
         return $this;
     }
