@@ -18,6 +18,10 @@ class Deal
      */
     protected $campaignId;
     /**
+     * @var int
+     */
+    protected $companyId;
+    /**
      * @var string
      */
     protected $productName;
@@ -34,17 +38,13 @@ class Deal
      */
     protected $media;
     /**
-     * @var string
-     */
-    protected $listingUrl;
-    /**
      * @var mixed[]
      */
     protected $boost;
     /**
-     * @var mixed
+     * @var string
      */
-    protected $listingMetadata;
+    protected $code;
     /**
      * @var string
      */
@@ -52,27 +52,23 @@ class Deal
     /**
      * @var float
      */
-    protected $listingPrice;
-    /**
-     * @var float
-     */
     protected $discountPrice;
     /**
+     * @var bool
+     */
+    protected $isUnlimited;
+    /**
+     * @var mixed
+     */
+    protected $listingMetadata;
+    /**
      * @var float
      */
-    protected $shippingPrice;
-    /**
-     * @var int
-     */
-    protected $shippingDaysMin;
-    /**
-     * @var int
-     */
-    protected $shippingDaysMax;
+    protected $listingPrice;
     /**
      * @var string
      */
-    protected $shippingType;
+    protected $listingUrl;
     /**
      * @var string
      */
@@ -86,13 +82,21 @@ class Deal
      */
     protected $requireEmail;
     /**
-     * @var bool
+     * @var int
      */
-    protected $isUnlimited;
+    protected $shippingDaysMax;
+    /**
+     * @var int
+     */
+    protected $shippingDaysMin;
+    /**
+     * @var float
+     */
+    protected $shippingPrice;
     /**
      * @var string
      */
-    protected $code;
+    protected $shippingType;
     /**
      * @var string
      */
@@ -144,6 +148,24 @@ class Deal
     public function setCampaignId($campaignId = null)
     {
         $this->campaignId = $campaignId;
+
+        return $this;
+    }
+    /**
+     * @return int
+     */
+    public function getCompanyId()
+    {
+        return $this->companyId;
+    }
+    /**
+     * @param int $companyId
+     *
+     * @return self
+     */
+    public function setCompanyId($companyId = null)
+    {
+        $this->companyId = $companyId;
 
         return $this;
     }
@@ -220,24 +242,6 @@ class Deal
         return $this;
     }
     /**
-     * @return string
-     */
-    public function getListingUrl()
-    {
-        return $this->listingUrl;
-    }
-    /**
-     * @param string $listingUrl
-     *
-     * @return self
-     */
-    public function setListingUrl($listingUrl = null)
-    {
-        $this->listingUrl = $listingUrl;
-
-        return $this;
-    }
-    /**
      * @return mixed[]
      */
     public function getBoost()
@@ -256,20 +260,20 @@ class Deal
         return $this;
     }
     /**
-     * @return mixed
+     * @return string
      */
-    public function getListingMetadata()
+    public function getCode()
     {
-        return $this->listingMetadata;
+        return $this->code;
     }
     /**
-     * @param mixed $listingMetadata
+     * @param string $code
      *
      * @return self
      */
-    public function setListingMetadata($listingMetadata = null)
+    public function setCode($code = null)
     {
-        $this->listingMetadata = $listingMetadata;
+        $this->code = $code;
 
         return $this;
     }
@@ -294,24 +298,6 @@ class Deal
     /**
      * @return float
      */
-    public function getListingPrice()
-    {
-        return $this->listingPrice;
-    }
-    /**
-     * @param float $listingPrice
-     *
-     * @return self
-     */
-    public function setListingPrice($listingPrice = null)
-    {
-        $this->listingPrice = $listingPrice;
-
-        return $this;
-    }
-    /**
-     * @return float
-     */
     public function getDiscountPrice()
     {
         return $this->discountPrice;
@@ -328,74 +314,74 @@ class Deal
         return $this;
     }
     /**
+     * @return bool
+     */
+    public function getIsUnlimited()
+    {
+        return $this->isUnlimited;
+    }
+    /**
+     * @param bool $isUnlimited
+     *
+     * @return self
+     */
+    public function setIsUnlimited($isUnlimited = null)
+    {
+        $this->isUnlimited = $isUnlimited;
+
+        return $this;
+    }
+    /**
+     * @return mixed
+     */
+    public function getListingMetadata()
+    {
+        return $this->listingMetadata;
+    }
+    /**
+     * @param mixed $listingMetadata
+     *
+     * @return self
+     */
+    public function setListingMetadata($listingMetadata = null)
+    {
+        $this->listingMetadata = $listingMetadata;
+
+        return $this;
+    }
+    /**
      * @return float
      */
-    public function getShippingPrice()
+    public function getListingPrice()
     {
-        return $this->shippingPrice;
+        return $this->listingPrice;
     }
     /**
-     * @param float $shippingPrice
+     * @param float $listingPrice
      *
      * @return self
      */
-    public function setShippingPrice($shippingPrice = null)
+    public function setListingPrice($listingPrice = null)
     {
-        $this->shippingPrice = $shippingPrice;
-
-        return $this;
-    }
-    /**
-     * @return int
-     */
-    public function getShippingDaysMin()
-    {
-        return $this->shippingDaysMin;
-    }
-    /**
-     * @param int $shippingDaysMin
-     *
-     * @return self
-     */
-    public function setShippingDaysMin($shippingDaysMin = null)
-    {
-        $this->shippingDaysMin = $shippingDaysMin;
-
-        return $this;
-    }
-    /**
-     * @return int
-     */
-    public function getShippingDaysMax()
-    {
-        return $this->shippingDaysMax;
-    }
-    /**
-     * @param int $shippingDaysMax
-     *
-     * @return self
-     */
-    public function setShippingDaysMax($shippingDaysMax = null)
-    {
-        $this->shippingDaysMax = $shippingDaysMax;
+        $this->listingPrice = $listingPrice;
 
         return $this;
     }
     /**
      * @return string
      */
-    public function getShippingType()
+    public function getListingUrl()
     {
-        return $this->shippingType;
+        return $this->listingUrl;
     }
     /**
-     * @param string $shippingType
+     * @param string $listingUrl
      *
      * @return self
      */
-    public function setShippingType($shippingType = null)
+    public function setListingUrl($listingUrl = null)
     {
-        $this->shippingType = $shippingType;
+        $this->listingUrl = $listingUrl;
 
         return $this;
     }
@@ -454,38 +440,74 @@ class Deal
         return $this;
     }
     /**
-     * @return bool
+     * @return int
      */
-    public function getIsUnlimited()
+    public function getShippingDaysMax()
     {
-        return $this->isUnlimited;
+        return $this->shippingDaysMax;
     }
     /**
-     * @param bool $isUnlimited
+     * @param int $shippingDaysMax
      *
      * @return self
      */
-    public function setIsUnlimited($isUnlimited = null)
+    public function setShippingDaysMax($shippingDaysMax = null)
     {
-        $this->isUnlimited = $isUnlimited;
+        $this->shippingDaysMax = $shippingDaysMax;
+
+        return $this;
+    }
+    /**
+     * @return int
+     */
+    public function getShippingDaysMin()
+    {
+        return $this->shippingDaysMin;
+    }
+    /**
+     * @param int $shippingDaysMin
+     *
+     * @return self
+     */
+    public function setShippingDaysMin($shippingDaysMin = null)
+    {
+        $this->shippingDaysMin = $shippingDaysMin;
+
+        return $this;
+    }
+    /**
+     * @return float
+     */
+    public function getShippingPrice()
+    {
+        return $this->shippingPrice;
+    }
+    /**
+     * @param float $shippingPrice
+     *
+     * @return self
+     */
+    public function setShippingPrice($shippingPrice = null)
+    {
+        $this->shippingPrice = $shippingPrice;
 
         return $this;
     }
     /**
      * @return string
      */
-    public function getCode()
+    public function getShippingType()
     {
-        return $this->code;
+        return $this->shippingType;
     }
     /**
-     * @param string $code
+     * @param string $shippingType
      *
      * @return self
      */
-    public function setCode($code = null)
+    public function setShippingType($shippingType = null)
     {
-        $this->code = $code;
+        $this->shippingType = $shippingType;
 
         return $this;
     }

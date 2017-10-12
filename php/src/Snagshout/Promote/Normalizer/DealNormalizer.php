@@ -39,6 +39,9 @@ class DealNormalizer extends SerializerAwareNormalizer implements DenormalizerIn
         if (property_exists($data, 'campaignId')) {
             $object->setCampaignId($data->{'campaignId'});
         }
+        if (property_exists($data, 'companyId')) {
+            $object->setCompanyId($data->{'companyId'});
+        }
         if (property_exists($data, 'productName')) {
             $object->setProductName($data->{'productName'});
         }
@@ -59,9 +62,6 @@ class DealNormalizer extends SerializerAwareNormalizer implements DenormalizerIn
             }
             $object->setMedia($values_1);
         }
-        if (property_exists($data, 'listingUrl')) {
-            $object->setListingUrl($data->{'listingUrl'});
-        }
         if (property_exists($data, 'boost')) {
             $values_2 = [];
             foreach ($data->{'boost'} as $value_2) {
@@ -69,29 +69,26 @@ class DealNormalizer extends SerializerAwareNormalizer implements DenormalizerIn
             }
             $object->setBoost($values_2);
         }
-        if (property_exists($data, 'listingMetadata')) {
-            $object->setListingMetadata($data->{'listingMetadata'});
+        if (property_exists($data, 'code')) {
+            $object->setCode($data->{'code'});
         }
         if (property_exists($data, 'currency')) {
             $object->setCurrency($data->{'currency'});
         }
-        if (property_exists($data, 'listingPrice')) {
-            $object->setListingPrice($data->{'listingPrice'});
-        }
         if (property_exists($data, 'discountPrice')) {
             $object->setDiscountPrice($data->{'discountPrice'});
         }
-        if (property_exists($data, 'shippingPrice')) {
-            $object->setShippingPrice($data->{'shippingPrice'});
+        if (property_exists($data, 'isUnlimited')) {
+            $object->setIsUnlimited($data->{'isUnlimited'});
         }
-        if (property_exists($data, 'shippingDaysMin')) {
-            $object->setShippingDaysMin($data->{'shippingDaysMin'});
+        if (property_exists($data, 'listingMetadata')) {
+            $object->setListingMetadata($data->{'listingMetadata'});
         }
-        if (property_exists($data, 'shippingDaysMax')) {
-            $object->setShippingDaysMax($data->{'shippingDaysMax'});
+        if (property_exists($data, 'listingPrice')) {
+            $object->setListingPrice($data->{'listingPrice'});
         }
-        if (property_exists($data, 'shippingType')) {
-            $object->setShippingType($data->{'shippingType'});
+        if (property_exists($data, 'listingUrl')) {
+            $object->setListingUrl($data->{'listingUrl'});
         }
         if (property_exists($data, 'marketplace')) {
             $object->setMarketplace($data->{'marketplace'});
@@ -102,11 +99,17 @@ class DealNormalizer extends SerializerAwareNormalizer implements DenormalizerIn
         if (property_exists($data, 'requireEmail')) {
             $object->setRequireEmail($data->{'requireEmail'});
         }
-        if (property_exists($data, 'isUnlimited')) {
-            $object->setIsUnlimited($data->{'isUnlimited'});
+        if (property_exists($data, 'shippingDaysMax')) {
+            $object->setShippingDaysMax($data->{'shippingDaysMax'});
         }
-        if (property_exists($data, 'code')) {
-            $object->setCode($data->{'code'});
+        if (property_exists($data, 'shippingDaysMin')) {
+            $object->setShippingDaysMin($data->{'shippingDaysMin'});
+        }
+        if (property_exists($data, 'shippingPrice')) {
+            $object->setShippingPrice($data->{'shippingPrice'});
+        }
+        if (property_exists($data, 'shippingType')) {
+            $object->setShippingType($data->{'shippingType'});
         }
         if (property_exists($data, 'startsAt')) {
             $object->setStartsAt($data->{'startsAt'});
@@ -144,6 +147,9 @@ class DealNormalizer extends SerializerAwareNormalizer implements DenormalizerIn
         if (null !== $object->getCampaignId()) {
             $data->{'campaignId'} = $object->getCampaignId();
         }
+        if (null !== $object->getCompanyId()) {
+            $data->{'companyId'} = $object->getCompanyId();
+        }
         if (null !== $object->getProductName()) {
             $data->{'productName'} = $object->getProductName();
         }
@@ -164,9 +170,6 @@ class DealNormalizer extends SerializerAwareNormalizer implements DenormalizerIn
             }
             $data->{'media'} = $values_1;
         }
-        if (null !== $object->getListingUrl()) {
-            $data->{'listingUrl'} = $object->getListingUrl();
-        }
         if (null !== $object->getBoost()) {
             $values_2 = [];
             foreach ($object->getBoost() as $value_2) {
@@ -174,29 +177,26 @@ class DealNormalizer extends SerializerAwareNormalizer implements DenormalizerIn
             }
             $data->{'boost'} = $values_2;
         }
-        if (null !== $object->getListingMetadata()) {
-            $data->{'listingMetadata'} = $object->getListingMetadata();
+        if (null !== $object->getCode()) {
+            $data->{'code'} = $object->getCode();
         }
         if (null !== $object->getCurrency()) {
             $data->{'currency'} = $object->getCurrency();
         }
-        if (null !== $object->getListingPrice()) {
-            $data->{'listingPrice'} = $object->getListingPrice();
-        }
         if (null !== $object->getDiscountPrice()) {
             $data->{'discountPrice'} = $object->getDiscountPrice();
         }
-        if (null !== $object->getShippingPrice()) {
-            $data->{'shippingPrice'} = $object->getShippingPrice();
+        if (null !== $object->getIsUnlimited()) {
+            $data->{'isUnlimited'} = $object->getIsUnlimited();
         }
-        if (null !== $object->getShippingDaysMin()) {
-            $data->{'shippingDaysMin'} = $object->getShippingDaysMin();
+        if (null !== $object->getListingMetadata()) {
+            $data->{'listingMetadata'} = $object->getListingMetadata();
         }
-        if (null !== $object->getShippingDaysMax()) {
-            $data->{'shippingDaysMax'} = $object->getShippingDaysMax();
+        if (null !== $object->getListingPrice()) {
+            $data->{'listingPrice'} = $object->getListingPrice();
         }
-        if (null !== $object->getShippingType()) {
-            $data->{'shippingType'} = $object->getShippingType();
+        if (null !== $object->getListingUrl()) {
+            $data->{'listingUrl'} = $object->getListingUrl();
         }
         if (null !== $object->getMarketplace()) {
             $data->{'marketplace'} = $object->getMarketplace();
@@ -207,11 +207,17 @@ class DealNormalizer extends SerializerAwareNormalizer implements DenormalizerIn
         if (null !== $object->getRequireEmail()) {
             $data->{'requireEmail'} = $object->getRequireEmail();
         }
-        if (null !== $object->getIsUnlimited()) {
-            $data->{'isUnlimited'} = $object->getIsUnlimited();
+        if (null !== $object->getShippingDaysMax()) {
+            $data->{'shippingDaysMax'} = $object->getShippingDaysMax();
         }
-        if (null !== $object->getCode()) {
-            $data->{'code'} = $object->getCode();
+        if (null !== $object->getShippingDaysMin()) {
+            $data->{'shippingDaysMin'} = $object->getShippingDaysMin();
+        }
+        if (null !== $object->getShippingPrice()) {
+            $data->{'shippingPrice'} = $object->getShippingPrice();
+        }
+        if (null !== $object->getShippingType()) {
+            $data->{'shippingType'} = $object->getShippingType();
         }
         if (null !== $object->getStartsAt()) {
             $data->{'startsAt'} = $object->getStartsAt();
