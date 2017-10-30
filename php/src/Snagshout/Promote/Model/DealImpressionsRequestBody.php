@@ -14,18 +14,18 @@ namespace Snagshout\Promote\Model;
 class DealImpressionsRequestBody
 {
     /**
-     * @var mixed[]
+     * @var Impression[]
      */
     protected $impressions;
     /**
-     * @return mixed[]
+     * @return Impression[]
      */
     public function getImpressions()
     {
         return $this->impressions;
     }
     /**
-     * @param mixed[] $impressions
+     * @param Impression[] $impressions
      *
      * @return self
      */

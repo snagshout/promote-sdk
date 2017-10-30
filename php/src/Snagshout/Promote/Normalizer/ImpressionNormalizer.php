@@ -15,11 +15,11 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\SerializerAwareNormalizer;
 
-class DealImpressionsRequestBodyNormalizer extends SerializerAwareNormalizer implements DenormalizerInterface, NormalizerInterface
+class ImpressionNormalizer extends SerializerAwareNormalizer implements DenormalizerInterface, NormalizerInterface
 {
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ($type !== 'Snagshout\\Promote\\Model\\DealImpressionsRequestBody') {
+        if ($type !== 'Snagshout\\Promote\\Model\\Impression') {
             return false;
         }
 
@@ -27,7 +27,7 @@ class DealImpressionsRequestBodyNormalizer extends SerializerAwareNormalizer imp
     }
     public function supportsNormalization($data, $format = null)
     {
-        if ($data instanceof \Snagshout\Promote\Model\DealImpressionsRequestBody) {
+        if ($data instanceof \Snagshout\Promote\Model\Impression) {
             return true;
         }
 
@@ -35,13 +35,15 @@ class DealImpressionsRequestBodyNormalizer extends SerializerAwareNormalizer imp
     }
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        $object = new \Snagshout\Promote\Model\DealImpressionsRequestBody();
-        if (property_exists($data, 'impressions')) {
-            $values = [];
-            foreach ($data->{'impressions'} as $value) {
-                $values[] = $this->serializer->deserialize($value, 'Snagshout\\Promote\\Model\\Impression', 'raw', $context);
-            }
-            $object->setImpressions($values);
+        $object = new \Snagshout\Promote\Model\Impression();
+        if (property_exists($data, 'views')) {
+            $object->setViews($data->{'views'});
+        }
+        if (property_exists($data, 'hour')) {
+            $object->setHour($data->{'hour'});
+        }
+        if (property_exists($data, 'date')) {
+            $object->setDate($data->{'date'});
         }
 
         return $object;
@@ -49,12 +51,14 @@ class DealImpressionsRequestBodyNormalizer extends SerializerAwareNormalizer imp
     public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
-        if (null !== $object->getImpressions()) {
-            $values = [];
-            foreach ($object->getImpressions() as $value) {
-                $values[] = $this->serializer->serialize($value, 'raw', $context);
-            }
-            $data->{'impressions'} = $values;
+        if (null !== $object->getViews()) {
+            $data->{'views'} = $object->getViews();
+        }
+        if (null !== $object->getHour()) {
+            $data->{'hour'} = $object->getHour();
+        }
+        if (null !== $object->getDate()) {
+            $data->{'date'} = $object->getDate();
         }
 
         return $data;

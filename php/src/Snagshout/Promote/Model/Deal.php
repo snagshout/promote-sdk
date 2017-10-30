@@ -38,7 +38,7 @@ class Deal
      */
     protected $media;
     /**
-     * @var mixed[]
+     * @var string[]
      */
     protected $boost;
     /**
@@ -53,6 +53,10 @@ class Deal
      * @var float
      */
     protected $discountPrice;
+    /**
+     * @var string[]
+     */
+    protected $featured;
     /**
      * @var bool
      */
@@ -242,14 +246,14 @@ class Deal
         return $this;
     }
     /**
-     * @return mixed[]
+     * @return string[]
      */
     public function getBoost()
     {
         return $this->boost;
     }
     /**
-     * @param mixed[] $boost
+     * @param string[] $boost
      *
      * @return self
      */
@@ -310,6 +314,24 @@ class Deal
     public function setDiscountPrice($discountPrice = null)
     {
         $this->discountPrice = $discountPrice;
+
+        return $this;
+    }
+    /**
+     * @return string[]
+     */
+    public function getFeatured()
+    {
+        return $this->featured;
+    }
+    /**
+     * @param string[] $featured
+     *
+     * @return self
+     */
+    public function setFeatured(array $featured = null)
+    {
+        $this->featured = $featured;
 
         return $this;
     }
