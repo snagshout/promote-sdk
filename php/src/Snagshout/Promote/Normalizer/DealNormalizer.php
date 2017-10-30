@@ -78,6 +78,13 @@ class DealNormalizer extends SerializerAwareNormalizer implements DenormalizerIn
         if (property_exists($data, 'discountPrice')) {
             $object->setDiscountPrice($data->{'discountPrice'});
         }
+        if (property_exists($data, 'featured')) {
+            $values_3 = [];
+            foreach ($data->{'featured'} as $value_3) {
+                $values_3[] = $value_3;
+            }
+            $object->setFeatured($values_3);
+        }
         if (property_exists($data, 'isUnlimited')) {
             $object->setIsUnlimited($data->{'isUnlimited'});
         }
@@ -185,6 +192,13 @@ class DealNormalizer extends SerializerAwareNormalizer implements DenormalizerIn
         }
         if (null !== $object->getDiscountPrice()) {
             $data->{'discountPrice'} = $object->getDiscountPrice();
+        }
+        if (null !== $object->getFeatured()) {
+            $values_3 = [];
+            foreach ($object->getFeatured() as $value_3) {
+                $values_3[] = $value_3;
+            }
+            $data->{'featured'} = $values_3;
         }
         if (null !== $object->getIsUnlimited()) {
             $data->{'isUnlimited'} = $object->getIsUnlimited();
