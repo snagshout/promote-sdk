@@ -54,6 +54,10 @@ class Deal
      */
     protected $discountPrice;
     /**
+     * @var bool
+     */
+    protected $isExclusive;
+    /**
      * @var string[]
      */
     protected $featured;
@@ -314,6 +318,24 @@ class Deal
     public function setDiscountPrice($discountPrice = null)
     {
         $this->discountPrice = $discountPrice;
+
+        return $this;
+    }
+    /**
+     * @return bool
+     */
+    public function getIsExclusive()
+    {
+        return $this->isExclusive;
+    }
+    /**
+     * @param bool $isExclusive
+     *
+     * @return self
+     */
+    public function setIsExclusive($isExclusive = null)
+    {
+        $this->isExclusive = $isExclusive;
 
         return $this;
     }
