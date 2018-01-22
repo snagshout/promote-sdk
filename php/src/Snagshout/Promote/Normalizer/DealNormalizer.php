@@ -42,6 +42,9 @@ class DealNormalizer extends SerializerAwareNormalizer implements DenormalizerIn
         if (property_exists($data, 'companyId')) {
             $object->setCompanyId($data->{'companyId'});
         }
+        if (property_exists($data, 'productId')) {
+            $object->setProductId($data->{'productId'});
+        }
         if (property_exists($data, 'productName')) {
             $object->setProductName($data->{'productName'});
         }
@@ -159,6 +162,9 @@ class DealNormalizer extends SerializerAwareNormalizer implements DenormalizerIn
         }
         if (null !== $object->getCompanyId()) {
             $data->{'companyId'} = $object->getCompanyId();
+        }
+        if (null !== $object->getProductId()) {
+            $data->{'productId'} = $object->getProductId();
         }
         if (null !== $object->getProductName()) {
             $data->{'productName'} = $object->getProductName();

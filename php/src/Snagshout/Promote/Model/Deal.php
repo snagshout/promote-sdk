@@ -22,6 +22,10 @@ class Deal
      */
     protected $companyId;
     /**
+     * @var int
+     */
+    protected $productId;
+    /**
      * @var string
      */
     protected $productName;
@@ -174,6 +178,24 @@ class Deal
     public function setCompanyId($companyId = null)
     {
         $this->companyId = $companyId;
+
+        return $this;
+    }
+    /**
+     * @return int
+     */
+    public function getProductId()
+    {
+        return $this->productId;
+    }
+    /**
+     * @param int $productId
+     *
+     * @return self
+     */
+    public function setProductId($productId = null)
+    {
+        $this->productId = $productId;
 
         return $this;
     }
