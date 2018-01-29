@@ -80,19 +80,20 @@ class DealsResource extends Resource
      * 
      *
      * @param int $campaign ID of campaign to fetch
+     * @param \Snagshout\Promote\Model\CreateOrderRequestBody $body 
      * @param array  $parameters List of parameters
      * @param string $fetch      Fetch mode (object or response)
      *
      * @return \Psr\Http\Message\ResponseInterface|\Snagshout\Promote\Model\Payload|\Snagshout\Promote\Model\Error
      */
-    public function createOrder($campaign, $parameters = [], $fetch = self::FETCH_OBJECT)
+    public function createOrder($campaign, \Snagshout\Promote\Model\CreateOrderRequestBody $body, $parameters = [], $fetch = self::FETCH_OBJECT)
     {
         $queryParam = new QueryParam();
         $url = '/api/v1/deals/{campaign}/order';
         $url = str_replace('{campaign}', urlencode($campaign), $url);
         $url = $url . ('?' . $queryParam->buildQueryString($parameters));
         $headers = array_merge(['Host' => 'localhost'], $queryParam->buildHeaders($parameters));
-        $body = $queryParam->buildFormDataString($parameters);
+        $body = $this->serializer->serialize($body, 'json');
         $request = $this->messageFactory->createRequest('POST', $url, $headers, $body);
         $promise = $this->httpClient->sendAsyncRequest($request);
         if (self::FETCH_PROMISE === $fetch) {
