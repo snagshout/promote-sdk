@@ -1,2 +1,2 @@
-# promote-sdk [![Build Status](https://travis-ci.org/snagshout/promote-sdk.svg?branch=master)](https://travis-ci.org/snagshout/promote-sdk)
+# promote-sdk [![Build Status](https://travis-ci.org/snagshout/promote-sdk.svg?branch=master)](https://travis-ci.org/snagshout/promote-sdk) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/b4912fae0f7d4ee2bb84c79429135e9e)](https://www.codacy.com/app/snagshout/promote-sdk?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=snagshout/promote-sdk&amp;utm_campaign=Badge_Grade)
 Promote PHP SDK
