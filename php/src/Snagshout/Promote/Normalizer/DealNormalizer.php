@@ -81,6 +81,9 @@ class DealNormalizer extends SerializerAwareNormalizer implements DenormalizerIn
         if (property_exists($data, 'discountPrice')) {
             $object->setDiscountPrice($data->{'discountPrice'});
         }
+        if (property_exists($data, 'rebateAmount')) {
+            $object->setRebateAmount($data->{'rebateAmount'});
+        }
         if (property_exists($data, 'isExclusive')) {
             $object->setIsExclusive($data->{'isExclusive'});
         }
@@ -201,6 +204,9 @@ class DealNormalizer extends SerializerAwareNormalizer implements DenormalizerIn
         }
         if (null !== $object->getDiscountPrice()) {
             $data->{'discountPrice'} = $object->getDiscountPrice();
+        }
+        if (null !== $object->getRebateAmount()) {
+            $data->{'rebateAmount'} = $object->getRebateAmount();
         }
         if (null !== $object->getIsExclusive()) {
             $data->{'isExclusive'} = $object->getIsExclusive();
