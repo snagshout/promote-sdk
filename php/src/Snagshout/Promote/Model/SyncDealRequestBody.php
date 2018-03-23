@@ -14,44 +14,56 @@ namespace Snagshout\Promote\Model;
 class SyncDealRequestBody
 {
     /**
+     * URL to the deal page.
+     *
      * @var string
      */
     protected $url;
     /**
+     * Deal state on the partner site.
+     *
      * @var string
      */
     protected $state;
     /**
+     * URL to the deal page.
+     *
      * @return string
      */
-    public function getUrl()
+    public function getUrl() : ? string
     {
         return $this->url;
     }
     /**
+     * URL to the deal page.
+     *
      * @param string $url
      *
      * @return self
      */
-    public function setUrl($url = null)
+    public function setUrl(? string $url) : self
     {
         $this->url = $url;
 
         return $this;
     }
     /**
+     * Deal state on the partner site.
+     *
      * @return string
      */
-    public function getState()
+    public function getState() : ? string
     {
         return $this->state;
     }
     /**
+     * Deal state on the partner site.
+     *
      * @param string $state
      *
      * @return self
      */
-    public function setState($state = null)
+    public function setState(? string $state) : self
     {
         $this->state = $state;
 

@@ -14,66 +14,84 @@ namespace Snagshout\Promote\Model;
 class Followup
 {
     /**
+     * 
+     *
      * @var int
      */
     protected $days;
     /**
+     * 
+     *
      * @var string
      */
     protected $subject;
     /**
+     * 
+     *
      * @var string
      */
     protected $body;
     /**
+     * 
+     *
      * @return int
      */
-    public function getDays()
+    public function getDays() : ? int
     {
         return $this->days;
     }
     /**
+     * 
+     *
      * @param int $days
      *
      * @return self
      */
-    public function setDays($days = null)
+    public function setDays(? int $days) : self
     {
         $this->days = $days;
 
         return $this;
     }
     /**
+     * 
+     *
      * @return string
      */
-    public function getSubject()
+    public function getSubject() : ? string
     {
         return $this->subject;
     }
     /**
+     * 
+     *
      * @param string $subject
      *
      * @return self
      */
-    public function setSubject($subject = null)
+    public function setSubject(? string $subject) : self
     {
         $this->subject = $subject;
 
         return $this;
     }
     /**
+     * 
+     *
      * @return string
      */
-    public function getBody()
+    public function getBody() : ? string
     {
         return $this->body;
     }
     /**
+     * 
+     *
      * @param string $body
      *
      * @return self
      */
-    public function setBody($body = null)
+    public function setBody(? string $body) : self
     {
         $this->body = $body;
 

@@ -16,7 +16,7 @@ class NormalizerFactory
     public static function create()
     {
         $normalizers = [];
-        $normalizers[] = new \Joli\Jane\Runtime\Normalizer\ArrayDenormalizer();
+        $normalizers[] = new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer();
         $normalizers[] = new DealImpressionsRequestBodyNormalizer();
         $normalizers[] = new CancelRebateRequestBodyNormalizer();
         $normalizers[] = new ConfirmRebateRequestBodyNormalizer();

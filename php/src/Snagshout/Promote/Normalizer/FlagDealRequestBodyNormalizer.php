@@ -11,30 +11,31 @@
 
 namespace Snagshout\Promote\Normalizer;
 
+use Symfony\Component\Serializer\Exception\InvalidArgumentException;
+use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
+use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
+use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
+use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-use Symfony\Component\Serializer\Normalizer\SerializerAwareNormalizer;
 
-class FlagDealRequestBodyNormalizer extends SerializerAwareNormalizer implements DenormalizerInterface, NormalizerInterface
+class FlagDealRequestBodyNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
+    use DenormalizerAwareTrait;
+    use NormalizerAwareTrait;
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ($type !== 'Snagshout\\Promote\\Model\\FlagDealRequestBody') {
-            return false;
-        }
-
-        return true;
+        return $type === 'Snagshout\\Promote\\Model\\FlagDealRequestBody';
     }
     public function supportsNormalization($data, $format = null)
     {
-        if ($data instanceof \Snagshout\Promote\Model\FlagDealRequestBody) {
-            return true;
-        }
-
-        return false;
+        return $data instanceof \Snagshout\Promote\Model\FlagDealRequestBody;
     }
     public function denormalize($data, $class, $format = null, array $context = [])
     {
+        if (!is_object($data)) {
+            throw new InvalidArgumentException();
+        }
         $object = new \Snagshout\Promote\Model\FlagDealRequestBody();
         if (property_exists($data, 'type')) {
             $object->setType($data->{'type'});

@@ -14,22 +14,28 @@ namespace Snagshout\Promote\Model;
 class DealImpressionsRequestBody
 {
     /**
+     * Object array of impressions to track.
+     *
      * @var Impression[]
      */
     protected $impressions;
     /**
+     * Object array of impressions to track.
+     *
      * @return Impression[]
      */
-    public function getImpressions()
+    public function getImpressions() : ? array
     {
         return $this->impressions;
     }
     /**
+     * Object array of impressions to track.
+     *
      * @param Impression[] $impressions
      *
      * @return self
      */
-    public function setImpressions(array $impressions = null)
+    public function setImpressions(? array $impressions) : self
     {
         $this->impressions = $impressions;
 

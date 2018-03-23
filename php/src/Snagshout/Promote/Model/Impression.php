@@ -14,66 +14,102 @@ namespace Snagshout\Promote\Model;
 class Impression
 {
     /**
-     * @var int
-     */
+    * Class TrackImpressions.
+    
+    Allow an external application to report impressions tracked.
+    *
+    * @var int
+    */
     protected $views;
     /**
-     * @var int
-     */
+    * Class TrackImpressions.
+    
+    Allow an external application to report impressions tracked.
+    *
+    * @var int
+    */
     protected $hour;
     /**
-     * @var string
-     */
+    * Class TrackImpressions.
+    
+    Allow an external application to report impressions tracked.
+    *
+    * @var string
+    */
     protected $date;
     /**
-     * @return int
-     */
-    public function getViews()
+    * Class TrackImpressions.
+    
+    Allow an external application to report impressions tracked.
+    *
+    * @return int
+    */
+    public function getViews() : ? int
     {
         return $this->views;
     }
     /**
-     * @param int $views
-     *
-     * @return self
-     */
-    public function setViews($views = null)
+    * Class TrackImpressions.
+    
+    Allow an external application to report impressions tracked.
+    *
+    * @param int $views
+    *
+    * @return self
+    */
+    public function setViews(? int $views) : self
     {
         $this->views = $views;
 
         return $this;
     }
     /**
-     * @return int
-     */
-    public function getHour()
+    * Class TrackImpressions.
+    
+    Allow an external application to report impressions tracked.
+    *
+    * @return int
+    */
+    public function getHour() : ? int
     {
         return $this->hour;
     }
     /**
-     * @param int $hour
-     *
-     * @return self
-     */
-    public function setHour($hour = null)
+    * Class TrackImpressions.
+    
+    Allow an external application to report impressions tracked.
+    *
+    * @param int $hour
+    *
+    * @return self
+    */
+    public function setHour(? int $hour) : self
     {
         $this->hour = $hour;
 
         return $this;
     }
     /**
-     * @return string
-     */
-    public function getDate()
+    * Class TrackImpressions.
+    
+    Allow an external application to report impressions tracked.
+    *
+    * @return string
+    */
+    public function getDate() : ? string
     {
         return $this->date;
     }
     /**
-     * @param string $date
-     *
-     * @return self
-     */
-    public function setDate($date = null)
+    * Class TrackImpressions.
+    
+    Allow an external application to report impressions tracked.
+    *
+    * @param string $date
+    *
+    * @return self
+    */
+    public function setDate(? string $date) : self
     {
         $this->date = $date;
 

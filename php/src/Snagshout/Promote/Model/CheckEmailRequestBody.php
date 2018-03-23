@@ -14,22 +14,28 @@ namespace Snagshout\Promote\Model;
 class CheckEmailRequestBody
 {
     /**
+     * Email to check for.
+     *
      * @var string
      */
     protected $email;
     /**
+     * Email to check for.
+     *
      * @return string
      */
-    public function getEmail()
+    public function getEmail() : ? string
     {
         return $this->email;
     }
     /**
+     * Email to check for.
+     *
      * @param string $email
      *
      * @return self
      */
-    public function setEmail($email = null)
+    public function setEmail(? string $email) : self
     {
         $this->email = $email;
 

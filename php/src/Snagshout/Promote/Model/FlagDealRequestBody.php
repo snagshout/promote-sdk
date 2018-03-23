@@ -14,66 +14,84 @@ namespace Snagshout\Promote\Model;
 class FlagDealRequestBody
 {
     /**
+     * Type of flag.
+     *
      * @var string
      */
     protected $type;
     /**
+     * User that reported the flag.
+     *
      * @var string
      */
     protected $reportedBy;
     /**
+     * Content of the flag.
+     *
      * @var string
      */
     protected $comment;
     /**
+     * Type of flag.
+     *
      * @return string
      */
-    public function getType()
+    public function getType() : ? string
     {
         return $this->type;
     }
     /**
+     * Type of flag.
+     *
      * @param string $type
      *
      * @return self
      */
-    public function setType($type = null)
+    public function setType(? string $type) : self
     {
         $this->type = $type;
 
         return $this;
     }
     /**
+     * User that reported the flag.
+     *
      * @return string
      */
-    public function getReportedBy()
+    public function getReportedBy() : ? string
     {
         return $this->reportedBy;
     }
     /**
+     * User that reported the flag.
+     *
      * @param string $reportedBy
      *
      * @return self
      */
-    public function setReportedBy($reportedBy = null)
+    public function setReportedBy(? string $reportedBy) : self
     {
         $this->reportedBy = $reportedBy;
 
         return $this;
     }
     /**
+     * Content of the flag.
+     *
      * @return string
      */
-    public function getComment()
+    public function getComment() : ? string
     {
         return $this->comment;
     }
     /**
+     * Content of the flag.
+     *
      * @param string $comment
      *
      * @return self
      */
-    public function setComment($comment = null)
+    public function setComment(? string $comment) : self
     {
         $this->comment = $comment;
 
