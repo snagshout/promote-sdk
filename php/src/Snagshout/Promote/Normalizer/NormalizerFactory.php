@@ -17,13 +17,15 @@ class NormalizerFactory
     {
         $normalizers = [];
         $normalizers[] = new \Joli\Jane\Runtime\Normalizer\ArrayDenormalizer();
-        $normalizers[] = new UnsyncDealRequestBodyNormalizer();
         $normalizers[] = new DealImpressionsRequestBodyNormalizer();
-        $normalizers[] = new NotifyDealRequestBodyNormalizer();
-        $normalizers[] = new FlagDealRequestBodyNormalizer();
+        $normalizers[] = new CancelRebateRequestBodyNormalizer();
+        $normalizers[] = new ConfirmRebateRequestBodyNormalizer();
         $normalizers[] = new CreateOrderRequestBodyNormalizer();
+        $normalizers[] = new FlagDealRequestBodyNormalizer();
+        $normalizers[] = new NotifyDealRequestBodyNormalizer();
         $normalizers[] = new SyncDealRequestBodyNormalizer();
         $normalizers[] = new ImpressionNormalizer();
+        $normalizers[] = new UnsyncDealRequestBodyNormalizer();
         $normalizers[] = new CategoryNormalizer();
         $normalizers[] = new MediumNormalizer();
         $normalizers[] = new DealNormalizer();
