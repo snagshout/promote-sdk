@@ -58,6 +58,10 @@ class Deal
      */
     protected $discountPrice;
     /**
+     * @var float
+     */
+    protected $rebateAmount;
+    /**
      * @var bool
      */
     protected $isExclusive;
@@ -340,6 +344,24 @@ class Deal
     public function setDiscountPrice($discountPrice = null)
     {
         $this->discountPrice = $discountPrice;
+
+        return $this;
+    }
+    /**
+     * @return float
+     */
+    public function getRebateAmount()
+    {
+        return $this->rebateAmount;
+    }
+    /**
+     * @param float $rebateAmount
+     *
+     * @return self
+     */
+    public function setRebateAmount($rebateAmount = null)
+    {
+        $this->rebateAmount = $rebateAmount;
 
         return $this;
     }
