@@ -24,6 +24,10 @@ class Version
     /**
      * @var string
      */
+    protected $date;
+    /**
+     * @var string
+     */
     protected $php;
     /**
      * @var mixed
@@ -62,6 +66,24 @@ class Version
     public function setApp($app = null)
     {
         $this->app = $app;
+
+        return $this;
+    }
+    /**
+     * @return string
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
+    /**
+     * @param string $date
+     *
+     * @return self
+     */
+    public function setDate($date = null)
+    {
+        $this->date = $date;
 
         return $this;
     }

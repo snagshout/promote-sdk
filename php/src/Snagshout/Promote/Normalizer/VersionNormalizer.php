@@ -42,6 +42,9 @@ class VersionNormalizer extends SerializerAwareNormalizer implements Denormalize
         if (property_exists($data, 'app')) {
             $object->setApp($data->{'app'});
         }
+        if (property_exists($data, 'date')) {
+            $object->setDate($data->{'date'});
+        }
         if (property_exists($data, 'php')) {
             $object->setPhp($data->{'php'});
         }
@@ -59,6 +62,9 @@ class VersionNormalizer extends SerializerAwareNormalizer implements Denormalize
         }
         if (null !== $object->getApp()) {
             $data->{'app'} = $object->getApp();
+        }
+        if (null !== $object->getDate()) {
+            $data->{'date'} = $object->getDate();
         }
         if (null !== $object->getPhp()) {
             $data->{'php'} = $object->getPhp();

@@ -75,6 +75,9 @@ class DealNormalizer extends SerializerAwareNormalizer implements DenormalizerIn
         if (property_exists($data, 'code')) {
             $object->setCode($data->{'code'});
         }
+        if (property_exists($data, 'confidence')) {
+            $object->setConfidence($data->{'confidence'});
+        }
         if (property_exists($data, 'currency')) {
             $object->setCurrency($data->{'currency'});
         }
@@ -198,6 +201,9 @@ class DealNormalizer extends SerializerAwareNormalizer implements DenormalizerIn
         }
         if (null !== $object->getCode()) {
             $data->{'code'} = $object->getCode();
+        }
+        if (null !== $object->getConfidence()) {
+            $data->{'confidence'} = $object->getConfidence();
         }
         if (null !== $object->getCurrency()) {
             $data->{'currency'} = $object->getCurrency();

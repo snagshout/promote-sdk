@@ -50,6 +50,10 @@ class Deal
      */
     protected $code;
     /**
+     * @var int
+     */
+    protected $confidence;
+    /**
      * @var string
      */
     protected $currency;
@@ -308,6 +312,24 @@ class Deal
     public function setCode($code = null)
     {
         $this->code = $code;
+
+        return $this;
+    }
+    /**
+     * @return int
+     */
+    public function getConfidence()
+    {
+        return $this->confidence;
+    }
+    /**
+     * @param int $confidence
+     *
+     * @return self
+     */
+    public function setConfidence($confidence = null)
+    {
+        $this->confidence = $confidence;
 
         return $this;
     }
