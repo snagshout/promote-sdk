@@ -90,6 +90,9 @@ class DealNormalizer extends SerializerAwareNormalizer implements DenormalizerIn
         if (property_exists($data, 'isExclusive')) {
             $object->setIsExclusive($data->{'isExclusive'});
         }
+        if (property_exists($data, 'isNSFW')) {
+            $object->setIsNSFW($data->{'isNSFW'});
+        }
         if (property_exists($data, 'featured')) {
             $values_3 = [];
             foreach ($data->{'featured'} as $value_3) {
@@ -216,6 +219,9 @@ class DealNormalizer extends SerializerAwareNormalizer implements DenormalizerIn
         }
         if (null !== $object->getIsExclusive()) {
             $data->{'isExclusive'} = $object->getIsExclusive();
+        }
+        if (null !== $object->getIsNSFW()) {
+            $data->{'isNSFW'} = $object->getIsNSFW();
         }
         if (null !== $object->getFeatured()) {
             $values_3 = [];

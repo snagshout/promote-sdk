@@ -70,6 +70,10 @@ class Deal
      */
     protected $isExclusive;
     /**
+     * @var bool
+     */
+    protected $isNSFW;
+    /**
      * @var string[]
      */
     protected $featured;
@@ -402,6 +406,24 @@ class Deal
     public function setIsExclusive($isExclusive = null)
     {
         $this->isExclusive = $isExclusive;
+
+        return $this;
+    }
+    /**
+     * @return bool
+     */
+    public function getIsNSFW()
+    {
+        return $this->isNSFW;
+    }
+    /**
+     * @param bool $isNSFW
+     *
+     * @return self
+     */
+    public function setIsNSFW($isNSFW = null)
+    {
+        $this->isNSFW = $isNSFW;
 
         return $this;
     }
