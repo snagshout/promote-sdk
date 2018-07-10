@@ -322,4 +322,31 @@ class DealsResource extends Resource
 
         return $response;
     }
+    /**
+     * 
+     *
+     * @param int $campaign ID of campaign that received a review
+     * @param \Snagshout\Promote\Model\ReviewFoundRequestBody $body 
+     * @param array  $parameters List of parameters
+     * @param string $fetch      Fetch mode (object or response)
+     *
+     * @return \Psr\Http\Message\ResponseInterface
+     */
+    public function reviewDeal($campaign, \Snagshout\Promote\Model\ReviewFoundRequestBody $body, $parameters = [], $fetch = self::FETCH_OBJECT)
+    {
+        $queryParam = new QueryParam();
+        $url = '/api/v1/deals/{campaign}/review';
+        $url = str_replace('{campaign}', urlencode($campaign), $url);
+        $url = $url . ('?' . $queryParam->buildQueryString($parameters));
+        $headers = array_merge(['Host' => 'localhost'], $queryParam->buildHeaders($parameters));
+        $body = $this->serializer->serialize($body, 'json');
+        $request = $this->messageFactory->createRequest('POST', $url, $headers, $body);
+        $promise = $this->httpClient->sendAsyncRequest($request);
+        if (self::FETCH_PROMISE === $fetch) {
+            return $promise;
+        }
+        $response = $promise->wait();
+
+        return $response;
+    }
 }
