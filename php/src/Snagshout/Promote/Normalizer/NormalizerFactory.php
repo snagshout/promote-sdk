@@ -23,6 +23,7 @@ class NormalizerFactory
         $normalizers[] = new CreateOrderRequestBodyNormalizer();
         $normalizers[] = new FlagDealRequestBodyNormalizer();
         $normalizers[] = new NotifyDealRequestBodyNormalizer();
+        $normalizers[] = new ReviewFoundRequestBodyNormalizer();
         $normalizers[] = new SyncDealRequestBodyNormalizer();
         $normalizers[] = new ImpressionNormalizer();
         $normalizers[] = new UnsyncDealRequestBodyNormalizer();
