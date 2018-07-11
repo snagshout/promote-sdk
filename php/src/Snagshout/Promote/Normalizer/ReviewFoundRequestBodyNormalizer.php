@@ -36,6 +36,9 @@ class ReviewFoundRequestBodyNormalizer extends SerializerAwareNormalizer impleme
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         $object = new \Snagshout\Promote\Model\ReviewFoundRequestBody();
+        if (property_exists($data, 'createdAt')) {
+            $object->setCreatedAt($data->{'createdAt'});
+        }
         if (property_exists($data, 'title')) {
             $object->setTitle($data->{'title'});
         }
@@ -48,6 +51,9 @@ class ReviewFoundRequestBodyNormalizer extends SerializerAwareNormalizer impleme
         if (property_exists($data, 'reviewId')) {
             $object->setReviewId($data->{'reviewId'});
         }
+        if (property_exists($data, 'url')) {
+            $object->setUrl($data->{'url'});
+        }
         if (property_exists($data, 'stars')) {
             $object->setStars($data->{'stars'});
         }
@@ -57,6 +63,9 @@ class ReviewFoundRequestBodyNormalizer extends SerializerAwareNormalizer impleme
     public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
+        if (null !== $object->getCreatedAt()) {
+            $data->{'createdAt'} = $object->getCreatedAt();
+        }
         if (null !== $object->getTitle()) {
             $data->{'title'} = $object->getTitle();
         }
@@ -68,6 +77,9 @@ class ReviewFoundRequestBodyNormalizer extends SerializerAwareNormalizer impleme
         }
         if (null !== $object->getReviewId()) {
             $data->{'reviewId'} = $object->getReviewId();
+        }
+        if (null !== $object->getUrl()) {
+            $data->{'url'} = $object->getUrl();
         }
         if (null !== $object->getStars()) {
             $data->{'stars'} = $object->getStars();

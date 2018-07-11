@@ -16,6 +16,10 @@ class ReviewFoundRequestBody
     /**
      * @var string
      */
+    protected $createdAt;
+    /**
+     * @var string
+     */
     protected $title;
     /**
      * @var string
@@ -30,9 +34,31 @@ class ReviewFoundRequestBody
      */
     protected $reviewId;
     /**
+     * @var string
+     */
+    protected $url;
+    /**
      * @var int
      */
     protected $stars;
+    /**
+     * @return string
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+    /**
+     * @param string $createdAt
+     *
+     * @return self
+     */
+    public function setCreatedAt($createdAt = null)
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
     /**
      * @return string
      */
@@ -102,6 +128,24 @@ class ReviewFoundRequestBody
     public function setReviewId($reviewId = null)
     {
         $this->reviewId = $reviewId;
+
+        return $this;
+    }
+    /**
+     * @return string
+     */
+    public function getUrl()
+    {
+        return $this->url;
+    }
+    /**
+     * @param string $url
+     *
+     * @return self
+     */
+    public function setUrl($url = null)
+    {
+        $this->url = $url;
 
         return $this;
     }
