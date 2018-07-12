@@ -39,6 +39,9 @@ class ReviewFoundRequestBodyNormalizer extends SerializerAwareNormalizer impleme
         if (property_exists($data, 'createdAt')) {
             $object->setCreatedAt($data->{'createdAt'});
         }
+        if (property_exists($data, 'asin')) {
+            $object->setAsin($data->{'asin'});
+        }
         if (property_exists($data, 'title')) {
             $object->setTitle($data->{'title'});
         }
@@ -65,6 +68,9 @@ class ReviewFoundRequestBodyNormalizer extends SerializerAwareNormalizer impleme
         $data = new \stdClass();
         if (null !== $object->getCreatedAt()) {
             $data->{'createdAt'} = $object->getCreatedAt();
+        }
+        if (null !== $object->getAsin()) {
+            $data->{'asin'} = $object->getAsin();
         }
         if (null !== $object->getTitle()) {
             $data->{'title'} = $object->getTitle();

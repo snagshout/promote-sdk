@@ -20,6 +20,10 @@ class ReviewFoundRequestBody
     /**
      * @var string
      */
+    protected $asin;
+    /**
+     * @var string
+     */
     protected $title;
     /**
      * @var string
@@ -56,6 +60,24 @@ class ReviewFoundRequestBody
     public function setCreatedAt($createdAt = null)
     {
         $this->createdAt = $createdAt;
+
+        return $this;
+    }
+    /**
+     * @return string
+     */
+    public function getAsin()
+    {
+        return $this->asin;
+    }
+    /**
+     * @param string $asin
+     *
+     * @return self
+     */
+    public function setAsin($asin = null)
+    {
+        $this->asin = $asin;
 
         return $this;
     }
