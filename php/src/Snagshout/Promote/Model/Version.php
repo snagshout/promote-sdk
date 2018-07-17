@@ -30,6 +30,12 @@ class Version
      *
      * @var string
      */
+    protected $date;
+    /**
+     * Get the API & APP version numbers.
+     *
+     * @var string
+     */
     protected $php;
     /**
      * 
@@ -78,6 +84,28 @@ class Version
     public function setApp(? string $app) : self
     {
         $this->app = $app;
+
+        return $this;
+    }
+    /**
+     * Get the API & APP version numbers.
+     *
+     * @return string
+     */
+    public function getDate() : ? string
+    {
+        return $this->date;
+    }
+    /**
+     * Get the API & APP version numbers.
+     *
+     * @param string $date
+     *
+     * @return self
+     */
+    public function setDate(? string $date) : self
+    {
+        $this->date = $date;
 
         return $this;
     }

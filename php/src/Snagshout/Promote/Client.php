@@ -146,6 +146,19 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
         return $this->executePsr7Endpoint(new \Snagshout\Promote\Endpoint\FlagDeal($campaign, $body), $fetch);
     }
     /**
+     * 
+     *
+     * @param int $campaign ID of campaign that received a review
+     * @param \Snagshout\Promote\Model\ReviewFoundRequestBody $body 
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Psr\Http\Message\ResponseInterface
+     */
+    public function reviewDeal(int $campaign, \Snagshout\Promote\Model\ReviewFoundRequestBody $body, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \Snagshout\Promote\Endpoint\ReviewDeal($campaign, $body), $fetch);
+    }
+    /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Snagshout\Promote\Model\Version|\Psr\Http\Message\ResponseInterface

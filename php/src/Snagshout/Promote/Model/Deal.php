@@ -70,6 +70,12 @@ class Deal
     /**
      * 
      *
+     * @var int
+     */
+    protected $confidence;
+    /**
+     * 
+     *
      * @var string
      */
     protected $currency;
@@ -91,6 +97,12 @@ class Deal
      * @var bool
      */
     protected $isExclusive;
+    /**
+     * 
+     *
+     * @var bool
+     */
+    protected $isNSFW;
     /**
      * 
      *
@@ -418,6 +430,28 @@ class Deal
     /**
      * 
      *
+     * @return int
+     */
+    public function getConfidence() : ? int
+    {
+        return $this->confidence;
+    }
+    /**
+     * 
+     *
+     * @param int $confidence
+     *
+     * @return self
+     */
+    public function setConfidence(? int $confidence) : self
+    {
+        $this->confidence = $confidence;
+
+        return $this;
+    }
+    /**
+     * 
+     *
      * @return string
      */
     public function getCurrency() : ? string
@@ -500,6 +534,28 @@ class Deal
     public function setIsExclusive(? bool $isExclusive) : self
     {
         $this->isExclusive = $isExclusive;
+
+        return $this;
+    }
+    /**
+     * 
+     *
+     * @return bool
+     */
+    public function getIsNSFW() : ? bool
+    {
+        return $this->isNSFW;
+    }
+    /**
+     * 
+     *
+     * @param bool $isNSFW
+     *
+     * @return self
+     */
+    public function setIsNSFW(? bool $isNSFW) : self
+    {
+        $this->isNSFW = $isNSFW;
 
         return $this;
     }
