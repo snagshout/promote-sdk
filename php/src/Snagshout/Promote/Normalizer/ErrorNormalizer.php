@@ -11,30 +11,31 @@
 
 namespace Snagshout\Promote\Normalizer;
 
+use Symfony\Component\Serializer\Exception\InvalidArgumentException;
+use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
+use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
+use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
+use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-use Symfony\Component\Serializer\Normalizer\SerializerAwareNormalizer;
 
-class ErrorNormalizer extends SerializerAwareNormalizer implements DenormalizerInterface, NormalizerInterface
+class ErrorNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
+    use DenormalizerAwareTrait;
+    use NormalizerAwareTrait;
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ($type !== 'Snagshout\\Promote\\Model\\Error') {
-            return false;
-        }
-
-        return true;
+        return $type === 'Snagshout\\Promote\\Model\\Error';
     }
     public function supportsNormalization($data, $format = null)
     {
-        if ($data instanceof \Snagshout\Promote\Model\Error) {
-            return true;
-        }
-
-        return false;
+        return $data instanceof \Snagshout\Promote\Model\Error;
     }
     public function denormalize($data, $class, $format = null, array $context = [])
     {
+        if (!is_object($data)) {
+            throw new InvalidArgumentException();
+        }
         $object = new \Snagshout\Promote\Model\Error();
         if (property_exists($data, 'message')) {
             $object->setMessage($data->{'message'});

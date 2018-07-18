@@ -11,203 +11,203 @@
 
 namespace Snagshout\Promote;
 
-use Closure;
-use DateTime;
-use GuzzleHttp\Client as HttpClient;
-use GuzzleHttp\Handler\CurlHandler;
-use GuzzleHttp\HandlerStack;
-use GuzzleHttp\Psr7\Uri;
-use Http\Adapter\Guzzle6\Client as GuzzleAdapter;
-use Http\Message\MessageFactory\GuzzleMessageFactory;
-use Joli\Jane\OpenApi\Runtime\Client\Resource;
-use Joli\Jane\Runtime\Encoder\RawEncoder;
-use Psr\Http\Message\RequestInterface;
-use Snagshout\Promote\Normalizer\NormalizerFactory;
-use Snagshout\Promote\Resource\DealsResource;
-use Snagshout\Promote\Resource\FrontResource;
-use Snagshout\Promote\Resource\UsersResource;
-use Symfony\Component\Serializer\Encoder\JsonDecode;
-use Symfony\Component\Serializer\Encoder\JsonEncode;
-use Symfony\Component\Serializer\Encoder\JsonEncoder;
-use Symfony\Component\Serializer\Serializer;
-
-/**
- * Class Client.
- *
- * @package Snagshout\Promote
- *
- * @author Eduardo Trujillo <ed@sellerlabs.com>
- */
-class Client
+class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
 {
     /**
-     * @var string
-     */
-    protected $publicId;
-
-    /**
-     * @var string
-     */
-    protected $secretKey;
-
-    /**
-     * @var Uri
-     */
-    protected $endpoint;
-
-    protected $baseUrl = 'http://localhost:8000';
-
-    /**
-     * SyndicationClient constructor.
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @param string $publicId
-     * @param string $secretKey
+     * @return null|\Snagshout\Promote\Model\Deal[]|\Psr\Http\Message\ResponseInterface
      */
-    public function __construct($publicId, $secretKey)
+    public function indexDeals(string $fetch = self::FETCH_OBJECT)
     {
-        $this->publicId = $publicId;
-        $this->secretKey = $secretKey;
-
-        $this->endpoint = new Uri($this->baseUrl);
-
-        $stack = new HandlerStack();
-
-        $stack->setHandler(new CurlHandler());
-
-        $stack->push($this->makeAuthHandler());
-
-        $this->client = new HttpClient(
-            [
-                'handler' => $stack,
-            ]
-        );
+        return $this->executePsr7Endpoint(new \Snagshout\Promote\Endpoint\IndexDeals(), $fetch);
     }
-
     /**
-     * @param string $publicId
-     */
-    public function setPublicId($publicId)
-    {
-        $this->publicId = $publicId;
-    }
-
-    /**
-     * @param string $secretKey
-     */
-    public function setSecretKey($secretKey)
-    {
-        $this->secretKey = $secretKey;
-    }
-
-    /**
-     * @param Uri $endpoint
-     */
-    public function setEndpoint(Uri $endpoint)
-    {
-        $this->endpoint = $endpoint;
-    }
-
-    /**
-     * Computes the hash of a string using the secret key.
+     * 
      *
-     * @param string $content
+     * @param int $campaign ID of campaign to fetch
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return string
+     * @return null|\Snagshout\Promote\Model\Deal|\Psr\Http\Message\ResponseInterface
      */
-    protected function hash($content)
+    public function getDeal(int $campaign, string $fetch = self::FETCH_OBJECT)
     {
-        $timestamp = (new DateTime())->format('Y-m-d H');
-
-        return hash_hmac(
-            'sha512',
-            $content . $timestamp,
-            $this->secretKey
-        );
+        return $this->executePsr7Endpoint(new \Snagshout\Promote\Endpoint\GetDeal($campaign), $fetch);
     }
-
     /**
-     * A Guzzle middleware that automatically adds the required Authorization
-     * and Content-Hash headers required by the Promote API.
+     * 
      *
-     * @return Closure
-     */
-    protected function makeAuthHandler()
-    {
-        return function (callable $handler) {
-            return function (
-                RequestInterface $request,
-                array $options
-            ) use ($handler) {
-                $contentHash = $this->hash($request->getBody());
-
-                $partialUri = $request->getUri();
-                $uri = $this->endpoint
-                    ->withPath(
-                        $this->endpoint->getPath()
-                        . $partialUri->getPath()
-                    )
-                    ->withQuery($partialUri->getQuery())
-                    ->withFragment($partialUri->getFragment());
-
-                $request = $request
-                    ->withUri($uri)
-                    ->withHeader(
-                        'Authorization',
-                        vsprintf('Hash %s', [$this->publicId])
-                    )
-                    ->withHeader('Content-Hash', $contentHash);
-
-                return $handler($request, $options);
-            };
-        };
-    }
-
-    /**
-     * A wrapper for constructing instances of resource classes.
+     * @param int $campaign ID of campaign to fetch
+     * @param \Snagshout\Promote\Model\CreateOrderRequestBody $body 
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \Snagshout\Promote\Exception\CreateOrderNotFoundException
+     * @throws \Snagshout\Promote\Exception\CreateOrderConflictException
+     * @throws \Snagshout\Promote\Exception\CreateOrderUnprocessableEntityException
      *
-     * @param string $resourceClass
+     * @return null|\Snagshout\Promote\Model\Payload|\Psr\Http\Message\ResponseInterface
+     */
+    public function createOrder(int $campaign, \Snagshout\Promote\Model\CreateOrderRequestBody $body, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \Snagshout\Promote\Endpoint\CreateOrder($campaign, $body), $fetch);
+    }
+    /**
+     * 
      *
-     * @return Resource
+     * @param int $campaign ID of campaign to fetch
+     * @param \Snagshout\Promote\Model\ConfirmRebateRequestBody $body 
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \Snagshout\Promote\Exception\ConfirmCodeUnprocessableEntityException
+     * @throws \Snagshout\Promote\Exception\ConfirmCodeNotFoundException
+     *
+     * @return null|\Psr\Http\Message\ResponseInterface
      */
-    protected function buildResource($resourceClass)
+    public function confirmCode(int $campaign, \Snagshout\Promote\Model\ConfirmRebateRequestBody $body, string $fetch = self::FETCH_OBJECT)
     {
-        return new $resourceClass(
-            new GuzzleAdapter($this->client),
-            new GuzzleMessageFactory(),
-            new Serializer(
-                NormalizerFactory::create(),
-                [
-                    new JsonEncoder(
-                        new JsonEncode(),
-                        new JsonDecode()
-                    ),
-                    new RawEncoder(),
-                ]
-            )
-        );
+        return $this->executePsr7Endpoint(new \Snagshout\Promote\Endpoint\ConfirmCode($campaign, $body), $fetch);
     }
-
     /**
-     * @return DealsResource|Resource
+     * 
+     *
+     * @param int $campaign ID of campaign to fetch
+     * @param \Snagshout\Promote\Model\CancelRebateRequestBody $body 
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \Snagshout\Promote\Exception\CancelRebateUnprocessableEntityException
+     * @throws \Snagshout\Promote\Exception\CancelRebateNotFoundException
+     *
+     * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function deals()
+    public function cancelRebate(int $campaign, \Snagshout\Promote\Model\CancelRebateRequestBody $body, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->buildResource(DealsResource::class);
+        return $this->executePsr7Endpoint(new \Snagshout\Promote\Endpoint\CancelRebate($campaign, $body), $fetch);
     }
-
     /**
-     * @return FrontResource|Resource
+     * 
+     *
+     * @param int $campaign ID of campaign to fetch
+     * @param \Snagshout\Promote\Model\UnsyncDealRequestBody $body 
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function front()
+    public function unsyncDeal(int $campaign, \Snagshout\Promote\Model\UnsyncDealRequestBody $body, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->buildResource(FrontResource::class);
+        return $this->executePsr7Endpoint(new \Snagshout\Promote\Endpoint\UnsyncDeal($campaign, $body), $fetch);
     }
-
     /**
-     * @return UsersResource|Resource
+     * 
+     *
+     * @param int $campaign ID of campaign to fetch
+     * @param \Snagshout\Promote\Model\SyncDealRequestBody $body 
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function users()
+    public function syncDeal(int $campaign, \Snagshout\Promote\Model\SyncDealRequestBody $body, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->buildResource(UsersResource::class);
+        return $this->executePsr7Endpoint(new \Snagshout\Promote\Endpoint\SyncDeal($campaign, $body), $fetch);
+    }
+    /**
+     * 
+     *
+     * @param int $campaign ID of campaign to fetch
+     * @param \Snagshout\Promote\Model\DealImpressionsRequestBody $body 
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Psr\Http\Message\ResponseInterface
+     */
+    public function impressions(int $campaign, \Snagshout\Promote\Model\DealImpressionsRequestBody $body, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \Snagshout\Promote\Endpoint\Impressions($campaign, $body), $fetch);
+    }
+    /**
+     * 
+     *
+     * @param int $campaign ID of campaign to notify
+     * @param \Snagshout\Promote\Model\NotifyDealRequestBody $body 
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Psr\Http\Message\ResponseInterface
+     */
+    public function notifyDeal(int $campaign, \Snagshout\Promote\Model\NotifyDealRequestBody $body, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \Snagshout\Promote\Endpoint\NotifyDeal($campaign, $body), $fetch);
+    }
+    /**
+     * 
+     *
+     * @param int $campaign ID of campaign to flag
+     * @param \Snagshout\Promote\Model\FlagDealRequestBody $body 
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Psr\Http\Message\ResponseInterface
+     */
+    public function flagDeal(int $campaign, \Snagshout\Promote\Model\FlagDealRequestBody $body, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \Snagshout\Promote\Endpoint\FlagDeal($campaign, $body), $fetch);
+    }
+    /**
+     * 
+     *
+     * @param int $campaign ID of campaign that received a review
+     * @param \Snagshout\Promote\Model\ReviewFoundRequestBody $body 
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Psr\Http\Message\ResponseInterface
+     */
+    public function reviewDeal(int $campaign, \Snagshout\Promote\Model\ReviewFoundRequestBody $body, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \Snagshout\Promote\Endpoint\ReviewDeal($campaign, $body), $fetch);
+    }
+    /**
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Snagshout\Promote\Model\Version|\Psr\Http\Message\ResponseInterface
+     */
+    public function getVersion(string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \Snagshout\Promote\Endpoint\GetVersion(), $fetch);
+    }
+    /**
+     * 
+     *
+     * @param \Snagshout\Promote\Model\InitializeMigrationBody $body 
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \Snagshout\Promote\Exception\InitializeForbiddenException
+     * @throws \Snagshout\Promote\Exception\InitializeInternalServerErrorException
+     *
+     * @return null|\Psr\Http\Message\ResponseInterface
+     */
+    public function initialize(\Snagshout\Promote\Model\InitializeMigrationBody $body, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \Snagshout\Promote\Endpoint\Initialize($body), $fetch);
+    }
+    /**
+     * 
+     *
+     * @param \Snagshout\Promote\Model\CheckEmailRequestBody $body 
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \Snagshout\Promote\Exception\CheckEmailUnprocessableEntityException
+     *
+     * @return null|\Psr\Http\Message\ResponseInterface
+     */
+    public function checkEmail(\Snagshout\Promote\Model\CheckEmailRequestBody $body, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \Snagshout\Promote\Endpoint\CheckEmail($body), $fetch);
+    }
+    public static function create($httpClient = null)
+    {
+        if (null === $httpClient) {
+            $httpClient = \Http\Discovery\HttpClientDiscovery::find();
+            $plugins = [];
+            $uri = \Http\Discovery\UriFactoryDiscovery::find()->createUri('https://localhost/api/v1');
+            $plugins[] = new \Http\Client\Common\Plugin\AddPathPlugin($uri);
+            $plugins[] = new \Http\Client\Common\Plugin\AddHostPlugin($uri);
+            $httpClient = new \Http\Client\Common\PluginClient($httpClient, $plugins);
+        }
+        $messageFactory = \Http\Discovery\MessageFactoryDiscovery::find();
+        $streamFactory = \Http\Discovery\StreamFactoryDiscovery::find();
+        $serializer = new \Symfony\Component\Serializer\Serializer(\Snagshout\Promote\Normalizer\NormalizerFactory::create(), [new \Symfony\Component\Serializer\Encoder\JsonEncoder(new \Symfony\Component\Serializer\Encoder\JsonEncode(), new \Symfony\Component\Serializer\Encoder\JsonDecode())]);
+
+        return new static($httpClient, $messageFactory, $serializer, $streamFactory);
     }
 }

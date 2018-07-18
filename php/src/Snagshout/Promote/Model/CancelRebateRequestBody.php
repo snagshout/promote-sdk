@@ -14,22 +14,28 @@ namespace Snagshout\Promote\Model;
 class CancelRebateRequestBody
 {
     /**
+     * email, required with rebates.
+     *
      * @var string
      */
     protected $email;
     /**
+     * email, required with rebates.
+     *
      * @return string
      */
-    public function getEmail()
+    public function getEmail() : ? string
     {
         return $this->email;
     }
     /**
+     * email, required with rebates.
+     *
      * @param string $email
      *
      * @return self
      */
-    public function setEmail($email = null)
+    public function setEmail(? string $email) : self
     {
         $this->email = $email;
 

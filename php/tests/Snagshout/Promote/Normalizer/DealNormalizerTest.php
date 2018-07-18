@@ -11,7 +11,6 @@
 
 namespace Tests\Snagshout\Promote\Normalizer;
 
-use Joli\Jane\Runtime\Encoder\RawEncoder;
 use PHPUnit\Framework\TestCase as BaseTestCase;
 use Snagshout\Promote\Model\Category;
 use Snagshout\Promote\Model\Deal;
@@ -42,7 +41,6 @@ class DealNormalizerTest extends BaseTestCase
                     new JsonEncode(),
                     new JsonDecode()
                 ),
-                new RawEncoder(),
             ]
         );
     }

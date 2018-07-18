@@ -14,44 +14,56 @@ namespace Snagshout\Promote\Model;
 class ConfirmRebateRequestBody
 {
     /**
+     * email, required with rebates.
+     *
      * @var string
      */
     protected $email;
     /**
+     * Confirmation code.
+     *
      * @var string
      */
     protected $code;
     /**
+     * email, required with rebates.
+     *
      * @return string
      */
-    public function getEmail()
+    public function getEmail() : ? string
     {
         return $this->email;
     }
     /**
+     * email, required with rebates.
+     *
      * @param string $email
      *
      * @return self
      */
-    public function setEmail($email = null)
+    public function setEmail(? string $email) : self
     {
         $this->email = $email;
 
         return $this;
     }
     /**
+     * Confirmation code.
+     *
      * @return string
      */
-    public function getCode()
+    public function getCode() : ? string
     {
         return $this->code;
     }
     /**
+     * Confirmation code.
+     *
      * @param string $code
      *
      * @return self
      */
-    public function setCode($code = null)
+    public function setCode(? string $code) : self
     {
         $this->code = $code;
 

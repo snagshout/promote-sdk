@@ -14,44 +14,56 @@ namespace Snagshout\Promote\Model;
 class UnsyncDealRequestBody
 {
     /**
+     * Reason for rejecting the deal.
+     *
      * @var string
      */
     protected $note;
     /**
+     * Deal state on the partner site.
+     *
      * @var string
      */
     protected $state;
     /**
+     * Reason for rejecting the deal.
+     *
      * @return string
      */
-    public function getNote()
+    public function getNote() : ? string
     {
         return $this->note;
     }
     /**
+     * Reason for rejecting the deal.
+     *
      * @param string $note
      *
      * @return self
      */
-    public function setNote($note = null)
+    public function setNote(? string $note) : self
     {
         $this->note = $note;
 
         return $this;
     }
     /**
+     * Deal state on the partner site.
+     *
      * @return string
      */
-    public function getState()
+    public function getState() : ? string
     {
         return $this->state;
     }
     /**
+     * Deal state on the partner site.
+     *
      * @param string $state
      *
      * @return self
      */
-    public function setState($state = null)
+    public function setState(? string $state) : self
     {
         $this->state = $state;
 

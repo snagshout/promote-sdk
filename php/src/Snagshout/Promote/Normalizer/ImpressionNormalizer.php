@@ -11,30 +11,31 @@
 
 namespace Snagshout\Promote\Normalizer;
 
+use Symfony\Component\Serializer\Exception\InvalidArgumentException;
+use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
+use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
+use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
+use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-use Symfony\Component\Serializer\Normalizer\SerializerAwareNormalizer;
 
-class ImpressionNormalizer extends SerializerAwareNormalizer implements DenormalizerInterface, NormalizerInterface
+class ImpressionNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
+    use DenormalizerAwareTrait;
+    use NormalizerAwareTrait;
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ($type !== 'Snagshout\\Promote\\Model\\Impression') {
-            return false;
-        }
-
-        return true;
+        return $type === 'Snagshout\\Promote\\Model\\Impression';
     }
     public function supportsNormalization($data, $format = null)
     {
-        if ($data instanceof \Snagshout\Promote\Model\Impression) {
-            return true;
-        }
-
-        return false;
+        return $data instanceof \Snagshout\Promote\Model\Impression;
     }
     public function denormalize($data, $class, $format = null, array $context = [])
     {
+        if (!is_object($data)) {
+            throw new InvalidArgumentException();
+        }
         $object = new \Snagshout\Promote\Model\Impression();
         if (property_exists($data, 'views')) {
             $object->setViews($data->{'views'});

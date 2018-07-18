@@ -11,30 +11,31 @@
 
 namespace Snagshout\Promote\Normalizer;
 
+use Symfony\Component\Serializer\Exception\InvalidArgumentException;
+use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
+use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
+use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
+use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-use Symfony\Component\Serializer\Normalizer\SerializerAwareNormalizer;
 
-class DealNormalizer extends SerializerAwareNormalizer implements DenormalizerInterface, NormalizerInterface
+class DealNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
+    use DenormalizerAwareTrait;
+    use NormalizerAwareTrait;
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ($type !== 'Snagshout\\Promote\\Model\\Deal') {
-            return false;
-        }
-
-        return true;
+        return $type === 'Snagshout\\Promote\\Model\\Deal';
     }
     public function supportsNormalization($data, $format = null)
     {
-        if ($data instanceof \Snagshout\Promote\Model\Deal) {
-            return true;
-        }
-
-        return false;
+        return $data instanceof \Snagshout\Promote\Model\Deal;
     }
     public function denormalize($data, $class, $format = null, array $context = [])
     {
+        if (!is_object($data)) {
+            throw new InvalidArgumentException();
+        }
         $object = new \Snagshout\Promote\Model\Deal();
         if (property_exists($data, 'campaignId')) {
             $object->setCampaignId($data->{'campaignId'});
@@ -54,14 +55,14 @@ class DealNormalizer extends SerializerAwareNormalizer implements DenormalizerIn
         if (property_exists($data, 'categories')) {
             $values = [];
             foreach ($data->{'categories'} as $value) {
-                $values[] = $this->serializer->deserialize($value, 'Snagshout\\Promote\\Model\\Category', 'raw', $context);
+                $values[] = $this->denormalizer->denormalize($value, 'Snagshout\\Promote\\Model\\Category', 'json', $context);
             }
             $object->setCategories($values);
         }
         if (property_exists($data, 'media')) {
             $values_1 = [];
             foreach ($data->{'media'} as $value_1) {
-                $values_1[] = $this->serializer->deserialize($value_1, 'Snagshout\\Promote\\Model\\Medium', 'raw', $context);
+                $values_1[] = $this->denormalizer->denormalize($value_1, 'Snagshout\\Promote\\Model\\Medium', 'json', $context);
             }
             $object->setMedia($values_1);
         }
@@ -184,14 +185,14 @@ class DealNormalizer extends SerializerAwareNormalizer implements DenormalizerIn
         if (null !== $object->getCategories()) {
             $values = [];
             foreach ($object->getCategories() as $value) {
-                $values[] = $this->serializer->serialize($value, 'raw', $context);
+                $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data->{'categories'} = $values;
         }
         if (null !== $object->getMedia()) {
             $values_1 = [];
             foreach ($object->getMedia() as $value_1) {
-                $values_1[] = $this->serializer->serialize($value_1, 'raw', $context);
+                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
             $data->{'media'} = $values_1;
         }

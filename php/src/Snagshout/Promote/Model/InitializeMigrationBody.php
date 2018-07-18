@@ -14,22 +14,28 @@ namespace Snagshout\Promote\Model;
 class InitializeMigrationBody
 {
     /**
+     * User to migrate.
+     *
      * @var int
      */
     protected $userId;
     /**
+     * User to migrate.
+     *
      * @return int
      */
-    public function getUserId()
+    public function getUserId() : ? int
     {
         return $this->userId;
     }
     /**
+     * User to migrate.
+     *
      * @param int $userId
      *
      * @return self
      */
-    public function setUserId($userId = null)
+    public function setUserId(? int $userId) : self
     {
         $this->userId = $userId;
 

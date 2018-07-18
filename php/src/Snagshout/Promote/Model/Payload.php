@@ -14,66 +14,102 @@ namespace Snagshout\Promote\Model;
 class Payload
 {
     /**
-     * @var int
-     */
+    * Class Payload.
+    
+    A payload returned to public order requests.
+    *
+    * @var int
+    */
     protected $id;
     /**
-     * @var string
-     */
+    * Class Payload.
+    
+    A payload returned to public order requests.
+    *
+    * @var string
+    */
     protected $payload;
     /**
-     * @var string
-     */
+    * Class Payload.
+    
+    A payload returned to public order requests.
+    *
+    * @var string
+    */
     protected $type;
     /**
-     * @return int
-     */
-    public function getId()
+    * Class Payload.
+    
+    A payload returned to public order requests.
+    *
+    * @return int
+    */
+    public function getId() : ? int
     {
         return $this->id;
     }
     /**
-     * @param int $id
-     *
-     * @return self
-     */
-    public function setId($id = null)
+    * Class Payload.
+    
+    A payload returned to public order requests.
+    *
+    * @param int $id
+    *
+    * @return self
+    */
+    public function setId(? int $id) : self
     {
         $this->id = $id;
 
         return $this;
     }
     /**
-     * @return string
-     */
-    public function getPayload()
+    * Class Payload.
+    
+    A payload returned to public order requests.
+    *
+    * @return string
+    */
+    public function getPayload() : ? string
     {
         return $this->payload;
     }
     /**
-     * @param string $payload
-     *
-     * @return self
-     */
-    public function setPayload($payload = null)
+    * Class Payload.
+    
+    A payload returned to public order requests.
+    *
+    * @param string $payload
+    *
+    * @return self
+    */
+    public function setPayload(? string $payload) : self
     {
         $this->payload = $payload;
 
         return $this;
     }
     /**
-     * @return string
-     */
-    public function getType()
+    * Class Payload.
+    
+    A payload returned to public order requests.
+    *
+    * @return string
+    */
+    public function getType() : ? string
     {
         return $this->type;
     }
     /**
-     * @param string $type
-     *
-     * @return self
-     */
-    public function setType($type = null)
+    * Class Payload.
+    
+    A payload returned to public order requests.
+    *
+    * @param string $type
+    *
+    * @return self
+    */
+    public function setType(? string $type) : self
     {
         $this->type = $type;
 
