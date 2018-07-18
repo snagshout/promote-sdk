@@ -52,7 +52,6 @@ class CheckEmail extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
      * {@inheritdoc}
      *
      * @throws \Snagshout\Promote\Exception\CheckEmailUnprocessableEntityException
-     *
      */
     protected function transformResponseBody(
         string $body,
@@ -63,8 +62,13 @@ class CheckEmail extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
             return null;
         }
         if (422 === $status) {
-            throw new \Snagshout\Promote\Exception\CheckEmailUnprocessableEntityException($serializer->deserialize($body,
-                'Snagshout\\Promote\\Model\\Error', 'json'));
+            throw new \Snagshout\Promote\Exception\CheckEmailUnprocessableEntityException(
+                $serializer->deserialize(
+                    $body,
+                    'Snagshout\\Promote\\Model\\Error',
+                    'json'
+                )
+            );
         }
     }
 }

@@ -18,7 +18,7 @@ class UnsyncDeal extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
     /**
      *
      *
-     * @param int $campaign ID of campaign to fetch
+     * @param int                                            $campaign ID of campaign to fetch
      * @param \Snagshout\Promote\Model\UnsyncDealRequestBody $body
      */
     public function __construct(
@@ -38,8 +38,11 @@ class UnsyncDeal extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
 
     public function getUri() : string
     {
-        return str_replace(['{campaign}'], [$this->campaign],
-            '/deals/{campaign}/sync');
+        return str_replace(
+            ['{campaign}'],
+            [$this->campaign],
+            '/deals/{campaign}/sync'
+        );
     }
 
     public function getBody(
@@ -56,8 +59,6 @@ class UnsyncDeal extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
 
     /**
      * {@inheritdoc}
-     *
-     *
      */
     protected function transformResponseBody(
         string $body,

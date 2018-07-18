@@ -18,7 +18,7 @@ class NotifyDeal extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
     /**
      *
      *
-     * @param int $campaign ID of campaign to notify
+     * @param int                                            $campaign ID of campaign to notify
      * @param \Snagshout\Promote\Model\NotifyDealRequestBody $body
      */
     public function __construct(
@@ -38,8 +38,11 @@ class NotifyDeal extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
 
     public function getUri() : string
     {
-        return str_replace(['{campaign}'], [$this->campaign],
-            '/deals/{campaign}/notify');
+        return str_replace(
+            ['{campaign}'],
+            [$this->campaign],
+            '/deals/{campaign}/notify'
+        );
     }
 
     public function getBody(
@@ -56,8 +59,6 @@ class NotifyDeal extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
 
     /**
      * {@inheritdoc}
-     *
-     *
      */
     protected function transformResponseBody(
         string $body,

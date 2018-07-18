@@ -18,7 +18,7 @@ class ConfirmCode extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \J
     /**
      *
      *
-     * @param int $campaign ID of campaign to fetch
+     * @param int                                               $campaign ID of campaign to fetch
      * @param \Snagshout\Promote\Model\ConfirmRebateRequestBody $body
      */
     public function __construct(
@@ -38,8 +38,11 @@ class ConfirmCode extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \J
 
     public function getUri() : string
     {
-        return str_replace(['{campaign}'], [$this->campaign],
-            '/deals/{campaign}/order/confirm');
+        return str_replace(
+            ['{campaign}'],
+            [$this->campaign],
+            '/deals/{campaign}/order/confirm'
+        );
     }
 
     public function getBody(
@@ -59,7 +62,6 @@ class ConfirmCode extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \J
      *
      * @throws \Snagshout\Promote\Exception\ConfirmCodeUnprocessableEntityException
      * @throws \Snagshout\Promote\Exception\ConfirmCodeNotFoundException
-     *
      */
     protected function transformResponseBody(
         string $body,
@@ -70,12 +72,22 @@ class ConfirmCode extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \J
             return null;
         }
         if (422 === $status) {
-            throw new \Snagshout\Promote\Exception\ConfirmCodeUnprocessableEntityException($serializer->deserialize($body,
-                'Snagshout\\Promote\\Model\\Error', 'json'));
+            throw new \Snagshout\Promote\Exception\ConfirmCodeUnprocessableEntityException(
+                $serializer->deserialize(
+                    $body,
+                    'Snagshout\\Promote\\Model\\Error',
+                    'json'
+                )
+            );
         }
         if (404 === $status) {
-            throw new \Snagshout\Promote\Exception\ConfirmCodeNotFoundException($serializer->deserialize($body,
-                'Snagshout\\Promote\\Model\\Error', 'json'));
+            throw new \Snagshout\Promote\Exception\ConfirmCodeNotFoundException(
+                $serializer->deserialize(
+                    $body,
+                    'Snagshout\\Promote\\Model\\Error',
+                    'json'
+                )
+            );
         }
     }
 }

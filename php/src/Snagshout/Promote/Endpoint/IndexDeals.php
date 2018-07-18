@@ -41,7 +41,6 @@ class IndexDeals extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
     /**
      * {@inheritdoc}
      *
-     *
      * @return null|\Snagshout\Promote\Model\Deal[]
      */
     protected function transformResponseBody(
@@ -50,8 +49,11 @@ class IndexDeals extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
         \Symfony\Component\Serializer\SerializerInterface $serializer
     ) {
         if (200 === $status) {
-            return $serializer->deserialize($body,
-                'Snagshout\\Promote\\Model\\Deal[]', 'json');
+            return $serializer->deserialize(
+                $body,
+                'Snagshout\\Promote\\Model\\Deal[]',
+                'json'
+            );
         }
     }
 }

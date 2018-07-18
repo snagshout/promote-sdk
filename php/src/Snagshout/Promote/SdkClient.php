@@ -22,7 +22,7 @@ use Psr\Http\Message\RequestInterface;
  *
  * @mixin Client
  *
- * @author Mark Vaughn <mark@snagshout.com>
+ * @author  Mark Vaughn <mark@snagshout.com>
  * @package Snagshout\Promote
  */
 class SdkClient

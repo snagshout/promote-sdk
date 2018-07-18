@@ -18,7 +18,7 @@ class FlagDeal extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane
     /**
      *
      *
-     * @param int $campaign ID of campaign to flag
+     * @param int                                          $campaign ID of campaign to flag
      * @param \Snagshout\Promote\Model\FlagDealRequestBody $body
      */
     public function __construct(
@@ -38,8 +38,11 @@ class FlagDeal extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane
 
     public function getUri() : string
     {
-        return str_replace(['{campaign}'], [$this->campaign],
-            '/deals/{campaign}/flag');
+        return str_replace(
+            ['{campaign}'],
+            [$this->campaign],
+            '/deals/{campaign}/flag'
+        );
     }
 
     public function getBody(
@@ -56,8 +59,6 @@ class FlagDeal extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane
 
     /**
      * {@inheritdoc}
-     *
-     *
      */
     protected function transformResponseBody(
         string $body,

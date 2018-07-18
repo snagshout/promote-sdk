@@ -47,8 +47,12 @@ class DealImpressionsRequestBodyNormalizer implements DenormalizerInterface, Nor
         if (property_exists($data, 'impressions')) {
             $values = [];
             foreach ($data->{'impressions'} as $value) {
-                $values[] = $this->denormalizer->denormalize($value,
-                    'Snagshout\\Promote\\Model\\Impression', 'json', $context);
+                $values[] = $this->denormalizer->denormalize(
+                    $value,
+                    'Snagshout\\Promote\\Model\\Impression',
+                    'json',
+                    $context
+                );
             }
             $object->setImpressions($values);
         }
@@ -62,8 +66,11 @@ class DealImpressionsRequestBodyNormalizer implements DenormalizerInterface, Nor
         if (null !== $object->getImpressions()) {
             $values = [];
             foreach ($object->getImpressions() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json',
-                    $context);
+                $values[] = $this->normalizer->normalize(
+                    $value,
+                    'json',
+                    $context
+                );
             }
             $data->{'impressions'} = $values;
         }

@@ -18,7 +18,7 @@ class Impressions extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \J
     /**
      *
      *
-     * @param int $campaign ID of campaign to fetch
+     * @param int                                                 $campaign ID of campaign to fetch
      * @param \Snagshout\Promote\Model\DealImpressionsRequestBody $body
      */
     public function __construct(
@@ -38,8 +38,11 @@ class Impressions extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \J
 
     public function getUri() : string
     {
-        return str_replace(['{campaign}'], [$this->campaign],
-            '/deals/{campaign}/impressions');
+        return str_replace(
+            ['{campaign}'],
+            [$this->campaign],
+            '/deals/{campaign}/impressions'
+        );
     }
 
     public function getBody(
@@ -56,8 +59,6 @@ class Impressions extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \J
 
     /**
      * {@inheritdoc}
-     *
-     *
      */
     protected function transformResponseBody(
         string $body,

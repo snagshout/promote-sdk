@@ -53,7 +53,6 @@ class Initialize extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
      *
      * @throws \Snagshout\Promote\Exception\InitializeForbiddenException
      * @throws \Snagshout\Promote\Exception\InitializeInternalServerErrorException
-     *
      */
     protected function transformResponseBody(
         string $body,
@@ -64,12 +63,22 @@ class Initialize extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
             return null;
         }
         if (403 === $status) {
-            throw new \Snagshout\Promote\Exception\InitializeForbiddenException($serializer->deserialize($body,
-                'Snagshout\\Promote\\Model\\Error', 'json'));
+            throw new \Snagshout\Promote\Exception\InitializeForbiddenException(
+                $serializer->deserialize(
+                    $body,
+                    'Snagshout\\Promote\\Model\\Error',
+                    'json'
+                )
+            );
         }
         if (500 === $status) {
-            throw new \Snagshout\Promote\Exception\InitializeInternalServerErrorException($serializer->deserialize($body,
-                'Snagshout\\Promote\\Model\\Error', 'json'));
+            throw new \Snagshout\Promote\Exception\InitializeInternalServerErrorException(
+                $serializer->deserialize(
+                    $body,
+                    'Snagshout\\Promote\\Model\\Error',
+                    'json'
+                )
+            );
         }
     }
 }

@@ -18,7 +18,7 @@ class CancelRebate extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \
     /**
      *
      *
-     * @param int $campaign ID of campaign to fetch
+     * @param int                                              $campaign ID of campaign to fetch
      * @param \Snagshout\Promote\Model\CancelRebateRequestBody $body
      */
     public function __construct(
@@ -38,8 +38,11 @@ class CancelRebate extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \
 
     public function getUri() : string
     {
-        return str_replace(['{campaign}'], [$this->campaign],
-            '/deals/{campaign}/order/cancel');
+        return str_replace(
+            ['{campaign}'],
+            [$this->campaign],
+            '/deals/{campaign}/order/cancel'
+        );
     }
 
     public function getBody(
@@ -59,7 +62,6 @@ class CancelRebate extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \
      *
      * @throws \Snagshout\Promote\Exception\CancelRebateUnprocessableEntityException
      * @throws \Snagshout\Promote\Exception\CancelRebateNotFoundException
-     *
      */
     protected function transformResponseBody(
         string $body,
@@ -70,12 +72,22 @@ class CancelRebate extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \
             return null;
         }
         if (422 === $status) {
-            throw new \Snagshout\Promote\Exception\CancelRebateUnprocessableEntityException($serializer->deserialize($body,
-                'Snagshout\\Promote\\Model\\Error', 'json'));
+            throw new \Snagshout\Promote\Exception\CancelRebateUnprocessableEntityException(
+                $serializer->deserialize(
+                    $body,
+                    'Snagshout\\Promote\\Model\\Error',
+                    'json'
+                )
+            );
         }
         if (404 === $status) {
-            throw new \Snagshout\Promote\Exception\CancelRebateNotFoundException($serializer->deserialize($body,
-                'Snagshout\\Promote\\Model\\Error', 'json'));
+            throw new \Snagshout\Promote\Exception\CancelRebateNotFoundException(
+                $serializer->deserialize(
+                    $body,
+                    'Snagshout\\Promote\\Model\\Error',
+                    'json'
+                )
+            );
         }
     }
 }

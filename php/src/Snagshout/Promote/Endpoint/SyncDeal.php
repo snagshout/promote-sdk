@@ -18,7 +18,7 @@ class SyncDeal extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane
     /**
      *
      *
-     * @param int $campaign ID of campaign to fetch
+     * @param int                                          $campaign ID of campaign to fetch
      * @param \Snagshout\Promote\Model\SyncDealRequestBody $body
      */
     public function __construct(
@@ -38,8 +38,11 @@ class SyncDeal extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane
 
     public function getUri() : string
     {
-        return str_replace(['{campaign}'], [$this->campaign],
-            '/deals/{campaign}/sync');
+        return str_replace(
+            ['{campaign}'],
+            [$this->campaign],
+            '/deals/{campaign}/sync'
+        );
     }
 
     public function getBody(
@@ -56,8 +59,6 @@ class SyncDeal extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane
 
     /**
      * {@inheritdoc}
-     *
-     *
      */
     protected function transformResponseBody(
         string $body,

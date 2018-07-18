@@ -34,8 +34,11 @@ class GetDeal extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\
 
     public function getUri() : string
     {
-        return str_replace(['{campaign}'], [$this->campaign],
-            '/deals/{campaign}');
+        return str_replace(
+            ['{campaign}'],
+            [$this->campaign],
+            '/deals/{campaign}'
+        );
     }
 
     public function getBody(
@@ -53,7 +56,6 @@ class GetDeal extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\
     /**
      * {@inheritdoc}
      *
-     *
      * @return null|\Snagshout\Promote\Model\Deal
      */
     protected function transformResponseBody(
@@ -62,8 +64,11 @@ class GetDeal extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\
         \Symfony\Component\Serializer\SerializerInterface $serializer
     ) {
         if (200 === $status) {
-            return $serializer->deserialize($body,
-                'Snagshout\\Promote\\Model\\Deal', 'json');
+            return $serializer->deserialize(
+                $body,
+                'Snagshout\\Promote\\Model\\Deal',
+                'json'
+            );
         }
     }
 }

@@ -18,7 +18,7 @@ class ReviewDeal extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
     /**
      *
      *
-     * @param int $campaign ID of campaign that received a review
+     * @param int                                             $campaign ID of campaign that received a review
      * @param \Snagshout\Promote\Model\ReviewFoundRequestBody $body
      */
     public function __construct(
@@ -38,8 +38,11 @@ class ReviewDeal extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
 
     public function getUri() : string
     {
-        return str_replace(['{campaign}'], [$this->campaign],
-            '/deals/{campaign}/review');
+        return str_replace(
+            ['{campaign}'],
+            [$this->campaign],
+            '/deals/{campaign}/review'
+        );
     }
 
     public function getBody(
@@ -56,8 +59,6 @@ class ReviewDeal extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
 
     /**
      * {@inheritdoc}
-     *
-     *
      */
     protected function transformResponseBody(
         string $body,
