@@ -13,7 +13,6 @@ namespace Snagshout\Promote\Endpoint;
 
 class GetVersion extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7HttplugEndpoint
 {
-
     use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
 
     public function getMethod() : string
