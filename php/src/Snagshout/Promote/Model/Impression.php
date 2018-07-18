@@ -15,7 +15,7 @@ class Impression
 {
     /**
     * Class TrackImpressions.
-    
+
     Allow an external application to report impressions tracked.
     *
     * @var int
@@ -23,7 +23,7 @@ class Impression
     protected $views;
     /**
     * Class TrackImpressions.
-    
+
     Allow an external application to report impressions tracked.
     *
     * @var int
@@ -31,7 +31,7 @@ class Impression
     protected $hour;
     /**
     * Class TrackImpressions.
-    
+
     Allow an external application to report impressions tracked.
     *
     * @var string
@@ -39,7 +39,7 @@ class Impression
     protected $date;
     /**
     * Class TrackImpressions.
-    
+
     Allow an external application to report impressions tracked.
     *
     * @return int
@@ -50,7 +50,7 @@ class Impression
     }
     /**
     * Class TrackImpressions.
-    
+
     Allow an external application to report impressions tracked.
     *
     * @param int $views
@@ -65,7 +65,7 @@ class Impression
     }
     /**
     * Class TrackImpressions.
-    
+
     Allow an external application to report impressions tracked.
     *
     * @return int
@@ -76,7 +76,7 @@ class Impression
     }
     /**
     * Class TrackImpressions.
-    
+
     Allow an external application to report impressions tracked.
     *
     * @param int $hour
@@ -91,7 +91,7 @@ class Impression
     }
     /**
     * Class TrackImpressions.
-    
+
     Allow an external application to report impressions tracked.
     *
     * @return string
@@ -102,7 +102,7 @@ class Impression
     }
     /**
     * Class TrackImpressions.
-    
+
     Allow an external application to report impressions tracked.
     *
     * @param string $date

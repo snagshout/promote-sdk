@@ -15,10 +15,10 @@ class NotifyDeal extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
 {
     protected $campaign;
     /**
-     * 
+     *
      *
      * @param int $campaign ID of campaign to notify
-     * @param \Snagshout\Promote\Model\NotifyDealRequestBody $body 
+     * @param \Snagshout\Promote\Model\NotifyDealRequestBody $body
      */
     public function __construct(int $campaign, \Snagshout\Promote\Model\NotifyDealRequestBody $body)
     {
@@ -26,9 +26,9 @@ class NotifyDeal extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
         $this->body = $body;
     }
 
-use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
+    use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
 
-public function getMethod() : string
+    public function getMethod() : string
     {
         return 'POST';
     }

@@ -38,7 +38,7 @@ class Version
      */
     protected $php;
     /**
-     * 
+     *
      *
      * @var mixed
      */
@@ -132,7 +132,7 @@ class Version
         return $this;
     }
     /**
-     * 
+     *
      *
      * @return mixed
      */
@@ -141,7 +141,7 @@ class Version
         return $this->extensions;
     }
     /**
-     * 
+     *
      *
      * @param mixed $extensions
      *

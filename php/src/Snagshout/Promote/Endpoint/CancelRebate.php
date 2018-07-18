@@ -15,10 +15,10 @@ class CancelRebate extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \
 {
     protected $campaign;
     /**
-     * 
+     *
      *
      * @param int $campaign ID of campaign to fetch
-     * @param \Snagshout\Promote\Model\CancelRebateRequestBody $body 
+     * @param \Snagshout\Promote\Model\CancelRebateRequestBody $body
      */
     public function __construct(int $campaign, \Snagshout\Promote\Model\CancelRebateRequestBody $body)
     {
@@ -26,9 +26,9 @@ class CancelRebate extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \
         $this->body = $body;
     }
 
-use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
+    use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
 
-public function getMethod() : string
+    public function getMethod() : string
     {
         return 'POST';
     }

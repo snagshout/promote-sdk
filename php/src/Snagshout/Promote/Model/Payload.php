@@ -15,7 +15,7 @@ class Payload
 {
     /**
     * Class Payload.
-    
+
     A payload returned to public order requests.
     *
     * @var int
@@ -23,7 +23,7 @@ class Payload
     protected $id;
     /**
     * Class Payload.
-    
+
     A payload returned to public order requests.
     *
     * @var string
@@ -31,7 +31,7 @@ class Payload
     protected $payload;
     /**
     * Class Payload.
-    
+
     A payload returned to public order requests.
     *
     * @var string
@@ -39,7 +39,7 @@ class Payload
     protected $type;
     /**
     * Class Payload.
-    
+
     A payload returned to public order requests.
     *
     * @return int
@@ -50,7 +50,7 @@ class Payload
     }
     /**
     * Class Payload.
-    
+
     A payload returned to public order requests.
     *
     * @param int $id
@@ -65,7 +65,7 @@ class Payload
     }
     /**
     * Class Payload.
-    
+
     A payload returned to public order requests.
     *
     * @return string
@@ -76,7 +76,7 @@ class Payload
     }
     /**
     * Class Payload.
-    
+
     A payload returned to public order requests.
     *
     * @param string $payload
@@ -91,7 +91,7 @@ class Payload
     }
     /**
     * Class Payload.
-    
+
     A payload returned to public order requests.
     *
     * @return string
@@ -102,7 +102,7 @@ class Payload
     }
     /**
     * Class Payload.
-    
+
     A payload returned to public order requests.
     *
     * @param string $type

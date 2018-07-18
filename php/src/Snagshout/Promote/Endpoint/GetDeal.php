@@ -15,7 +15,7 @@ class GetDeal extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\
 {
     protected $campaign;
     /**
-     * 
+     *
      *
      * @param int $campaign ID of campaign to fetch
      */
@@ -24,9 +24,9 @@ class GetDeal extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\
         $this->campaign = $campaign;
     }
 
-use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
+    use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
 
-public function getMethod() : string
+    public function getMethod() : string
     {
         return 'GET';
     }

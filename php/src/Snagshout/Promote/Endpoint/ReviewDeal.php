@@ -15,10 +15,10 @@ class ReviewDeal extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
 {
     protected $campaign;
     /**
-     * 
+     *
      *
      * @param int $campaign ID of campaign that received a review
-     * @param \Snagshout\Promote\Model\ReviewFoundRequestBody $body 
+     * @param \Snagshout\Promote\Model\ReviewFoundRequestBody $body
      */
     public function __construct(int $campaign, \Snagshout\Promote\Model\ReviewFoundRequestBody $body)
     {
@@ -26,9 +26,9 @@ class ReviewDeal extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
         $this->body = $body;
     }
 
-use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
+    use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
 
-public function getMethod() : string
+    public function getMethod() : string
     {
         return 'POST';
     }

@@ -14,18 +14,18 @@ namespace Snagshout\Promote\Endpoint;
 class Initialize extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7HttplugEndpoint
 {
     /**
-     * 
      *
-     * @param \Snagshout\Promote\Model\InitializeMigrationBody $body 
+     *
+     * @param \Snagshout\Promote\Model\InitializeMigrationBody $body
      */
     public function __construct(\Snagshout\Promote\Model\InitializeMigrationBody $body)
     {
         $this->body = $body;
     }
 
-use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
+    use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
 
-public function getMethod() : string
+    public function getMethod() : string
     {
         return 'POST';
     }

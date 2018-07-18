@@ -15,10 +15,10 @@ class ConfirmCode extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \J
 {
     protected $campaign;
     /**
-     * 
+     *
      *
      * @param int $campaign ID of campaign to fetch
-     * @param \Snagshout\Promote\Model\ConfirmRebateRequestBody $body 
+     * @param \Snagshout\Promote\Model\ConfirmRebateRequestBody $body
      */
     public function __construct(int $campaign, \Snagshout\Promote\Model\ConfirmRebateRequestBody $body)
     {
@@ -26,9 +26,9 @@ class ConfirmCode extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \J
         $this->body = $body;
     }
 
-use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
+    use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
 
-public function getMethod() : string
+    public function getMethod() : string
     {
         return 'POST';
     }

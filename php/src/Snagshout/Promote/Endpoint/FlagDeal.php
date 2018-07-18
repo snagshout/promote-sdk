@@ -15,10 +15,10 @@ class FlagDeal extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane
 {
     protected $campaign;
     /**
-     * 
+     *
      *
      * @param int $campaign ID of campaign to flag
-     * @param \Snagshout\Promote\Model\FlagDealRequestBody $body 
+     * @param \Snagshout\Promote\Model\FlagDealRequestBody $body
      */
     public function __construct(int $campaign, \Snagshout\Promote\Model\FlagDealRequestBody $body)
     {
@@ -26,9 +26,9 @@ class FlagDeal extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane
         $this->body = $body;
     }
 
-use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
+    use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
 
-public function getMethod() : string
+    public function getMethod() : string
     {
         return 'POST';
     }

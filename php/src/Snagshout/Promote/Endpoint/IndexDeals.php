@@ -13,10 +13,9 @@ namespace Snagshout\Promote\Endpoint;
 
 class IndexDeals extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7HttplugEndpoint
 {
+    use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
 
-use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
-
-public function getMethod() : string
+    public function getMethod() : string
     {
         return 'GET';
     }

@@ -23,7 +23,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
         return $this->executePsr7Endpoint(new \Snagshout\Promote\Endpoint\IndexDeals(), $fetch);
     }
     /**
-     * 
+     *
      *
      * @param int $campaign ID of campaign to fetch
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -35,10 +35,10 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
         return $this->executePsr7Endpoint(new \Snagshout\Promote\Endpoint\GetDeal($campaign), $fetch);
     }
     /**
-     * 
+     *
      *
      * @param int $campaign ID of campaign to fetch
-     * @param \Snagshout\Promote\Model\CreateOrderRequestBody $body 
+     * @param \Snagshout\Promote\Model\CreateOrderRequestBody $body
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Snagshout\Promote\Exception\CreateOrderNotFoundException
      * @throws \Snagshout\Promote\Exception\CreateOrderConflictException
@@ -51,10 +51,10 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
         return $this->executePsr7Endpoint(new \Snagshout\Promote\Endpoint\CreateOrder($campaign, $body), $fetch);
     }
     /**
-     * 
+     *
      *
      * @param int $campaign ID of campaign to fetch
-     * @param \Snagshout\Promote\Model\ConfirmRebateRequestBody $body 
+     * @param \Snagshout\Promote\Model\ConfirmRebateRequestBody $body
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Snagshout\Promote\Exception\ConfirmCodeUnprocessableEntityException
      * @throws \Snagshout\Promote\Exception\ConfirmCodeNotFoundException
@@ -66,10 +66,10 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
         return $this->executePsr7Endpoint(new \Snagshout\Promote\Endpoint\ConfirmCode($campaign, $body), $fetch);
     }
     /**
-     * 
+     *
      *
      * @param int $campaign ID of campaign to fetch
-     * @param \Snagshout\Promote\Model\CancelRebateRequestBody $body 
+     * @param \Snagshout\Promote\Model\CancelRebateRequestBody $body
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Snagshout\Promote\Exception\CancelRebateUnprocessableEntityException
      * @throws \Snagshout\Promote\Exception\CancelRebateNotFoundException
@@ -81,10 +81,10 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
         return $this->executePsr7Endpoint(new \Snagshout\Promote\Endpoint\CancelRebate($campaign, $body), $fetch);
     }
     /**
-     * 
+     *
      *
      * @param int $campaign ID of campaign to fetch
-     * @param \Snagshout\Promote\Model\UnsyncDealRequestBody $body 
+     * @param \Snagshout\Promote\Model\UnsyncDealRequestBody $body
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -94,10 +94,10 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
         return $this->executePsr7Endpoint(new \Snagshout\Promote\Endpoint\UnsyncDeal($campaign, $body), $fetch);
     }
     /**
-     * 
+     *
      *
      * @param int $campaign ID of campaign to fetch
-     * @param \Snagshout\Promote\Model\SyncDealRequestBody $body 
+     * @param \Snagshout\Promote\Model\SyncDealRequestBody $body
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -107,10 +107,10 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
         return $this->executePsr7Endpoint(new \Snagshout\Promote\Endpoint\SyncDeal($campaign, $body), $fetch);
     }
     /**
-     * 
+     *
      *
      * @param int $campaign ID of campaign to fetch
-     * @param \Snagshout\Promote\Model\DealImpressionsRequestBody $body 
+     * @param \Snagshout\Promote\Model\DealImpressionsRequestBody $body
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -120,10 +120,10 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
         return $this->executePsr7Endpoint(new \Snagshout\Promote\Endpoint\Impressions($campaign, $body), $fetch);
     }
     /**
-     * 
+     *
      *
      * @param int $campaign ID of campaign to notify
-     * @param \Snagshout\Promote\Model\NotifyDealRequestBody $body 
+     * @param \Snagshout\Promote\Model\NotifyDealRequestBody $body
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -133,10 +133,10 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
         return $this->executePsr7Endpoint(new \Snagshout\Promote\Endpoint\NotifyDeal($campaign, $body), $fetch);
     }
     /**
-     * 
+     *
      *
      * @param int $campaign ID of campaign to flag
-     * @param \Snagshout\Promote\Model\FlagDealRequestBody $body 
+     * @param \Snagshout\Promote\Model\FlagDealRequestBody $body
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -146,10 +146,10 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
         return $this->executePsr7Endpoint(new \Snagshout\Promote\Endpoint\FlagDeal($campaign, $body), $fetch);
     }
     /**
-     * 
+     *
      *
      * @param int $campaign ID of campaign that received a review
-     * @param \Snagshout\Promote\Model\ReviewFoundRequestBody $body 
+     * @param \Snagshout\Promote\Model\ReviewFoundRequestBody $body
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Psr\Http\Message\ResponseInterface
@@ -168,9 +168,9 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
         return $this->executePsr7Endpoint(new \Snagshout\Promote\Endpoint\GetVersion(), $fetch);
     }
     /**
-     * 
      *
-     * @param \Snagshout\Promote\Model\InitializeMigrationBody $body 
+     *
+     * @param \Snagshout\Promote\Model\InitializeMigrationBody $body
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Snagshout\Promote\Exception\InitializeForbiddenException
      * @throws \Snagshout\Promote\Exception\InitializeInternalServerErrorException
@@ -182,9 +182,9 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
         return $this->executePsr7Endpoint(new \Snagshout\Promote\Endpoint\Initialize($body), $fetch);
     }
     /**
-     * 
      *
-     * @param \Snagshout\Promote\Model\CheckEmailRequestBody $body 
+     *
+     * @param \Snagshout\Promote\Model\CheckEmailRequestBody $body
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Snagshout\Promote\Exception\CheckEmailUnprocessableEntityException
      *
