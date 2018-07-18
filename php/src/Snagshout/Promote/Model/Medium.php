@@ -19,45 +19,39 @@ class Medium
      * @var int
      */
     protected $id;
-
     /**
      *
      *
      * @var string
      */
     protected $url;
-
     /**
      *
      *
      * @var string
      */
     protected $type;
-
     /**
      *
      *
      * @var string
      */
     protected $title;
-
     /**
      *
      *
      * @var mixed
      */
     protected $metadata;
-
     /**
      *
      *
      * @return int
      */
-    public function getId() : ?int
+    public function getId() : ? int
     {
         return $this->id;
     }
-
     /**
      *
      *
@@ -71,17 +65,15 @@ class Medium
 
         return $this;
     }
-
     /**
      *
      *
      * @return string
      */
-    public function getUrl() : ?string
+    public function getUrl() : ? string
     {
         return $this->url;
     }
-
     /**
      *
      *
@@ -95,17 +87,15 @@ class Medium
 
         return $this;
     }
-
     /**
      *
      *
      * @return string
      */
-    public function getType() : ?string
+    public function getType() : ? string
     {
         return $this->type;
     }
-
     /**
      *
      *
@@ -119,17 +109,15 @@ class Medium
 
         return $this;
     }
-
     /**
      *
      *
      * @return string
      */
-    public function getTitle() : ?string
+    public function getTitle() : ? string
     {
         return $this->title;
     }
-
     /**
      *
      *
@@ -143,7 +131,6 @@ class Medium
 
         return $this;
     }
-
     /**
      *
      *
@@ -153,7 +140,6 @@ class Medium
     {
         return $this->metadata;
     }
-
     /**
      *
      *

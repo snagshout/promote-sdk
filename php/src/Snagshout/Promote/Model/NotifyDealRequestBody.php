@@ -19,31 +19,27 @@ class NotifyDealRequestBody
      * @var string
      */
     protected $type;
-
     /**
      * Title for notification.
      *
      * @var string
      */
     protected $title;
-
     /**
      * Text for notification.
      *
      * @var string
      */
     protected $body;
-
     /**
      * Type of notification.
      *
      * @return string
      */
-    public function getType() : ?string
+    public function getType() : ? string
     {
         return $this->type;
     }
-
     /**
      * Type of notification.
      *
@@ -57,17 +53,15 @@ class NotifyDealRequestBody
 
         return $this;
     }
-
     /**
      * Title for notification.
      *
      * @return string
      */
-    public function getTitle() : ?string
+    public function getTitle() : ? string
     {
         return $this->title;
     }
-
     /**
      * Title for notification.
      *
@@ -81,17 +75,15 @@ class NotifyDealRequestBody
 
         return $this;
     }
-
     /**
      * Text for notification.
      *
      * @return string
      */
-    public function getBody() : ?string
+    public function getBody() : ? string
     {
         return $this->body;
     }
-
     /**
      * Text for notification.
      *

@@ -19,262 +19,225 @@ class Deal
      * @var int
      */
     protected $campaignId;
-
     /**
      *
      *
      * @var int
      */
     protected $companyId;
-
     /**
      *
      *
      * @var int
      */
     protected $productId;
-
     /**
      *
      *
      * @var string
      */
     protected $productName;
-
     /**
      *
      *
      * @var string
      */
     protected $productDescription;
-
     /**
      *
      *
      * @var Category[]
      */
     protected $categories;
-
     /**
      *
      *
      * @var Medium[]
      */
     protected $media;
-
     /**
      *
      *
      * @var string[]
      */
     protected $boost;
-
     /**
      *
      *
      * @var string
      */
     protected $code;
-
     /**
      *
      *
      * @var int
      */
     protected $confidence;
-
     /**
      *
      *
      * @var string
      */
     protected $currency;
-
     /**
      *
      *
      * @var float
      */
     protected $discountPrice;
-
     /**
      *
      *
      * @var float
      */
     protected $rebateAmount;
-
     /**
      *
      *
      * @var bool
      */
     protected $isExclusive;
-
     /**
      *
      *
      * @var bool
      */
     protected $isNSFW;
-
     /**
      *
      *
      * @var string[]
      */
     protected $featured;
-
     /**
      *
      *
      * @var bool
      */
     protected $isUnlimited;
-
     /**
      *
      *
      * @var mixed
      */
     protected $listingMetadata;
-
     /**
      *
      *
      * @var float
      */
     protected $listingPrice;
-
     /**
      *
      *
      * @var string
      */
     protected $listingUrl;
-
     /**
      *
      *
      * @var string
      */
     protected $marketplace;
-
     /**
      *
      *
      * @var string
      */
     protected $payloadType;
-
     /**
      *
      *
      * @var bool
      */
     protected $requireEmail;
-
     /**
      *
      *
      * @var int
      */
     protected $shippingDaysMax;
-
     /**
      *
      *
      * @var int
      */
     protected $shippingDaysMin;
-
     /**
      *
      *
      * @var float
      */
     protected $shippingPrice;
-
     /**
      *
      *
      * @var string
      */
     protected $shippingType;
-
     /**
      *
      *
      * @var string
      */
     protected $startsAt;
-
     /**
      *
      *
      * @var string
      */
     protected $returnAt;
-
     /**
      *
      *
      * @var string
      */
     protected $updatedAt;
-
     /**
      *
      *
      * @var string
      */
     protected $endsAt;
-
     /**
      *
      *
      * @var bool
      */
     protected $available;
-
     /**
      *
      *
      * @var int
      */
     protected $remainingQuantity;
-
     /**
      *
      *
      * @var bool
      */
     protected $dailyLimitReached;
-
     /**
      *
      *
      * @var mixed
      */
     protected $immediateFollowup;
-
     /**
      *
      *
      * @var mixed
      */
     protected $scheduledFollowup;
-
     /**
      *
      *
      * @return int
      */
-    public function getCampaignId() : ?int
+    public function getCampaignId() : ? int
     {
         return $this->campaignId;
     }
-
     /**
      *
      *
@@ -288,17 +251,15 @@ class Deal
 
         return $this;
     }
-
     /**
      *
      *
      * @return int
      */
-    public function getCompanyId() : ?int
+    public function getCompanyId() : ? int
     {
         return $this->companyId;
     }
-
     /**
      *
      *
@@ -312,17 +273,15 @@ class Deal
 
         return $this;
     }
-
     /**
      *
      *
      * @return int
      */
-    public function getProductId() : ?int
+    public function getProductId() : ? int
     {
         return $this->productId;
     }
-
     /**
      *
      *
@@ -336,17 +295,15 @@ class Deal
 
         return $this;
     }
-
     /**
      *
      *
      * @return string
      */
-    public function getProductName() : ?string
+    public function getProductName() : ? string
     {
         return $this->productName;
     }
-
     /**
      *
      *
@@ -360,17 +317,15 @@ class Deal
 
         return $this;
     }
-
     /**
      *
      *
      * @return string
      */
-    public function getProductDescription() : ?string
+    public function getProductDescription() : ? string
     {
         return $this->productDescription;
     }
-
     /**
      *
      *
@@ -384,17 +339,15 @@ class Deal
 
         return $this;
     }
-
     /**
      *
      *
      * @return Category[]
      */
-    public function getCategories() : ?array
+    public function getCategories() : ? array
     {
         return $this->categories;
     }
-
     /**
      *
      *
@@ -408,17 +361,15 @@ class Deal
 
         return $this;
     }
-
     /**
      *
      *
      * @return Medium[]
      */
-    public function getMedia() : ?array
+    public function getMedia() : ? array
     {
         return $this->media;
     }
-
     /**
      *
      *
@@ -432,17 +383,15 @@ class Deal
 
         return $this;
     }
-
     /**
      *
      *
      * @return string[]
      */
-    public function getBoost() : ?array
+    public function getBoost() : ? array
     {
         return $this->boost;
     }
-
     /**
      *
      *
@@ -456,17 +405,15 @@ class Deal
 
         return $this;
     }
-
     /**
      *
      *
      * @return string
      */
-    public function getCode() : ?string
+    public function getCode() : ? string
     {
         return $this->code;
     }
-
     /**
      *
      *
@@ -480,17 +427,15 @@ class Deal
 
         return $this;
     }
-
     /**
      *
      *
      * @return int
      */
-    public function getConfidence() : ?int
+    public function getConfidence() : ? int
     {
         return $this->confidence;
     }
-
     /**
      *
      *
@@ -504,17 +449,15 @@ class Deal
 
         return $this;
     }
-
     /**
      *
      *
      * @return string
      */
-    public function getCurrency() : ?string
+    public function getCurrency() : ? string
     {
         return $this->currency;
     }
-
     /**
      *
      *
@@ -528,17 +471,15 @@ class Deal
 
         return $this;
     }
-
     /**
      *
      *
      * @return float
      */
-    public function getDiscountPrice() : ?float
+    public function getDiscountPrice() : ? float
     {
         return $this->discountPrice;
     }
-
     /**
      *
      *
@@ -552,17 +493,15 @@ class Deal
 
         return $this;
     }
-
     /**
      *
      *
      * @return float
      */
-    public function getRebateAmount() : ?float
+    public function getRebateAmount() : ? float
     {
         return $this->rebateAmount;
     }
-
     /**
      *
      *
@@ -576,17 +515,15 @@ class Deal
 
         return $this;
     }
-
     /**
      *
      *
      * @return bool
      */
-    public function getIsExclusive() : ?bool
+    public function getIsExclusive() : ? bool
     {
         return $this->isExclusive;
     }
-
     /**
      *
      *
@@ -600,17 +537,15 @@ class Deal
 
         return $this;
     }
-
     /**
      *
      *
      * @return bool
      */
-    public function getIsNSFW() : ?bool
+    public function getIsNSFW() : ? bool
     {
         return $this->isNSFW;
     }
-
     /**
      *
      *
@@ -624,17 +559,15 @@ class Deal
 
         return $this;
     }
-
     /**
      *
      *
      * @return string[]
      */
-    public function getFeatured() : ?array
+    public function getFeatured() : ? array
     {
         return $this->featured;
     }
-
     /**
      *
      *
@@ -648,17 +581,15 @@ class Deal
 
         return $this;
     }
-
     /**
      *
      *
      * @return bool
      */
-    public function getIsUnlimited() : ?bool
+    public function getIsUnlimited() : ? bool
     {
         return $this->isUnlimited;
     }
-
     /**
      *
      *
@@ -672,7 +603,6 @@ class Deal
 
         return $this;
     }
-
     /**
      *
      *
@@ -682,7 +612,6 @@ class Deal
     {
         return $this->listingMetadata;
     }
-
     /**
      *
      *
@@ -696,17 +625,15 @@ class Deal
 
         return $this;
     }
-
     /**
      *
      *
      * @return float
      */
-    public function getListingPrice() : ?float
+    public function getListingPrice() : ? float
     {
         return $this->listingPrice;
     }
-
     /**
      *
      *
@@ -720,17 +647,15 @@ class Deal
 
         return $this;
     }
-
     /**
      *
      *
      * @return string
      */
-    public function getListingUrl() : ?string
+    public function getListingUrl() : ? string
     {
         return $this->listingUrl;
     }
-
     /**
      *
      *
@@ -744,17 +669,15 @@ class Deal
 
         return $this;
     }
-
     /**
      *
      *
      * @return string
      */
-    public function getMarketplace() : ?string
+    public function getMarketplace() : ? string
     {
         return $this->marketplace;
     }
-
     /**
      *
      *
@@ -768,17 +691,15 @@ class Deal
 
         return $this;
     }
-
     /**
      *
      *
      * @return string
      */
-    public function getPayloadType() : ?string
+    public function getPayloadType() : ? string
     {
         return $this->payloadType;
     }
-
     /**
      *
      *
@@ -792,17 +713,15 @@ class Deal
 
         return $this;
     }
-
     /**
      *
      *
      * @return bool
      */
-    public function getRequireEmail() : ?bool
+    public function getRequireEmail() : ? bool
     {
         return $this->requireEmail;
     }
-
     /**
      *
      *
@@ -816,17 +735,15 @@ class Deal
 
         return $this;
     }
-
     /**
      *
      *
      * @return int
      */
-    public function getShippingDaysMax() : ?int
+    public function getShippingDaysMax() : ? int
     {
         return $this->shippingDaysMax;
     }
-
     /**
      *
      *
@@ -840,17 +757,15 @@ class Deal
 
         return $this;
     }
-
     /**
      *
      *
      * @return int
      */
-    public function getShippingDaysMin() : ?int
+    public function getShippingDaysMin() : ? int
     {
         return $this->shippingDaysMin;
     }
-
     /**
      *
      *
@@ -864,17 +779,15 @@ class Deal
 
         return $this;
     }
-
     /**
      *
      *
      * @return float
      */
-    public function getShippingPrice() : ?float
+    public function getShippingPrice() : ? float
     {
         return $this->shippingPrice;
     }
-
     /**
      *
      *
@@ -888,17 +801,15 @@ class Deal
 
         return $this;
     }
-
     /**
      *
      *
      * @return string
      */
-    public function getShippingType() : ?string
+    public function getShippingType() : ? string
     {
         return $this->shippingType;
     }
-
     /**
      *
      *
@@ -912,17 +823,15 @@ class Deal
 
         return $this;
     }
-
     /**
      *
      *
      * @return string
      */
-    public function getStartsAt() : ?string
+    public function getStartsAt() : ? string
     {
         return $this->startsAt;
     }
-
     /**
      *
      *
@@ -936,17 +845,15 @@ class Deal
 
         return $this;
     }
-
     /**
      *
      *
      * @return string
      */
-    public function getReturnAt() : ?string
+    public function getReturnAt() : ? string
     {
         return $this->returnAt;
     }
-
     /**
      *
      *
@@ -960,17 +867,15 @@ class Deal
 
         return $this;
     }
-
     /**
      *
      *
      * @return string
      */
-    public function getUpdatedAt() : ?string
+    public function getUpdatedAt() : ? string
     {
         return $this->updatedAt;
     }
-
     /**
      *
      *
@@ -984,17 +889,15 @@ class Deal
 
         return $this;
     }
-
     /**
      *
      *
      * @return string
      */
-    public function getEndsAt() : ?string
+    public function getEndsAt() : ? string
     {
         return $this->endsAt;
     }
-
     /**
      *
      *
@@ -1008,17 +911,15 @@ class Deal
 
         return $this;
     }
-
     /**
      *
      *
      * @return bool
      */
-    public function getAvailable() : ?bool
+    public function getAvailable() : ? bool
     {
         return $this->available;
     }
-
     /**
      *
      *
@@ -1032,17 +933,15 @@ class Deal
 
         return $this;
     }
-
     /**
      *
      *
      * @return int
      */
-    public function getRemainingQuantity() : ?int
+    public function getRemainingQuantity() : ? int
     {
         return $this->remainingQuantity;
     }
-
     /**
      *
      *
@@ -1056,17 +955,15 @@ class Deal
 
         return $this;
     }
-
     /**
      *
      *
      * @return bool
      */
-    public function getDailyLimitReached() : ?bool
+    public function getDailyLimitReached() : ? bool
     {
         return $this->dailyLimitReached;
     }
-
     /**
      *
      *
@@ -1080,7 +977,6 @@ class Deal
 
         return $this;
     }
-
     /**
      *
      *
@@ -1090,7 +986,6 @@ class Deal
     {
         return $this->immediateFollowup;
     }
-
     /**
      *
      *
@@ -1104,7 +999,6 @@ class Deal
 
         return $this;
     }
-
     /**
      *
      *
@@ -1114,7 +1008,6 @@ class Deal
     {
         return $this->scheduledFollowup;
     }
-
     /**
      *
      *

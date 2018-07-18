@@ -18,9 +18,8 @@ class Initialize extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
      *
      * @param \Snagshout\Promote\Model\InitializeMigrationBody $body
      */
-    public function __construct(
-        \Snagshout\Promote\Model\InitializeMigrationBody $body
-    ) {
+    public function __construct(\Snagshout\Promote\Model\InitializeMigrationBody $body)
+    {
         $this->body = $body;
     }
 
@@ -30,55 +29,35 @@ class Initialize extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
     {
         return 'POST';
     }
-
     public function getUri() : string
     {
         return '/users/migrate';
     }
-
-    public function getBody(
-        \Symfony\Component\Serializer\SerializerInterface $serializer,
-        \Http\Message\StreamFactory $streamFactory = null
-    ) : array {
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
+    {
         return $this->getSerializedBody($serializer);
     }
-
     public function getExtraHeaders() : array
     {
         return ['Accept' => ['application/json']];
     }
-
     /**
      * {@inheritdoc}
      *
      * @throws \Snagshout\Promote\Exception\InitializeForbiddenException
      * @throws \Snagshout\Promote\Exception\InitializeInternalServerErrorException
+     *
      */
-    protected function transformResponseBody(
-        string $body,
-        int $status,
-        \Symfony\Component\Serializer\SerializerInterface $serializer
-    ) {
+    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
+    {
         if (204 === $status) {
             return null;
         }
         if (403 === $status) {
-            throw new \Snagshout\Promote\Exception\InitializeForbiddenException(
-                $serializer->deserialize(
-                    $body,
-                    'Snagshout\\Promote\\Model\\Error',
-                    'json'
-                )
-            );
+            throw new \Snagshout\Promote\Exception\InitializeForbiddenException($serializer->deserialize($body, 'Snagshout\\Promote\\Model\\Error', 'json'));
         }
         if (500 === $status) {
-            throw new \Snagshout\Promote\Exception\InitializeInternalServerErrorException(
-                $serializer->deserialize(
-                    $body,
-                    'Snagshout\\Promote\\Model\\Error',
-                    'json'
-                )
-            );
+            throw new \Snagshout\Promote\Exception\InitializeInternalServerErrorException($serializer->deserialize($body, 'Snagshout\\Promote\\Model\\Error', 'json'));
         }
     }
 }

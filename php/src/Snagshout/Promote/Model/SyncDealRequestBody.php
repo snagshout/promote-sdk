@@ -19,24 +19,21 @@ class SyncDealRequestBody
      * @var string
      */
     protected $url;
-
     /**
      * Deal state on the partner site.
      *
      * @var string
      */
     protected $state;
-
     /**
      * URL to the deal page.
      *
      * @return string
      */
-    public function getUrl() : ?string
+    public function getUrl() : ? string
     {
         return $this->url;
     }
-
     /**
      * URL to the deal page.
      *
@@ -50,17 +47,15 @@ class SyncDealRequestBody
 
         return $this;
     }
-
     /**
      * Deal state on the partner site.
      *
      * @return string
      */
-    public function getState() : ?string
+    public function getState() : ? string
     {
         return $this->state;
     }
-
     /**
      * Deal state on the partner site.
      *

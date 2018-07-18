@@ -1,19 +1,18 @@
 <?php
 
 /**
- * Copyright 2017-2018, Snagshout <developers@snagshout.com>
+ * Copyright 2016-2018, Snagshout <developers@snagshout.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * This file is part of the Snagshout package
+ * This file is part of the Merchant package
  */
 
 namespace Tests\Snagshout\Promote;
 
-use Tests\Snagshout\Promote\TestCase;
-use Snagshout\Promote\SdkClient;
 use PHPUnit\Framework\TestCase as BaseTestCase;
+use Snagshout\Promote\SdkClient;
 
 /**
  * Class SdkClientTest.

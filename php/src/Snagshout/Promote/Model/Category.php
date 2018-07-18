@@ -19,24 +19,21 @@ class Category
      * @var int
      */
     protected $id;
-
     /**
      * Category name.
      *
      * @var string
      */
     protected $name;
-
     /**
      * Category ID.
      *
      * @return int
      */
-    public function getId() : ?int
+    public function getId() : ? int
     {
         return $this->id;
     }
-
     /**
      * Category ID.
      *
@@ -50,17 +47,15 @@ class Category
 
         return $this;
     }
-
     /**
      * Category name.
      *
      * @return string
      */
-    public function getName() : ?string
+    public function getName() : ? string
     {
         return $this->name;
     }
-
     /**
      * Category name.
      *

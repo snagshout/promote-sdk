@@ -14,17 +14,14 @@ namespace Snagshout\Promote\Endpoint;
 class FlagDeal extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7HttplugEndpoint
 {
     protected $campaign;
-
     /**
      *
      *
-     * @param int                                          $campaign ID of campaign to flag
+     * @param int $campaign ID of campaign to flag
      * @param \Snagshout\Promote\Model\FlagDealRequestBody $body
      */
-    public function __construct(
-        int $campaign,
-        \Snagshout\Promote\Model\FlagDealRequestBody $body
-    ) {
+    public function __construct(int $campaign, \Snagshout\Promote\Model\FlagDealRequestBody $body)
+    {
         $this->campaign = $campaign;
         $this->body = $body;
     }
@@ -35,36 +32,25 @@ class FlagDeal extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane
     {
         return 'POST';
     }
-
     public function getUri() : string
     {
-        return str_replace(
-            ['{campaign}'],
-            [$this->campaign],
-            '/deals/{campaign}/flag'
-        );
+        return str_replace(['{campaign}'], [$this->campaign], '/deals/{campaign}/flag');
     }
-
-    public function getBody(
-        \Symfony\Component\Serializer\SerializerInterface $serializer,
-        \Http\Message\StreamFactory $streamFactory = null
-    ) : array {
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
+    {
         return $this->getSerializedBody($serializer);
     }
-
     public function getExtraHeaders() : array
     {
         return ['Accept' => ['application/json']];
     }
-
     /**
      * {@inheritdoc}
+     *
+     *
      */
-    protected function transformResponseBody(
-        string $body,
-        int $status,
-        \Symfony\Component\Serializer\SerializerInterface $serializer
-    ) {
+    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
+    {
         if (204 === $status) {
             return null;
         }

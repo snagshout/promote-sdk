@@ -19,31 +19,27 @@ class FlagDealRequestBody
      * @var string
      */
     protected $type;
-
     /**
      * User that reported the flag.
      *
      * @var string
      */
     protected $reportedBy;
-
     /**
      * Content of the flag.
      *
      * @var string
      */
     protected $comment;
-
     /**
      * Type of flag.
      *
      * @return string
      */
-    public function getType() : ?string
+    public function getType() : ? string
     {
         return $this->type;
     }
-
     /**
      * Type of flag.
      *
@@ -57,17 +53,15 @@ class FlagDealRequestBody
 
         return $this;
     }
-
     /**
      * User that reported the flag.
      *
      * @return string
      */
-    public function getReportedBy() : ?string
+    public function getReportedBy() : ? string
     {
         return $this->reportedBy;
     }
-
     /**
      * User that reported the flag.
      *
@@ -81,17 +75,15 @@ class FlagDealRequestBody
 
         return $this;
     }
-
     /**
      * Content of the flag.
      *
      * @return string
      */
-    public function getComment() : ?string
+    public function getComment() : ? string
     {
         return $this->comment;
     }
-
     /**
      * Content of the flag.
      *

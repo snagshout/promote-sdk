@@ -19,17 +19,15 @@ class InitializeMigrationBody
      * @var int
      */
     protected $userId;
-
     /**
      * User to migrate.
      *
      * @return int
      */
-    public function getUserId() : ?int
+    public function getUserId() : ? int
     {
         return $this->userId;
     }
-
     /**
      * User to migrate.
      *

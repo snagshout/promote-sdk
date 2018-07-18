@@ -19,40 +19,28 @@ class IndexDeals extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
     {
         return 'GET';
     }
-
     public function getUri() : string
     {
         return '/deals';
     }
-
-    public function getBody(
-        \Symfony\Component\Serializer\SerializerInterface $serializer,
-        \Http\Message\StreamFactory $streamFactory = null
-    ) : array {
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
+    {
         return [[], null];
     }
-
     public function getExtraHeaders() : array
     {
         return ['Accept' => ['application/json']];
     }
-
     /**
      * {@inheritdoc}
      *
+     *
      * @return null|\Snagshout\Promote\Model\Deal[]
      */
-    protected function transformResponseBody(
-        string $body,
-        int $status,
-        \Symfony\Component\Serializer\SerializerInterface $serializer
-    ) {
+    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
+    {
         if (200 === $status) {
-            return $serializer->deserialize(
-                $body,
-                'Snagshout\\Promote\\Model\\Deal[]',
-                'json'
-            );
+            return $serializer->deserialize($body, 'Snagshout\\Promote\\Model\\Deal[]', 'json');
         }
     }
 }

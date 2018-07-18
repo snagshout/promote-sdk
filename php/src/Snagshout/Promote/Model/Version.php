@@ -19,45 +19,39 @@ class Version
      * @var string
      */
     protected $api;
-
     /**
      * Get the API & APP version numbers.
      *
      * @var string
      */
     protected $app;
-
     /**
      * Get the API & APP version numbers.
      *
      * @var string
      */
     protected $date;
-
     /**
      * Get the API & APP version numbers.
      *
      * @var string
      */
     protected $php;
-
     /**
      *
      *
      * @var mixed
      */
     protected $extensions;
-
     /**
      * Get the API & APP version numbers.
      *
      * @return string
      */
-    public function getApi() : ?string
+    public function getApi() : ? string
     {
         return $this->api;
     }
-
     /**
      * Get the API & APP version numbers.
      *
@@ -71,17 +65,15 @@ class Version
 
         return $this;
     }
-
     /**
      * Get the API & APP version numbers.
      *
      * @return string
      */
-    public function getApp() : ?string
+    public function getApp() : ? string
     {
         return $this->app;
     }
-
     /**
      * Get the API & APP version numbers.
      *
@@ -95,17 +87,15 @@ class Version
 
         return $this;
     }
-
     /**
      * Get the API & APP version numbers.
      *
      * @return string
      */
-    public function getDate() : ?string
+    public function getDate() : ? string
     {
         return $this->date;
     }
-
     /**
      * Get the API & APP version numbers.
      *
@@ -119,17 +109,15 @@ class Version
 
         return $this;
     }
-
     /**
      * Get the API & APP version numbers.
      *
      * @return string
      */
-    public function getPhp() : ?string
+    public function getPhp() : ? string
     {
         return $this->php;
     }
-
     /**
      * Get the API & APP version numbers.
      *
@@ -143,7 +131,6 @@ class Version
 
         return $this;
     }
-
     /**
      *
      *
@@ -153,7 +140,6 @@ class Version
     {
         return $this->extensions;
     }
-
     /**
      *
      *

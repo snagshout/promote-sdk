@@ -19,24 +19,21 @@ class UnsyncDealRequestBody
      * @var string
      */
     protected $note;
-
     /**
      * Deal state on the partner site.
      *
      * @var string
      */
     protected $state;
-
     /**
      * Reason for rejecting the deal.
      *
      * @return string
      */
-    public function getNote() : ?string
+    public function getNote() : ? string
     {
         return $this->note;
     }
-
     /**
      * Reason for rejecting the deal.
      *
@@ -50,17 +47,15 @@ class UnsyncDealRequestBody
 
         return $this;
     }
-
     /**
      * Deal state on the partner site.
      *
      * @return string
      */
-    public function getState() : ?string
+    public function getState() : ? string
     {
         return $this->state;
     }
-
     /**
      * Deal state on the partner site.
      *
