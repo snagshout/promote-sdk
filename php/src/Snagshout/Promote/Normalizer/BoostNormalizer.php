@@ -25,6 +25,7 @@ class BoostNormalizer extends SerializerAwareNormalizer implements DenormalizerI
 
         return true;
     }
+
     public function supportsNormalization($data, $format = null)
     {
         if ($data instanceof \Snagshout\Promote\Model\Boost) {
@@ -33,8 +34,13 @@ class BoostNormalizer extends SerializerAwareNormalizer implements DenormalizerI
 
         return false;
     }
-    public function denormalize($data, $class, $format = null, array $context = [])
-    {
+
+    public function denormalize(
+        $data,
+        $class,
+        $format = null,
+        array $context = []
+    ) {
         $object = new \Snagshout\Promote\Model\Boost();
         if (property_exists($data, 'url')) {
             $object->setUrl($data->{'url'});
@@ -52,6 +58,7 @@ class BoostNormalizer extends SerializerAwareNormalizer implements DenormalizerI
 
         return $object;
     }
+
     public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();

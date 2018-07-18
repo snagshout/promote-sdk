@@ -23,16 +23,23 @@ class VersionNormalizer implements DenormalizerInterface, NormalizerInterface, D
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+
     public function supportsDenormalization($data, $type, $format = null)
     {
         return $type === 'Snagshout\\Promote\\Model\\Version';
     }
+
     public function supportsNormalization($data, $format = null)
     {
         return $data instanceof \Snagshout\Promote\Model\Version;
     }
-    public function denormalize($data, $class, $format = null, array $context = [])
-    {
+
+    public function denormalize(
+        $data,
+        $class,
+        $format = null,
+        array $context = []
+    ) {
         if (!is_object($data)) {
             throw new InvalidArgumentException();
         }
@@ -55,6 +62,7 @@ class VersionNormalizer implements DenormalizerInterface, NormalizerInterface, D
 
         return $object;
     }
+
     public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();

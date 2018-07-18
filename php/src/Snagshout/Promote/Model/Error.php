@@ -14,28 +14,31 @@ namespace Snagshout\Promote\Model;
 class Error
 {
     /**
-     * 
+     *
      *
      * @var string
      */
     protected $message;
+
     /**
-     * 
+     *
      *
      * @var int
      */
     protected $status;
+
     /**
-     * 
+     *
      *
      * @return string
      */
-    public function getMessage() : ? string
+    public function getMessage() : ?string
     {
         return $this->message;
     }
+
     /**
-     * 
+     *
      *
      * @param string $message
      *
@@ -47,17 +50,19 @@ class Error
 
         return $this;
     }
+
     /**
-     * 
+     *
      *
      * @return int
      */
-    public function getStatus() : ? int
+    public function getStatus() : ?int
     {
         return $this->status;
     }
+
     /**
-     * 
+     *
      *
      * @param int $status
      *

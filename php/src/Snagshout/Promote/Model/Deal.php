@@ -14,232 +14,269 @@ namespace Snagshout\Promote\Model;
 class Deal
 {
     /**
-     * 
+     *
      *
      * @var int
      */
     protected $campaignId;
+
     /**
-     * 
+     *
      *
      * @var int
      */
     protected $companyId;
+
     /**
-     * 
+     *
      *
      * @var int
      */
     protected $productId;
+
     /**
-     * 
+     *
      *
      * @var string
      */
     protected $productName;
+
     /**
-     * 
+     *
      *
      * @var string
      */
     protected $productDescription;
+
     /**
-     * 
+     *
      *
      * @var Category[]
      */
     protected $categories;
+
     /**
-     * 
+     *
      *
      * @var Medium[]
      */
     protected $media;
+
     /**
-     * 
+     *
      *
      * @var string[]
      */
     protected $boost;
+
     /**
-     * 
+     *
      *
      * @var string
      */
     protected $code;
+
     /**
-     * 
+     *
      *
      * @var int
      */
     protected $confidence;
+
     /**
-     * 
+     *
      *
      * @var string
      */
     protected $currency;
+
     /**
-     * 
+     *
      *
      * @var float
      */
     protected $discountPrice;
+
     /**
-     * 
+     *
      *
      * @var float
      */
     protected $rebateAmount;
+
     /**
-     * 
+     *
      *
      * @var bool
      */
     protected $isExclusive;
+
     /**
-     * 
+     *
      *
      * @var bool
      */
     protected $isNSFW;
+
     /**
-     * 
+     *
      *
      * @var string[]
      */
     protected $featured;
+
     /**
-     * 
+     *
      *
      * @var bool
      */
     protected $isUnlimited;
+
     /**
-     * 
+     *
      *
      * @var mixed
      */
     protected $listingMetadata;
+
     /**
-     * 
+     *
      *
      * @var float
      */
     protected $listingPrice;
+
     /**
-     * 
+     *
      *
      * @var string
      */
     protected $listingUrl;
+
     /**
-     * 
+     *
      *
      * @var string
      */
     protected $marketplace;
+
     /**
-     * 
+     *
      *
      * @var string
      */
     protected $payloadType;
+
     /**
-     * 
+     *
      *
      * @var bool
      */
     protected $requireEmail;
+
     /**
-     * 
+     *
      *
      * @var int
      */
     protected $shippingDaysMax;
+
     /**
-     * 
+     *
      *
      * @var int
      */
     protected $shippingDaysMin;
+
     /**
-     * 
+     *
      *
      * @var float
      */
     protected $shippingPrice;
+
     /**
-     * 
+     *
      *
      * @var string
      */
     protected $shippingType;
+
     /**
-     * 
+     *
      *
      * @var string
      */
     protected $startsAt;
+
     /**
-     * 
+     *
      *
      * @var string
      */
     protected $returnAt;
+
     /**
-     * 
+     *
      *
      * @var string
      */
     protected $updatedAt;
+
     /**
-     * 
+     *
      *
      * @var string
      */
     protected $endsAt;
+
     /**
-     * 
+     *
      *
      * @var bool
      */
     protected $available;
+
     /**
-     * 
+     *
      *
      * @var int
      */
     protected $remainingQuantity;
+
     /**
-     * 
+     *
      *
      * @var bool
      */
     protected $dailyLimitReached;
+
     /**
-     * 
+     *
      *
      * @var mixed
      */
     protected $immediateFollowup;
+
     /**
-     * 
+     *
      *
      * @var mixed
      */
     protected $scheduledFollowup;
+
     /**
-     * 
+     *
      *
      * @return int
      */
-    public function getCampaignId() : ? int
+    public function getCampaignId() : ?int
     {
         return $this->campaignId;
     }
+
     /**
-     * 
+     *
      *
      * @param int $campaignId
      *
@@ -251,17 +288,19 @@ class Deal
 
         return $this;
     }
+
     /**
-     * 
+     *
      *
      * @return int
      */
-    public function getCompanyId() : ? int
+    public function getCompanyId() : ?int
     {
         return $this->companyId;
     }
+
     /**
-     * 
+     *
      *
      * @param int $companyId
      *
@@ -273,17 +312,19 @@ class Deal
 
         return $this;
     }
+
     /**
-     * 
+     *
      *
      * @return int
      */
-    public function getProductId() : ? int
+    public function getProductId() : ?int
     {
         return $this->productId;
     }
+
     /**
-     * 
+     *
      *
      * @param int $productId
      *
@@ -295,17 +336,19 @@ class Deal
 
         return $this;
     }
+
     /**
-     * 
+     *
      *
      * @return string
      */
-    public function getProductName() : ? string
+    public function getProductName() : ?string
     {
         return $this->productName;
     }
+
     /**
-     * 
+     *
      *
      * @param string $productName
      *
@@ -317,17 +360,19 @@ class Deal
 
         return $this;
     }
+
     /**
-     * 
+     *
      *
      * @return string
      */
-    public function getProductDescription() : ? string
+    public function getProductDescription() : ?string
     {
         return $this->productDescription;
     }
+
     /**
-     * 
+     *
      *
      * @param string $productDescription
      *
@@ -339,17 +384,19 @@ class Deal
 
         return $this;
     }
+
     /**
-     * 
+     *
      *
      * @return Category[]
      */
-    public function getCategories() : ? array
+    public function getCategories() : ?array
     {
         return $this->categories;
     }
+
     /**
-     * 
+     *
      *
      * @param Category[] $categories
      *
@@ -361,17 +408,19 @@ class Deal
 
         return $this;
     }
+
     /**
-     * 
+     *
      *
      * @return Medium[]
      */
-    public function getMedia() : ? array
+    public function getMedia() : ?array
     {
         return $this->media;
     }
+
     /**
-     * 
+     *
      *
      * @param Medium[] $media
      *
@@ -383,17 +432,19 @@ class Deal
 
         return $this;
     }
+
     /**
-     * 
+     *
      *
      * @return string[]
      */
-    public function getBoost() : ? array
+    public function getBoost() : ?array
     {
         return $this->boost;
     }
+
     /**
-     * 
+     *
      *
      * @param string[] $boost
      *
@@ -405,17 +456,19 @@ class Deal
 
         return $this;
     }
+
     /**
-     * 
+     *
      *
      * @return string
      */
-    public function getCode() : ? string
+    public function getCode() : ?string
     {
         return $this->code;
     }
+
     /**
-     * 
+     *
      *
      * @param string $code
      *
@@ -427,17 +480,19 @@ class Deal
 
         return $this;
     }
+
     /**
-     * 
+     *
      *
      * @return int
      */
-    public function getConfidence() : ? int
+    public function getConfidence() : ?int
     {
         return $this->confidence;
     }
+
     /**
-     * 
+     *
      *
      * @param int $confidence
      *
@@ -449,17 +504,19 @@ class Deal
 
         return $this;
     }
+
     /**
-     * 
+     *
      *
      * @return string
      */
-    public function getCurrency() : ? string
+    public function getCurrency() : ?string
     {
         return $this->currency;
     }
+
     /**
-     * 
+     *
      *
      * @param string $currency
      *
@@ -471,17 +528,19 @@ class Deal
 
         return $this;
     }
+
     /**
-     * 
+     *
      *
      * @return float
      */
-    public function getDiscountPrice() : ? float
+    public function getDiscountPrice() : ?float
     {
         return $this->discountPrice;
     }
+
     /**
-     * 
+     *
      *
      * @param float $discountPrice
      *
@@ -493,17 +552,19 @@ class Deal
 
         return $this;
     }
+
     /**
-     * 
+     *
      *
      * @return float
      */
-    public function getRebateAmount() : ? float
+    public function getRebateAmount() : ?float
     {
         return $this->rebateAmount;
     }
+
     /**
-     * 
+     *
      *
      * @param float $rebateAmount
      *
@@ -515,17 +576,19 @@ class Deal
 
         return $this;
     }
+
     /**
-     * 
+     *
      *
      * @return bool
      */
-    public function getIsExclusive() : ? bool
+    public function getIsExclusive() : ?bool
     {
         return $this->isExclusive;
     }
+
     /**
-     * 
+     *
      *
      * @param bool $isExclusive
      *
@@ -537,17 +600,19 @@ class Deal
 
         return $this;
     }
+
     /**
-     * 
+     *
      *
      * @return bool
      */
-    public function getIsNSFW() : ? bool
+    public function getIsNSFW() : ?bool
     {
         return $this->isNSFW;
     }
+
     /**
-     * 
+     *
      *
      * @param bool $isNSFW
      *
@@ -559,17 +624,19 @@ class Deal
 
         return $this;
     }
+
     /**
-     * 
+     *
      *
      * @return string[]
      */
-    public function getFeatured() : ? array
+    public function getFeatured() : ?array
     {
         return $this->featured;
     }
+
     /**
-     * 
+     *
      *
      * @param string[] $featured
      *
@@ -581,17 +648,19 @@ class Deal
 
         return $this;
     }
+
     /**
-     * 
+     *
      *
      * @return bool
      */
-    public function getIsUnlimited() : ? bool
+    public function getIsUnlimited() : ?bool
     {
         return $this->isUnlimited;
     }
+
     /**
-     * 
+     *
      *
      * @param bool $isUnlimited
      *
@@ -603,8 +672,9 @@ class Deal
 
         return $this;
     }
+
     /**
-     * 
+     *
      *
      * @return mixed
      */
@@ -612,8 +682,9 @@ class Deal
     {
         return $this->listingMetadata;
     }
+
     /**
-     * 
+     *
      *
      * @param mixed $listingMetadata
      *
@@ -625,17 +696,19 @@ class Deal
 
         return $this;
     }
+
     /**
-     * 
+     *
      *
      * @return float
      */
-    public function getListingPrice() : ? float
+    public function getListingPrice() : ?float
     {
         return $this->listingPrice;
     }
+
     /**
-     * 
+     *
      *
      * @param float $listingPrice
      *
@@ -647,17 +720,19 @@ class Deal
 
         return $this;
     }
+
     /**
-     * 
+     *
      *
      * @return string
      */
-    public function getListingUrl() : ? string
+    public function getListingUrl() : ?string
     {
         return $this->listingUrl;
     }
+
     /**
-     * 
+     *
      *
      * @param string $listingUrl
      *
@@ -669,17 +744,19 @@ class Deal
 
         return $this;
     }
+
     /**
-     * 
+     *
      *
      * @return string
      */
-    public function getMarketplace() : ? string
+    public function getMarketplace() : ?string
     {
         return $this->marketplace;
     }
+
     /**
-     * 
+     *
      *
      * @param string $marketplace
      *
@@ -691,17 +768,19 @@ class Deal
 
         return $this;
     }
+
     /**
-     * 
+     *
      *
      * @return string
      */
-    public function getPayloadType() : ? string
+    public function getPayloadType() : ?string
     {
         return $this->payloadType;
     }
+
     /**
-     * 
+     *
      *
      * @param string $payloadType
      *
@@ -713,17 +792,19 @@ class Deal
 
         return $this;
     }
+
     /**
-     * 
+     *
      *
      * @return bool
      */
-    public function getRequireEmail() : ? bool
+    public function getRequireEmail() : ?bool
     {
         return $this->requireEmail;
     }
+
     /**
-     * 
+     *
      *
      * @param bool $requireEmail
      *
@@ -735,17 +816,19 @@ class Deal
 
         return $this;
     }
+
     /**
-     * 
+     *
      *
      * @return int
      */
-    public function getShippingDaysMax() : ? int
+    public function getShippingDaysMax() : ?int
     {
         return $this->shippingDaysMax;
     }
+
     /**
-     * 
+     *
      *
      * @param int $shippingDaysMax
      *
@@ -757,17 +840,19 @@ class Deal
 
         return $this;
     }
+
     /**
-     * 
+     *
      *
      * @return int
      */
-    public function getShippingDaysMin() : ? int
+    public function getShippingDaysMin() : ?int
     {
         return $this->shippingDaysMin;
     }
+
     /**
-     * 
+     *
      *
      * @param int $shippingDaysMin
      *
@@ -779,17 +864,19 @@ class Deal
 
         return $this;
     }
+
     /**
-     * 
+     *
      *
      * @return float
      */
-    public function getShippingPrice() : ? float
+    public function getShippingPrice() : ?float
     {
         return $this->shippingPrice;
     }
+
     /**
-     * 
+     *
      *
      * @param float $shippingPrice
      *
@@ -801,17 +888,19 @@ class Deal
 
         return $this;
     }
+
     /**
-     * 
+     *
      *
      * @return string
      */
-    public function getShippingType() : ? string
+    public function getShippingType() : ?string
     {
         return $this->shippingType;
     }
+
     /**
-     * 
+     *
      *
      * @param string $shippingType
      *
@@ -823,17 +912,19 @@ class Deal
 
         return $this;
     }
+
     /**
-     * 
+     *
      *
      * @return string
      */
-    public function getStartsAt() : ? string
+    public function getStartsAt() : ?string
     {
         return $this->startsAt;
     }
+
     /**
-     * 
+     *
      *
      * @param string $startsAt
      *
@@ -845,17 +936,19 @@ class Deal
 
         return $this;
     }
+
     /**
-     * 
+     *
      *
      * @return string
      */
-    public function getReturnAt() : ? string
+    public function getReturnAt() : ?string
     {
         return $this->returnAt;
     }
+
     /**
-     * 
+     *
      *
      * @param string $returnAt
      *
@@ -867,17 +960,19 @@ class Deal
 
         return $this;
     }
+
     /**
-     * 
+     *
      *
      * @return string
      */
-    public function getUpdatedAt() : ? string
+    public function getUpdatedAt() : ?string
     {
         return $this->updatedAt;
     }
+
     /**
-     * 
+     *
      *
      * @param string $updatedAt
      *
@@ -889,17 +984,19 @@ class Deal
 
         return $this;
     }
+
     /**
-     * 
+     *
      *
      * @return string
      */
-    public function getEndsAt() : ? string
+    public function getEndsAt() : ?string
     {
         return $this->endsAt;
     }
+
     /**
-     * 
+     *
      *
      * @param string $endsAt
      *
@@ -911,17 +1008,19 @@ class Deal
 
         return $this;
     }
+
     /**
-     * 
+     *
      *
      * @return bool
      */
-    public function getAvailable() : ? bool
+    public function getAvailable() : ?bool
     {
         return $this->available;
     }
+
     /**
-     * 
+     *
      *
      * @param bool $available
      *
@@ -933,17 +1032,19 @@ class Deal
 
         return $this;
     }
+
     /**
-     * 
+     *
      *
      * @return int
      */
-    public function getRemainingQuantity() : ? int
+    public function getRemainingQuantity() : ?int
     {
         return $this->remainingQuantity;
     }
+
     /**
-     * 
+     *
      *
      * @param int $remainingQuantity
      *
@@ -955,17 +1056,19 @@ class Deal
 
         return $this;
     }
+
     /**
-     * 
+     *
      *
      * @return bool
      */
-    public function getDailyLimitReached() : ? bool
+    public function getDailyLimitReached() : ?bool
     {
         return $this->dailyLimitReached;
     }
+
     /**
-     * 
+     *
      *
      * @param bool $dailyLimitReached
      *
@@ -977,8 +1080,9 @@ class Deal
 
         return $this;
     }
+
     /**
-     * 
+     *
      *
      * @return mixed
      */
@@ -986,8 +1090,9 @@ class Deal
     {
         return $this->immediateFollowup;
     }
+
     /**
-     * 
+     *
      *
      * @param mixed $immediateFollowup
      *
@@ -999,8 +1104,9 @@ class Deal
 
         return $this;
     }
+
     /**
-     * 
+     *
      *
      * @return mixed
      */
@@ -1008,8 +1114,9 @@ class Deal
     {
         return $this->scheduledFollowup;
     }
+
     /**
-     * 
+     *
      *
      * @param mixed $scheduledFollowup
      *

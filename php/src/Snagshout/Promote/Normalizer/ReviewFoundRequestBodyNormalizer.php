@@ -23,16 +23,23 @@ class ReviewFoundRequestBodyNormalizer implements DenormalizerInterface, Normali
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+
     public function supportsDenormalization($data, $type, $format = null)
     {
         return $type === 'Snagshout\\Promote\\Model\\ReviewFoundRequestBody';
     }
+
     public function supportsNormalization($data, $format = null)
     {
         return $data instanceof \Snagshout\Promote\Model\ReviewFoundRequestBody;
     }
-    public function denormalize($data, $class, $format = null, array $context = [])
-    {
+
+    public function denormalize(
+        $data,
+        $class,
+        $format = null,
+        array $context = []
+    ) {
         if (!is_object($data)) {
             throw new InvalidArgumentException();
         }
@@ -64,6 +71,7 @@ class ReviewFoundRequestBodyNormalizer implements DenormalizerInterface, Normali
 
         return $object;
     }
+
     public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();

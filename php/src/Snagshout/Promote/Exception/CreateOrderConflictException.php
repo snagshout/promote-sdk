@@ -14,11 +14,13 @@ namespace Snagshout\Promote\Exception;
 class CreateOrderConflictException extends \RuntimeException implements ClientException
 {
     private $error;
+
     public function __construct(\Snagshout\Promote\Model\Error $error)
     {
         parent::__construct('Daily limit reached.', 409);
         $this->error = $error;
     }
+
     public function getError()
     {
         return $this->error;

@@ -23,16 +23,23 @@ class DealNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+
     public function supportsDenormalization($data, $type, $format = null)
     {
         return $type === 'Snagshout\\Promote\\Model\\Deal';
     }
+
     public function supportsNormalization($data, $format = null)
     {
         return $data instanceof \Snagshout\Promote\Model\Deal;
     }
-    public function denormalize($data, $class, $format = null, array $context = [])
-    {
+
+    public function denormalize(
+        $data,
+        $class,
+        $format = null,
+        array $context = []
+    ) {
         if (!is_object($data)) {
             throw new InvalidArgumentException();
         }
@@ -55,14 +62,16 @@ class DealNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         if (property_exists($data, 'categories')) {
             $values = [];
             foreach ($data->{'categories'} as $value) {
-                $values[] = $this->denormalizer->denormalize($value, 'Snagshout\\Promote\\Model\\Category', 'json', $context);
+                $values[] = $this->denormalizer->denormalize($value,
+                    'Snagshout\\Promote\\Model\\Category', 'json', $context);
             }
             $object->setCategories($values);
         }
         if (property_exists($data, 'media')) {
             $values_1 = [];
             foreach ($data->{'media'} as $value_1) {
-                $values_1[] = $this->denormalizer->denormalize($value_1, 'Snagshout\\Promote\\Model\\Medium', 'json', $context);
+                $values_1[] = $this->denormalizer->denormalize($value_1,
+                    'Snagshout\\Promote\\Model\\Medium', 'json', $context);
             }
             $object->setMedia($values_1);
         }
@@ -164,6 +173,7 @@ class DealNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
 
         return $object;
     }
+
     public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
@@ -185,14 +195,16 @@ class DealNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         if (null !== $object->getCategories()) {
             $values = [];
             foreach ($object->getCategories() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $this->normalizer->normalize($value, 'json',
+                    $context);
             }
             $data->{'categories'} = $values;
         }
         if (null !== $object->getMedia()) {
             $values_1 = [];
             foreach ($object->getMedia() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = $this->normalizer->normalize($value_1, 'json',
+                    $context);
             }
             $data->{'media'} = $values_1;
         }

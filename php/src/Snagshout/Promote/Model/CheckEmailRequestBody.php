@@ -19,15 +19,17 @@ class CheckEmailRequestBody
      * @var string
      */
     protected $email;
+
     /**
      * Email to check for.
      *
      * @return string
      */
-    public function getEmail() : ? string
+    public function getEmail() : ?string
     {
         return $this->email;
     }
+
     /**
      * Email to check for.
      *

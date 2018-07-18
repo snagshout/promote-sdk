@@ -23,16 +23,23 @@ class DealImpressionsRequestBodyNormalizer implements DenormalizerInterface, Nor
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+
     public function supportsDenormalization($data, $type, $format = null)
     {
         return $type === 'Snagshout\\Promote\\Model\\DealImpressionsRequestBody';
     }
+
     public function supportsNormalization($data, $format = null)
     {
         return $data instanceof \Snagshout\Promote\Model\DealImpressionsRequestBody;
     }
-    public function denormalize($data, $class, $format = null, array $context = [])
-    {
+
+    public function denormalize(
+        $data,
+        $class,
+        $format = null,
+        array $context = []
+    ) {
         if (!is_object($data)) {
             throw new InvalidArgumentException();
         }
@@ -40,20 +47,23 @@ class DealImpressionsRequestBodyNormalizer implements DenormalizerInterface, Nor
         if (property_exists($data, 'impressions')) {
             $values = [];
             foreach ($data->{'impressions'} as $value) {
-                $values[] = $this->denormalizer->denormalize($value, 'Snagshout\\Promote\\Model\\Impression', 'json', $context);
+                $values[] = $this->denormalizer->denormalize($value,
+                    'Snagshout\\Promote\\Model\\Impression', 'json', $context);
             }
             $object->setImpressions($values);
         }
 
         return $object;
     }
+
     public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
         if (null !== $object->getImpressions()) {
             $values = [];
             foreach ($object->getImpressions() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $this->normalizer->normalize($value, 'json',
+                    $context);
             }
             $data->{'impressions'} = $values;
         }

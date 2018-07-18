@@ -19,21 +19,24 @@ class ConfirmRebateRequestBody
      * @var string
      */
     protected $email;
+
     /**
      * Confirmation code.
      *
      * @var string
      */
     protected $code;
+
     /**
      * email, required with rebates.
      *
      * @return string
      */
-    public function getEmail() : ? string
+    public function getEmail() : ?string
     {
         return $this->email;
     }
+
     /**
      * email, required with rebates.
      *
@@ -47,15 +50,17 @@ class ConfirmRebateRequestBody
 
         return $this;
     }
+
     /**
      * Confirmation code.
      *
      * @return string
      */
-    public function getCode() : ? string
+    public function getCode() : ?string
     {
         return $this->code;
     }
+
     /**
      * Confirmation code.
      *

@@ -19,15 +19,17 @@ class CancelRebateRequestBody
      * @var string
      */
     protected $email;
+
     /**
      * email, required with rebates.
      *
      * @return string
      */
-    public function getEmail() : ? string
+    public function getEmail() : ?string
     {
         return $this->email;
     }
+
     /**
      * email, required with rebates.
      *

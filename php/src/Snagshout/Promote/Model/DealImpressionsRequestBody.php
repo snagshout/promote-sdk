@@ -19,15 +19,17 @@ class DealImpressionsRequestBody
      * @var Impression[]
      */
     protected $impressions;
+
     /**
      * Object array of impressions to track.
      *
      * @return Impression[]
      */
-    public function getImpressions() : ? array
+    public function getImpressions() : ?array
     {
         return $this->impressions;
     }
+
     /**
      * Object array of impressions to track.
      *

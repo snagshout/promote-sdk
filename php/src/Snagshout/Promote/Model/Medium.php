@@ -14,46 +14,52 @@ namespace Snagshout\Promote\Model;
 class Medium
 {
     /**
-     * 
+     *
      *
      * @var int
      */
     protected $id;
+
     /**
-     * 
+     *
      *
      * @var string
      */
     protected $url;
+
     /**
-     * 
+     *
      *
      * @var string
      */
     protected $type;
+
     /**
-     * 
+     *
      *
      * @var string
      */
     protected $title;
+
     /**
-     * 
+     *
      *
      * @var mixed
      */
     protected $metadata;
+
     /**
-     * 
+     *
      *
      * @return int
      */
-    public function getId() : ? int
+    public function getId() : ?int
     {
         return $this->id;
     }
+
     /**
-     * 
+     *
      *
      * @param int $id
      *
@@ -65,17 +71,19 @@ class Medium
 
         return $this;
     }
+
     /**
-     * 
+     *
      *
      * @return string
      */
-    public function getUrl() : ? string
+    public function getUrl() : ?string
     {
         return $this->url;
     }
+
     /**
-     * 
+     *
      *
      * @param string $url
      *
@@ -87,17 +95,19 @@ class Medium
 
         return $this;
     }
+
     /**
-     * 
+     *
      *
      * @return string
      */
-    public function getType() : ? string
+    public function getType() : ?string
     {
         return $this->type;
     }
+
     /**
-     * 
+     *
      *
      * @param string $type
      *
@@ -109,17 +119,19 @@ class Medium
 
         return $this;
     }
+
     /**
-     * 
+     *
      *
      * @return string
      */
-    public function getTitle() : ? string
+    public function getTitle() : ?string
     {
         return $this->title;
     }
+
     /**
-     * 
+     *
      *
      * @param string $title
      *
@@ -131,8 +143,9 @@ class Medium
 
         return $this;
     }
+
     /**
-     * 
+     *
      *
      * @return mixed
      */
@@ -140,8 +153,9 @@ class Medium
     {
         return $this->metadata;
     }
+
     /**
-     * 
+     *
      *
      * @param mixed $metadata
      *

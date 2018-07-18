@@ -19,57 +19,66 @@ class ReviewFoundRequestBody
      * @var string
      */
     protected $createdAt;
+
     /**
      * Review title.
      *
      * @var string
      */
     protected $asin;
+
     /**
      * Review title.
      *
      * @var string
      */
     protected $title;
+
     /**
      * Review body.
      *
      * @var string
      */
     protected $summary;
+
     /**
      * Reviewer id.
      *
      * @var string
      */
     protected $reviewerId;
+
     /**
      * Review id.
      *
      * @var string
      */
     protected $reviewId;
+
     /**
      * Link to the URL.
      *
      * @var string
      */
     protected $url;
+
     /**
      * 0-5 rating.
      *
      * @var int
      */
     protected $stars;
+
     /**
      * Review date.
      *
      * @return string
      */
-    public function getCreatedAt() : ? string
+    public function getCreatedAt() : ?string
     {
         return $this->createdAt;
     }
+
     /**
      * Review date.
      *
@@ -83,15 +92,17 @@ class ReviewFoundRequestBody
 
         return $this;
     }
+
     /**
      * Review title.
      *
      * @return string
      */
-    public function getAsin() : ? string
+    public function getAsin() : ?string
     {
         return $this->asin;
     }
+
     /**
      * Review title.
      *
@@ -105,15 +116,17 @@ class ReviewFoundRequestBody
 
         return $this;
     }
+
     /**
      * Review title.
      *
      * @return string
      */
-    public function getTitle() : ? string
+    public function getTitle() : ?string
     {
         return $this->title;
     }
+
     /**
      * Review title.
      *
@@ -127,15 +140,17 @@ class ReviewFoundRequestBody
 
         return $this;
     }
+
     /**
      * Review body.
      *
      * @return string
      */
-    public function getSummary() : ? string
+    public function getSummary() : ?string
     {
         return $this->summary;
     }
+
     /**
      * Review body.
      *
@@ -149,15 +164,17 @@ class ReviewFoundRequestBody
 
         return $this;
     }
+
     /**
      * Reviewer id.
      *
      * @return string
      */
-    public function getReviewerId() : ? string
+    public function getReviewerId() : ?string
     {
         return $this->reviewerId;
     }
+
     /**
      * Reviewer id.
      *
@@ -171,15 +188,17 @@ class ReviewFoundRequestBody
 
         return $this;
     }
+
     /**
      * Review id.
      *
      * @return string
      */
-    public function getReviewId() : ? string
+    public function getReviewId() : ?string
     {
         return $this->reviewId;
     }
+
     /**
      * Review id.
      *
@@ -193,15 +212,17 @@ class ReviewFoundRequestBody
 
         return $this;
     }
+
     /**
      * Link to the URL.
      *
      * @return string
      */
-    public function getUrl() : ? string
+    public function getUrl() : ?string
     {
         return $this->url;
     }
+
     /**
      * Link to the URL.
      *
@@ -215,15 +236,17 @@ class ReviewFoundRequestBody
 
         return $this;
     }
+
     /**
      * 0-5 rating.
      *
      * @return int
      */
-    public function getStars() : ? int
+    public function getStars() : ?int
     {
         return $this->stars;
     }
+
     /**
      * 0-5 rating.
      *

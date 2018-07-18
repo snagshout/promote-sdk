@@ -53,12 +53,12 @@ class SdkClient
      *
      * @param string $publicId
      * @param string $secretKey
+     * @param string $baseUrl
      */
     public function __construct($publicId, $secretKey, $baseUrl)
     {
         $this->publicId = $publicId;
         $this->secretKey = $secretKey;
-
 
         $stack = new HandlerStack();
 
@@ -75,40 +75,6 @@ class SdkClient
         );
         $client = new \Http\Adapter\Guzzle6\Client($guzzle);
         $this->client = Client::create($client);
-    }
-
-    /**
-     * @param string $publicId
-     */
-    public function setPublicId($publicId)
-    {
-        $this->publicId = $publicId;
-    }
-
-    /**
-     * @param string $secretKey
-     */
-    public function setSecretKey($secretKey)
-    {
-        $this->secretKey = $secretKey;
-    }
-
-    /**
-     * Computes the hash of a string using the secret key.
-     *
-     * @param string $content
-     *
-     * @return string
-     */
-    protected function hash($content)
-    {
-        $timestamp = (new DateTime())->format('Y-m-d H');
-
-        return hash_hmac(
-            'sha512',
-            $content . $timestamp,
-            $this->secretKey
-        );
     }
 
     /**
@@ -149,14 +115,21 @@ class SdkClient
     }
 
     /**
-     * @param $method
-     * @param $parameters
+     * Computes the hash of a string using the secret key.
      *
-     * @return mixed
+     * @param string $content
+     *
+     * @return string
      */
-    public function __call($method, $parameters)
+    protected function hash($content)
     {
-        return $this->client->{$method}(...$parameters);
+        $timestamp = (new DateTime())->format('Y-m-d H');
+
+        return hash_hmac(
+            'sha512',
+            $content . $timestamp,
+            $this->secretKey
+        );
     }
 
     /**
@@ -165,5 +138,32 @@ class SdkClient
     public function setEndpoint(Uri $endpoint)
     {
         $this->endpoint = $endpoint;
+    }
+
+    /**
+     * @param string $publicId
+     */
+    public function setPublicId($publicId)
+    {
+        $this->publicId = $publicId;
+    }
+
+    /**
+     * @param string $secretKey
+     */
+    public function setSecretKey($secretKey)
+    {
+        $this->secretKey = $secretKey;
+    }
+
+    /**
+     * @param $method
+     * @param $parameters
+     *
+     * @return mixed
+     */
+    public function __call($method, $parameters)
+    {
+        return $this->client->{$method}(...$parameters);
     }
 }
