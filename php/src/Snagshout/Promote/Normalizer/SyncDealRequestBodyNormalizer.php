@@ -39,6 +39,9 @@ class SyncDealRequestBodyNormalizer extends SerializerAwareNormalizer implements
         if (property_exists($data, 'url')) {
             $object->setUrl($data->{'url'});
         }
+        if (property_exists($data, 'note')) {
+            $object->setNote($data->{'note'});
+        }
         if (property_exists($data, 'state')) {
             $object->setState($data->{'state'});
         }
@@ -50,6 +53,9 @@ class SyncDealRequestBodyNormalizer extends SerializerAwareNormalizer implements
         $data = new \stdClass();
         if (null !== $object->getUrl()) {
             $data->{'url'} = $object->getUrl();
+        }
+        if (null !== $object->getNote()) {
+            $data->{'note'} = $object->getNote();
         }
         if (null !== $object->getState()) {
             $data->{'state'} = $object->getState();

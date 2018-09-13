@@ -20,6 +20,10 @@ class SyncDealRequestBody
     /**
      * @var string
      */
+    protected $note;
+    /**
+     * @var string
+     */
     protected $state;
     /**
      * @return string
@@ -36,6 +40,24 @@ class SyncDealRequestBody
     public function setUrl($url = null)
     {
         $this->url = $url;
+
+        return $this;
+    }
+    /**
+     * @return string
+     */
+    public function getNote()
+    {
+        return $this->note;
+    }
+    /**
+     * @param string $note
+     *
+     * @return self
+     */
+    public function setNote($note = null)
+    {
+        $this->note = $note;
 
         return $this;
     }
