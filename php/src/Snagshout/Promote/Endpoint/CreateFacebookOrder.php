@@ -11,22 +11,31 @@
 
 namespace Snagshout\Promote\Endpoint;
 
-class IndexDeals extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7HttplugEndpoint
+class CreateFacebookOrder extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7HttplugEndpoint
 {
+    /**
+     *
+     *
+     * @param \Snagshout\Promote\Model\CreateFacebookOrderRequestBody $body
+     */
+    public function __construct(\Snagshout\Promote\Model\CreateFacebookOrderRequestBody $body)
+    {
+        $this->body = $body;
+    }
 
     use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
 
     public function getMethod() : string
     {
-        return 'GET';
+        return 'POST';
     }
     public function getUri() : string
     {
-        return '/deals';
+        return '/facebook/order';
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null) : array
     {
-        return [[], null];
+        return $this->getSerializedBody($serializer);
     }
     public function getExtraHeaders() : array
     {
@@ -36,12 +45,11 @@ class IndexDeals extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
      * {@inheritdoc}
      *
      *
-     * @return null|\Snagshout\Promote\Model\Deal[]
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {
-        if (200 === $status) {
-            return $serializer->deserialize($body, 'Snagshout\\Promote\\Model\\Deal[]', 'json');
+        if (204 === $status) {
+            return null;
         }
     }
 }

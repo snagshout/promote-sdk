@@ -149,6 +149,9 @@ class DealNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         if (property_exists($data, 'available')) {
             $object->setAvailable($data->{'available'});
         }
+        if (property_exists($data, 'metadata')) {
+            $object->setMetadata($data->{'metadata'});
+        }
         if (property_exists($data, 'remainingQuantity')) {
             $object->setRemainingQuantity($data->{'remainingQuantity'});
         }
@@ -278,6 +281,9 @@ class DealNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         }
         if (null !== $object->getAvailable()) {
             $data->{'available'} = $object->getAvailable();
+        }
+        if (null !== $object->getMetadata()) {
+            $data->{'metadata'} = $object->getMetadata();
         }
         if (null !== $object->getRemainingQuantity()) {
             $data->{'remainingQuantity'} = $object->getRemainingQuantity();

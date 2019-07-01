@@ -19,32 +19,29 @@ use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
-class SyncDealRequestBodyNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class CompleteFacebookOrderRequestBodyNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type === 'Snagshout\\Promote\\Model\\SyncDealRequestBody';
+        return $type === 'Snagshout\\Promote\\Model\\CompleteFacebookOrderRequestBody';
     }
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \Snagshout\Promote\Model\SyncDealRequestBody;
+        return $data instanceof \Snagshout\Promote\Model\CompleteFacebookOrderRequestBody;
     }
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (!is_object($data)) {
             throw new InvalidArgumentException();
         }
-        $object = new \Snagshout\Promote\Model\SyncDealRequestBody();
-        if (property_exists($data, 'url')) {
-            $object->setUrl($data->{'url'});
+        $object = new \Snagshout\Promote\Model\CompleteFacebookOrderRequestBody();
+        if (property_exists($data, 'email')) {
+            $object->setEmail($data->{'email'});
         }
-        if (property_exists($data, 'note')) {
-            $object->setNote($data->{'note'});
-        }
-        if (property_exists($data, 'state')) {
-            $object->setState($data->{'state'});
+        if (property_exists($data, 'fbUserId')) {
+            $object->setFbUserId($data->{'fbUserId'});
         }
 
         return $object;
@@ -52,14 +49,11 @@ class SyncDealRequestBodyNormalizer implements DenormalizerInterface, Normalizer
     public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
-        if (null !== $object->getUrl()) {
-            $data->{'url'} = $object->getUrl();
+        if (null !== $object->getEmail()) {
+            $data->{'email'} = $object->getEmail();
         }
-        if (null !== $object->getNote()) {
-            $data->{'note'} = $object->getNote();
-        }
-        if (null !== $object->getState()) {
-            $data->{'state'} = $object->getState();
+        if (null !== $object->getFbUserId()) {
+            $data->{'fbUserId'} = $object->getFbUserId();
         }
 
         return $data;

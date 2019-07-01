@@ -159,6 +159,30 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
         return $this->executePsr7Endpoint(new \Snagshout\Promote\Endpoint\ReviewDeal($campaign, $body), $fetch);
     }
     /**
+     *
+     *
+     * @param \Snagshout\Promote\Model\CompleteFacebookOrderRequestBody $body
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Psr\Http\Message\ResponseInterface
+     */
+    public function completeFacebookOrder(\Snagshout\Promote\Model\CompleteFacebookOrderRequestBody $body, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \Snagshout\Promote\Endpoint\CompleteFacebookOrder($body), $fetch);
+    }
+    /**
+     *
+     *
+     * @param \Snagshout\Promote\Model\CreateFacebookOrderRequestBody $body
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Psr\Http\Message\ResponseInterface
+     */
+    public function createFacebookOrder(\Snagshout\Promote\Model\CreateFacebookOrderRequestBody $body, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \Snagshout\Promote\Endpoint\CreateFacebookOrder($body), $fetch);
+    }
+    /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return null|\Snagshout\Promote\Model\Version|\Psr\Http\Message\ResponseInterface
