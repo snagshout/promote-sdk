@@ -142,6 +142,10 @@ class Deal
      */
     protected $available;
     /**
+     * @var mixed
+     */
+    protected $metadata;
+    /**
      * @var int
      */
     protected $remainingQuantity;
@@ -730,6 +734,24 @@ class Deal
     public function setAvailable($available = null)
     {
         $this->available = $available;
+
+        return $this;
+    }
+    /**
+     * @return mixed
+     */
+    public function getMetadata()
+    {
+        return $this->metadata;
+    }
+    /**
+     * @param mixed $metadata
+     *
+     * @return self
+     */
+    public function setMetadata($metadata = null)
+    {
+        $this->metadata = $metadata;
 
         return $this;
     }
