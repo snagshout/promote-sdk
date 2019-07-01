@@ -20,6 +20,12 @@ class SyncDealRequestBody
      */
     protected $url;
     /**
+     * Campaign note.
+     *
+     * @var string
+     */
+    protected $note;
+    /**
      * Deal state on the partner site.
      *
      * @var string
@@ -44,6 +50,28 @@ class SyncDealRequestBody
     public function setUrl(? string $url) : self
     {
         $this->url = $url;
+
+        return $this;
+    }
+    /**
+     * Campaign note.
+     *
+     * @return string
+     */
+    public function getNote() : ? string
+    {
+        return $this->note;
+    }
+    /**
+     * Campaign note.
+     *
+     * @param string $note
+     *
+     * @return self
+     */
+    public function setNote(? string $note) : self
+    {
+        $this->note = $note;
 
         return $this;
     }
