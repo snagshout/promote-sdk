@@ -26,6 +26,10 @@ class Payload
      */
     protected $type;
     /**
+     * @var string
+     */
+    protected $confirmationEmail;
+    /**
      * @return int
      */
     public function getId()
@@ -76,6 +80,24 @@ class Payload
     public function setType($type = null)
     {
         $this->type = $type;
+
+        return $this;
+    }
+    /**
+     * @return string
+     */
+    public function getConfirmationEmail()
+    {
+        return $this->confirmationEmail;
+    }
+    /**
+     * @param string $confirmationEmail
+     *
+     * @return self
+     */
+    public function setConfirmationEmail($confirmationEmail = null)
+    {
+        $this->confirmationEmail = $confirmationEmail;
 
         return $this;
     }

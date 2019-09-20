@@ -45,6 +45,9 @@ class PayloadNormalizer extends SerializerAwareNormalizer implements Denormalize
         if (property_exists($data, 'type')) {
             $object->setType($data->{'type'});
         }
+        if (property_exists($data, 'confirmationEmail')) {
+            $object->setConfirmationEmail($data->{'confirmationEmail'});
+        }
 
         return $object;
     }
@@ -59,6 +62,9 @@ class PayloadNormalizer extends SerializerAwareNormalizer implements Denormalize
         }
         if (null !== $object->getType()) {
             $data->{'type'} = $object->getType();
+        }
+        if (null !== $object->getConfirmationEmail()) {
+            $data->{'confirmationEmail'} = $object->getConfirmationEmail();
         }
 
         return $data;
