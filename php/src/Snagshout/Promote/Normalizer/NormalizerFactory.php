@@ -33,6 +33,8 @@ class NormalizerFactory
         $normalizers[] = new FollowupNormalizer();
         $normalizers[] = new CompleteFacebookOrderRequestBodyNormalizer();
         $normalizers[] = new CreateFacebookOrderRequestBodyNormalizer();
+        $normalizers[] = new GetRebateEmailNormalizer();
+        $normalizers[] = new GetRebateOrPromoNormalizer();
         $normalizers[] = new VersionNormalizer();
         $normalizers[] = new ErrorNormalizer();
         $normalizers[] = new InitializeMigrationBodyNormalizer();
