@@ -72,6 +72,9 @@ class DealNormalizer extends SerializerAwareNormalizer implements DenormalizerIn
             }
             $object->setBoost($values_2);
         }
+        if (property_exists($data, 'actionType')) {
+            $object->setActionType($data->{'actionType'});
+        }
         if (property_exists($data, 'code')) {
             $object->setCode($data->{'code'});
         }
@@ -204,6 +207,9 @@ class DealNormalizer extends SerializerAwareNormalizer implements DenormalizerIn
                 $values_2[] = $value_2;
             }
             $data->{'boost'} = $values_2;
+        }
+        if (null !== $object->getActionType()) {
+            $data->{'actionType'} = $object->getActionType();
         }
         if (null !== $object->getCode()) {
             $data->{'code'} = $object->getCode();

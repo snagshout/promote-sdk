@@ -48,6 +48,10 @@ class Deal
     /**
      * @var string
      */
+    protected $actionType;
+    /**
+     * @var string
+     */
     protected $code;
     /**
      * @var int
@@ -302,6 +306,24 @@ class Deal
     public function setBoost(array $boost = null)
     {
         $this->boost = $boost;
+
+        return $this;
+    }
+    /**
+     * @return string
+     */
+    public function getActionType()
+    {
+        return $this->actionType;
+    }
+    /**
+     * @param string $actionType
+     *
+     * @return self
+     */
+    public function setActionType($actionType = null)
+    {
+        $this->actionType = $actionType;
 
         return $this;
     }
