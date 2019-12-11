@@ -27,6 +27,7 @@ class NormalizerFactory
         $normalizers[] = new SyncDealRequestBodyNormalizer();
         $normalizers[] = new ImpressionNormalizer();
         $normalizers[] = new UnsyncDealRequestBodyNormalizer();
+        $normalizers[] = new UpdateDeliverableRequestBodyNormalizer();
         $normalizers[] = new CategoryNormalizer();
         $normalizers[] = new MediumNormalizer();
         $normalizers[] = new DealNormalizer();
@@ -39,6 +40,7 @@ class NormalizerFactory
         $normalizers[] = new ErrorNormalizer();
         $normalizers[] = new InitializeMigrationBodyNormalizer();
         $normalizers[] = new PayloadNormalizer();
+        $normalizers[] = new StoreConversionIdRequestBodyNormalizer();
         $normalizers[] = new CheckEmailRequestBodyNormalizer();
 
         return $normalizers;
