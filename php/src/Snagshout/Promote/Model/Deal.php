@@ -46,6 +46,10 @@ class Deal
      */
     protected $boost;
     /**
+     * @var float[]
+     */
+    protected $boostWeights;
+    /**
      * @var string
      */
     protected $actionType;
@@ -306,6 +310,24 @@ class Deal
     public function setBoost(array $boost = null)
     {
         $this->boost = $boost;
+
+        return $this;
+    }
+    /**
+     * @return float[]
+     */
+    public function getBoostWeights()
+    {
+        return $this->boostWeights;
+    }
+    /**
+     * @param float[] $boostWeights
+     *
+     * @return self
+     */
+    public function setBoostWeights(array $boostWeights = null)
+    {
+        $this->boostWeights = $boostWeights;
 
         return $this;
     }
