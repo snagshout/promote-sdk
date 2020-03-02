@@ -72,6 +72,13 @@ class DealNormalizer extends SerializerAwareNormalizer implements DenormalizerIn
             }
             $object->setBoost($values_2);
         }
+        if (property_exists($data, 'boostWeights')) {
+            $values_3 = [];
+            foreach ($data->{'boostWeights'} as $value_3) {
+                $values_3[] = $value_3;
+            }
+            $object->setBoostWeights($values_3);
+        }
         if (property_exists($data, 'actionType')) {
             $object->setActionType($data->{'actionType'});
         }
@@ -97,11 +104,11 @@ class DealNormalizer extends SerializerAwareNormalizer implements DenormalizerIn
             $object->setIsNSFW($data->{'isNSFW'});
         }
         if (property_exists($data, 'featured')) {
-            $values_3 = [];
-            foreach ($data->{'featured'} as $value_3) {
-                $values_3[] = $value_3;
+            $values_4 = [];
+            foreach ($data->{'featured'} as $value_4) {
+                $values_4[] = $value_4;
             }
-            $object->setFeatured($values_3);
+            $object->setFeatured($values_4);
         }
         if (property_exists($data, 'isUnlimited')) {
             $object->setIsUnlimited($data->{'isUnlimited'});
@@ -208,6 +215,13 @@ class DealNormalizer extends SerializerAwareNormalizer implements DenormalizerIn
             }
             $data->{'boost'} = $values_2;
         }
+        if (null !== $object->getBoostWeights()) {
+            $values_3 = [];
+            foreach ($object->getBoostWeights() as $value_3) {
+                $values_3[] = $value_3;
+            }
+            $data->{'boostWeights'} = $values_3;
+        }
         if (null !== $object->getActionType()) {
             $data->{'actionType'} = $object->getActionType();
         }
@@ -233,11 +247,11 @@ class DealNormalizer extends SerializerAwareNormalizer implements DenormalizerIn
             $data->{'isNSFW'} = $object->getIsNSFW();
         }
         if (null !== $object->getFeatured()) {
-            $values_3 = [];
-            foreach ($object->getFeatured() as $value_3) {
-                $values_3[] = $value_3;
+            $values_4 = [];
+            foreach ($object->getFeatured() as $value_4) {
+                $values_4[] = $value_4;
             }
-            $data->{'featured'} = $values_3;
+            $data->{'featured'} = $values_4;
         }
         if (null !== $object->getIsUnlimited()) {
             $data->{'isUnlimited'} = $object->getIsUnlimited();

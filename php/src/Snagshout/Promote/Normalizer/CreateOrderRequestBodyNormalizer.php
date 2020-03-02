@@ -39,6 +39,9 @@ class CreateOrderRequestBodyNormalizer extends SerializerAwareNormalizer impleme
         if (property_exists($data, 'email')) {
             $object->setEmail($data->{'email'});
         }
+        if (property_exists($data, 'name')) {
+            $object->setName($data->{'name'});
+        }
 
         return $object;
     }
@@ -47,6 +50,9 @@ class CreateOrderRequestBodyNormalizer extends SerializerAwareNormalizer impleme
         $data = new \stdClass();
         if (null !== $object->getEmail()) {
             $data->{'email'} = $object->getEmail();
+        }
+        if (null !== $object->getName()) {
+            $data->{'name'} = $object->getName();
         }
 
         return $data;

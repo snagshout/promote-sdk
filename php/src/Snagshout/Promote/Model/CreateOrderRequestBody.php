@@ -18,6 +18,10 @@ class CreateOrderRequestBody
      */
     protected $email;
     /**
+     * @var string
+     */
+    protected $name;
+    /**
      * @return string
      */
     public function getEmail()
@@ -32,6 +36,24 @@ class CreateOrderRequestBody
     public function setEmail($email = null)
     {
         $this->email = $email;
+
+        return $this;
+    }
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+    /**
+     * @param string $name
+     *
+     * @return self
+     */
+    public function setName($name = null)
+    {
+        $this->name = $name;
 
         return $this;
     }
