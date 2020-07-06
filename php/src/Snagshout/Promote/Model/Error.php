@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Copyright 2016-2018, Snagshout <developers@snagshout.com>
+ * Copyright 2016-2020, Snagshout <developers@snagshout.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -21,6 +21,10 @@ class Error
      * @var int
      */
     protected $status;
+    /**
+     * @var mixed
+     */
+    protected $extra;
     /**
      * @return string
      */
@@ -54,6 +58,24 @@ class Error
     public function setStatus($status = null)
     {
         $this->status = $status;
+
+        return $this;
+    }
+    /**
+     * @return mixed
+     */
+    public function getExtra()
+    {
+        return $this->extra;
+    }
+    /**
+     * @param mixed $extra
+     *
+     * @return self
+     */
+    public function setExtra($extra = null)
+    {
+        $this->extra = $extra;
 
         return $this;
     }

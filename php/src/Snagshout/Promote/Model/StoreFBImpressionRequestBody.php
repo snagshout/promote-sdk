@@ -11,27 +11,27 @@
 
 namespace Snagshout\Promote\Model;
 
-class CheckEmailRequestBody
+class StoreFBImpressionRequestBody
 {
     /**
-     * @var string
+     * @var mixed
      */
-    protected $email;
+    protected $fbAdId;
     /**
-     * @return string
+     * @return mixed
      */
-    public function getEmail()
+    public function getFbAdId()
     {
-        return $this->email;
+        return $this->fbAdId;
     }
     /**
-     * @param string $email
+     * @param mixed $fbAdId
      *
      * @return self
      */
-    public function setEmail($email = null)
+    public function setFbAdId($fbAdId = null)
     {
-        $this->email = $email;
+        $this->fbAdId = $fbAdId;
 
         return $this;
     }

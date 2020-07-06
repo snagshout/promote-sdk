@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Copyright 2016-2018, Snagshout <developers@snagshout.com>
+ * Copyright 2016-2020, Snagshout <developers@snagshout.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -39,6 +39,9 @@ class GetRebateOrPromoNormalizer extends SerializerAwareNormalizer implements De
         if (property_exists($data, 'fbUserId')) {
             $object->setFbUserId($data->{'fbUserId'});
         }
+        if (property_exists($data, 'adId')) {
+            $object->setAdId($data->{'adId'});
+        }
 
         return $object;
     }
@@ -47,6 +50,9 @@ class GetRebateOrPromoNormalizer extends SerializerAwareNormalizer implements De
         $data = new \stdClass();
         if (null !== $object->getFbUserId()) {
             $data->{'fbUserId'} = $object->getFbUserId();
+        }
+        if (null !== $object->getAdId()) {
+            $data->{'adId'} = $object->getAdId();
         }
 
         return $data;

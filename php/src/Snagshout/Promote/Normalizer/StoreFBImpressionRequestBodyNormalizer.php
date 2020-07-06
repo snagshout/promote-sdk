@@ -15,11 +15,11 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\SerializerAwareNormalizer;
 
-class CreateOrderRequestBodyNormalizer extends SerializerAwareNormalizer implements DenormalizerInterface, NormalizerInterface
+class StoreFBImpressionRequestBodyNormalizer extends SerializerAwareNormalizer implements DenormalizerInterface, NormalizerInterface
 {
     public function supportsDenormalization($data, $type, $format = null)
     {
-        if ($type !== 'Snagshout\\Promote\\Model\\CreateOrderRequestBody') {
+        if ($type !== 'Snagshout\\Promote\\Model\\StoreFBImpressionRequestBody') {
             return false;
         }
 
@@ -27,7 +27,7 @@ class CreateOrderRequestBodyNormalizer extends SerializerAwareNormalizer impleme
     }
     public function supportsNormalization($data, $format = null)
     {
-        if ($data instanceof \Snagshout\Promote\Model\CreateOrderRequestBody) {
+        if ($data instanceof \Snagshout\Promote\Model\StoreFBImpressionRequestBody) {
             return true;
         }
 
@@ -35,12 +35,9 @@ class CreateOrderRequestBodyNormalizer extends SerializerAwareNormalizer impleme
     }
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        $object = new \Snagshout\Promote\Model\CreateOrderRequestBody();
-        if (property_exists($data, 'email')) {
-            $object->setEmail($data->{'email'});
-        }
-        if (property_exists($data, 'name')) {
-            $object->setName($data->{'name'});
+        $object = new \Snagshout\Promote\Model\StoreFBImpressionRequestBody();
+        if (property_exists($data, 'fbAdId')) {
+            $object->setFbAdId($data->{'fbAdId'});
         }
 
         return $object;
@@ -48,11 +45,8 @@ class CreateOrderRequestBodyNormalizer extends SerializerAwareNormalizer impleme
     public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
-        if (null !== $object->getEmail()) {
-            $data->{'email'} = $object->getEmail();
-        }
-        if (null !== $object->getName()) {
-            $data->{'name'} = $object->getName();
+        if (null !== $object->getFbAdId()) {
+            $data->{'fbAdId'} = $object->getFbAdId();
         }
 
         return $data;

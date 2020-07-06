@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Copyright 2016-2018, Snagshout <developers@snagshout.com>
+ * Copyright 2016-2020, Snagshout <developers@snagshout.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -42,6 +42,9 @@ class ErrorNormalizer extends SerializerAwareNormalizer implements DenormalizerI
         if (property_exists($data, 'status')) {
             $object->setStatus($data->{'status'});
         }
+        if (property_exists($data, 'extra')) {
+            $object->setExtra($data->{'extra'});
+        }
 
         return $object;
     }
@@ -53,6 +56,9 @@ class ErrorNormalizer extends SerializerAwareNormalizer implements DenormalizerI
         }
         if (null !== $object->getStatus()) {
             $data->{'status'} = $object->getStatus();
+        }
+        if (null !== $object->getExtra()) {
+            $data->{'extra'} = $object->getExtra();
         }
 
         return $data;

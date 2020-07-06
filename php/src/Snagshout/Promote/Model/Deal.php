@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Copyright 2016-2018, Snagshout <developers@snagshout.com>
+ * Copyright 2016-2020, Snagshout <developers@snagshout.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -53,6 +53,10 @@ class Deal
      * @var string
      */
     protected $actionType;
+    /**
+     * @var mixed
+     */
+    protected $actionMetadata;
     /**
      * @var string
      */
@@ -346,6 +350,24 @@ class Deal
     public function setActionType($actionType = null)
     {
         $this->actionType = $actionType;
+
+        return $this;
+    }
+    /**
+     * @return mixed
+     */
+    public function getActionMetadata()
+    {
+        return $this->actionMetadata;
+    }
+    /**
+     * @param mixed $actionMetadata
+     *
+     * @return self
+     */
+    public function setActionMetadata($actionMetadata = null)
+    {
+        $this->actionMetadata = $actionMetadata;
 
         return $this;
     }

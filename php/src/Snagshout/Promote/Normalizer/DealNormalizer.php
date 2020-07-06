@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Copyright 2016-2018, Snagshout <developers@snagshout.com>
+ * Copyright 2016-2020, Snagshout <developers@snagshout.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -81,6 +81,9 @@ class DealNormalizer extends SerializerAwareNormalizer implements DenormalizerIn
         }
         if (property_exists($data, 'actionType')) {
             $object->setActionType($data->{'actionType'});
+        }
+        if (property_exists($data, 'actionMetadata')) {
+            $object->setActionMetadata($data->{'actionMetadata'});
         }
         if (property_exists($data, 'code')) {
             $object->setCode($data->{'code'});
@@ -224,6 +227,9 @@ class DealNormalizer extends SerializerAwareNormalizer implements DenormalizerIn
         }
         if (null !== $object->getActionType()) {
             $data->{'actionType'} = $object->getActionType();
+        }
+        if (null !== $object->getActionMetadata()) {
+            $data->{'actionMetadata'} = $object->getActionMetadata();
         }
         if (null !== $object->getCode()) {
             $data->{'code'} = $object->getCode();
