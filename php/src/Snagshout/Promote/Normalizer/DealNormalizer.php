@@ -125,8 +125,14 @@ class DealNormalizer extends SerializerAwareNormalizer implements DenormalizerIn
         if (property_exists($data, 'listingUrl')) {
             $object->setListingUrl($data->{'listingUrl'});
         }
+        if (property_exists($data, 'reviewUrl')) {
+            $object->setReviewUrl($data->{'reviewUrl'});
+        }
         if (property_exists($data, 'marketplace')) {
             $object->setMarketplace($data->{'marketplace'});
+        }
+        if (property_exists($data, 'marketplaceId')) {
+            $object->setMarketplaceId($data->{'marketplaceId'});
         }
         if (property_exists($data, 'payloadType')) {
             $object->setPayloadType($data->{'payloadType'});
@@ -271,8 +277,14 @@ class DealNormalizer extends SerializerAwareNormalizer implements DenormalizerIn
         if (null !== $object->getListingUrl()) {
             $data->{'listingUrl'} = $object->getListingUrl();
         }
+        if (null !== $object->getReviewUrl()) {
+            $data->{'reviewUrl'} = $object->getReviewUrl();
+        }
         if (null !== $object->getMarketplace()) {
             $data->{'marketplace'} = $object->getMarketplace();
+        }
+        if (null !== $object->getMarketplaceId()) {
+            $data->{'marketplaceId'} = $object->getMarketplaceId();
         }
         if (null !== $object->getPayloadType()) {
             $data->{'payloadType'} = $object->getPayloadType();
