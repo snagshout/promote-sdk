@@ -108,7 +108,15 @@ class Deal
     /**
      * @var string
      */
+    protected $reviewUrl;
+    /**
+     * @var string
+     */
     protected $marketplace;
+    /**
+     * @var string
+     */
+    protected $marketplaceId;
     /**
      * @var string
      */
@@ -590,6 +598,24 @@ class Deal
     /**
      * @return string
      */
+    public function getReviewUrl()
+    {
+        return $this->reviewUrl;
+    }
+    /**
+     * @param string $reviewUrl
+     *
+     * @return self
+     */
+    public function setReviewUrl($reviewUrl = null)
+    {
+        $this->reviewUrl = $reviewUrl;
+
+        return $this;
+    }
+    /**
+     * @return string
+     */
     public function getMarketplace()
     {
         return $this->marketplace;
@@ -602,6 +628,24 @@ class Deal
     public function setMarketplace($marketplace = null)
     {
         $this->marketplace = $marketplace;
+
+        return $this;
+    }
+    /**
+     * @return string
+     */
+    public function getMarketplaceId()
+    {
+        return $this->marketplaceId;
+    }
+    /**
+     * @param string $marketplaceId
+     *
+     * @return self
+     */
+    public function setMarketplaceId($marketplaceId = null)
+    {
+        $this->marketplaceId = $marketplaceId;
 
         return $this;
     }
