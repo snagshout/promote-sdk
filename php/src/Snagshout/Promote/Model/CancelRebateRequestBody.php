@@ -53,7 +53,7 @@ class CancelRebateRequestBody
      *
      * @return self
      */
-    public function setPromoteOrderId(int $promoteOrderId = null): ConfirmRebateRequestBody
+    public function setPromoteOrderId(int $promoteOrderId = null): CancelRebateRequestBody
     {
         $this->promoteOrderId = $promoteOrderId;
 
