@@ -42,6 +42,9 @@ class ConfirmRebateRequestBodyNormalizer extends SerializerAwareNormalizer imple
         if (property_exists($data, 'code')) {
             $object->setCode($data->{'code'});
         }
+        if (property_exists($data, 'promoteOrderId')) {
+            $object->setPromoteOrderId($data->{'promoteOrderId'});
+        }
 
         return $object;
     }
@@ -53,6 +56,9 @@ class ConfirmRebateRequestBodyNormalizer extends SerializerAwareNormalizer imple
         }
         if (null !== $object->getCode()) {
             $data->{'code'} = $object->getCode();
+        }
+        if (null !== $object->getPromoteOrderId()) {
+            $data->{'promoteOrderId'} = $object->getPromoteOrderId();
         }
 
         return $data;

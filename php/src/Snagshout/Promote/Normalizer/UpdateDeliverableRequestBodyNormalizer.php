@@ -42,6 +42,9 @@ class UpdateDeliverableRequestBodyNormalizer extends SerializerAwareNormalizer i
         if (property_exists($data, 'deliverable')) {
             $object->setDeliverable($data->{'deliverable'});
         }
+        if (property_exists($data, 'promoteOrderId')) {
+            $object->setPromoteOrderId($data->{'promoteOrderId'});
+        }
 
         return $object;
     }
@@ -53,6 +56,9 @@ class UpdateDeliverableRequestBodyNormalizer extends SerializerAwareNormalizer i
         }
         if (null !== $object->getDeliverable()) {
             $data->{'deliverable'} = $object->getDeliverable();
+        }
+        if (null !== $object->getPromoteOrderId()) {
+            $data->{'promoteOrderId'} = $object->getPromoteOrderId();
         }
 
         return $data;

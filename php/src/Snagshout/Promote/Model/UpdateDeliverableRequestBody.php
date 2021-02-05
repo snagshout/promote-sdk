@@ -22,6 +22,10 @@ class UpdateDeliverableRequestBody
      */
     protected $deliverable;
     /**
+     * @var int
+     */
+    protected $promoteOrderId;
+    /**
      * @return string
      */
     public function getEmail()
@@ -54,6 +58,26 @@ class UpdateDeliverableRequestBody
     public function setDeliverable($deliverable = null)
     {
         $this->deliverable = $deliverable;
+
+        return $this;
+    }
+
+    /**
+     * @return integer
+     */
+    public function getPromoteOrderId(): int
+    {
+        return $this->promoteOrderId;
+    }
+
+    /**
+     * @param int|null $promoteOrderId
+     *
+     * @return self
+     */
+    public function setPromoteOrderId(int $promoteOrderId = null): ConfirmRebateRequestBody
+    {
+        $this->promoteOrderId = $promoteOrderId;
 
         return $this;
     }
