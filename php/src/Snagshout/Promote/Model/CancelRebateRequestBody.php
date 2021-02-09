@@ -18,6 +18,10 @@ class CancelRebateRequestBody
      */
     protected $email;
     /**
+     * @var int
+     */
+    protected $promoteOrderId;
+    /**
      * @return string
      */
     public function getEmail()
@@ -32,6 +36,26 @@ class CancelRebateRequestBody
     public function setEmail($email = null)
     {
         $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * @return integer
+     */
+    public function getPromoteOrderId(): int
+    {
+        return $this->promoteOrderId;
+    }
+
+    /**
+     * @param int|null $promoteOrderId
+     *
+     * @return self
+     */
+    public function setPromoteOrderId(int $promoteOrderId = null): CancelRebateRequestBody
+    {
+        $this->promoteOrderId = $promoteOrderId;
 
         return $this;
     }

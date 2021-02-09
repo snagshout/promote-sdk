@@ -39,6 +39,9 @@ class CancelRebateRequestBodyNormalizer extends SerializerAwareNormalizer implem
         if (property_exists($data, 'email')) {
             $object->setEmail($data->{'email'});
         }
+        if (property_exists($data, 'promoteOrderId')) {
+            $object->setPromoteOrderId($data->{'promoteOrderId'});
+        }
 
         return $object;
     }
@@ -47,6 +50,9 @@ class CancelRebateRequestBodyNormalizer extends SerializerAwareNormalizer implem
         $data = new \stdClass();
         if (null !== $object->getEmail()) {
             $data->{'email'} = $object->getEmail();
+        }
+        if (null !== $object->getPromoteOrderId()) {
+            $data->{'promoteOrderId'} = $object->getPromoteOrderId();
         }
 
         return $data;
