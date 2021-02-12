@@ -75,8 +75,9 @@ class UpdateDeliverableRequestBody
      *
      * @return self
      */
-    public function setPromoteOrderId(int $promoteOrderId = null): UpdateDeliverableRequestBody
-    {
+    public function setPromoteOrderId(
+        int $promoteOrderId = null
+    ) : UpdateDeliverableRequestBody {
         $this->promoteOrderId = $promoteOrderId;
 
         return $this;
