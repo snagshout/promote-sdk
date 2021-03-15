@@ -182,6 +182,11 @@ class Deal
      */
     protected $scheduledFollowup;
     /**
+     * @var int
+     */
+    protected $dailyLimit;
+
+    /**
      * @return int
      */
     public function getCampaignId()
@@ -934,6 +939,24 @@ class Deal
     public function setScheduledFollowup($scheduledFollowup = null)
     {
         $this->scheduledFollowup = $scheduledFollowup;
+
+        return $this;
+    }
+    /**
+     * @return int|null
+     */
+    public function getDailyLimit(): int
+    {
+        return $this->dailyLimit;
+    }
+    /**
+     * @param int|null $dailyLimit
+     *
+     * @return self
+     */
+    public function setDailyLimit(int $dailyLimit = null): Deal
+    {
+        $this->dailyLimit = $dailyLimit;
 
         return $this;
     }
