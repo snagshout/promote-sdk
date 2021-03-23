@@ -182,6 +182,9 @@ class DealNormalizer extends SerializerAwareNormalizer implements DenormalizerIn
         if (property_exists($data, 'scheduledFollowup')) {
             $object->setScheduledFollowup($data->{'scheduledFollowup'});
         }
+        if (property_exists($data, 'dailyLimit')) {
+            $object->setDailyLimit($data->{'dailyLimit'});
+        }
 
         return $object;
     }
@@ -333,6 +336,9 @@ class DealNormalizer extends SerializerAwareNormalizer implements DenormalizerIn
         }
         if (null !== $object->getScheduledFollowup()) {
             $data->{'scheduledFollowup'} = $object->getScheduledFollowup();
+        }
+        if (null !== $object->getDailyLimit()) {
+            $data->{'dailyLimit'} = $object->getDailyLimit();
         }
 
         return $data;
