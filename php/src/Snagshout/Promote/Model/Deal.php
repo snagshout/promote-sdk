@@ -945,7 +945,7 @@ class Deal
     /**
      * @return int|null
      */
-    public function getDailyLimit(): int
+    public function getDailyLimit(): ?int
     {
         return $this->dailyLimit;
     }
