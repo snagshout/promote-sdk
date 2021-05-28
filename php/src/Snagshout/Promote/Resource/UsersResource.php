@@ -79,4 +79,35 @@ class UsersResource extends Resource
 
         return $response;
     }
+
+    /**
+     *
+     *
+     * @param \Snagshout\Promote\Model\CheckEmailRequestBody $body
+     * @param array  $parameters List of parameters
+     * @param string $fetch      Fetch mode (object or response)
+     *
+     * @return \Psr\Http\Message\ResponseInterface|\Snagshout\Promote\Model\Error
+     */
+    public function requestPayout(\Snagshout\Promote\Model\RequestPayout $body, $parameters = [], $fetch = self::FETCH_OBJECT)
+    {
+        $queryParam = new QueryParam();
+        $url = '/api/v1/payouts';
+        $url = $url . ('?' . $queryParam->buildQueryString($parameters));
+        $headers = array_merge(['Host' => 'localhost'], $queryParam->buildHeaders($parameters));
+        $body = $this->serializer->serialize($body, 'json');
+        $request = $this->messageFactory->createRequest('POST', $url, $headers, $body);
+        $promise = $this->httpClient->sendAsyncRequest($request);
+        if (self::FETCH_PROMISE === $fetch) {
+            return $promise;
+        }
+        $response = $promise->wait();
+        if (self::FETCH_OBJECT == $fetch) {
+            if ('422' == $response->getStatusCode()) {
+                return $this->serializer->deserialize((string) $response->getBody(), 'Snagshout\\Promote\\Model\\Error', 'json');
+            }
+        }
+
+        return $response;
+    }
 }
