@@ -91,6 +91,9 @@ class UsersResource extends Resource
      */
     public function requestPayout(\Snagshout\Promote\Model\RequestPayout $body, $parameters = [], $fetch = self::FETCH_OBJECT)
     {
+        if(empty($body->getEmail())) {
+            throw new \Exception('Email is empty');
+        }
         $queryParam = new QueryParam();
         $url = '/api/v1/payouts';
         $url = $url . ('?' . $queryParam->buildQueryString($parameters));
