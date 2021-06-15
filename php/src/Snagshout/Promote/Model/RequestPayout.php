@@ -19,9 +19,9 @@ class RequestPayout
     protected $email;
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getEmail(): string
+    public function getEmail()
     {
         return $this->email;
     }
@@ -30,7 +30,7 @@ class RequestPayout
      * @param null $email
      * @return self
      */
-    public function setEmail($email= null): RequestPayout
+    public function setEmail($email= null)
     {
         $this->email = $email;
 
