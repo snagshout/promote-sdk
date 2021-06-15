@@ -26,7 +26,7 @@ class SyncEmailForOrders
     /**
      * @return string
      */
-    public function getNewEmail(): string
+    public function getNewEmail()
     {
         return $this->newEmail;
     }
@@ -35,7 +35,7 @@ class SyncEmailForOrders
      * @param null $newEmail
      * @return self
      */
-    public function setNewEmail($newEmail): SyncEmailForOrders
+    public function setNewEmail($newEmail)
     {
         $this->newEmail = $newEmail;
 
@@ -45,7 +45,7 @@ class SyncEmailForOrders
     /**
      * @return string
      */
-    public function getOldEmail(): string
+    public function getOldEmail()
     {
         return $this->oldEmail;
     }
@@ -55,7 +55,7 @@ class SyncEmailForOrders
      * @param $oldEmail
      * @return self
      */
-    public function setOldEmail($oldEmail): SyncEmailForOrders
+    public function setOldEmail($oldEmail)
     {
         $this->oldEmail = $oldEmail;
 
