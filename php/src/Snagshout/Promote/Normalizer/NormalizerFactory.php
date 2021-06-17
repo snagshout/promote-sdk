@@ -44,6 +44,7 @@ class NormalizerFactory
         $normalizers[] = new StoreConversionIdRequestBodyNormalizer();
         $normalizers[] = new CheckEmailRequestBodyNormalizer();
         $normalizers[] = new PayoutRequestBodyNormalizer();
+        $normalizers[] = new SyncEmailForOrdersRequestBodyNormalizer();
 
         return $normalizers;
     }
