@@ -425,7 +425,6 @@ class DealsResource extends Resource
      * @param string $fetch Fetch mode (object or response)
      *
      * @return \Psr\Http\Message\ResponseInterface|\Snagshout\Promote\Model\Error
-     * @throws \Exception
      */
     public function createSurveyReview($orderId, \Snagshout\Promote\Model\CreateSurveyReviewRequestBody $body, $parameters = [], $fetch = self::FETCH_OBJECT)
     {
