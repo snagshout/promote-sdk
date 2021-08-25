@@ -17,7 +17,7 @@ use Joli\Jane\OpenApi\Runtime\Client\Resource;
 class DealsResource extends Resource
 {
     /**
-     * 
+     *
      *
      * @param array  $parameters List of parameters
      * @param string $fetch      Fetch mode (object or response)
@@ -46,7 +46,7 @@ class DealsResource extends Resource
         return $response;
     }
     /**
-     * 
+     *
      *
      * @param int $campaign ID of campaign to fetch
      * @param array  $parameters List of parameters
@@ -77,10 +77,10 @@ class DealsResource extends Resource
         return $response;
     }
     /**
-     * 
+     *
      *
      * @param int $campaign ID of campaign to fetch
-     * @param \Snagshout\Promote\Model\CreateOrderRequestBody $body 
+     * @param \Snagshout\Promote\Model\CreateOrderRequestBody $body
      * @param array  $parameters List of parameters
      * @param string $fetch      Fetch mode (object or response)
      *
@@ -118,10 +118,10 @@ class DealsResource extends Resource
         return $response;
     }
     /**
-     * 
+     *
      *
      * @param int $campaign ID of campaign to fetch
-     * @param \Snagshout\Promote\Model\ConfirmRebateRequestBody $body 
+     * @param \Snagshout\Promote\Model\ConfirmRebateRequestBody $body
      * @param array  $parameters List of parameters
      * @param string $fetch      Fetch mode (object or response)
      *
@@ -153,10 +153,10 @@ class DealsResource extends Resource
         return $response;
     }
     /**
-     * 
+     *
      *
      * @param int $campaign ID of campaign to fetch
-     * @param \Snagshout\Promote\Model\UpdateDeliverableRequestBody $body 
+     * @param \Snagshout\Promote\Model\UpdateDeliverableRequestBody $body
      * @param array  $parameters List of parameters
      * @param string $fetch      Fetch mode (object or response)
      *
@@ -188,10 +188,10 @@ class DealsResource extends Resource
         return $response;
     }
     /**
-     * 
+     *
      *
      * @param int $campaign ID of campaign to fetch
-     * @param \Snagshout\Promote\Model\CancelRebateRequestBody $body 
+     * @param \Snagshout\Promote\Model\CancelRebateRequestBody $body
      * @param array  $parameters List of parameters
      * @param string $fetch      Fetch mode (object or response)
      *
@@ -223,10 +223,10 @@ class DealsResource extends Resource
         return $response;
     }
     /**
-     * 
+     *
      *
      * @param int $campaign ID of campaign to fetch
-     * @param \Snagshout\Promote\Model\UnsyncDealRequestBody $body 
+     * @param \Snagshout\Promote\Model\UnsyncDealRequestBody $body
      * @param array  $parameters List of parameters
      * @param string $fetch      Fetch mode (object or response)
      *
@@ -250,10 +250,10 @@ class DealsResource extends Resource
         return $response;
     }
     /**
-     * 
+     *
      *
      * @param int $campaign ID of campaign to fetch
-     * @param \Snagshout\Promote\Model\SyncDealRequestBody $body 
+     * @param \Snagshout\Promote\Model\SyncDealRequestBody $body
      * @param array  $parameters List of parameters
      * @param string $fetch      Fetch mode (object or response)
      *
@@ -277,10 +277,10 @@ class DealsResource extends Resource
         return $response;
     }
     /**
-     * 
+     *
      *
      * @param int $campaign ID of campaign to fetch
-     * @param \Snagshout\Promote\Model\DealImpressionsRequestBody $body 
+     * @param \Snagshout\Promote\Model\DealImpressionsRequestBody $body
      * @param array  $parameters List of parameters
      * @param string $fetch      Fetch mode (object or response)
      *
@@ -304,10 +304,10 @@ class DealsResource extends Resource
         return $response;
     }
     /**
-     * 
+     *
      *
      * @param int $campaign ID of campaign to notify
-     * @param \Snagshout\Promote\Model\NotifyDealRequestBody $body 
+     * @param \Snagshout\Promote\Model\NotifyDealRequestBody $body
      * @param array  $parameters List of parameters
      * @param string $fetch      Fetch mode (object or response)
      *
@@ -331,10 +331,10 @@ class DealsResource extends Resource
         return $response;
     }
     /**
-     * 
+     *
      *
      * @param int $campaign ID of campaign to flag
-     * @param \Snagshout\Promote\Model\FlagDealRequestBody $body 
+     * @param \Snagshout\Promote\Model\FlagDealRequestBody $body
      * @param array  $parameters List of parameters
      * @param string $fetch      Fetch mode (object or response)
      *
@@ -358,10 +358,10 @@ class DealsResource extends Resource
         return $response;
     }
     /**
-     * 
+     *
      *
      * @param int $campaign ID of campaign that received a review
-     * @param \Snagshout\Promote\Model\ReviewFoundRequestBody $body 
+     * @param \Snagshout\Promote\Model\ReviewFoundRequestBody $body
      * @param array  $parameters List of parameters
      * @param string $fetch      Fetch mode (object or response)
      *
@@ -412,6 +412,62 @@ class DealsResource extends Resource
                 return $this->serializer->deserialize((string) $response->getBody(), 'Snagshout\\Promote\\Model\\Error', 'json');
             }
         }
+
+        return $response;
+    }
+
+    /**
+     * Used for sending the survey review to the promote API
+     *
+     * @param $orderId
+     * @param \Snagshout\Promote\Model\CreateSurveyReviewRequestBody $body
+     * @param array $parameters List of parameters
+     * @param string $fetch Fetch mode (object or response)
+     *
+     * @return \Psr\Http\Message\ResponseInterface|\Snagshout\Promote\Model\Error
+     * @throws \Exception
+     */
+    public function createSurveyReview($orderId, \Snagshout\Promote\Model\CreateSurveyReviewRequestBody $body, $parameters = [], $fetch = self::FETCH_OBJECT)
+    {
+        $queryParam = new QueryParam();
+        $url = '/api/v1/orders/{orderId}/survey-review';
+        $url = str_replace('{orderId}', urlencode($orderId), $url);
+        $url = $url . ('?' . $queryParam->buildQueryString($parameters));
+        $headers = array_merge(['Host' => 'localhost'], $queryParam->buildHeaders($parameters));
+        $body = $this->serializer->serialize($body, 'json');
+        $request = $this->messageFactory->createRequest('POST', $url, $headers, $body);
+        $promise = $this->httpClient->sendAsyncRequest($request);
+        if (self::FETCH_PROMISE === $fetch) {
+            return $promise;
+        }
+        $response = $promise->wait();
+
+        return $response;
+    }
+
+    /**
+     * Used for updating reviewer name on the promote API
+     *
+     * @param \Snagshout\Promote\Model\UpdateReviewNameRequestBody $body
+     * @param array $parameters List of parameters
+     * @param string $fetch Fetch mode (object or response)
+     *
+     * @return \Psr\Http\Message\ResponseInterface|\Snagshout\Promote\Model\Error
+     * @throws \Exception
+     */
+    public function updateReviewName(\Snagshout\Promote\Model\UpdateReviewNameRequestBody $body, $parameters = [], $fetch = self::FETCH_OBJECT)
+    {
+        $queryParam = new QueryParam();
+        $url = '/api/v1/orders/review-name';
+        $url = $url . ('?' . $queryParam->buildQueryString($parameters));
+        $headers = array_merge(['Host' => 'localhost'], $queryParam->buildHeaders($parameters));
+        $body = $this->serializer->serialize($body, 'json');
+        $request = $this->messageFactory->createRequest('POST', $url, $headers, $body);
+        $promise = $this->httpClient->sendAsyncRequest($request);
+        if (self::FETCH_PROMISE === $fetch) {
+            return $promise;
+        }
+        $response = $promise->wait();
 
         return $response;
     }
