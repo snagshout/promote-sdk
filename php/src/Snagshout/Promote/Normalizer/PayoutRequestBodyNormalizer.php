@@ -39,6 +39,12 @@ class PayoutRequestBodyNormalizer extends SerializerAwareNormalizer implements D
         if (property_exists($data, 'email')) {
             $object->setEmail($data->{'email'});
         }
+        if (property_exists($data, 'recipientWallet')) {
+            $object->setRecipientWallet($data->{'recipientWallet'});
+        }
+        if (property_exists($data, 'phoneNumber')) {
+            $object->setPhoneNumber($data->{'phoneNumber'});
+        }
 
         return $object;
     }
@@ -47,6 +53,12 @@ class PayoutRequestBodyNormalizer extends SerializerAwareNormalizer implements D
         $data = new \stdClass();
         if (null !== $object->getEmail()) {
             $data->{'email'} = $object->getEmail();
+        }
+        if (null !== $object->getRecipientWallet()) {
+            $data->{'recipientWallet'} = $object->getRecipientWallet();
+        }
+        if (null !== $object->getPhoneNumber()) {
+            $data->{'phoneNumber'} = $object->getPhoneNumber();
         }
 
         return $data;
