@@ -137,6 +137,9 @@ class DealNormalizer extends SerializerAwareNormalizer implements DenormalizerIn
         if (property_exists($data, 'payloadType')) {
             $object->setPayloadType($data->{'payloadType'});
         }
+        if (property_exists($data, 'completeWithin')) {
+            $object->setCompleteWithin($data->{'completeWithin'});
+        }
         if (property_exists($data, 'requireEmail')) {
             $object->setRequireEmail($data->{'requireEmail'});
         }
