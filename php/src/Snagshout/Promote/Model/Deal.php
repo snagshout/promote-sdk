@@ -122,6 +122,10 @@ class Deal
      */
     protected $payloadType;
     /**
+     * @var int
+     */
+    protected $completeWithin;
+    /**
      * @var bool
      */
     protected $requireEmail;
@@ -669,6 +673,24 @@ class Deal
     public function setPayloadType($payloadType = null)
     {
         $this->payloadType = $payloadType;
+
+        return $this;
+    }
+    /**
+     * @return int|null
+     */
+    public function getCompleteWithin()
+    {
+        return $this->completeWithin;
+    }
+    /**
+     * @param int|null $completeWithin
+     *
+     * @return self
+     */
+    public function setCompleteWithin($completeWithin = null)
+    {
+        $this->completeWithin = $completeWithin;
 
         return $this;
     }
