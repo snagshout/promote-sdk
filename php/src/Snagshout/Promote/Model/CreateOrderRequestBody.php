@@ -22,6 +22,14 @@ class CreateOrderRequestBody
      */
     protected $name;
     /**
+     * @var string
+     */
+    protected $completeBy;
+    /**
+     * @var bool
+     */
+    protected $wasCompleteBySet = false;
+    /**
      * @return string
      */
     public function getEmail()
@@ -54,6 +62,32 @@ class CreateOrderRequestBody
     public function setName($name = null)
     {
         $this->name = $name;
+
+        return $this;
+    }
+    /**
+     * @return bool
+     */
+    public function wasCompleteBySet()
+    {
+        return (bool) $this->wasCompleteBySet;
+    }
+    /**
+     * @return string
+     */
+    public function getCompleteBy()
+    {
+        return $this->completeBy;
+    }
+    /**
+     * @param string $completeBy
+     *
+     * @return self
+     */
+    public function setCompleteBy($completeBy = null)
+    {
+        $this->wasCompleteBySet = true;
+        $this->completeBy = $completeBy;
 
         return $this;
     }
