@@ -30,6 +30,10 @@ class Payload
      */
     protected $confirmationEmail;
     /**
+     * @var string
+     */
+    protected $completeBy;
+    /**
      * @return int
      */
     public function getId()
@@ -98,6 +102,24 @@ class Payload
     public function setConfirmationEmail($confirmationEmail = null)
     {
         $this->confirmationEmail = $confirmationEmail;
+
+        return $this;
+    }
+    /**
+     * @return string
+     */
+    public function getCompleteBy()
+    {
+        return $this->completeBy;
+    }
+    /**
+     * @param string $completeBy
+     *
+     * @return self
+     */
+    public function setCompleteBy($completeBy = null)
+    {
+        $this->completeBy = $completeBy;
 
         return $this;
     }

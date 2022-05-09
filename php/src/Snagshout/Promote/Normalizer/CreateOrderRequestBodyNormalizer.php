@@ -42,6 +42,9 @@ class CreateOrderRequestBodyNormalizer extends SerializerAwareNormalizer impleme
         if (property_exists($data, 'name')) {
             $object->setName($data->{'name'});
         }
+        if (property_exists($data, 'completeBy')) {
+            $object->setCompleteBy($data->{'completeBy'});
+        }
 
         return $object;
     }
@@ -53,6 +56,9 @@ class CreateOrderRequestBodyNormalizer extends SerializerAwareNormalizer impleme
         }
         if (null !== $object->getName()) {
             $data->{'name'} = $object->getName();
+        }
+        if ($object->wasCompleteBySet()) {
+            $data->{'completeBy'} = $object->getCompleteBy();
         }
 
         return $data;

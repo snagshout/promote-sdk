@@ -48,6 +48,9 @@ class PayloadNormalizer extends SerializerAwareNormalizer implements Denormalize
         if (property_exists($data, 'confirmationEmail')) {
             $object->setConfirmationEmail($data->{'confirmationEmail'});
         }
+        if (property_exists($data, 'completeBy')) {
+            $object->setCompleteBy($data->{'completeBy'});
+        }
 
         return $object;
     }
@@ -65,6 +68,9 @@ class PayloadNormalizer extends SerializerAwareNormalizer implements Denormalize
         }
         if (null !== $object->getConfirmationEmail()) {
             $data->{'confirmationEmail'} = $object->getConfirmationEmail();
+        }
+        if (null !== $object->getCompleteBy()) {
+            $data->{'completeBy'} = $object->getCompleteBy();
         }
 
         return $data;
