@@ -17,14 +17,22 @@ class ConfirmRebateRequestBody
      * @var string
      */
     protected $email;
+
     /**
      * @var string
      */
     protected $code;
+
+    /**
+     * @var string
+     */
+    protected $status;
+
     /**
      * @var int
      */
     protected $promoteOrderId;
+
     /**
      * @return string
      */
@@ -32,6 +40,7 @@ class ConfirmRebateRequestBody
     {
         return $this->email;
     }
+
     /**
      * @param string $email
      *
@@ -43,6 +52,7 @@ class ConfirmRebateRequestBody
 
         return $this;
     }
+
     /**
      * @return string
      */
@@ -50,6 +60,7 @@ class ConfirmRebateRequestBody
     {
         return $this->code;
     }
+
     /**
      * @param string $code
      *
@@ -58,6 +69,26 @@ class ConfirmRebateRequestBody
     public function setCode($code = null): ConfirmRebateRequestBody
     {
         $this->code = $code;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getStatus(): string
+    {
+        return $this->status;
+    }
+
+    /**
+     * @param string $status
+     *
+     * @return self
+     */
+    public function setStatus($status = null): ConfirmRebateRequestBody
+    {
+        $this->status = $status;
 
         return $this;
     }
