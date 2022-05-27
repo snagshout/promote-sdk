@@ -58,6 +58,10 @@ class Deal
      */
     protected $actionMetadata;
     /**
+     * @var bool
+     */
+    protected $actionIsPro;
+    /**
      * @var string
      */
     protected $code;
@@ -385,6 +389,24 @@ class Deal
     public function setActionMetadata($actionMetadata = null)
     {
         $this->actionMetadata = $actionMetadata;
+
+        return $this;
+    }
+    /**
+     * @return bool
+     */
+    public function getActionIsPro()
+    {
+        return $this->actionIsPro;
+    }
+    /**
+     * @param bool $actionIsPro
+     *
+     * @return self
+     */
+    public function setActionIsPro($actionIsPro = null)
+    {
+        $this->actionIsPro = $actionIsPro;
 
         return $this;
     }
