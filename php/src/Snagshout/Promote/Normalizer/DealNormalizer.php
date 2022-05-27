@@ -85,6 +85,9 @@ class DealNormalizer extends SerializerAwareNormalizer implements DenormalizerIn
         if (property_exists($data, 'actionMetadata')) {
             $object->setActionMetadata($data->{'actionMetadata'});
         }
+        if (property_exists($data, 'actionIsPro')) {
+            $object->setActionIsPro($data->{'actionIsPro'});
+        }
         if (property_exists($data, 'code')) {
             $object->setCode($data->{'code'});
         }
@@ -242,6 +245,9 @@ class DealNormalizer extends SerializerAwareNormalizer implements DenormalizerIn
         }
         if (null !== $object->getActionMetadata()) {
             $data->{'actionMetadata'} = $object->getActionMetadata();
+        }
+        if (null !== $object->getActionIsPro()) {
+            $data->{'actionIsPro'} = $object->getActionIsPro();
         }
         if (null !== $object->getCode()) {
             $data->{'code'} = $object->getCode();
