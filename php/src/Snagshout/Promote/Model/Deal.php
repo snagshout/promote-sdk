@@ -193,6 +193,10 @@ class Deal
      * @var int
      */
     protected $dailyLimit;
+    /**
+     * @var string
+     */
+    protected $visibility;
 
     /**
      * @return int
@@ -1001,6 +1005,25 @@ class Deal
     public function setDailyLimit(int $dailyLimit = null): Deal
     {
         $this->dailyLimit = $dailyLimit;
+
+        return $this;
+    }
+    /**
+     * @return string
+     */
+    public function getVisibility(): string
+    {
+        return $this->visibility;
+    }
+
+    /**
+     * @param string|null $visibility
+     *
+     * @return self
+     */
+    public function setVisibility(string $visibility = null): Deal
+    {
+        $this->visibility = $visibility;
 
         return $this;
     }
