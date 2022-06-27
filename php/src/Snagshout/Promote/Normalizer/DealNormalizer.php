@@ -191,6 +191,9 @@ class DealNormalizer extends SerializerAwareNormalizer implements DenormalizerIn
         if (property_exists($data, 'dailyLimit')) {
             $object->setDailyLimit($data->{'dailyLimit'});
         }
+        if (property_exists($data, 'visibility')) {
+            $object->setVisibility($data->{'visibility'});
+        }
 
         return $object;
     }
@@ -348,6 +351,9 @@ class DealNormalizer extends SerializerAwareNormalizer implements DenormalizerIn
         }
         if (null !== $object->getDailyLimit()) {
             $data->{'dailyLimit'} = $object->getDailyLimit();
+        }
+        if (null !== $object->getVisibility()) {
+            $data->{'visibility'} = $object->getVisibility();
         }
 
         return $data;
