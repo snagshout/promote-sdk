@@ -19,6 +19,7 @@ class NormalizerFactory
         $normalizers[] = new \Joli\Jane\Runtime\Normalizer\ArrayDenormalizer();
         $normalizers[] = new DealImpressionsRequestBodyNormalizer();
         $normalizers[] = new CancelRebateRequestBodyNormalizer();
+        $normalizers[] = new RestoreRebateRequestBodyNormalizer();
         $normalizers[] = new ConfirmRebateRequestBodyNormalizer();
         $normalizers[] = new CreateOrderRequestBodyNormalizer();
         $normalizers[] = new FlagDealRequestBodyNormalizer();
