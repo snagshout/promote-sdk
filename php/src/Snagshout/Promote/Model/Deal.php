@@ -197,6 +197,14 @@ class Deal
      * @var string
      */
     protected $visibility;
+    /**
+     * @var int
+     */
+    protected $minAge;
+    /**
+     * @var int
+     */
+    protected $maxAge;
 
     /**
      * @return int
@@ -1015,7 +1023,6 @@ class Deal
     {
         return $this->visibility;
     }
-
     /**
      * @param string|null $visibility
      *
@@ -1024,6 +1031,42 @@ class Deal
     public function setVisibility(string $visibility = null): Deal
     {
         $this->visibility = $visibility;
+
+        return $this;
+    }
+    /**
+     * @return int
+     */
+    public function getMinAge(): int
+    {
+        return $this->minAge;
+    }
+    /**
+     * @param int|null $minAge
+     *
+     * @return self
+     */
+    public function setMinAge(int $minAge = null): Deal
+    {
+        $this->minAge = $minAge;
+
+        return $this;
+    }
+    /**
+     * @return int
+     */
+    public function getMaxAge(): int
+    {
+        return $this->maxAge;
+    }
+    /**
+     * @param int|null $maxAge
+     *
+     * @return self
+     */
+    public function setMaxAge(int $maxAge = null): Deal
+    {
+        $this->maxAge = $maxAge;
 
         return $this;
     }
