@@ -194,6 +194,12 @@ class DealNormalizer extends SerializerAwareNormalizer implements DenormalizerIn
         if (property_exists($data, 'visibility')) {
             $object->setVisibility($data->{'visibility'});
         }
+        if (property_exists($data, 'minAge')) {
+            $object->setMinAge($data->{'minAge'});
+        }
+        if (property_exists($data, 'maxAge')) {
+            $object->setMaxAge($data->{'maxAge'});
+        }
 
         return $object;
     }
@@ -354,6 +360,12 @@ class DealNormalizer extends SerializerAwareNormalizer implements DenormalizerIn
         }
         if (null !== $object->getVisibility()) {
             $data->{'visibility'} = $object->getVisibility();
+        }
+        if (null !== $object->getMinAge()) {
+            $data->{'minAge'} = $object->getMinAge();
+        }
+        if (null !== $object->getMaxAge()) {
+            $data->{'maxAge'} = $object->getMaxAge();
         }
 
         return $data;
