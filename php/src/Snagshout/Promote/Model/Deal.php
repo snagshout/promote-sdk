@@ -198,11 +198,11 @@ class Deal
      */
     protected $visibility;
     /**
-     * @var int
+     * @var int|null
      */
     protected $minAge;
     /**
-     * @var int
+     * @var int|null
      */
     protected $maxAge;
 
@@ -1035,9 +1035,9 @@ class Deal
         return $this;
     }
     /**
-     * @return int
+     * @return int|null
      */
-    public function getMinAge(): int
+    public function getMinAge(): ?int
     {
         return $this->minAge;
     }
@@ -1053,9 +1053,9 @@ class Deal
         return $this;
     }
     /**
-     * @return int
+     * @return int|null
      */
-    public function getMaxAge(): int
+    public function getMaxAge(): ?int
     {
         return $this->maxAge;
     }
