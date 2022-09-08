@@ -200,6 +200,9 @@ class DealNormalizer extends SerializerAwareNormalizer implements DenormalizerIn
         if (property_exists($data, 'maxAge')) {
             $object->setMaxAge($data->{'maxAge'});
         }
+        if (property_exists($data, 'gender')) {
+            $object->setGender($data->{'gender'});
+        }
 
         return $object;
     }
@@ -366,6 +369,9 @@ class DealNormalizer extends SerializerAwareNormalizer implements DenormalizerIn
         }
         if (null !== $object->getMaxAge()) {
             $data->{'maxAge'} = $object->getMaxAge();
+        }
+        if (null !== $object->getGender()) {
+            $data->{'gender'} = $object->getGender();
         }
 
         return $data;
