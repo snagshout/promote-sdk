@@ -205,6 +205,10 @@ class Deal
      * @var int|null
      */
     protected $maxAge;
+    /**
+     * @var string|array|null
+     */
+    protected $gender;
 
     /**
      * @return int
@@ -1067,6 +1071,24 @@ class Deal
     public function setMaxAge(int $maxAge = null): Deal
     {
         $this->maxAge = $maxAge;
+
+        return $this;
+    }
+    /**
+     * @return string|array|null
+     */
+    public function getGender()
+    {
+        return $this->gender;
+    }
+    /**
+     * @param string|array|null $gender
+     *
+     * @return self
+     */
+    public function setGender($gender = null): Deal
+    {
+        $this->gender = $gender;
 
         return $this;
     }
