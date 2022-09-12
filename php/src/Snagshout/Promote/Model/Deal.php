@@ -209,6 +209,10 @@ class Deal
      * @var string|array|null
      */
     protected $gender;
+    /**
+     * @var string|array|null
+     */
+    protected $zip;
 
     /**
      * @return int
@@ -1089,6 +1093,24 @@ class Deal
     public function setGender($gender = null): Deal
     {
         $this->gender = $gender;
+
+        return $this;
+    }
+    /**
+     * @return string|array|null
+     */
+    public function getZip()
+    {
+        return $this->zip;
+    }
+    /**
+     * @param string|array|null $zip
+     *
+     * @return self
+     */
+    public function setZip($zip = null): Deal
+    {
+        $this->zip = $zip;
 
         return $this;
     }
