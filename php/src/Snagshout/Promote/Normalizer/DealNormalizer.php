@@ -203,6 +203,9 @@ class DealNormalizer extends SerializerAwareNormalizer implements DenormalizerIn
         if (property_exists($data, 'gender')) {
             $object->setGender($data->{'gender'});
         }
+        if (property_exists($data, 'zip')) {
+            $object->setZip($data->{'zip'});
+        }
 
         return $object;
     }
@@ -372,6 +375,9 @@ class DealNormalizer extends SerializerAwareNormalizer implements DenormalizerIn
         }
         if (null !== $object->getGender()) {
             $data->{'gender'} = $object->getGender();
+        }
+        if (null !== $object->getZip()) {
+            $data->{'zip'} = $object->getZip();
         }
 
         return $data;
