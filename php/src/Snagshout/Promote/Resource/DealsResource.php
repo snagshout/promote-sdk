@@ -120,6 +120,47 @@ class DealsResource extends Resource
     /**
      *
      *
+     * @param int $order ID of an order to fetch
+     * @param \Snagshout\Promote\Model\UpdateOrderRequestBody $body
+     * @param array  $parameters List of parameters
+     * @param string $fetch      Fetch mode (object or response)
+     *
+     * @return \Psr\Http\Message\ResponseInterface|\Snagshout\Promote\Model\Payload|\Snagshout\Promote\Model\Error
+     */
+    public function updateOrder($order, \Snagshout\Promote\Model\UpdateOrderRequestBody $body, $parameters = [], $fetch = self::FETCH_OBJECT)
+    {
+        $queryParam = new QueryParam();
+        $url = '/api/v1/deals/orders/{order}';
+        $url = str_replace('{order}', urlencode($order), $url);
+        $url = $url . ('?' . $queryParam->buildQueryString($parameters));
+        $headers = array_merge(['Host' => 'localhost'], $queryParam->buildHeaders($parameters));
+        $body = $this->serializer->serialize($body, 'json');
+        $request = $this->messageFactory->createRequest('PATCH', $url, $headers, $body);
+        $promise = $this->httpClient->sendAsyncRequest($request);
+        if (self::FETCH_PROMISE === $fetch) {
+            return $promise;
+        }
+        $response = $promise->wait();
+        if (self::FETCH_OBJECT == $fetch) {
+            if ('200' == $response->getStatusCode()) {
+                return $this->serializer->deserialize((string) $response->getBody(), 'Snagshout\\Promote\\Model\\Payload', 'json');
+            }
+            if ('404' == $response->getStatusCode()) {
+                return $this->serializer->deserialize((string) $response->getBody(), 'Snagshout\\Promote\\Model\\Error', 'json');
+            }
+            if ('409' == $response->getStatusCode()) {
+                return $this->serializer->deserialize((string) $response->getBody(), 'Snagshout\\Promote\\Model\\Error', 'json');
+            }
+            if ('422' == $response->getStatusCode()) {
+                return $this->serializer->deserialize((string) $response->getBody(), 'Snagshout\\Promote\\Model\\Error', 'json');
+            }
+        }
+
+        return $response;
+    }
+    /**
+     *
+     *
      * @param int $campaign ID of campaign to fetch
      * @param \Snagshout\Promote\Model\ConfirmRebateRequestBody $body
      * @param array  $parameters List of parameters

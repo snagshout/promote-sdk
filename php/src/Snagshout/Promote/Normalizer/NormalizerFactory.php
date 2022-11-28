@@ -48,6 +48,7 @@ class NormalizerFactory
         $normalizers[] = new SyncEmailForOrdersRequestBodyNormalizer();
         $normalizers[] = new CreateSurveyReviewRequestBodyNormalizer();
         $normalizers[] = new UpdateReviewNameBodyNormalizer();
+        $normalizers[] = new UpdateOrderRequestBodyNormalizer();
 
         return $normalizers;
     }
