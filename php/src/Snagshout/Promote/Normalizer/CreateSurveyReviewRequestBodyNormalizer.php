@@ -42,6 +42,9 @@ class CreateSurveyReviewRequestBodyNormalizer extends SerializerAwareNormalizer 
         if (property_exists($data, 'reviewerName')) {
             $object->setReviewerName($data->{'reviewerName'});
         }
+        if (property_exists($data, 'title')) {
+            $object->setTitle($data->{'title'});
+        }
         if (property_exists($data, 'reason')) {
             $object->setReason($data->{'reason'});
         }
@@ -56,6 +59,9 @@ class CreateSurveyReviewRequestBodyNormalizer extends SerializerAwareNormalizer 
         }
         if (null !== $object->getReviewerName()) {
             $data->{'reviewerName'} = $object->getReviewerName();
+        }
+        if (null !== $object->getTitle()) {
+            $data->{'title'} = $object->getTitle();
         }
         if (null !== $object->getReason()) {
             $data->{'reason'} = $object->getReason();
