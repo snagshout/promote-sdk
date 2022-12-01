@@ -24,6 +24,10 @@ class CreateSurveyReviewRequestBody
     /**
      * @var string|null
      */
+    protected $title;
+    /**
+     * @var string|null
+     */
     protected $reason;
 
     /**
@@ -62,6 +66,26 @@ class CreateSurveyReviewRequestBody
     public function setReviewerName(string $reviewerName = null): CreateSurveyReviewRequestBody
     {
         $this->reviewerName = $reviewerName;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getTitle(): ?string
+    {
+        return $this->title;
+    }
+
+    /**
+     * @param string|null $title
+     *
+     * @return CreateSurveyReviewRequestBody
+     */
+    public function setTitle(string $title = null): CreateSurveyReviewRequestBody
+    {
+        $this->title = $title;
 
         return $this;
     }
