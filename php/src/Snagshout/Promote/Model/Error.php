@@ -11,20 +11,23 @@
 
 namespace Snagshout\Promote\Model;
 
-class Error
+class Error extends AbstractModel
 {
     /**
      * @var string
      */
     protected $message;
+
     /**
      * @var int
      */
     protected $status;
+
     /**
      * @var mixed
      */
     protected $extra;
+
     /**
      * @return string
      */
@@ -32,6 +35,7 @@ class Error
     {
         return $this->message;
     }
+
     /**
      * @param string $message
      *
@@ -43,6 +47,7 @@ class Error
 
         return $this;
     }
+
     /**
      * @return int
      */
@@ -50,6 +55,7 @@ class Error
     {
         return $this->status;
     }
+
     /**
      * @param int $status
      *
@@ -61,6 +67,7 @@ class Error
 
         return $this;
     }
+
     /**
      * @return mixed
      */
@@ -68,6 +75,7 @@ class Error
     {
         return $this->extra;
     }
+
     /**
      * @param mixed $extra
      *

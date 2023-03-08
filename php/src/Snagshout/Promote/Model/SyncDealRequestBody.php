@@ -11,20 +11,23 @@
 
 namespace Snagshout\Promote\Model;
 
-class SyncDealRequestBody
+class SyncDealRequestBody extends AbstractModel
 {
     /**
      * @var string
      */
     protected $url;
+
     /**
      * @var string
      */
     protected $note;
+
     /**
      * @var string
      */
     protected $state;
+
     /**
      * @return string
      */
@@ -32,6 +35,7 @@ class SyncDealRequestBody
     {
         return $this->url;
     }
+
     /**
      * @param string $url
      *
@@ -43,6 +47,7 @@ class SyncDealRequestBody
 
         return $this;
     }
+
     /**
      * @return string
      */
@@ -50,6 +55,7 @@ class SyncDealRequestBody
     {
         return $this->note;
     }
+
     /**
      * @param string $note
      *
@@ -61,6 +67,7 @@ class SyncDealRequestBody
 
         return $this;
     }
+
     /**
      * @return string
      */
@@ -68,6 +75,7 @@ class SyncDealRequestBody
     {
         return $this->state;
     }
+
     /**
      * @param string $state
      *

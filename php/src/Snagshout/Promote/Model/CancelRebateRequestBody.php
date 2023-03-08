@@ -11,16 +11,18 @@
 
 namespace Snagshout\Promote\Model;
 
-class CancelRebateRequestBody
+class CancelRebateRequestBody extends AbstractModel
 {
     /**
      * @var string
      */
     protected $email;
+
     /**
      * @var int
      */
     protected $promoteOrderId;
+
     /**
      * @return string
      */
@@ -28,6 +30,7 @@ class CancelRebateRequestBody
     {
         return $this->email;
     }
+
     /**
      * @param string $email
      *

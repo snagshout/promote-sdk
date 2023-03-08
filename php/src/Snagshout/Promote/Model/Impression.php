@@ -11,20 +11,23 @@
 
 namespace Snagshout\Promote\Model;
 
-class Impression
+class Impression extends AbstractModel
 {
     /**
      * @var int
      */
     protected $views;
+
     /**
      * @var int
      */
     protected $hour;
+
     /**
      * @var string
      */
     protected $date;
+
     /**
      * @return int
      */
@@ -32,6 +35,7 @@ class Impression
     {
         return $this->views;
     }
+
     /**
      * @param int $views
      *
@@ -43,6 +47,7 @@ class Impression
 
         return $this;
     }
+
     /**
      * @return int
      */
@@ -50,6 +55,7 @@ class Impression
     {
         return $this->hour;
     }
+
     /**
      * @param int $hour
      *
@@ -61,6 +67,7 @@ class Impression
 
         return $this;
     }
+
     /**
      * @return string
      */
@@ -68,6 +75,7 @@ class Impression
     {
         return $this->date;
     }
+
     /**
      * @param string $date
      *

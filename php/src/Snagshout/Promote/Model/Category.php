@@ -11,16 +11,18 @@
 
 namespace Snagshout\Promote\Model;
 
-class Category
+class Category extends AbstractModel
 {
     /**
      * @var int
      */
     protected $id;
+
     /**
      * @var string
      */
     protected $name;
+
     /**
      * @return int
      */
@@ -28,6 +30,7 @@ class Category
     {
         return $this->id;
     }
+
     /**
      * @param int $id
      *
@@ -39,6 +42,7 @@ class Category
 
         return $this;
     }
+
     /**
      * @return string
      */
@@ -46,6 +50,7 @@ class Category
     {
         return $this->name;
     }
+
     /**
      * @param string $name
      *

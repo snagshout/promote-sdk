@@ -11,20 +11,23 @@
 
 namespace Snagshout\Promote\Model;
 
-class FlagDealRequestBody
+class FlagDealRequestBody extends AbstractModel
 {
     /**
      * @var string
      */
     protected $type;
+
     /**
      * @var string
      */
     protected $reportedBy;
+
     /**
      * @var string
      */
     protected $comment;
+
     /**
      * @return string
      */
@@ -32,6 +35,7 @@ class FlagDealRequestBody
     {
         return $this->type;
     }
+
     /**
      * @param string $type
      *
@@ -43,6 +47,7 @@ class FlagDealRequestBody
 
         return $this;
     }
+
     /**
      * @return string
      */
@@ -50,6 +55,7 @@ class FlagDealRequestBody
     {
         return $this->reportedBy;
     }
+
     /**
      * @param string $reportedBy
      *
@@ -61,6 +67,7 @@ class FlagDealRequestBody
 
         return $this;
     }
+
     /**
      * @return string
      */
@@ -68,6 +75,7 @@ class FlagDealRequestBody
     {
         return $this->comment;
     }
+
     /**
      * @param string $comment
      *

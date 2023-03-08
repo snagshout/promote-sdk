@@ -11,16 +11,18 @@
 
 namespace Snagshout\Promote\Model;
 
-class CreateFacebookOrderRequestBody
+class CreateFacebookOrderRequestBody extends AbstractModel
 {
     /**
      * @var string
      */
     protected $adId;
+
     /**
      * @var string
      */
     protected $userId;
+
     /**
      * @return string
      */
@@ -28,6 +30,7 @@ class CreateFacebookOrderRequestBody
     {
         return $this->adId;
     }
+
     /**
      * @param string $adId
      *
@@ -39,6 +42,7 @@ class CreateFacebookOrderRequestBody
 
         return $this;
     }
+
     /**
      * @return string
      */
@@ -46,6 +50,7 @@ class CreateFacebookOrderRequestBody
     {
         return $this->userId;
     }
+
     /**
      * @param string $userId
      *

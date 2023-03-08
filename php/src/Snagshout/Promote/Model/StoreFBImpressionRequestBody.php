@@ -11,12 +11,13 @@
 
 namespace Snagshout\Promote\Model;
 
-class StoreFBImpressionRequestBody
+class StoreFBImpressionRequestBody extends AbstractModel
 {
     /**
      * @var mixed
      */
     protected $fbAdId;
+
     /**
      * @return mixed
      */
@@ -24,6 +25,7 @@ class StoreFBImpressionRequestBody
     {
         return $this->fbAdId;
     }
+
     /**
      * @param mixed $fbAdId
      *

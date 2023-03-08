@@ -11,28 +11,33 @@
 
 namespace Snagshout\Promote\Model;
 
-class Medium
+class Medium extends AbstractModel
 {
     /**
      * @var int
      */
     protected $id;
+
     /**
      * @var string
      */
     protected $url;
+
     /**
      * @var string
      */
     protected $type;
+
     /**
      * @var string
      */
     protected $title;
+
     /**
      * @var mixed
      */
     protected $metadata;
+
     /**
      * @return int
      */
@@ -40,6 +45,7 @@ class Medium
     {
         return $this->id;
     }
+
     /**
      * @param int $id
      *
@@ -51,6 +57,7 @@ class Medium
 
         return $this;
     }
+
     /**
      * @return string
      */
@@ -58,6 +65,7 @@ class Medium
     {
         return $this->url;
     }
+
     /**
      * @param string $url
      *
@@ -69,6 +77,7 @@ class Medium
 
         return $this;
     }
+
     /**
      * @return string
      */
@@ -76,6 +85,7 @@ class Medium
     {
         return $this->type;
     }
+
     /**
      * @param string $type
      *
@@ -87,6 +97,7 @@ class Medium
 
         return $this;
     }
+
     /**
      * @return string
      */
@@ -94,6 +105,7 @@ class Medium
     {
         return $this->title;
     }
+
     /**
      * @param string $title
      *
@@ -105,6 +117,7 @@ class Medium
 
         return $this;
     }
+
     /**
      * @return mixed
      */
@@ -112,6 +125,7 @@ class Medium
     {
         return $this->metadata;
     }
+
     /**
      * @param mixed $metadata
      *

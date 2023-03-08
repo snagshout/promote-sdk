@@ -11,20 +11,23 @@
 
 namespace Snagshout\Promote\Model;
 
-class NotifyDealRequestBody
+class NotifyDealRequestBody extends AbstractModel
 {
     /**
      * @var string
      */
     protected $type;
+
     /**
      * @var string
      */
     protected $title;
+
     /**
      * @var string
      */
     protected $body;
+
     /**
      * @return string
      */
@@ -32,6 +35,7 @@ class NotifyDealRequestBody
     {
         return $this->type;
     }
+
     /**
      * @param string $type
      *
@@ -43,6 +47,7 @@ class NotifyDealRequestBody
 
         return $this;
     }
+
     /**
      * @return string
      */
@@ -50,6 +55,7 @@ class NotifyDealRequestBody
     {
         return $this->title;
     }
+
     /**
      * @param string $title
      *
@@ -61,6 +67,7 @@ class NotifyDealRequestBody
 
         return $this;
     }
+
     /**
      * @return string
      */
@@ -68,6 +75,7 @@ class NotifyDealRequestBody
     {
         return $this->body;
     }
+
     /**
      * @param string $body
      *

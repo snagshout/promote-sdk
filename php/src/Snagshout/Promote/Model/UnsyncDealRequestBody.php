@@ -11,16 +11,18 @@
 
 namespace Snagshout\Promote\Model;
 
-class UnsyncDealRequestBody
+class UnsyncDealRequestBody extends AbstractModel
 {
     /**
      * @var string
      */
     protected $note;
+
     /**
      * @var string
      */
     protected $state;
+
     /**
      * @return string
      */
@@ -28,6 +30,7 @@ class UnsyncDealRequestBody
     {
         return $this->note;
     }
+
     /**
      * @param string $note
      *
@@ -39,6 +42,7 @@ class UnsyncDealRequestBody
 
         return $this;
     }
+
     /**
      * @return string
      */
@@ -46,6 +50,7 @@ class UnsyncDealRequestBody
     {
         return $this->state;
     }
+
     /**
      * @param string $state
      *

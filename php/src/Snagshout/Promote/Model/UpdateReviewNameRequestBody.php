@@ -11,12 +11,13 @@
 
 namespace Snagshout\Promote\Model;
 
-class UpdateReviewNameRequestBody
+class UpdateReviewNameRequestBody extends AbstractModel
 {
     /**
      * @var string|null
      */
     protected $userEmail;
+
     /**
      * @var string|null
      */

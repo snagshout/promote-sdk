@@ -11,16 +11,18 @@
 
 namespace Snagshout\Promote\Model;
 
-class GetRebateOrPromo
+class GetRebateOrPromo extends AbstractModel
 {
     /**
      * @var mixed
      */
     protected $fbUserId;
+
     /**
      * @var mixed
      */
     protected $adId;
+
     /**
      * @return mixed
      */
@@ -28,6 +30,7 @@ class GetRebateOrPromo
     {
         return $this->fbUserId;
     }
+
     /**
      * @param mixed $fbUserId
      *
@@ -39,6 +42,7 @@ class GetRebateOrPromo
 
         return $this;
     }
+
     /**
      * @return mixed
      */
@@ -46,6 +50,7 @@ class GetRebateOrPromo
     {
         return $this->adId;
     }
+
     /**
      * @param mixed $adId
      *
