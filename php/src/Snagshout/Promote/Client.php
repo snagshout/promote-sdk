@@ -11,18 +11,9 @@
 
 namespace Snagshout\Promote;
 
-use Closure;
-use DateTime;
-use GuzzleHttp\Client as HttpClient;
-use GuzzleHttp\Handler\CurlHandler;
-use GuzzleHttp\HandlerStack;
-use GuzzleHttp\Psr7\Uri;
-use Http\Adapter\Guzzle6\Client as GuzzleAdapter;
-use Http\Message\MessageFactory\GuzzleMessageFactory;
-use Joli\Jane\OpenApi\Runtime\Client\Resource;
-use Joli\Jane\Runtime\Encoder\RawEncoder;
-use Psr\Http\Message\RequestInterface;
+use Snagshout\Promote\Encoder\RawEncoder;
 use Snagshout\Promote\Normalizer\NormalizerFactory;
+use Snagshout\Promote\Resource\AbstractResource;
 use Snagshout\Promote\Resource\DealsResource;
 use Snagshout\Promote\Resource\FrontResource;
 use Snagshout\Promote\Resource\UsersResource;
@@ -34,132 +25,27 @@ use Symfony\Component\Serializer\Serializer;
 /**
  * Class Client.
  *
- * @package Snagshout\Promote
- *
  * @author Eduardo Trujillo <ed@sellerlabs.com>
+ * @author Andrii Prykhodko <andriichello@gmail.com>
+ * @package Snagshout\Promote
  */
 class Client
 {
     /**
-     * @var string
+     * @var HttpClient
      */
-    protected $publicId;
+    protected $httpClient;
 
     /**
-     * @var string
-     */
-    protected $secretKey;
-
-    /**
-     * @var Uri
-     */
-    protected $endpoint;
-
-    protected $baseUrl = 'http://localhost:8000';
-
-    /**
-     * SyndicationClient constructor.
+     * Client constructor.
      *
      * @param string $publicId
      * @param string $secretKey
+     * @param string $baseUrl
      */
-    public function __construct($publicId, $secretKey)
+    public function __construct(string $publicId, string $secretKey, string $baseUrl)
     {
-        $this->publicId = $publicId;
-        $this->secretKey = $secretKey;
-
-        $this->endpoint = new Uri($this->baseUrl);
-
-        $stack = new HandlerStack();
-
-        $stack->setHandler(new CurlHandler());
-
-        $stack->push($this->makeAuthHandler());
-
-        $this->client = new HttpClient(
-            [
-                'handler' => $stack,
-            ]
-        );
-    }
-
-    /**
-     * @param string $publicId
-     */
-    public function setPublicId($publicId)
-    {
-        $this->publicId = $publicId;
-    }
-
-    /**
-     * @param string $secretKey
-     */
-    public function setSecretKey($secretKey)
-    {
-        $this->secretKey = $secretKey;
-    }
-
-    /**
-     * @param Uri $endpoint
-     */
-    public function setEndpoint(Uri $endpoint)
-    {
-        $this->endpoint = $endpoint;
-    }
-
-    /**
-     * Computes the hash of a string using the secret key.
-     *
-     * @param string $content
-     *
-     * @return string
-     */
-    protected function hash($content)
-    {
-        $timestamp = (new DateTime())->format('Y-m-d H');
-
-        return hash_hmac(
-            'sha512',
-            $content . $timestamp,
-            $this->secretKey
-        );
-    }
-
-    /**
-     * A Guzzle middleware that automatically adds the required Authorization
-     * and Content-Hash headers required by the Promote API.
-     *
-     * @return Closure
-     */
-    protected function makeAuthHandler()
-    {
-        return function (callable $handler) {
-            return function (
-                RequestInterface $request,
-                array $options
-            ) use ($handler) {
-                $contentHash = $this->hash($request->getBody());
-
-                $partialUri = $request->getUri();
-                $uri = $this->endpoint
-                    ->withPath(
-                        $this->endpoint->getPath()
-                        . $partialUri->getPath()
-                    )
-                    ->withQuery($partialUri->getQuery())
-                    ->withFragment($partialUri->getFragment());
-
-                $request = $request
-                    ->withUri($uri)
-                    ->withHeader(
-                        'Authorization',
-                        vsprintf('Hash %s', [$this->publicId])
-                    )
-                    ->withHeader('Content-Hash', $contentHash);
-
-                return $handler($request, $options);
-            };
-        };
+        $this->httpClient = new HttpClient($publicId, $secretKey, $baseUrl);
     }
 
     /**
@@ -169,19 +55,14 @@ class Client
      *
      * @return Resource
      */
-    protected function buildResource($resourceClass)
+    protected function buildResource(string $resourceClass): AbstractResource
     {
         return new $resourceClass(
-            new GuzzleAdapter($this->client),
-            new GuzzleMessageFactory(),
+            $this->httpClient,
             new Serializer(
                 NormalizerFactory::create(),
                 [
-                    new JsonEncoder(
-                        new JsonEncode(),
-                        new JsonDecode()
-                    ),
-                    new RawEncoder(),
+                    new JsonEncoder(new JsonEncode(), new JsonDecode()),
                 ]
             )
         );
