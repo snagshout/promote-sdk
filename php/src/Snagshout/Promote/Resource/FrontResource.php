@@ -11,35 +11,33 @@
 
 namespace Snagshout\Promote\Resource;
 
-use Joli\Jane\OpenApi\Runtime\Client\QueryParam;
-use Joli\Jane\OpenApi\Runtime\Client\Resource;
+use GuzzleHttp\Promise\PromiseInterface;
+use GuzzleHttp\Psr7\Request;
+use Psr\Http\Message\ResponseInterface;
+use Snagshout\Promote\Enum\Fetch;
+use Snagshout\Promote\Model\Version;
 
-class FrontResource extends Resource
+/**
+ * FrontResource class.
+ *
+ * @package Snagshout\Promote\Resource
+ */
+class FrontResource extends AbstractResource
 {
     /**
-     * 
+     * @param array $params List of parameters
+     * @param string $fetch Fetch mode (object or response)
      *
-     * @param array  $parameters List of parameters
-     * @param string $fetch      Fetch mode (object or response)
-     *
-     * @return \Psr\Http\Message\ResponseInterface|\Snagshout\Promote\Model\Version
+     * @return ResponseInterface|PromiseInterface|Version
      */
-    public function getVersion($parameters = [], $fetch = self::FETCH_OBJECT)
+    public function getVersion(array $params = [], string $fetch = Fetch::OBJECT)
     {
-        $queryParam = new QueryParam();
-        $url = '/api/v1/version';
-        $url = $url . ('?' . $queryParam->buildQueryString($parameters));
-        $headers = array_merge(['Host' => 'localhost'], $queryParam->buildHeaders($parameters));
-        $body = $queryParam->buildFormDataString($parameters);
-        $request = $this->messageFactory->createRequest('GET', $url, $headers, $body);
-        $promise = $this->httpClient->sendAsyncRequest($request);
-        if (self::FETCH_PROMISE === $fetch) {
-            return $promise;
-        }
-        $response = $promise->wait();
-        if (self::FETCH_OBJECT == $fetch) {
-            if ('200' == $response->getStatusCode()) {
-                return $this->serializer->deserialize((string) $response->getBody(), 'Snagshout\\Promote\\Model\\Version', 'json');
+        $url = '/api/v1/version?' . http_build_query($params);
+        $response = $this->client->fetch(new Request('GET', $url, []), $fetch);
+
+        if ($fetch === Fetch::OBJECT) {
+            if ($response->getStatusCode() === 200) {
+                return $this->as($response, Version::class);
             }
         }
 

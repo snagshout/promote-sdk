@@ -11,134 +11,95 @@
 
 namespace Snagshout\Promote\Resource;
 
-use Joli\Jane\OpenApi\Runtime\Client\QueryParam;
-use Joli\Jane\OpenApi\Runtime\Client\Resource;
+use GuzzleHttp\Promise\PromiseInterface;
+use GuzzleHttp\Psr7\Request;
+use Psr\Http\Message\ResponseInterface;
+use Snagshout\Promote\Enum\Fetch;
+use Snagshout\Promote\Model\CompleteFacebookOrderRequestBody;
+use Snagshout\Promote\Model\CreateFacebookOrderRequestBody;
+use Snagshout\Promote\Model\GetRebateEmail;
+use Snagshout\Promote\Model\GetRebateOrPromo;
+use Snagshout\Promote\Model\StoreFBImpressionRequestBody;
 
-class FacebookResource extends Resource
+/**
+ * FacebookResource class.
+ *
+ * @package Snagshout\Promote\Resource
+ */
+class FacebookResource extends AbstractResource
 {
     /**
-     * 
+     * @param CompleteFacebookOrderRequestBody $body
+     * @param array $params List of parameters
+     * @param string $fetch Fetch mode (object or response)
      *
-     * @param \Snagshout\Promote\Model\CompleteFacebookOrderRequestBody $body 
-     * @param array  $parameters List of parameters
-     * @param string $fetch      Fetch mode (object or response)
-     *
-     * @return \Psr\Http\Message\ResponseInterface
+     * @return ResponseInterface|PromiseInterface
      */
-    public function completeFacebookOrder(\Snagshout\Promote\Model\CompleteFacebookOrderRequestBody $body, $parameters = [], $fetch = self::FETCH_OBJECT)
+    public function completeFacebookOrder(CompleteFacebookOrderRequestBody $body, array $params = [], string $fetch = Fetch::OBJECT)
     {
-        $queryParam = new QueryParam();
-        $url = '/api/v1/facebook/order';
-        $url = $url . ('?' . $queryParam->buildQueryString($parameters));
-        $headers = array_merge(['Host' => 'localhost'], $queryParam->buildHeaders($parameters));
+        $url = '/api/v1/facebook/order?' . http_build_query($params);
         $body = $this->serializer->serialize($body, 'json');
-        $request = $this->messageFactory->createRequest('PATCH', $url, $headers, $body);
-        $promise = $this->httpClient->sendAsyncRequest($request);
-        if (self::FETCH_PROMISE === $fetch) {
-            return $promise;
-        }
-        $response = $promise->wait();
 
-        return $response;
+        return $this->client->fetch(new Request('PATCH', $url, [], $body), $fetch);
     }
-    /**
-     * 
-     *
-     * @param \Snagshout\Promote\Model\CreateFacebookOrderRequestBody $body 
-     * @param array  $parameters List of parameters
-     * @param string $fetch      Fetch mode (object or response)
-     *
-     * @return \Psr\Http\Message\ResponseInterface
-     */
-    public function createFacebookOrder(\Snagshout\Promote\Model\CreateFacebookOrderRequestBody $body, $parameters = [], $fetch = self::FETCH_OBJECT)
-    {
-        $queryParam = new QueryParam();
-        $url = '/api/v1/facebook/order';
-        $url = $url . ('?' . $queryParam->buildQueryString($parameters));
-        $headers = array_merge(['Host' => 'localhost'], $queryParam->buildHeaders($parameters));
-        $body = $this->serializer->serialize($body, 'json');
-        $request = $this->messageFactory->createRequest('POST', $url, $headers, $body);
-        $promise = $this->httpClient->sendAsyncRequest($request);
-        if (self::FETCH_PROMISE === $fetch) {
-            return $promise;
-        }
-        $response = $promise->wait();
 
-        return $response;
+    /**
+     * @param CreateFacebookOrderRequestBody $body
+     * @param array $params List of parameters
+     * @param string $fetch Fetch mode (object or response)
+     *
+     * @return ResponseInterface|PromiseInterface
+     */
+    public function createFacebookOrder(CreateFacebookOrderRequestBody $body, array $params = [], string $fetch = Fetch::OBJECT)
+    {
+        $url = '/api/v1/facebook/order?' . http_build_query($params);
+        $body = $this->serializer->serialize($body, 'json');
+
+        return $this->client->fetch(new Request('POST', $url, [], $body), $fetch);
     }
-    /**
-     * 
-     *
-     * @param \Snagshout\Promote\Model\GetRebateEmail $body 
-     * @param array  $parameters List of parameters
-     * @param string $fetch      Fetch mode (object or response)
-     *
-     * @return \Psr\Http\Message\ResponseInterface
-     */
-    public function getRebateEmail(\Snagshout\Promote\Model\GetRebateEmail $body, $parameters = [], $fetch = self::FETCH_OBJECT)
-    {
-        $queryParam = new QueryParam();
-        $url = '/api/v1/facebook/getRebateEmail';
-        $url = $url . ('?' . $queryParam->buildQueryString($parameters));
-        $headers = array_merge(['Host' => 'localhost'], $queryParam->buildHeaders($parameters));
-        $body = $this->serializer->serialize($body, 'json');
-        $request = $this->messageFactory->createRequest('GET', $url, $headers, $body);
-        $promise = $this->httpClient->sendAsyncRequest($request);
-        if (self::FETCH_PROMISE === $fetch) {
-            return $promise;
-        }
-        $response = $promise->wait();
 
-        return $response;
+    /**
+     * @param GetRebateEmail $body
+     * @param array $params List of parameters
+     * @param string $fetch Fetch mode (object or response)
+     *
+     * @return ResponseInterface|PromiseInterface
+     */
+    public function getRebateEmail(GetRebateEmail $body, array $params = [], string $fetch = Fetch::OBJECT)
+    {
+        $url = '/api/v1/facebook/getRebateEmail?' . http_build_query($params);
+        $body = $this->serializer->serialize($body, 'json');
+
+        return $this->client->fetch(new Request('POST', $url, [], $body), $fetch);
     }
-    /**
-     * 
-     *
-     * @param \Snagshout\Promote\Model\GetRebateOrPromo $body 
-     * @param array  $parameters List of parameters
-     * @param string $fetch      Fetch mode (object or response)
-     *
-     * @return \Psr\Http\Message\ResponseInterface
-     */
-    public function getRebateOrPromo(\Snagshout\Promote\Model\GetRebateOrPromo $body, $parameters = [], $fetch = self::FETCH_OBJECT)
-    {
-        $queryParam = new QueryParam();
-        $url = '/api/v1/facebook/getRebateOrPromo';
-        $url = $url . ('?' . $queryParam->buildQueryString($parameters));
-        $headers = array_merge(['Host' => 'localhost'], $queryParam->buildHeaders($parameters));
-        $body = $this->serializer->serialize($body, 'json');
-        $request = $this->messageFactory->createRequest('GET', $url, $headers, $body);
-        $promise = $this->httpClient->sendAsyncRequest($request);
-        if (self::FETCH_PROMISE === $fetch) {
-            return $promise;
-        }
-        $response = $promise->wait();
 
-        return $response;
+    /**
+     * @param GetRebateOrPromo $body
+     * @param array $params List of parameters
+     * @param string $fetch Fetch mode (object or response)
+     *
+     * @return ResponseInterface|PromiseInterface
+     */
+    public function getRebateOrPromo(GetRebateOrPromo $body, array $params = [], string $fetch = Fetch::OBJECT)
+    {
+        $url = '/api/v1/facebook/getRebateOrPromo?' . http_build_query($params);
+        $body = $this->serializer->serialize($body, 'json');
+
+        return $this->client->fetch(new Request('GET', $url, [], $body), $fetch);
     }
-    /**
-     * 
-     *
-     * @param \Snagshout\Promote\Model\StoreFBImpressionRequestBody $body 
-     * @param array  $parameters List of parameters
-     * @param string $fetch      Fetch mode (object or response)
-     *
-     * @return \Psr\Http\Message\ResponseInterface
-     */
-    public function storeImpression(\Snagshout\Promote\Model\StoreFBImpressionRequestBody $body, $parameters = [], $fetch = self::FETCH_OBJECT)
-    {
-        $queryParam = new QueryParam();
-        $url = '/api/v1/facebook/store-impression';
-        $url = $url . ('?' . $queryParam->buildQueryString($parameters));
-        $headers = array_merge(['Host' => 'localhost'], $queryParam->buildHeaders($parameters));
-        $body = $this->serializer->serialize($body, 'json');
-        $request = $this->messageFactory->createRequest('POST', $url, $headers, $body);
-        $promise = $this->httpClient->sendAsyncRequest($request);
-        if (self::FETCH_PROMISE === $fetch) {
-            return $promise;
-        }
-        $response = $promise->wait();
 
-        return $response;
+    /**
+     * @param StoreFBImpressionRequestBody $body
+     * @param array $params List of parameters
+     * @param string $fetch Fetch mode (object or response)
+     *
+     * @return ResponseInterface|PromiseInterface
+     */
+    public function storeImpression(StoreFBImpressionRequestBody $body, array $params = [], string $fetch = Fetch::OBJECT)
+    {
+        $url = '/api/v1/facebook/store-impression?' . http_build_query($params);
+        $body = $this->serializer->serialize($body, 'json');
+
+        return $this->client->fetch(new Request('POST', $url, [], $body), $fetch);
     }
 }
