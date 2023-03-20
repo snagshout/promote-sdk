@@ -11,31 +11,15 @@
 
 namespace Snagshout\Promote\Normalizer;
 
-use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
-use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-use Symfony\Component\Serializer\Normalizer\SerializerAwareNormalizer;
+use Snagshout\Promote\Model\CreateOrderRequestBody;
 
-class CreateOrderRequestBodyNormalizer extends SerializerAwareNormalizer implements DenormalizerInterface, NormalizerInterface
+class CreateOrderRequestBodyNormalizer extends AbstractNormalizer
 {
-    public function supportsDenormalization($data, $type, $format = null)
-    {
-        if ($type !== 'Snagshout\\Promote\\Model\\CreateOrderRequestBody') {
-            return false;
-        }
+    protected $modelClass = CreateOrderRequestBody::class;
 
-        return true;
-    }
-    public function supportsNormalization($data, $format = null)
-    {
-        if ($data instanceof \Snagshout\Promote\Model\CreateOrderRequestBody) {
-            return true;
-        }
-
-        return false;
-    }
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        $object = new \Snagshout\Promote\Model\CreateOrderRequestBody();
+        $object = new CreateOrderRequestBody();
         if (property_exists($data, 'email')) {
             $object->setEmail($data->{'email'});
         }
@@ -48,6 +32,7 @@ class CreateOrderRequestBodyNormalizer extends SerializerAwareNormalizer impleme
 
         return $object;
     }
+
     public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();

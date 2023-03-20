@@ -11,41 +11,27 @@
 
 namespace Snagshout\Promote\Normalizer;
 
-use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
-use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-use Symfony\Component\Serializer\Normalizer\SerializerAwareNormalizer;
+use Snagshout\Promote\Model\DealImpressionsRequestBody;
+use Snagshout\Promote\Model\Impression;
 
-class DealImpressionsRequestBodyNormalizer extends SerializerAwareNormalizer implements DenormalizerInterface, NormalizerInterface
+class DealImpressionsRequestBodyNormalizer extends AbstractNormalizer
 {
-    public function supportsDenormalization($data, $type, $format = null)
-    {
-        if ($type !== 'Snagshout\\Promote\\Model\\DealImpressionsRequestBody') {
-            return false;
-        }
+    protected $modelClass = DealImpressionsRequestBody::class;
 
-        return true;
-    }
-    public function supportsNormalization($data, $format = null)
-    {
-        if ($data instanceof \Snagshout\Promote\Model\DealImpressionsRequestBody) {
-            return true;
-        }
-
-        return false;
-    }
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        $object = new \Snagshout\Promote\Model\DealImpressionsRequestBody();
+        $object = new DealImpressionsRequestBody();
         if (property_exists($data, 'impressions')) {
             $values = [];
             foreach ($data->{'impressions'} as $value) {
-                $values[] = $this->serializer->deserialize($value, 'Snagshout\\Promote\\Model\\Impression', 'raw', $context);
+                $values[] = $this->serializer->deserialize(json_encode($value), Impression::class, 'raw', $context);
             }
             $object->setImpressions($values);
         }
 
         return $object;
     }
+
     public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();

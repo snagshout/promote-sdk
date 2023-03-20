@@ -11,37 +11,22 @@
 
 namespace Snagshout\Promote\Normalizer;
 
-use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
-use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-use Symfony\Component\Serializer\Normalizer\SerializerAwareNormalizer;
+use Snagshout\Promote\Model\InitializeMigrationBody;
 
-class InitializeMigrationBodyNormalizer extends SerializerAwareNormalizer implements DenormalizerInterface, NormalizerInterface
+class InitializeMigrationBodyNormalizer extends AbstractNormalizer
 {
-    public function supportsDenormalization($data, $type, $format = null)
-    {
-        if ($type !== 'Snagshout\\Promote\\Model\\InitializeMigrationBody') {
-            return false;
-        }
+    protected $modelClass = InitializeMigrationBody::class;
 
-        return true;
-    }
-    public function supportsNormalization($data, $format = null)
-    {
-        if ($data instanceof \Snagshout\Promote\Model\InitializeMigrationBody) {
-            return true;
-        }
-
-        return false;
-    }
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        $object = new \Snagshout\Promote\Model\InitializeMigrationBody();
+        $object = new InitializeMigrationBody();
         if (property_exists($data, 'userId')) {
             $object->setUserId($data->{'userId'});
         }
 
         return $object;
     }
+
     public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();

@@ -11,31 +11,15 @@
 
 namespace Snagshout\Promote\Normalizer;
 
-use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
-use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-use Symfony\Component\Serializer\Normalizer\SerializerAwareNormalizer;
+use Snagshout\Promote\Model\CancelRebateRequestBody;
 
-class CancelRebateRequestBodyNormalizer extends SerializerAwareNormalizer implements DenormalizerInterface, NormalizerInterface
+class CancelRebateRequestBodyNormalizer extends AbstractNormalizer
 {
-    public function supportsDenormalization($data, $type, $format = null)
-    {
-        if ($type !== 'Snagshout\\Promote\\Model\\CancelRebateRequestBody') {
-            return false;
-        }
+    protected $modelClass = CancelRebateRequestBody::class;
 
-        return true;
-    }
-    public function supportsNormalization($data, $format = null)
-    {
-        if ($data instanceof \Snagshout\Promote\Model\CancelRebateRequestBody) {
-            return true;
-        }
-
-        return false;
-    }
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        $object = new \Snagshout\Promote\Model\CancelRebateRequestBody();
+        $object = new CancelRebateRequestBody();
         if (property_exists($data, 'email')) {
             $object->setEmail($data->{'email'});
         }
@@ -45,6 +29,7 @@ class CancelRebateRequestBodyNormalizer extends SerializerAwareNormalizer implem
 
         return $object;
     }
+
     public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();

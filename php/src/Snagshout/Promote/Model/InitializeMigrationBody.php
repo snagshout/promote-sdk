@@ -11,12 +11,13 @@
 
 namespace Snagshout\Promote\Model;
 
-class InitializeMigrationBody
+class InitializeMigrationBody extends AbstractModel
 {
     /**
      * @var int
      */
     protected $userId;
+
     /**
      * @return int
      */
@@ -24,6 +25,7 @@ class InitializeMigrationBody
     {
         return $this->userId;
     }
+
     /**
      * @param int $userId
      *

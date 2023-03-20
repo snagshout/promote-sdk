@@ -11,31 +11,15 @@
 
 namespace Snagshout\Promote\Normalizer;
 
-use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
-use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-use Symfony\Component\Serializer\Normalizer\SerializerAwareNormalizer;
+use Snagshout\Promote\Model\CreateFacebookOrderRequestBody;
 
-class CreateFacebookOrderRequestBodyNormalizer extends SerializerAwareNormalizer implements DenormalizerInterface, NormalizerInterface
+class CreateFacebookOrderRequestBodyNormalizer extends AbstractNormalizer
 {
-    public function supportsDenormalization($data, $type, $format = null)
-    {
-        if ($type !== 'Snagshout\\Promote\\Model\\CreateFacebookOrderRequestBody') {
-            return false;
-        }
+    protected $modelClass = CreateFacebookOrderRequestBody::class;
 
-        return true;
-    }
-    public function supportsNormalization($data, $format = null)
-    {
-        if ($data instanceof \Snagshout\Promote\Model\CreateFacebookOrderRequestBody) {
-            return true;
-        }
-
-        return false;
-    }
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        $object = new \Snagshout\Promote\Model\CreateFacebookOrderRequestBody();
+        $object = new CreateFacebookOrderRequestBody();
         if (property_exists($data, 'adId')) {
             $object->setAdId($data->{'adId'});
         }
@@ -45,6 +29,7 @@ class CreateFacebookOrderRequestBodyNormalizer extends SerializerAwareNormalizer
 
         return $object;
     }
+
     public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();

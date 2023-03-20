@@ -11,7 +11,7 @@
 
 namespace Snagshout\Promote\Model;
 
-class RequestPayout
+class RequestPayout extends AbstractModel
 {
     /**
      * @var string
@@ -30,7 +30,7 @@ class RequestPayout
      * @param null $email
      * @return self
      */
-    public function setEmail($email= null)
+    public function setEmail($email = null)
     {
         $this->email = $email;
 

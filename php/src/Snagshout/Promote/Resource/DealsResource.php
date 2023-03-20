@@ -11,481 +11,348 @@
 
 namespace Snagshout\Promote\Resource;
 
-use Joli\Jane\OpenApi\Runtime\Client\QueryParam;
-use Joli\Jane\OpenApi\Runtime\Client\Resource;
+use GuzzleHttp\Promise\PromiseInterface;
+use GuzzleHttp\Psr7\Request;
+use Psr\Http\Message\ResponseInterface;
+use Snagshout\Promote\Enum\Fetch;
+use Snagshout\Promote\Model\CancelRebateRequestBody;
+use Snagshout\Promote\Model\ConfirmRebateRequestBody;
+use Snagshout\Promote\Model\CreateOrderRequestBody;
+use Snagshout\Promote\Model\CreateSurveyReviewRequestBody;
+use Snagshout\Promote\Model\Deal;
+use Snagshout\Promote\Model\DealImpressionsRequestBody;
+use Snagshout\Promote\Model\Error;
+use Snagshout\Promote\Model\FlagDealRequestBody;
+use Snagshout\Promote\Model\NotifyDealRequestBody;
+use Snagshout\Promote\Model\Payload;
+use Snagshout\Promote\Model\RestoreRebateRequestBody;
+use Snagshout\Promote\Model\ReviewFoundRequestBody;
+use Snagshout\Promote\Model\SyncDealRequestBody;
+use Snagshout\Promote\Model\SyncEmailForOrders;
+use Snagshout\Promote\Model\UnsyncDealRequestBody;
+use Snagshout\Promote\Model\UpdateDeliverableRequestBody;
+use Snagshout\Promote\Model\UpdateOrderRequestBody;
+use Snagshout\Promote\Model\UpdateReviewNameRequestBody;
 
-class DealsResource extends Resource
+/**
+ * DealsResource class.
+ *
+ * @package Snagshout\Promote\Resource
+ */
+class DealsResource extends AbstractResource
 {
     /**
+     * @param array $params List of parameters
+     * @param string $fetch Fetch mode (object or response)
      *
-     *
-     * @param array  $parameters List of parameters
-     * @param string $fetch      Fetch mode (object or response)
-     *
-     * @return \Psr\Http\Message\ResponseInterface|\Snagshout\Promote\Model\Deal[]
+     * @return ResponseInterface|PromiseInterface|Deal[]
      */
-    public function indexDeals($parameters = [], $fetch = self::FETCH_OBJECT)
+    public function indexDeals(array $params = [], string $fetch = Fetch::OBJECT)
     {
-        $queryParam = new QueryParam();
-        $url = '/api/v1/deals';
-        $url = $url . ('?' . $queryParam->buildQueryString($parameters));
-        $headers = array_merge(['Host' => 'localhost'], $queryParam->buildHeaders($parameters));
-        $body = $queryParam->buildFormDataString($parameters);
-        $request = $this->messageFactory->createRequest('GET', $url, $headers, $body);
-        $promise = $this->httpClient->sendAsyncRequest($request);
-        if (self::FETCH_PROMISE === $fetch) {
-            return $promise;
-        }
-        $response = $promise->wait();
-        if (self::FETCH_OBJECT == $fetch) {
-            if ('200' == $response->getStatusCode()) {
-                return $this->serializer->deserialize((string) $response->getBody(), 'Snagshout\\Promote\\Model\\Deal[]', 'json');
+        $url = '/api/v1/deals?' . http_build_query($params);
+        $body = $this->serializer->serialize($params, 'json');
+
+        $response = $this->client->fetch(new Request('GET', $url, [], $body), $fetch);
+
+        if ($fetch === Fetch::OBJECT) {
+            if ($response->getStatusCode() === 200) {
+                return $this->as($response, Deal::class . '[]');
             }
         }
 
         return $response;
     }
+
     /**
-     *
-     *
      * @param int $campaign ID of campaign to fetch
-     * @param array  $parameters List of parameters
-     * @param string $fetch      Fetch mode (object or response)
+     * @param array $params List of parameters
+     * @param string $fetch Fetch mode (object or response)
      *
-     * @return \Psr\Http\Message\ResponseInterface|\Snagshout\Promote\Model\Deal
+     * @return ResponseInterface|PromiseInterface|Deal
      */
-    public function getDeal($campaign, $parameters = [], $fetch = self::FETCH_OBJECT)
+    public function getDeal(int $campaign, array $params = [], string $fetch = Fetch::OBJECT)
     {
-        $queryParam = new QueryParam();
-        $url = '/api/v1/deals/{campaign}';
-        $url = str_replace('{campaign}', urlencode($campaign), $url);
-        $url = $url . ('?' . $queryParam->buildQueryString($parameters));
-        $headers = array_merge(['Host' => 'localhost'], $queryParam->buildHeaders($parameters));
-        $body = $queryParam->buildFormDataString($parameters);
-        $request = $this->messageFactory->createRequest('GET', $url, $headers, $body);
-        $promise = $this->httpClient->sendAsyncRequest($request);
-        if (self::FETCH_PROMISE === $fetch) {
-            return $promise;
-        }
-        $response = $promise->wait();
-        if (self::FETCH_OBJECT == $fetch) {
-            if ('200' == $response->getStatusCode()) {
-                return $this->serializer->deserialize((string) $response->getBody(), 'Snagshout\\Promote\\Model\\Deal', 'json');
+        $url = "/api/v1/deals/$campaign?" . http_build_query($params);
+        $body = $this->serializer->serialize($params, 'json');
+
+        $response = $this->client->fetch(new Request('GET', $url, [], $body), $fetch);
+
+        if ($fetch === Fetch::OBJECT) {
+            if ($response->getStatusCode() === 200) {
+                return $this->as($response, Deal::class);
             }
         }
 
         return $response;
     }
+
     /**
-     *
-     *
      * @param int $campaign ID of campaign to fetch
-     * @param \Snagshout\Promote\Model\CreateOrderRequestBody $body
-     * @param array  $parameters List of parameters
-     * @param string $fetch      Fetch mode (object or response)
+     * @param CreateOrderRequestBody $body
+     * @param array $params List of parameters
+     * @param string $fetch Fetch mode (object or response)
      *
-     * @return \Psr\Http\Message\ResponseInterface|\Snagshout\Promote\Model\Payload|\Snagshout\Promote\Model\Error
+     * @return ResponseInterface|PromiseInterface|Payload|Error
      */
-    public function createOrder($campaign, \Snagshout\Promote\Model\CreateOrderRequestBody $body, $parameters = [], $fetch = self::FETCH_OBJECT)
+    public function createOrder(int $campaign, CreateOrderRequestBody $body, array $params = [], string $fetch = Fetch::OBJECT)
     {
-        $queryParam = new QueryParam();
-        $url = '/api/v1/deals/{campaign}/order';
-        $url = str_replace('{campaign}', urlencode($campaign), $url);
-        $url = $url . ('?' . $queryParam->buildQueryString($parameters));
-        $headers = array_merge(['Host' => 'localhost'], $queryParam->buildHeaders($parameters));
+        $url = "/api/v1/deals/$campaign/order?" . http_build_query($params);
         $body = $this->serializer->serialize($body, 'json');
-        $request = $this->messageFactory->createRequest('POST', $url, $headers, $body);
-        $promise = $this->httpClient->sendAsyncRequest($request);
-        if (self::FETCH_PROMISE === $fetch) {
-            return $promise;
-        }
-        $response = $promise->wait();
-        if (self::FETCH_OBJECT == $fetch) {
-            if ('200' == $response->getStatusCode()) {
-                return $this->serializer->deserialize((string) $response->getBody(), 'Snagshout\\Promote\\Model\\Payload', 'json');
+
+        $response = $this->client->fetch(new Request('POST', $url, [], $body), $fetch);
+
+        if ($fetch === Fetch::OBJECT) {
+            if ($response->getStatusCode() === 200) {
+                return $this->as($response, Payload::class);
             }
-            if ('404' == $response->getStatusCode()) {
-                return $this->serializer->deserialize((string) $response->getBody(), 'Snagshout\\Promote\\Model\\Error', 'json');
-            }
-            if ('409' == $response->getStatusCode()) {
-                return $this->serializer->deserialize((string) $response->getBody(), 'Snagshout\\Promote\\Model\\Error', 'json');
-            }
-            if ('422' == $response->getStatusCode()) {
-                return $this->serializer->deserialize((string) $response->getBody(), 'Snagshout\\Promote\\Model\\Error', 'json');
+            if (in_array($response->getStatusCode(), [404, 409, 422])) {
+                return $this->as($response, Error::class);
             }
         }
 
         return $response;
     }
+
     /**
-     *
-     *
      * @param int $order ID of an order to fetch
-     * @param \Snagshout\Promote\Model\UpdateOrderRequestBody $body
-     * @param array  $parameters List of parameters
-     * @param string $fetch      Fetch mode (object or response)
+     * @param UpdateOrderRequestBody $body
+     * @param array $params List of parameters
+     * @param string $fetch Fetch mode (object or response)
      *
-     * @return \Psr\Http\Message\ResponseInterface|\Snagshout\Promote\Model\Payload|\Snagshout\Promote\Model\Error
+     * @return ResponseInterface|PromiseInterface|Payload|Error
      */
-    public function updateOrder($order, \Snagshout\Promote\Model\UpdateOrderRequestBody $body, $parameters = [], $fetch = self::FETCH_OBJECT)
+    public function updateOrder(int $order, UpdateOrderRequestBody $body, array $params = [], string $fetch = Fetch::OBJECT)
     {
-        $queryParam = new QueryParam();
-        $url = '/api/v1/deals/orders/{order}';
-        $url = str_replace('{order}', urlencode($order), $url);
-        $url = $url . ('?' . $queryParam->buildQueryString($parameters));
-        $headers = array_merge(['Host' => 'localhost'], $queryParam->buildHeaders($parameters));
+        $url = "/api/v1/deals/orders/$order?" . http_build_query($params);
         $body = $this->serializer->serialize($body, 'json');
-        $request = $this->messageFactory->createRequest('PATCH', $url, $headers, $body);
-        $promise = $this->httpClient->sendAsyncRequest($request);
-        if (self::FETCH_PROMISE === $fetch) {
-            return $promise;
-        }
-        $response = $promise->wait();
-        if (self::FETCH_OBJECT == $fetch) {
-            if ('200' == $response->getStatusCode()) {
-                return $this->serializer->deserialize((string) $response->getBody(), 'Snagshout\\Promote\\Model\\Payload', 'json');
+
+        $response = $this->client->fetch(new Request('PATCH', $url, [], $body), $fetch);
+
+        if ($fetch === Fetch::OBJECT) {
+            if ($response->getStatusCode() === 200) {
+                return $this->as($response, Payload::class);
             }
-            if ('404' == $response->getStatusCode()) {
-                return $this->serializer->deserialize((string) $response->getBody(), 'Snagshout\\Promote\\Model\\Error', 'json');
-            }
-            if ('409' == $response->getStatusCode()) {
-                return $this->serializer->deserialize((string) $response->getBody(), 'Snagshout\\Promote\\Model\\Error', 'json');
-            }
-            if ('422' == $response->getStatusCode()) {
-                return $this->serializer->deserialize((string) $response->getBody(), 'Snagshout\\Promote\\Model\\Error', 'json');
+            if (in_array($response->getStatusCode(), [404, 409, 422])) {
+                return $this->as($response, Error::class);
             }
         }
 
         return $response;
     }
+
     /**
-     *
-     *
      * @param int $campaign ID of campaign to fetch
-     * @param \Snagshout\Promote\Model\ConfirmRebateRequestBody $body
-     * @param array  $parameters List of parameters
-     * @param string $fetch      Fetch mode (object or response)
+     * @param ConfirmRebateRequestBody $body
+     * @param array $params List of parameters
+     * @param string $fetch Fetch mode (object or response)
      *
-     * @return \Psr\Http\Message\ResponseInterface|\Snagshout\Promote\Model\Error
+     * @return ResponseInterface|PromiseInterface|Error
      */
-    public function confirmCode($campaign, \Snagshout\Promote\Model\ConfirmRebateRequestBody $body, $parameters = [], $fetch = self::FETCH_OBJECT)
+    public function confirmCode(int $campaign, ConfirmRebateRequestBody $body, array $params = [], string $fetch = Fetch::OBJECT)
     {
-        $queryParam = new QueryParam();
-        $url = '/api/v1/deals/{campaign}/order/confirm';
-        $url = str_replace('{campaign}', urlencode($campaign), $url);
-        $url = $url . ('?' . $queryParam->buildQueryString($parameters));
-        $headers = array_merge(['Host' => 'localhost'], $queryParam->buildHeaders($parameters));
+        $url = "/api/v1/deals/$campaign/order/confirm?" . http_build_query($params);
         $body = $this->serializer->serialize($body, 'json');
-        $request = $this->messageFactory->createRequest('POST', $url, $headers, $body);
-        $promise = $this->httpClient->sendAsyncRequest($request);
-        if (self::FETCH_PROMISE === $fetch) {
-            return $promise;
-        }
-        $response = $promise->wait();
-        if (self::FETCH_OBJECT == $fetch) {
-            if ('422' == $response->getStatusCode()) {
-                return $this->serializer->deserialize((string) $response->getBody(), 'Snagshout\\Promote\\Model\\Error', 'json');
-            }
-            if ('404' == $response->getStatusCode()) {
-                return $this->serializer->deserialize((string) $response->getBody(), 'Snagshout\\Promote\\Model\\Error', 'json');
+
+        $response = $this->client->fetch(new Request('POST', $url, [], $body), $fetch);
+
+        if ($fetch === Fetch::OBJECT) {
+            if (in_array($response->getStatusCode(), [404, 422])) {
+                return $this->as($response, Error::class);
             }
         }
 
         return $response;
     }
+
     /**
-     *
-     *
      * @param int $campaign ID of campaign to fetch
-     * @param \Snagshout\Promote\Model\UpdateDeliverableRequestBody $body
-     * @param array  $parameters List of parameters
-     * @param string $fetch      Fetch mode (object or response)
+     * @param UpdateDeliverableRequestBody $body
+     * @param array $params List of parameters
+     * @param string $fetch Fetch mode (object or response)
      *
-     * @return \Psr\Http\Message\ResponseInterface|\Snagshout\Promote\Model\Error
+     * @return ResponseInterface|PromiseInterface|Error
      */
-    public function updateDeliverable($campaign, \Snagshout\Promote\Model\UpdateDeliverableRequestBody $body, $parameters = [], $fetch = self::FETCH_OBJECT)
+    public function updateDeliverable(int $campaign, UpdateDeliverableRequestBody $body, array $params = [], string $fetch = Fetch::OBJECT)
     {
-        $queryParam = new QueryParam();
-        $url = '/api/v1/deals/{campaign}/order/deliverable';
-        $url = str_replace('{campaign}', urlencode($campaign), $url);
-        $url = $url . ('?' . $queryParam->buildQueryString($parameters));
-        $headers = array_merge(['Host' => 'localhost'], $queryParam->buildHeaders($parameters));
+        $url = "/api/v1/deals/$campaign/order/deliverable?" . http_build_query($params);
         $body = $this->serializer->serialize($body, 'json');
-        $request = $this->messageFactory->createRequest('POST', $url, $headers, $body);
-        $promise = $this->httpClient->sendAsyncRequest($request);
-        if (self::FETCH_PROMISE === $fetch) {
-            return $promise;
-        }
-        $response = $promise->wait();
-        if (self::FETCH_OBJECT == $fetch) {
-            if ('422' == $response->getStatusCode()) {
-                return $this->serializer->deserialize((string) $response->getBody(), 'Snagshout\\Promote\\Model\\Error', 'json');
-            }
-            if ('404' == $response->getStatusCode()) {
-                return $this->serializer->deserialize((string) $response->getBody(), 'Snagshout\\Promote\\Model\\Error', 'json');
+
+        $response = $this->client->fetch(new Request('POST', $url, [], $body), $fetch);
+
+        if ($fetch === Fetch::OBJECT) {
+            if (in_array($response->getStatusCode(), [404, 422])) {
+                return $this->as($response, Error::class);
             }
         }
 
         return $response;
     }
+
     /**
-     *
-     *
      * @param int $campaign ID of campaign to fetch
-     * @param \Snagshout\Promote\Model\CancelRebateRequestBody $body
-     * @param array  $parameters List of parameters
-     * @param string $fetch      Fetch mode (object or response)
+     * @param CancelRebateRequestBody $body
+     * @param array $params List of parameters
+     * @param string $fetch Fetch mode (object or response)
      *
-     * @return \Psr\Http\Message\ResponseInterface|\Snagshout\Promote\Model\Error
+     * @return ResponseInterface|PromiseInterface|Error
      */
-    public function cancelRebate($campaign, \Snagshout\Promote\Model\CancelRebateRequestBody $body, $parameters = [], $fetch = self::FETCH_OBJECT)
+    public function cancelRebate(int $campaign, CancelRebateRequestBody $body, array $params = [], string $fetch = Fetch::OBJECT)
     {
-        $queryParam = new QueryParam();
-        $url = '/api/v1/deals/{campaign}/order/cancel';
-        $url = str_replace('{campaign}', urlencode($campaign), $url);
-        $url = $url . ('?' . $queryParam->buildQueryString($parameters));
-        $headers = array_merge(['Host' => 'localhost'], $queryParam->buildHeaders($parameters));
+        $url = "/api/v1/deals/$campaign/order/cancel?" . http_build_query($params);
         $body = $this->serializer->serialize($body, 'json');
-        $request = $this->messageFactory->createRequest('POST', $url, $headers, $body);
-        $promise = $this->httpClient->sendAsyncRequest($request);
-        if (self::FETCH_PROMISE === $fetch) {
-            return $promise;
-        }
-        $response = $promise->wait();
-        if (self::FETCH_OBJECT == $fetch) {
-            if ('422' == $response->getStatusCode()) {
-                return $this->serializer->deserialize((string) $response->getBody(), 'Snagshout\\Promote\\Model\\Error', 'json');
-            }
-            if ('404' == $response->getStatusCode()) {
-                return $this->serializer->deserialize((string) $response->getBody(), 'Snagshout\\Promote\\Model\\Error', 'json');
+
+        $response = $this->client->fetch(new Request('POST', $url, [], $body), $fetch);
+
+        if ($fetch === Fetch::OBJECT) {
+            if (in_array($response->getStatusCode(), [404, 422])) {
+                return $this->as($response, Error::class);
             }
         }
 
         return $response;
     }
+
     /**
-     *
-     *
      * @param int $campaign ID of campaign to fetch
-     * @param \Snagshout\Promote\Model\RestoreRebateRequestBody $body
-     * @param array  $parameters List of parameters
-     * @param string $fetch      Fetch mode (object or response)
+     * @param RestoreRebateRequestBody $body
+     * @param array $params List of parameters
+     * @param string $fetch Fetch mode (object or response)
      *
-     * @return \Psr\Http\Message\ResponseInterface|\Snagshout\Promote\Model\Error
+     * @return ResponseInterface|PromiseInterface|Error
      */
-    public function restoreRebate($campaign, \Snagshout\Promote\Model\RestoreRebateRequestBody $body, $parameters = [], $fetch = self::FETCH_OBJECT)
+    public function restoreRebate(int $campaign, RestoreRebateRequestBody $body, array $params = [], string $fetch = Fetch::OBJECT)
     {
-        $queryParam = new QueryParam();
-        $url = '/api/v1/deals/{campaign}/order/restore';
-        $url = str_replace('{campaign}', urlencode($campaign), $url);
-        $url = $url . ('?' . $queryParam->buildQueryString($parameters));
-        $headers = array_merge(['Host' => 'localhost'], $queryParam->buildHeaders($parameters));
+        $url = "/api/v1/deals/$campaign/order/restore?" . http_build_query($params);
         $body = $this->serializer->serialize($body, 'json');
-        $request = $this->messageFactory->createRequest('POST', $url, $headers, $body);
-        $promise = $this->httpClient->sendAsyncRequest($request);
-        if (self::FETCH_PROMISE === $fetch) {
-            return $promise;
-        }
-        $response = $promise->wait();
-        if (self::FETCH_OBJECT == $fetch) {
-            if ('422' == $response->getStatusCode()) {
-                return $this->serializer->deserialize((string) $response->getBody(), 'Snagshout\\Promote\\Model\\Error', 'json');
-            }
-            if ('404' == $response->getStatusCode()) {
-                return $this->serializer->deserialize((string) $response->getBody(), 'Snagshout\\Promote\\Model\\Error', 'json');
+
+        $response = $this->client->fetch(new Request('POST', $url, [], $body), $fetch);
+
+        if ($fetch === Fetch::OBJECT) {
+            if (in_array($response->getStatusCode(), [404, 422])) {
+                return $this->as($response, Error::class);
             }
         }
 
         return $response;
     }
-    /**
-     *
-     *
-     * @param int $campaign ID of campaign to fetch
-     * @param \Snagshout\Promote\Model\UnsyncDealRequestBody $body
-     * @param array  $parameters List of parameters
-     * @param string $fetch      Fetch mode (object or response)
-     *
-     * @return \Psr\Http\Message\ResponseInterface
-     */
-    public function unsyncDeal($campaign, \Snagshout\Promote\Model\UnsyncDealRequestBody $body, $parameters = [], $fetch = self::FETCH_OBJECT)
-    {
-        $queryParam = new QueryParam();
-        $url = '/api/v1/deals/{campaign}/sync';
-        $url = str_replace('{campaign}', urlencode($campaign), $url);
-        $url = $url . ('?' . $queryParam->buildQueryString($parameters));
-        $headers = array_merge(['Host' => 'localhost'], $queryParam->buildHeaders($parameters));
-        $body = $this->serializer->serialize($body, 'json');
-        $request = $this->messageFactory->createRequest('DELETE', $url, $headers, $body);
-        $promise = $this->httpClient->sendAsyncRequest($request);
-        if (self::FETCH_PROMISE === $fetch) {
-            return $promise;
-        }
-        $response = $promise->wait();
 
-        return $response;
-    }
     /**
-     *
-     *
      * @param int $campaign ID of campaign to fetch
-     * @param \Snagshout\Promote\Model\SyncDealRequestBody $body
-     * @param array  $parameters List of parameters
-     * @param string $fetch      Fetch mode (object or response)
+     * @param UnsyncDealRequestBody $body
+     * @param array $params List of parameters
+     * @param string $fetch Fetch mode (object or response)
      *
-     * @return \Psr\Http\Message\ResponseInterface
+     * @return ResponseInterface|PromiseInterface
      */
-    public function syncDeal($campaign, \Snagshout\Promote\Model\SyncDealRequestBody $body, $parameters = [], $fetch = self::FETCH_OBJECT)
+    public function unsyncDeal(int $campaign, UnsyncDealRequestBody $body, array $params = [], string $fetch = Fetch::OBJECT)
     {
-        $queryParam = new QueryParam();
-        $url = '/api/v1/deals/{campaign}/sync';
-        $url = str_replace('{campaign}', urlencode($campaign), $url);
-        $url = $url . ('?' . $queryParam->buildQueryString($parameters));
-        $headers = array_merge(['Host' => 'localhost'], $queryParam->buildHeaders($parameters));
+        $url = "/api/v1/deals/$campaign/sync?" . http_build_query($params);
         $body = $this->serializer->serialize($body, 'json');
-        $request = $this->messageFactory->createRequest('POST', $url, $headers, $body);
-        $promise = $this->httpClient->sendAsyncRequest($request);
-        if (self::FETCH_PROMISE === $fetch) {
-            return $promise;
-        }
-        $response = $promise->wait();
 
-        return $response;
+        return $this->client->fetch(new Request('DELETE', $url, [], $body), $fetch);
     }
+
     /**
-     *
-     *
      * @param int $campaign ID of campaign to fetch
-     * @param \Snagshout\Promote\Model\DealImpressionsRequestBody $body
-     * @param array  $parameters List of parameters
-     * @param string $fetch      Fetch mode (object or response)
+     * @param SyncDealRequestBody $body
+     * @param array $params List of parameters
+     * @param string $fetch Fetch mode (object or response)
      *
-     * @return \Psr\Http\Message\ResponseInterface
+     * @return ResponseInterface|PromiseInterface
      */
-    public function impressions($campaign, \Snagshout\Promote\Model\DealImpressionsRequestBody $body, $parameters = [], $fetch = self::FETCH_OBJECT)
+    public function syncDeal(int $campaign, SyncDealRequestBody $body, array $params = [], string $fetch = Fetch::OBJECT)
     {
-        $queryParam = new QueryParam();
-        $url = '/api/v1/deals/{campaign}/impressions';
-        $url = str_replace('{campaign}', urlencode($campaign), $url);
-        $url = $url . ('?' . $queryParam->buildQueryString($parameters));
-        $headers = array_merge(['Host' => 'localhost'], $queryParam->buildHeaders($parameters));
+        $url = "/api/v1/deals/$campaign/sync?" . http_build_query($params);
         $body = $this->serializer->serialize($body, 'json');
-        $request = $this->messageFactory->createRequest('POST', $url, $headers, $body);
-        $promise = $this->httpClient->sendAsyncRequest($request);
-        if (self::FETCH_PROMISE === $fetch) {
-            return $promise;
-        }
-        $response = $promise->wait();
 
-        return $response;
+        return $this->client->fetch(new Request('POST', $url, [], $body), $fetch);
     }
+
     /**
+     * @param int $campaign ID of campaign to fetch
+     * @param DealImpressionsRequestBody $body
+     * @param array $params List of parameters
+     * @param string $fetch Fetch mode (object or response)
      *
-     *
+     * @return ResponseInterface|PromiseInterface
+     */
+    public function impressions(int $campaign, DealImpressionsRequestBody $body, array $params = [], string $fetch = Fetch::OBJECT)
+    {
+        $url = "/api/v1/deals/$campaign/impressions?" . http_build_query($params);
+        $body = $this->serializer->serialize($body, 'json');
+
+        return $this->client->fetch(new Request('POST', $url, [], $body), $fetch);
+    }
+
+    /**
      * @param int $campaign ID of campaign to notify
-     * @param \Snagshout\Promote\Model\NotifyDealRequestBody $body
-     * @param array  $parameters List of parameters
-     * @param string $fetch      Fetch mode (object or response)
+     * @param NotifyDealRequestBody $body
+     * @param array $params List of parameters
+     * @param string $fetch Fetch mode (object or response)
      *
-     * @return \Psr\Http\Message\ResponseInterface
+     * @return ResponseInterface|PromiseInterface
      */
-    public function notifyDeal($campaign, \Snagshout\Promote\Model\NotifyDealRequestBody $body, $parameters = [], $fetch = self::FETCH_OBJECT)
+    public function notifyDeal(int $campaign, NotifyDealRequestBody $body, array $params = [], string $fetch = Fetch::OBJECT)
     {
-        $queryParam = new QueryParam();
-        $url = '/api/v1/deals/{campaign}/notify';
-        $url = str_replace('{campaign}', urlencode($campaign), $url);
-        $url = $url . ('?' . $queryParam->buildQueryString($parameters));
-        $headers = array_merge(['Host' => 'localhost'], $queryParam->buildHeaders($parameters));
+        $url = "/api/v1/deals/$campaign/notify?" . http_build_query($params);
         $body = $this->serializer->serialize($body, 'json');
-        $request = $this->messageFactory->createRequest('POST', $url, $headers, $body);
-        $promise = $this->httpClient->sendAsyncRequest($request);
-        if (self::FETCH_PROMISE === $fetch) {
-            return $promise;
-        }
-        $response = $promise->wait();
 
-        return $response;
+        return $this->client->fetch(new Request('POST', $url, [], $body), $fetch);
     }
+
     /**
-     *
-     *
      * @param int $campaign ID of campaign to flag
-     * @param \Snagshout\Promote\Model\FlagDealRequestBody $body
-     * @param array  $parameters List of parameters
-     * @param string $fetch      Fetch mode (object or response)
+     * @param FlagDealRequestBody $body
+     * @param array $params List of parameters
+     * @param string $fetch Fetch mode (object or response)
      *
-     * @return \Psr\Http\Message\ResponseInterface
+     * @return ResponseInterface|PromiseInterface
      */
-    public function flagDeal($campaign, \Snagshout\Promote\Model\FlagDealRequestBody $body, $parameters = [], $fetch = self::FETCH_OBJECT)
+    public function flagDeal(int $campaign, FlagDealRequestBody $body, array $params = [], string $fetch = Fetch::OBJECT)
     {
-        $queryParam = new QueryParam();
-        $url = '/api/v1/deals/{campaign}/flag';
-        $url = str_replace('{campaign}', urlencode($campaign), $url);
-        $url = $url . ('?' . $queryParam->buildQueryString($parameters));
-        $headers = array_merge(['Host' => 'localhost'], $queryParam->buildHeaders($parameters));
+        $url = "/api/v1/deals/$campaign/flag?" . http_build_query($params);
         $body = $this->serializer->serialize($body, 'json');
-        $request = $this->messageFactory->createRequest('POST', $url, $headers, $body);
-        $promise = $this->httpClient->sendAsyncRequest($request);
-        if (self::FETCH_PROMISE === $fetch) {
-            return $promise;
-        }
-        $response = $promise->wait();
 
-        return $response;
+        return $this->client->fetch(new Request('POST', $url, [], $body), $fetch);
     }
+
     /**
      *
      *
      * @param int $campaign ID of campaign that received a review
-     * @param \Snagshout\Promote\Model\ReviewFoundRequestBody $body
-     * @param array  $parameters List of parameters
-     * @param string $fetch      Fetch mode (object or response)
+     * @param ReviewFoundRequestBody $body
+     * @param array $params List of parameters
+     * @param string $fetch Fetch mode (object or response)
      *
-     * @return \Psr\Http\Message\ResponseInterface
+     * @return ResponseInterface|PromiseInterface
      */
-    public function reviewDeal($campaign, \Snagshout\Promote\Model\ReviewFoundRequestBody $body, $parameters = [], $fetch = self::FETCH_OBJECT)
+    public function reviewDeal($campaign, ReviewFoundRequestBody $body, array $params = [], string $fetch = Fetch::OBJECT)
     {
-        $queryParam = new QueryParam();
-        $url = '/api/v1/deals/{campaign}/review';
-        $url = str_replace('{campaign}', urlencode($campaign), $url);
-        $url = $url . ('?' . $queryParam->buildQueryString($parameters));
-        $headers = array_merge(['Host' => 'localhost'], $queryParam->buildHeaders($parameters));
+        $url = "/api/v1/deals/$campaign/review?" . http_build_query($params);
         $body = $this->serializer->serialize($body, 'json');
-        $request = $this->messageFactory->createRequest('POST', $url, $headers, $body);
-        $promise = $this->httpClient->sendAsyncRequest($request);
-        if (self::FETCH_PROMISE === $fetch) {
-            return $promise;
-        }
-        $response = $promise->wait();
 
-        return $response;
+        return $this->client->fetch(new Request('POST', $url, [], $body), $fetch);
     }
 
     /**
      *
      *
-     * @param \Snagshout\Promote\Model\SyncEmailForOrders $body
-     * @param array  $parameters List of parameters
-     * @param string $fetch      Fetch mode (object or response)
+     * @param SyncEmailForOrders $body
+     * @param array $params List of parameters
+     * @param string $fetch Fetch mode (object or response)
      *
-     * @return \Psr\Http\Message\ResponseInterface|\Snagshout\Promote\Model\Error
+     * @return ResponseInterface|PromiseInterface|Error
      */
-    public function syncEmailForOrders(\Snagshout\Promote\Model\SyncEmailForOrders $body, $parameters = [], $fetch = self::FETCH_OBJECT)
+    public function syncEmailForOrders(SyncEmailForOrders $body, array $params = [], string $fetch = Fetch::OBJECT)
     {
-        $queryParam = new QueryParam();
-        $url = '/api/v1/orders/email-sync';
-        $url = $url . ('?' . $queryParam->buildQueryString($parameters));
-        $headers = array_merge(['Host' => 'localhost'], $queryParam->buildHeaders($parameters));
+        $url = "/api/v1/orders/email-sync?" . http_build_query($params);
         $body = $this->serializer->serialize($body, 'json');
-        $request = $this->messageFactory->createRequest('POST', $url, $headers, $body);
-        $promise = $this->httpClient->sendAsyncRequest($request);
-        if (self::FETCH_PROMISE === $fetch) {
-            return $promise;
-        }
-        $response = $promise->wait();
-        if (self::FETCH_OBJECT == $fetch) {
-            if ('422' == $response->getStatusCode()) {
-                return $this->serializer->deserialize((string) $response->getBody(), 'Snagshout\\Promote\\Model\\Error', 'json');
+
+        $response = $this->client->fetch(new Request('POST', $url, [], $body), $fetch);
+
+        if ($fetch === Fetch::OBJECT) {
+            if ($response->getStatusCode() === 422) {
+                return $this->as($response, Error::class);
             }
         }
 
@@ -496,54 +363,34 @@ class DealsResource extends Resource
      * Used for sending the survey review to the promote API
      *
      * @param $orderId
-     * @param \Snagshout\Promote\Model\CreateSurveyReviewRequestBody $body
-     * @param array $parameters List of parameters
+     * @param CreateSurveyReviewRequestBody $body
+     * @param array $params List of parameters
      * @param string $fetch Fetch mode (object or response)
      *
-     * @return \Psr\Http\Message\ResponseInterface|\Snagshout\Promote\Model\Error
+     * @return ResponseInterface|PromiseInterface
      */
-    public function createSurveyReview($orderId, \Snagshout\Promote\Model\CreateSurveyReviewRequestBody $body, $parameters = [], $fetch = self::FETCH_OBJECT)
+    public function createSurveyReview($orderId, CreateSurveyReviewRequestBody $body, array $params = [], string $fetch = Fetch::OBJECT)
     {
-        $queryParam = new QueryParam();
-        $url = '/api/v1/orders/{orderId}/survey-review';
-        $url = str_replace('{orderId}', urlencode($orderId), $url);
-        $url = $url . ('?' . $queryParam->buildQueryString($parameters));
-        $headers = array_merge(['Host' => 'localhost'], $queryParam->buildHeaders($parameters));
+        $url = "/api/v1/orders/$orderId/survey-review?" . http_build_query($params);
         $body = $this->serializer->serialize($body, 'json');
-        $request = $this->messageFactory->createRequest('POST', $url, $headers, $body);
-        $promise = $this->httpClient->sendAsyncRequest($request);
-        if (self::FETCH_PROMISE === $fetch) {
-            return $promise;
-        }
-        $response = $promise->wait();
 
-        return $response;
+        return $this->client->fetch(new Request('POST', $url, [], $body), $fetch);
     }
 
     /**
      * Used for updating reviewer name on the promote API
      *
-     * @param \Snagshout\Promote\Model\UpdateReviewNameRequestBody $body
-     * @param array $parameters List of parameters
+     * @param UpdateReviewNameRequestBody $body
+     * @param array $params List of parameters
      * @param string $fetch Fetch mode (object or response)
      *
-     * @return \Psr\Http\Message\ResponseInterface|\Snagshout\Promote\Model\Error
-     * @throws \Exception
+     * @return ResponseInterface|PromiseInterface
      */
-    public function updateReviewName(\Snagshout\Promote\Model\UpdateReviewNameRequestBody $body, $parameters = [], $fetch = self::FETCH_OBJECT)
+    public function updateReviewName(UpdateReviewNameRequestBody $body, array $params = [], string $fetch = Fetch::OBJECT)
     {
-        $queryParam = new QueryParam();
-        $url = '/api/v1/orders/review-name';
-        $url = $url . ('?' . $queryParam->buildQueryString($parameters));
-        $headers = array_merge(['Host' => 'localhost'], $queryParam->buildHeaders($parameters));
+        $url = "/api/v1/orders/review-name?" . http_build_query($params);
         $body = $this->serializer->serialize($body, 'json');
-        $request = $this->messageFactory->createRequest('POST', $url, $headers, $body);
-        $promise = $this->httpClient->sendAsyncRequest($request);
-        if (self::FETCH_PROMISE === $fetch) {
-            return $promise;
-        }
-        $response = $promise->wait();
 
-        return $response;
+        return $this->client->fetch(new Request('POST', $url, [], $body), $fetch);
     }
 }

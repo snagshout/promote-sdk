@@ -11,28 +11,33 @@
 
 namespace Snagshout\Promote\Model;
 
-class Payload
+class Payload extends AbstractModel
 {
     /**
      * @var int
      */
     protected $id;
+
     /**
      * @var string
      */
     protected $payload;
+
     /**
      * @var string
      */
     protected $type;
+
     /**
      * @var string
      */
     protected $confirmationEmail;
+
     /**
      * @var string
      */
     protected $completeBy;
+
     /**
      * @return int
      */
@@ -40,6 +45,7 @@ class Payload
     {
         return $this->id;
     }
+
     /**
      * @param int $id
      *
@@ -51,6 +57,7 @@ class Payload
 
         return $this;
     }
+
     /**
      * @return string
      */
@@ -58,6 +65,7 @@ class Payload
     {
         return $this->payload;
     }
+
     /**
      * @param string $payload
      *
@@ -69,6 +77,7 @@ class Payload
 
         return $this;
     }
+
     /**
      * @return string
      */
@@ -76,6 +85,7 @@ class Payload
     {
         return $this->type;
     }
+
     /**
      * @param string $type
      *
@@ -87,6 +97,7 @@ class Payload
 
         return $this;
     }
+
     /**
      * @return string
      */
@@ -94,6 +105,7 @@ class Payload
     {
         return $this->confirmationEmail;
     }
+
     /**
      * @param string $confirmationEmail
      *
@@ -105,6 +117,7 @@ class Payload
 
         return $this;
     }
+
     /**
      * @return string
      */
@@ -112,6 +125,7 @@ class Payload
     {
         return $this->completeBy;
     }
+
     /**
      * @param string $completeBy
      *

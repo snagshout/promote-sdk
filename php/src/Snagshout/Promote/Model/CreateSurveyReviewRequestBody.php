@@ -11,20 +11,23 @@
 
 namespace Snagshout\Promote\Model;
 
-class CreateSurveyReviewRequestBody
+class CreateSurveyReviewRequestBody extends AbstractModel
 {
     /**
      * @var boolean|null
      */
     protected $reviewClaimedLeft;
+
     /**
      * @var string|null
      */
     protected $reviewerName;
+
     /**
      * @var string|null
      */
     protected $title;
+
     /**
      * @var string|null
      */

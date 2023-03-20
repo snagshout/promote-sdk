@@ -11,7 +11,7 @@
 
 namespace Snagshout\Promote\Model;
 
-class RestoreRebateRequestBody
+class RestoreRebateRequestBody extends AbstractModel
 {
     /**
      * @var string

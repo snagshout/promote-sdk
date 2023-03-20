@@ -11,31 +11,15 @@
 
 namespace Snagshout\Promote\Normalizer;
 
-use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
-use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-use Symfony\Component\Serializer\Normalizer\SerializerAwareNormalizer;
+use Snagshout\Promote\Model\Followup;
 
-class FollowupNormalizer extends SerializerAwareNormalizer implements DenormalizerInterface, NormalizerInterface
+class FollowupNormalizer extends AbstractNormalizer
 {
-    public function supportsDenormalization($data, $type, $format = null)
-    {
-        if ($type !== 'Snagshout\\Promote\\Model\\Followup') {
-            return false;
-        }
+    protected $modelClass = Followup::class;
 
-        return true;
-    }
-    public function supportsNormalization($data, $format = null)
-    {
-        if ($data instanceof \Snagshout\Promote\Model\Followup) {
-            return true;
-        }
-
-        return false;
-    }
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        $object = new \Snagshout\Promote\Model\Followup();
+        $object = new Followup();
         if (property_exists($data, 'days')) {
             $object->setDays($data->{'days'});
         }
@@ -48,6 +32,7 @@ class FollowupNormalizer extends SerializerAwareNormalizer implements Denormaliz
 
         return $object;
     }
+
     public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();

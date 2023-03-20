@@ -11,12 +11,13 @@
 
 namespace Snagshout\Promote\Model;
 
-class CheckEmailRequestBody
+class CheckEmailRequestBody extends AbstractModel
 {
     /**
      * @var string
      */
     protected $email;
+
     /**
      * @return string
      */
@@ -24,6 +25,7 @@ class CheckEmailRequestBody
     {
         return $this->email;
     }
+
     /**
      * @param string $email
      *

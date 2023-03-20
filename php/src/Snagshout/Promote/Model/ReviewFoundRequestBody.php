@@ -11,40 +11,48 @@
 
 namespace Snagshout\Promote\Model;
 
-class ReviewFoundRequestBody
+class ReviewFoundRequestBody extends AbstractModel
 {
     /**
      * @var string
      */
     protected $createdAt;
+
     /**
      * @var string
      */
     protected $asin;
+
     /**
      * @var string
      */
     protected $title;
+
     /**
      * @var string
      */
     protected $summary;
+
     /**
      * @var string
      */
     protected $reviewerId;
+
     /**
      * @var string
      */
     protected $reviewId;
+
     /**
      * @var string
      */
     protected $url;
+
     /**
      * @var int
      */
     protected $stars;
+
     /**
      * @return string
      */
@@ -52,6 +60,7 @@ class ReviewFoundRequestBody
     {
         return $this->createdAt;
     }
+
     /**
      * @param string $createdAt
      *
@@ -63,6 +72,7 @@ class ReviewFoundRequestBody
 
         return $this;
     }
+
     /**
      * @return string
      */
@@ -70,6 +80,7 @@ class ReviewFoundRequestBody
     {
         return $this->asin;
     }
+
     /**
      * @param string $asin
      *
@@ -81,6 +92,7 @@ class ReviewFoundRequestBody
 
         return $this;
     }
+
     /**
      * @return string
      */
@@ -88,6 +100,7 @@ class ReviewFoundRequestBody
     {
         return $this->title;
     }
+
     /**
      * @param string $title
      *
@@ -99,6 +112,7 @@ class ReviewFoundRequestBody
 
         return $this;
     }
+
     /**
      * @return string
      */
@@ -106,6 +120,7 @@ class ReviewFoundRequestBody
     {
         return $this->summary;
     }
+
     /**
      * @param string $summary
      *
@@ -117,6 +132,7 @@ class ReviewFoundRequestBody
 
         return $this;
     }
+
     /**
      * @return string
      */
@@ -124,6 +140,7 @@ class ReviewFoundRequestBody
     {
         return $this->reviewerId;
     }
+
     /**
      * @param string $reviewerId
      *
@@ -135,6 +152,7 @@ class ReviewFoundRequestBody
 
         return $this;
     }
+
     /**
      * @return string
      */
@@ -142,6 +160,7 @@ class ReviewFoundRequestBody
     {
         return $this->reviewId;
     }
+
     /**
      * @param string $reviewId
      *
@@ -153,6 +172,7 @@ class ReviewFoundRequestBody
 
         return $this;
     }
+
     /**
      * @return string
      */
@@ -160,6 +180,7 @@ class ReviewFoundRequestBody
     {
         return $this->url;
     }
+
     /**
      * @param string $url
      *
@@ -171,6 +192,7 @@ class ReviewFoundRequestBody
 
         return $this;
     }
+
     /**
      * @return int
      */
@@ -178,6 +200,7 @@ class ReviewFoundRequestBody
     {
         return $this->stars;
     }
+
     /**
      * @param int $stars
      *

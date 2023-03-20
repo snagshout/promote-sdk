@@ -11,31 +11,15 @@
 
 namespace Snagshout\Promote\Normalizer;
 
-use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
-use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-use Symfony\Component\Serializer\Normalizer\SerializerAwareNormalizer;
+use Snagshout\Promote\Model\StoreConversionIdRequestBody;
 
-class StoreConversionIdRequestBodyNormalizer extends SerializerAwareNormalizer implements DenormalizerInterface, NormalizerInterface
+class StoreConversionIdRequestBodyNormalizer extends AbstractNormalizer
 {
-    public function supportsDenormalization($data, $type, $format = null)
-    {
-        if ($type !== 'Snagshout\\Promote\\Model\\StoreConversionIdRequestBody') {
-            return false;
-        }
+    protected $modelClass = StoreConversionIdRequestBody::class;
 
-        return true;
-    }
-    public function supportsNormalization($data, $format = null)
-    {
-        if ($data instanceof \Snagshout\Promote\Model\StoreConversionIdRequestBody) {
-            return true;
-        }
-
-        return false;
-    }
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        $object = new \Snagshout\Promote\Model\StoreConversionIdRequestBody();
+        $object = new StoreConversionIdRequestBody();
         if (property_exists($data, 'conversionId')) {
             $object->setConversionId($data->{'conversionId'});
         }
@@ -45,6 +29,7 @@ class StoreConversionIdRequestBodyNormalizer extends SerializerAwareNormalizer i
 
         return $object;
     }
+
     public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();

@@ -11,204 +11,253 @@
 
 namespace Snagshout\Promote\Model;
 
-class Deal
+class Deal extends AbstractModel
 {
     /**
      * @var int
      */
     protected $campaignId;
+
     /**
      * @var int
      */
     protected $companyId;
+
     /**
      * @var int
      */
     protected $productId;
+
     /**
      * @var string
      */
     protected $productName;
+
     /**
      * @var string
      */
     protected $productDescription;
+
     /**
      * @var Category[]
      */
     protected $categories;
+
     /**
      * @var Medium[]
      */
     protected $media;
+
     /**
      * @var string[]
      */
     protected $boost;
+
     /**
      * @var float[]
      */
     protected $boostWeights;
+
     /**
      * @var string
      */
     protected $actionType;
+
     /**
      * @var mixed
      */
     protected $actionMetadata;
+
     /**
      * @var bool
      */
     protected $actionIsPro;
+
     /**
      * @var string
      */
     protected $code;
+
     /**
      * @var int
      */
     protected $confidence;
+
     /**
      * @var string
      */
     protected $currency;
+
     /**
      * @var float
      */
     protected $discountPrice;
+
     /**
      * @var float
      */
     protected $rebateAmount;
+
     /**
      * @var bool
      */
     protected $isExclusive;
+
     /**
      * @var bool
      */
     protected $isNSFW;
+
     /**
      * @var string[]
      */
     protected $featured;
+
     /**
      * @var bool
      */
     protected $isUnlimited;
+
     /**
      * @var mixed
      */
     protected $listingMetadata;
+
     /**
      * @var float
      */
     protected $listingPrice;
+
     /**
      * @var string
      */
     protected $listingUrl;
+
     /**
      * @var string
      */
     protected $reviewUrl;
+
     /**
      * @var string
      */
     protected $marketplace;
+
     /**
      * @var string
      */
     protected $marketplaceId;
+
     /**
      * @var string
      */
     protected $payloadType;
+
     /**
      * @var int
      */
     protected $completeWithin;
+
     /**
      * @var bool
      */
     protected $requireEmail;
+
     /**
      * @var int
      */
     protected $shippingDaysMax;
+
     /**
      * @var int
      */
     protected $shippingDaysMin;
+
     /**
      * @var float
      */
     protected $shippingPrice;
+
     /**
      * @var string
      */
     protected $shippingType;
+
     /**
      * @var string
      */
     protected $startsAt;
+
     /**
      * @var string
      */
     protected $returnAt;
+
     /**
      * @var string
      */
     protected $updatedAt;
+
     /**
      * @var string
      */
     protected $endsAt;
+
     /**
      * @var bool
      */
     protected $available;
+
     /**
      * @var mixed
      */
     protected $metadata;
+
     /**
      * @var int
      */
     protected $remainingQuantity;
+
     /**
      * @var bool
      */
     protected $dailyLimitReached;
+
     /**
      * @var mixed
      */
     protected $immediateFollowup;
+
     /**
      * @var mixed
      */
     protected $scheduledFollowup;
+
     /**
      * @var int
      */
     protected $dailyLimit;
+
     /**
      * @var string
      */
     protected $visibility;
+
     /**
      * @var int|null
      */
     protected $minAge;
+
     /**
      * @var int|null
      */
     protected $maxAge;
+
     /**
      * @var string|array|null
      */
     protected $gender;
+
     /**
      * @var string|array|null
      */
@@ -221,6 +270,7 @@ class Deal
     {
         return $this->campaignId;
     }
+
     /**
      * @param int $campaignId
      *
@@ -232,6 +282,7 @@ class Deal
 
         return $this;
     }
+
     /**
      * @return int
      */
@@ -239,6 +290,7 @@ class Deal
     {
         return $this->companyId;
     }
+
     /**
      * @param int $companyId
      *
@@ -250,6 +302,7 @@ class Deal
 
         return $this;
     }
+
     /**
      * @return int
      */
@@ -257,6 +310,7 @@ class Deal
     {
         return $this->productId;
     }
+
     /**
      * @param int $productId
      *
@@ -268,6 +322,7 @@ class Deal
 
         return $this;
     }
+
     /**
      * @return string
      */
@@ -275,6 +330,7 @@ class Deal
     {
         return $this->productName;
     }
+
     /**
      * @param string $productName
      *
@@ -286,6 +342,7 @@ class Deal
 
         return $this;
     }
+
     /**
      * @return string
      */
@@ -293,6 +350,7 @@ class Deal
     {
         return $this->productDescription;
     }
+
     /**
      * @param string $productDescription
      *
@@ -304,6 +362,7 @@ class Deal
 
         return $this;
     }
+
     /**
      * @return Category[]
      */
@@ -311,6 +370,7 @@ class Deal
     {
         return $this->categories;
     }
+
     /**
      * @param Category[] $categories
      *
@@ -322,6 +382,7 @@ class Deal
 
         return $this;
     }
+
     /**
      * @return Medium[]
      */
@@ -329,6 +390,7 @@ class Deal
     {
         return $this->media;
     }
+
     /**
      * @param Medium[] $media
      *
@@ -340,6 +402,7 @@ class Deal
 
         return $this;
     }
+
     /**
      * @return string[]
      */
@@ -347,6 +410,7 @@ class Deal
     {
         return $this->boost;
     }
+
     /**
      * @param string[] $boost
      *
@@ -358,6 +422,7 @@ class Deal
 
         return $this;
     }
+
     /**
      * @return float[]
      */
@@ -365,6 +430,7 @@ class Deal
     {
         return $this->boostWeights;
     }
+
     /**
      * @param float[] $boostWeights
      *
@@ -376,6 +442,7 @@ class Deal
 
         return $this;
     }
+
     /**
      * @return string
      */
@@ -383,6 +450,7 @@ class Deal
     {
         return $this->actionType;
     }
+
     /**
      * @param string $actionType
      *
@@ -394,6 +462,7 @@ class Deal
 
         return $this;
     }
+
     /**
      * @return mixed
      */
@@ -401,6 +470,7 @@ class Deal
     {
         return $this->actionMetadata;
     }
+
     /**
      * @param mixed $actionMetadata
      *
@@ -412,6 +482,7 @@ class Deal
 
         return $this;
     }
+
     /**
      * @return bool
      */
@@ -419,6 +490,7 @@ class Deal
     {
         return $this->actionIsPro;
     }
+
     /**
      * @param bool $actionIsPro
      *
@@ -430,6 +502,7 @@ class Deal
 
         return $this;
     }
+
     /**
      * @return string
      */
@@ -437,6 +510,7 @@ class Deal
     {
         return $this->code;
     }
+
     /**
      * @param string $code
      *
@@ -448,6 +522,7 @@ class Deal
 
         return $this;
     }
+
     /**
      * @return int
      */
@@ -455,6 +530,7 @@ class Deal
     {
         return $this->confidence;
     }
+
     /**
      * @param int $confidence
      *
@@ -466,6 +542,7 @@ class Deal
 
         return $this;
     }
+
     /**
      * @return string
      */
@@ -473,6 +550,7 @@ class Deal
     {
         return $this->currency;
     }
+
     /**
      * @param string $currency
      *
@@ -484,6 +562,7 @@ class Deal
 
         return $this;
     }
+
     /**
      * @return float
      */
@@ -491,6 +570,7 @@ class Deal
     {
         return $this->discountPrice;
     }
+
     /**
      * @param float $discountPrice
      *
@@ -502,6 +582,7 @@ class Deal
 
         return $this;
     }
+
     /**
      * @return float
      */
@@ -509,6 +590,7 @@ class Deal
     {
         return $this->rebateAmount;
     }
+
     /**
      * @param float $rebateAmount
      *
@@ -520,6 +602,7 @@ class Deal
 
         return $this;
     }
+
     /**
      * @return bool
      */
@@ -527,6 +610,7 @@ class Deal
     {
         return $this->isExclusive;
     }
+
     /**
      * @param bool $isExclusive
      *
@@ -538,6 +622,7 @@ class Deal
 
         return $this;
     }
+
     /**
      * @return bool
      */
@@ -545,6 +630,7 @@ class Deal
     {
         return $this->isNSFW;
     }
+
     /**
      * @param bool $isNSFW
      *
@@ -556,6 +642,7 @@ class Deal
 
         return $this;
     }
+
     /**
      * @return string[]
      */
@@ -563,6 +650,7 @@ class Deal
     {
         return $this->featured;
     }
+
     /**
      * @param string[] $featured
      *
@@ -574,6 +662,7 @@ class Deal
 
         return $this;
     }
+
     /**
      * @return bool
      */
@@ -581,6 +670,7 @@ class Deal
     {
         return $this->isUnlimited;
     }
+
     /**
      * @param bool $isUnlimited
      *
@@ -592,6 +682,7 @@ class Deal
 
         return $this;
     }
+
     /**
      * @return mixed
      */
@@ -599,6 +690,7 @@ class Deal
     {
         return $this->listingMetadata;
     }
+
     /**
      * @param mixed $listingMetadata
      *
@@ -610,6 +702,7 @@ class Deal
 
         return $this;
     }
+
     /**
      * @return float
      */
@@ -617,6 +710,7 @@ class Deal
     {
         return $this->listingPrice;
     }
+
     /**
      * @param float $listingPrice
      *
@@ -628,6 +722,7 @@ class Deal
 
         return $this;
     }
+
     /**
      * @return string
      */
@@ -635,6 +730,7 @@ class Deal
     {
         return $this->listingUrl;
     }
+
     /**
      * @param string $listingUrl
      *
@@ -646,6 +742,7 @@ class Deal
 
         return $this;
     }
+
     /**
      * @return string
      */
@@ -653,6 +750,7 @@ class Deal
     {
         return $this->reviewUrl;
     }
+
     /**
      * @param string $reviewUrl
      *
@@ -664,6 +762,7 @@ class Deal
 
         return $this;
     }
+
     /**
      * @return string
      */
@@ -671,6 +770,7 @@ class Deal
     {
         return $this->marketplace;
     }
+
     /**
      * @param string $marketplace
      *
@@ -682,6 +782,7 @@ class Deal
 
         return $this;
     }
+
     /**
      * @return string
      */
@@ -689,6 +790,7 @@ class Deal
     {
         return $this->marketplaceId;
     }
+
     /**
      * @param string $marketplaceId
      *
@@ -700,6 +802,7 @@ class Deal
 
         return $this;
     }
+
     /**
      * @return string
      */
@@ -707,6 +810,7 @@ class Deal
     {
         return $this->payloadType;
     }
+
     /**
      * @param string $payloadType
      *
@@ -718,6 +822,7 @@ class Deal
 
         return $this;
     }
+
     /**
      * @return int|null
      */
@@ -725,6 +830,7 @@ class Deal
     {
         return $this->completeWithin;
     }
+
     /**
      * @param int|null $completeWithin
      *
@@ -736,6 +842,7 @@ class Deal
 
         return $this;
     }
+
     /**
      * @return bool
      */
@@ -743,6 +850,7 @@ class Deal
     {
         return $this->requireEmail;
     }
+
     /**
      * @param bool $requireEmail
      *
@@ -754,6 +862,7 @@ class Deal
 
         return $this;
     }
+
     /**
      * @return int
      */
@@ -761,6 +870,7 @@ class Deal
     {
         return $this->shippingDaysMax;
     }
+
     /**
      * @param int $shippingDaysMax
      *
@@ -772,6 +882,7 @@ class Deal
 
         return $this;
     }
+
     /**
      * @return int
      */
@@ -779,6 +890,7 @@ class Deal
     {
         return $this->shippingDaysMin;
     }
+
     /**
      * @param int $shippingDaysMin
      *
@@ -790,6 +902,7 @@ class Deal
 
         return $this;
     }
+
     /**
      * @return float
      */
@@ -797,6 +910,7 @@ class Deal
     {
         return $this->shippingPrice;
     }
+
     /**
      * @param float $shippingPrice
      *
@@ -808,6 +922,7 @@ class Deal
 
         return $this;
     }
+
     /**
      * @return string
      */
@@ -815,6 +930,7 @@ class Deal
     {
         return $this->shippingType;
     }
+
     /**
      * @param string $shippingType
      *
@@ -826,6 +942,7 @@ class Deal
 
         return $this;
     }
+
     /**
      * @return string
      */
@@ -833,6 +950,7 @@ class Deal
     {
         return $this->startsAt;
     }
+
     /**
      * @param string $startsAt
      *
@@ -844,6 +962,7 @@ class Deal
 
         return $this;
     }
+
     /**
      * @return string
      */
@@ -851,6 +970,7 @@ class Deal
     {
         return $this->returnAt;
     }
+
     /**
      * @param string $returnAt
      *
@@ -862,6 +982,7 @@ class Deal
 
         return $this;
     }
+
     /**
      * @return string
      */
@@ -869,6 +990,7 @@ class Deal
     {
         return $this->updatedAt;
     }
+
     /**
      * @param string $updatedAt
      *
@@ -880,6 +1002,7 @@ class Deal
 
         return $this;
     }
+
     /**
      * @return string
      */
@@ -887,6 +1010,7 @@ class Deal
     {
         return $this->endsAt;
     }
+
     /**
      * @param string $endsAt
      *
@@ -898,6 +1022,7 @@ class Deal
 
         return $this;
     }
+
     /**
      * @return bool
      */
@@ -905,6 +1030,7 @@ class Deal
     {
         return $this->available;
     }
+
     /**
      * @param bool $available
      *
@@ -916,6 +1042,7 @@ class Deal
 
         return $this;
     }
+
     /**
      * @return mixed
      */
@@ -923,6 +1050,7 @@ class Deal
     {
         return $this->metadata;
     }
+
     /**
      * @param mixed $metadata
      *
@@ -934,6 +1062,7 @@ class Deal
 
         return $this;
     }
+
     /**
      * @return int
      */
@@ -941,6 +1070,7 @@ class Deal
     {
         return $this->remainingQuantity;
     }
+
     /**
      * @param int $remainingQuantity
      *
@@ -952,6 +1082,7 @@ class Deal
 
         return $this;
     }
+
     /**
      * @return bool
      */
@@ -959,6 +1090,7 @@ class Deal
     {
         return $this->dailyLimitReached;
     }
+
     /**
      * @param bool $dailyLimitReached
      *
@@ -970,6 +1102,7 @@ class Deal
 
         return $this;
     }
+
     /**
      * @return mixed
      */
@@ -977,6 +1110,7 @@ class Deal
     {
         return $this->immediateFollowup;
     }
+
     /**
      * @param mixed $immediateFollowup
      *
@@ -988,6 +1122,7 @@ class Deal
 
         return $this;
     }
+
     /**
      * @return mixed
      */
@@ -995,6 +1130,7 @@ class Deal
     {
         return $this->scheduledFollowup;
     }
+
     /**
      * @param mixed $scheduledFollowup
      *
@@ -1006,6 +1142,7 @@ class Deal
 
         return $this;
     }
+
     /**
      * @return int|null
      */
@@ -1013,6 +1150,7 @@ class Deal
     {
         return $this->dailyLimit;
     }
+
     /**
      * @param int|null $dailyLimit
      *
@@ -1024,6 +1162,7 @@ class Deal
 
         return $this;
     }
+
     /**
      * @return string
      */
@@ -1031,6 +1170,7 @@ class Deal
     {
         return $this->visibility;
     }
+
     /**
      * @param string|null $visibility
      *
@@ -1042,6 +1182,7 @@ class Deal
 
         return $this;
     }
+
     /**
      * @return int|null
      */
@@ -1049,6 +1190,7 @@ class Deal
     {
         return $this->minAge;
     }
+
     /**
      * @param int|null $minAge
      *
@@ -1060,6 +1202,7 @@ class Deal
 
         return $this;
     }
+
     /**
      * @return int|null
      */
@@ -1067,6 +1210,7 @@ class Deal
     {
         return $this->maxAge;
     }
+
     /**
      * @param int|null $maxAge
      *
@@ -1078,6 +1222,7 @@ class Deal
 
         return $this;
     }
+
     /**
      * @return string|array|null
      */
@@ -1085,6 +1230,7 @@ class Deal
     {
         return $this->gender;
     }
+
     /**
      * @param string|array|null $gender
      *
@@ -1096,6 +1242,7 @@ class Deal
 
         return $this;
     }
+
     /**
      * @return string|array|null
      */
@@ -1103,6 +1250,7 @@ class Deal
     {
         return $this->zip;
     }
+
     /**
      * @param string|array|null $zip
      *

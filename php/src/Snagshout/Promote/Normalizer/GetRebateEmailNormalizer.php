@@ -11,37 +11,22 @@
 
 namespace Snagshout\Promote\Normalizer;
 
-use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
-use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-use Symfony\Component\Serializer\Normalizer\SerializerAwareNormalizer;
+use Snagshout\Promote\Model\GetRebateEmail;
 
-class GetRebateEmailNormalizer extends SerializerAwareNormalizer implements DenormalizerInterface, NormalizerInterface
+class GetRebateEmailNormalizer extends AbstractNormalizer
 {
-    public function supportsDenormalization($data, $type, $format = null)
-    {
-        if ($type !== 'Snagshout\\Promote\\Model\\GetRebateEmail') {
-            return false;
-        }
+    protected $modelClass = GetRebateEmail::class;
 
-        return true;
-    }
-    public function supportsNormalization($data, $format = null)
-    {
-        if ($data instanceof \Snagshout\Promote\Model\GetRebateEmail) {
-            return true;
-        }
-
-        return false;
-    }
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        $object = new \Snagshout\Promote\Model\GetRebateEmail();
+        $object = new GetRebateEmail();
         if (property_exists($data, 'fbUserId')) {
             $object->setFbUserId($data->{'fbUserId'});
         }
 
         return $object;
     }
+
     public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();

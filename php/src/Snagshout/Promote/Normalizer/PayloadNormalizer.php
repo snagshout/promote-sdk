@@ -11,31 +11,15 @@
 
 namespace Snagshout\Promote\Normalizer;
 
-use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
-use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-use Symfony\Component\Serializer\Normalizer\SerializerAwareNormalizer;
+use Snagshout\Promote\Model\Payload;
 
-class PayloadNormalizer extends SerializerAwareNormalizer implements DenormalizerInterface, NormalizerInterface
+class PayloadNormalizer extends AbstractNormalizer
 {
-    public function supportsDenormalization($data, $type, $format = null)
-    {
-        if ($type !== 'Snagshout\\Promote\\Model\\Payload') {
-            return false;
-        }
+    protected $modelClass = Payload::class;
 
-        return true;
-    }
-    public function supportsNormalization($data, $format = null)
-    {
-        if ($data instanceof \Snagshout\Promote\Model\Payload) {
-            return true;
-        }
-
-        return false;
-    }
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        $object = new \Snagshout\Promote\Model\Payload();
+        $object = new Payload();
         if (property_exists($data, 'id')) {
             $object->setId($data->{'id'});
         }
@@ -54,6 +38,7 @@ class PayloadNormalizer extends SerializerAwareNormalizer implements Denormalize
 
         return $object;
     }
+
     public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();

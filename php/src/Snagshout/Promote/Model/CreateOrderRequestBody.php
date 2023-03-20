@@ -11,24 +11,28 @@
 
 namespace Snagshout\Promote\Model;
 
-class CreateOrderRequestBody
+class CreateOrderRequestBody extends AbstractModel
 {
     /**
      * @var string
      */
     protected $email;
+
     /**
      * @var string
      */
     protected $name;
+
     /**
      * @var string
      */
     protected $completeBy;
+
     /**
      * @var bool
      */
     protected $wasCompleteBySet = false;
+
     /**
      * @return string
      */
@@ -36,6 +40,7 @@ class CreateOrderRequestBody
     {
         return $this->email;
     }
+
     /**
      * @param string $email
      *
@@ -47,6 +52,7 @@ class CreateOrderRequestBody
 
         return $this;
     }
+
     /**
      * @return string
      */
@@ -54,6 +60,7 @@ class CreateOrderRequestBody
     {
         return $this->name;
     }
+
     /**
      * @param string $name
      *
@@ -65,13 +72,15 @@ class CreateOrderRequestBody
 
         return $this;
     }
+
     /**
      * @return bool
      */
     public function wasCompleteBySet()
     {
-        return (bool) $this->wasCompleteBySet;
+        return (bool)$this->wasCompleteBySet;
     }
+
     /**
      * @return string
      */
@@ -79,6 +88,7 @@ class CreateOrderRequestBody
     {
         return $this->completeBy;
     }
+
     /**
      * @param string $completeBy
      *

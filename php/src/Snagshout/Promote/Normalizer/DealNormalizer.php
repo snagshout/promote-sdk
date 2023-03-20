@@ -11,31 +11,17 @@
 
 namespace Snagshout\Promote\Normalizer;
 
-use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
-use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-use Symfony\Component\Serializer\Normalizer\SerializerAwareNormalizer;
+use Snagshout\Promote\Model\Category;
+use Snagshout\Promote\Model\Deal;
+use Snagshout\Promote\Model\Medium;
 
-class DealNormalizer extends SerializerAwareNormalizer implements DenormalizerInterface, NormalizerInterface
+class DealNormalizer extends AbstractNormalizer
 {
-    public function supportsDenormalization($data, $type, $format = null)
-    {
-        if ($type !== 'Snagshout\\Promote\\Model\\Deal') {
-            return false;
-        }
+    protected $modelClass = Deal::class;
 
-        return true;
-    }
-    public function supportsNormalization($data, $format = null)
-    {
-        if ($data instanceof \Snagshout\Promote\Model\Deal) {
-            return true;
-        }
-
-        return false;
-    }
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        $object = new \Snagshout\Promote\Model\Deal();
+        $object = new Deal();
         if (property_exists($data, 'campaignId')) {
             $object->setCampaignId($data->{'campaignId'});
         }
@@ -54,14 +40,14 @@ class DealNormalizer extends SerializerAwareNormalizer implements DenormalizerIn
         if (property_exists($data, 'categories')) {
             $values = [];
             foreach ($data->{'categories'} as $value) {
-                $values[] = $this->serializer->deserialize($value, 'Snagshout\\Promote\\Model\\Category', 'raw', $context);
+                $values[] = $this->serializer->deserialize(json_encode($value), Category::class, 'raw', $context);
             }
             $object->setCategories($values);
         }
         if (property_exists($data, 'media')) {
             $values_1 = [];
             foreach ($data->{'media'} as $value_1) {
-                $values_1[] = $this->serializer->deserialize($value_1, 'Snagshout\\Promote\\Model\\Medium', 'raw', $context);
+                $values_1[] = $this->serializer->deserialize(json_encode($value_1), Medium::class, 'raw', $context);
             }
             $object->setMedia($values_1);
         }
@@ -209,6 +195,7 @@ class DealNormalizer extends SerializerAwareNormalizer implements DenormalizerIn
 
         return $object;
     }
+
     public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();

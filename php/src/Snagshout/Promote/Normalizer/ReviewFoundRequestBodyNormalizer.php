@@ -11,31 +11,15 @@
 
 namespace Snagshout\Promote\Normalizer;
 
-use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
-use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-use Symfony\Component\Serializer\Normalizer\SerializerAwareNormalizer;
+use Snagshout\Promote\Model\ReviewFoundRequestBody;
 
-class ReviewFoundRequestBodyNormalizer extends SerializerAwareNormalizer implements DenormalizerInterface, NormalizerInterface
+class ReviewFoundRequestBodyNormalizer extends AbstractNormalizer
 {
-    public function supportsDenormalization($data, $type, $format = null)
-    {
-        if ($type !== 'Snagshout\\Promote\\Model\\ReviewFoundRequestBody') {
-            return false;
-        }
+    protected $modelClass = ReviewFoundRequestBody::class;
 
-        return true;
-    }
-    public function supportsNormalization($data, $format = null)
-    {
-        if ($data instanceof \Snagshout\Promote\Model\ReviewFoundRequestBody) {
-            return true;
-        }
-
-        return false;
-    }
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        $object = new \Snagshout\Promote\Model\ReviewFoundRequestBody();
+        $object = new ReviewFoundRequestBody();
         if (property_exists($data, 'createdAt')) {
             $object->setCreatedAt($data->{'createdAt'});
         }
@@ -63,6 +47,7 @@ class ReviewFoundRequestBodyNormalizer extends SerializerAwareNormalizer impleme
 
         return $object;
     }
+
     public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();

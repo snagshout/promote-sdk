@@ -11,12 +11,15 @@
 
 namespace Snagshout\Promote\Normalizer;
 
+use Symfony\Component\Serializer\Normalizer\ArrayDenormalizer;
+
 class NormalizerFactory
 {
     public static function create()
     {
         $normalizers = [];
-        $normalizers[] = new \Joli\Jane\Runtime\Normalizer\ArrayDenormalizer();
+
+        $normalizers[] = new ArrayDenormalizer();
         $normalizers[] = new DealImpressionsRequestBodyNormalizer();
         $normalizers[] = new CancelRebateRequestBodyNormalizer();
         $normalizers[] = new RestoreRebateRequestBodyNormalizer();

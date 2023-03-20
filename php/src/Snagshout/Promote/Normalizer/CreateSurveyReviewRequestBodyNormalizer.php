@@ -11,31 +11,15 @@
 
 namespace Snagshout\Promote\Normalizer;
 
-use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
-use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-use Symfony\Component\Serializer\Normalizer\SerializerAwareNormalizer;
+use Snagshout\Promote\Model\CreateSurveyReviewRequestBody;
 
-class CreateSurveyReviewRequestBodyNormalizer extends SerializerAwareNormalizer implements DenormalizerInterface, NormalizerInterface
+class CreateSurveyReviewRequestBodyNormalizer extends AbstractNormalizer
 {
-    public function supportsDenormalization($data, $type, $format = null)
-    {
-        if ($type !== 'Snagshout\\Promote\\Model\\CreateSurveyReviewRequestBody') {
-            return false;
-        }
+    protected $modelClass = CreateSurveyReviewRequestBody::class;
 
-        return true;
-    }
-    public function supportsNormalization($data, $format = null)
-    {
-        if ($data instanceof \Snagshout\Promote\Model\CreateSurveyReviewRequestBody) {
-            return true;
-        }
-
-        return false;
-    }
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        $object = new \Snagshout\Promote\Model\CreateSurveyReviewRequestBody();
+        $object = new CreateSurveyReviewRequestBody();
         if (property_exists($data, 'reviewClaimedLeft')) {
             $object->setReviewClaimedLeft($data->{'reviewClaimedLeft'});
         }
@@ -51,6 +35,7 @@ class CreateSurveyReviewRequestBodyNormalizer extends SerializerAwareNormalizer 
 
         return $object;
     }
+
     public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();

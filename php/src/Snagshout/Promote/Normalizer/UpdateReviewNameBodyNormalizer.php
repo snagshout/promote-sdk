@@ -11,31 +11,15 @@
 
 namespace Snagshout\Promote\Normalizer;
 
-use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
-use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-use Symfony\Component\Serializer\Normalizer\SerializerAwareNormalizer;
+use Snagshout\Promote\Model\UpdateReviewNameRequestBody;
 
-class UpdateReviewNameBodyNormalizer extends SerializerAwareNormalizer implements DenormalizerInterface, NormalizerInterface
+class UpdateReviewNameBodyNormalizer extends AbstractNormalizer
 {
-    public function supportsDenormalization($data, $type, $format = null)
-    {
-        if ($type !== 'Snagshout\\Promote\\Model\\UpdateReviewNameRequestBody') {
-            return false;
-        }
+    protected $modelClass = UpdateReviewNameRequestBody::class;
 
-        return true;
-    }
-    public function supportsNormalization($data, $format = null)
-    {
-        if ($data instanceof \Snagshout\Promote\Model\UpdateReviewNameRequestBody) {
-            return true;
-        }
-
-        return false;
-    }
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        $object = new \Snagshout\Promote\Model\UpdateReviewNameRequestBody();
+        $object = new UpdateReviewNameRequestBody();
         if (property_exists($data, 'userEmail')) {
             $object->setUserEmail($data->{'userEmail'});
         }
@@ -45,6 +29,7 @@ class UpdateReviewNameBodyNormalizer extends SerializerAwareNormalizer implement
 
         return $object;
     }
+
     public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();

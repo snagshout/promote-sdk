@@ -11,69 +11,43 @@
 
 namespace Snagshout\Promote\Resource;
 
-use Joli\Jane\OpenApi\Runtime\Client\QueryParam;
-use Joli\Jane\OpenApi\Runtime\Client\Resource;
+use Exception;
+use GuzzleHttp\Promise\PromiseInterface;
+use GuzzleHttp\Psr7\Request;
+use Psr\Http\Message\ResponseInterface;
+use Snagshout\Promote\Enum\Fetch;
+use Snagshout\Promote\Model\CheckEmailRequestBody;
+use Snagshout\Promote\Model\Error;
+use Snagshout\Promote\Model\InitializeMigrationBody;
+use Snagshout\Promote\Model\RequestPayout;
 
-class UsersResource extends Resource
+/**
+ * UsersResource class.
+ *
+ * @package Snagshout\Promote\Resource
+ */
+class UsersResource extends AbstractResource
 {
     /**
-     * 
+     * @param InitializeMigrationBody $body
+     * @param array $params List of parameters
+     * @param string $fetch Fetch mode (object or response)
      *
-     * @param \Snagshout\Promote\Model\InitializeMigrationBody $body 
-     * @param array  $parameters List of parameters
-     * @param string $fetch      Fetch mode (object or response)
-     *
-     * @return \Psr\Http\Message\ResponseInterface|\Snagshout\Promote\Model\Error
+     * @return ResponseInterface|PromiseInterface|Error
      */
-    public function initialize(\Snagshout\Promote\Model\InitializeMigrationBody $body, $parameters = [], $fetch = self::FETCH_OBJECT)
+    public function initialize(InitializeMigrationBody $body, array $params = [], string $fetch = Fetch::OBJECT)
     {
-        $queryParam = new QueryParam();
-        $url = '/api/v1/users/migrate';
-        $url = $url . ('?' . $queryParam->buildQueryString($parameters));
-        $headers = array_merge(['Host' => 'localhost'], $queryParam->buildHeaders($parameters));
+        $url = '/api/v1/users/migrate?' . http_build_query($params);
         $body = $this->serializer->serialize($body, 'json');
-        $request = $this->messageFactory->createRequest('POST', $url, $headers, $body);
-        $promise = $this->httpClient->sendAsyncRequest($request);
-        if (self::FETCH_PROMISE === $fetch) {
-            return $promise;
-        }
-        $response = $promise->wait();
-        if (self::FETCH_OBJECT == $fetch) {
-            if ('403' == $response->getStatusCode()) {
-                return $this->serializer->deserialize((string) $response->getBody(), 'Snagshout\\Promote\\Model\\Error', 'json');
-            }
-            if ('500' == $response->getStatusCode()) {
-                return $this->serializer->deserialize((string) $response->getBody(), 'Snagshout\\Promote\\Model\\Error', 'json');
-            }
-        }
 
-        return $response;
-    }
-    /**
-     * 
-     *
-     * @param \Snagshout\Promote\Model\CheckEmailRequestBody $body 
-     * @param array  $parameters List of parameters
-     * @param string $fetch      Fetch mode (object or response)
-     *
-     * @return \Psr\Http\Message\ResponseInterface|\Snagshout\Promote\Model\Error
-     */
-    public function checkEmail(\Snagshout\Promote\Model\CheckEmailRequestBody $body, $parameters = [], $fetch = self::FETCH_OBJECT)
-    {
-        $queryParam = new QueryParam();
-        $url = '/api/v1/users/email';
-        $url = $url . ('?' . $queryParam->buildQueryString($parameters));
-        $headers = array_merge(['Host' => 'localhost'], $queryParam->buildHeaders($parameters));
-        $body = $this->serializer->serialize($body, 'json');
-        $request = $this->messageFactory->createRequest('POST', $url, $headers, $body);
-        $promise = $this->httpClient->sendAsyncRequest($request);
-        if (self::FETCH_PROMISE === $fetch) {
-            return $promise;
-        }
-        $response = $promise->wait();
-        if (self::FETCH_OBJECT == $fetch) {
-            if ('422' == $response->getStatusCode()) {
-                return $this->serializer->deserialize((string) $response->getBody(), 'Snagshout\\Promote\\Model\\Error', 'json');
+        $response = $this->client->fetch(new Request('POST', $url, [], $body), $fetch);
+
+        if ($fetch === Fetch::OBJECT) {
+            if ($response->getStatusCode() === 403) {
+                return $this->as($response, Error::class);
+            }
+            if ($response->getStatusCode() === 500) {
+                return $this->as($response, Error::class);
             }
         }
 
@@ -81,33 +55,50 @@ class UsersResource extends Resource
     }
 
     /**
+     * @param CheckEmailRequestBody $body
+     * @param array $params List of parameters
+     * @param string $fetch Fetch mode (object or response)
      *
-     *
-     * @param \Snagshout\Promote\Model\CheckEmailRequestBody $body
-     * @param array  $parameters List of parameters
-     * @param string $fetch      Fetch mode (object or response)
-     *
-     * @return \Psr\Http\Message\ResponseInterface|\Snagshout\Promote\Model\Error
+     * @return ResponseInterface|PromiseInterface|Error
      */
-    public function requestPayout(\Snagshout\Promote\Model\RequestPayout $body, $parameters = [], $fetch = self::FETCH_OBJECT)
+    public function checkEmail(CheckEmailRequestBody $body, array $params = [], string $fetch = Fetch::OBJECT)
     {
-        if(empty($body->getEmail())) {
-            throw new \Exception('Email is empty');
-        }
-        $queryParam = new QueryParam();
-        $url = '/api/v1/payouts';
-        $url = $url . ('?' . $queryParam->buildQueryString($parameters));
-        $headers = array_merge(['Host' => 'localhost'], $queryParam->buildHeaders($parameters));
+        $url = '/api/v1/users/email?' . http_build_query($params);
         $body = $this->serializer->serialize($body, 'json');
-        $request = $this->messageFactory->createRequest('POST', $url, $headers, $body);
-        $promise = $this->httpClient->sendAsyncRequest($request);
-        if (self::FETCH_PROMISE === $fetch) {
-            return $promise;
+
+        $response = $this->client->fetch(new Request('POST', $url, [], $body), $fetch);
+
+        if ($fetch === Fetch::OBJECT) {
+            if ($response->getStatusCode() === 422) {
+                return $this->as($response, Error::class);
+            }
         }
-        $response = $promise->wait();
-        if (self::FETCH_OBJECT == $fetch) {
-            if ('422' == $response->getStatusCode()) {
-                return $this->serializer->deserialize((string) $response->getBody(), 'Snagshout\\Promote\\Model\\Error', 'json');
+
+        return $response;
+    }
+
+    /**
+     * @param RequestPayout $body
+     * @param array $params List of parameters
+     * @param string $fetch Fetch mode (object or response)
+     *
+     * @return ResponseInterface|PromiseInterface|Error
+     * @throws Exception
+     */
+    public function requestPayout(RequestPayout $body, array $params = [], string $fetch = Fetch::OBJECT)
+    {
+        if (empty($body->getEmail())) {
+            throw new Exception('Email is empty');
+        }
+
+        $url = '/api/v1/payouts?' . http_build_query($params);
+        $body = $this->serializer->serialize($body, 'json');
+
+        $response = $this->client->fetch(new Request('POST', $url, [], $body), $fetch);
+
+        if ($fetch === Fetch::OBJECT) {
+            if ($response->getStatusCode() === 422) {
+                return $this->as($response, Error::class);
             }
         }
 

@@ -11,12 +11,13 @@
 
 namespace Snagshout\Promote\Model;
 
-class GetRebateEmail
+class GetRebateEmail extends AbstractModel
 {
     /**
      * @var string
      */
     protected $fbUserId;
+
     /**
      * @return string
      */
@@ -24,6 +25,7 @@ class GetRebateEmail
     {
         return $this->fbUserId;
     }
+
     /**
      * @param string $fbUserId
      *

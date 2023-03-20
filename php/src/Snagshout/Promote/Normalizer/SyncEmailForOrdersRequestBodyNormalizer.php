@@ -11,31 +11,15 @@
 
 namespace Snagshout\Promote\Normalizer;
 
-use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
-use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-use Symfony\Component\Serializer\Normalizer\SerializerAwareNormalizer;
+use Snagshout\Promote\Model\SyncEmailForOrders;
 
-class SyncEmailForOrdersRequestBodyNormalizer extends SerializerAwareNormalizer implements DenormalizerInterface, NormalizerInterface
+class SyncEmailForOrdersRequestBodyNormalizer extends AbstractNormalizer
 {
-    public function supportsDenormalization($data, $type, $format = null)
-    {
-        if ($type !== 'Snagshout\\Promote\\Model\\SyncEmailForOrders') {
-            return false;
-        }
+    protected $modelClass = SyncEmailForOrders::class;
 
-        return true;
-    }
-    public function supportsNormalization($data, $format = null)
-    {
-        if ($data instanceof \Snagshout\Promote\Model\SyncEmailForOrders) {
-            return true;
-        }
-
-        return false;
-    }
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        $object = new \Snagshout\Promote\Model\SyncEmailForOrders();
+        $object = new SyncEmailForOrders();
         if (property_exists($data, 'newEmail')) {
             $object->setNewEmail($data->{'newEmail'});
         }
@@ -45,6 +29,7 @@ class SyncEmailForOrdersRequestBodyNormalizer extends SerializerAwareNormalizer 
 
         return $object;
     }
+
     public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();

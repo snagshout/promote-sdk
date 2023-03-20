@@ -11,31 +11,15 @@
 
 namespace Snagshout\Promote\Normalizer;
 
-use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
-use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-use Symfony\Component\Serializer\Normalizer\SerializerAwareNormalizer;
+use Snagshout\Promote\Model\Impression;
 
-class ImpressionNormalizer extends SerializerAwareNormalizer implements DenormalizerInterface, NormalizerInterface
+class ImpressionNormalizer extends AbstractNormalizer
 {
-    public function supportsDenormalization($data, $type, $format = null)
-    {
-        if ($type !== 'Snagshout\\Promote\\Model\\Impression') {
-            return false;
-        }
+    protected $modelClass = Impression::class;
 
-        return true;
-    }
-    public function supportsNormalization($data, $format = null)
-    {
-        if ($data instanceof \Snagshout\Promote\Model\Impression) {
-            return true;
-        }
-
-        return false;
-    }
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        $object = new \Snagshout\Promote\Model\Impression();
+        $object = new Impression();
         if (property_exists($data, 'views')) {
             $object->setViews($data->{'views'});
         }
@@ -48,6 +32,7 @@ class ImpressionNormalizer extends SerializerAwareNormalizer implements Denormal
 
         return $object;
     }
+
     public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();

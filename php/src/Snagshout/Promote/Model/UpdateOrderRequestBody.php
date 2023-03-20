@@ -11,7 +11,7 @@
 
 namespace Snagshout\Promote\Model;
 
-class UpdateOrderRequestBody
+class UpdateOrderRequestBody extends AbstractModel
 {
     /**
      * `status` of the order.
@@ -19,15 +19,17 @@ class UpdateOrderRequestBody
      * @var string
      */
     protected $status;
+
     /**
      * Get `status` of the order.
      *
      * @return string|null
      */
-    public function getStatus() : ?string
+    public function getStatus(): ?string
     {
         return $this->status;
     }
+
     /**
      * Set `status` of the order.
      *
@@ -35,7 +37,7 @@ class UpdateOrderRequestBody
      *
      * @return self
      */
-    public function setStatus(?string $status) : self
+    public function setStatus(?string $status): self
     {
         $this->status = $status;
 

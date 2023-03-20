@@ -11,28 +11,33 @@
 
 namespace Snagshout\Promote\Model;
 
-class Version
+class Version extends AbstractModel
 {
     /**
      * @var string
      */
     protected $api;
+
     /**
      * @var string
      */
     protected $app;
+
     /**
      * @var string
      */
     protected $date;
+
     /**
      * @var string
      */
     protected $php;
+
     /**
      * @var mixed
      */
     protected $extensions;
+
     /**
      * @return string
      */
@@ -40,6 +45,7 @@ class Version
     {
         return $this->api;
     }
+
     /**
      * @param string $api
      *
@@ -51,6 +57,7 @@ class Version
 
         return $this;
     }
+
     /**
      * @return string
      */
@@ -58,6 +65,7 @@ class Version
     {
         return $this->app;
     }
+
     /**
      * @param string $app
      *
@@ -69,6 +77,7 @@ class Version
 
         return $this;
     }
+
     /**
      * @return string
      */
@@ -76,6 +85,7 @@ class Version
     {
         return $this->date;
     }
+
     /**
      * @param string $date
      *
@@ -87,6 +97,7 @@ class Version
 
         return $this;
     }
+
     /**
      * @return string
      */
@@ -94,6 +105,7 @@ class Version
     {
         return $this->php;
     }
+
     /**
      * @param string $php
      *
@@ -105,6 +117,7 @@ class Version
 
         return $this;
     }
+
     /**
      * @return mixed
      */
@@ -112,6 +125,7 @@ class Version
     {
         return $this->extensions;
     }
+
     /**
      * @param mixed $extensions
      *

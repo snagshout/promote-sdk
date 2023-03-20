@@ -11,7 +11,7 @@
 
 namespace Snagshout\Promote\Model;
 
-class SyncEmailForOrders
+class SyncEmailForOrders extends AbstractModel
 {
     /**
      * @var string

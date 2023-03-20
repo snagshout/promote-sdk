@@ -11,31 +11,15 @@
 
 namespace Snagshout\Promote\Normalizer;
 
-use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
-use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-use Symfony\Component\Serializer\Normalizer\SerializerAwareNormalizer;
+use Snagshout\Promote\Model\Medium;
 
-class MediumNormalizer extends SerializerAwareNormalizer implements DenormalizerInterface, NormalizerInterface
+class MediumNormalizer extends AbstractNormalizer
 {
-    public function supportsDenormalization($data, $type, $format = null)
-    {
-        if ($type !== 'Snagshout\\Promote\\Model\\Medium') {
-            return false;
-        }
+    protected $modelClass = Medium::class;
 
-        return true;
-    }
-    public function supportsNormalization($data, $format = null)
-    {
-        if ($data instanceof \Snagshout\Promote\Model\Medium) {
-            return true;
-        }
-
-        return false;
-    }
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        $object = new \Snagshout\Promote\Model\Medium();
+        $object = new Medium();
         if (property_exists($data, 'id')) {
             $object->setId($data->{'id'});
         }
@@ -54,6 +38,7 @@ class MediumNormalizer extends SerializerAwareNormalizer implements Denormalizer
 
         return $object;
     }
+
     public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();

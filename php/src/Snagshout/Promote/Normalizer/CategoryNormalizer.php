@@ -11,31 +11,15 @@
 
 namespace Snagshout\Promote\Normalizer;
 
-use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
-use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-use Symfony\Component\Serializer\Normalizer\SerializerAwareNormalizer;
+use Snagshout\Promote\Model\Category;
 
-class CategoryNormalizer extends SerializerAwareNormalizer implements DenormalizerInterface, NormalizerInterface
+class CategoryNormalizer extends AbstractNormalizer
 {
-    public function supportsDenormalization($data, $type, $format = null)
-    {
-        if ($type !== 'Snagshout\\Promote\\Model\\Category') {
-            return false;
-        }
+    protected $modelClass = Category::class;
 
-        return true;
-    }
-    public function supportsNormalization($data, $format = null)
-    {
-        if ($data instanceof \Snagshout\Promote\Model\Category) {
-            return true;
-        }
-
-        return false;
-    }
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        $object = new \Snagshout\Promote\Model\Category();
+        $object = new Category();
         if (property_exists($data, 'id')) {
             $object->setId($data->{'id'});
         }
@@ -45,6 +29,7 @@ class CategoryNormalizer extends SerializerAwareNormalizer implements Denormaliz
 
         return $object;
     }
+
     public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();

@@ -11,11 +11,7 @@
 
 namespace Snagshout\Promote\Normalizer;
 
-use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
-use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-use Symfony\Component\Serializer\Normalizer\SerializerAwareNormalizer;
-
-class CompleteFacebookOrderRequestBodyNormalizer extends SerializerAwareNormalizer implements DenormalizerInterface, NormalizerInterface
+class CompleteFacebookOrderRequestBodyNormalizer extends AbstractNormalizer
 {
     public function supportsDenormalization($data, $type, $format = null)
     {
@@ -25,6 +21,7 @@ class CompleteFacebookOrderRequestBodyNormalizer extends SerializerAwareNormaliz
 
         return true;
     }
+
     public function supportsNormalization($data, $format = null)
     {
         if ($data instanceof \Snagshout\Promote\Model\CompleteFacebookOrderRequestBody) {
@@ -33,6 +30,7 @@ class CompleteFacebookOrderRequestBodyNormalizer extends SerializerAwareNormaliz
 
         return false;
     }
+
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         $object = new \Snagshout\Promote\Model\CompleteFacebookOrderRequestBody();
@@ -45,6 +43,7 @@ class CompleteFacebookOrderRequestBodyNormalizer extends SerializerAwareNormaliz
 
         return $object;
     }
+
     public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();

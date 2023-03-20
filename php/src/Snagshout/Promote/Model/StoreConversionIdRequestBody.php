@@ -11,16 +11,18 @@
 
 namespace Snagshout\Promote\Model;
 
-class StoreConversionIdRequestBody
+class StoreConversionIdRequestBody extends AbstractModel
 {
     /**
      * @var int
      */
     protected $conversionId;
+
     /**
      * @var string
      */
     protected $email;
+
     /**
      * @return int
      */
@@ -28,6 +30,7 @@ class StoreConversionIdRequestBody
     {
         return $this->conversionId;
     }
+
     /**
      * @param int $conversionId
      *
@@ -39,6 +42,7 @@ class StoreConversionIdRequestBody
 
         return $this;
     }
+
     /**
      * @return string
      */
@@ -46,6 +50,7 @@ class StoreConversionIdRequestBody
     {
         return $this->email;
     }
+
     /**
      * @param string $email
      *

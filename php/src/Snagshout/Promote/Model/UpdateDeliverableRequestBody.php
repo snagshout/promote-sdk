@@ -11,20 +11,23 @@
 
 namespace Snagshout\Promote\Model;
 
-class UpdateDeliverableRequestBody
+class UpdateDeliverableRequestBody extends AbstractModel
 {
     /**
      * @var string
      */
     protected $email;
+
     /**
      * @var mixed
      */
     protected $deliverable;
+
     /**
      * @var int
      */
     protected $promoteOrderId;
+
     /**
      * @return string
      */
@@ -32,6 +35,7 @@ class UpdateDeliverableRequestBody
     {
         return $this->email;
     }
+
     /**
      * @param string $email
      *
@@ -43,6 +47,7 @@ class UpdateDeliverableRequestBody
 
         return $this;
     }
+
     /**
      * @return mixed
      */
@@ -50,6 +55,7 @@ class UpdateDeliverableRequestBody
     {
         return $this->deliverable;
     }
+
     /**
      * @param mixed $deliverable
      *
@@ -77,7 +83,8 @@ class UpdateDeliverableRequestBody
      */
     public function setPromoteOrderId(
         int $promoteOrderId = null
-    ) : UpdateDeliverableRequestBody {
+    ): UpdateDeliverableRequestBody
+    {
         $this->promoteOrderId = $promoteOrderId;
 
         return $this;
