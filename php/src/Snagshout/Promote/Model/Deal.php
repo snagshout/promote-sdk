@@ -14,14 +14,6 @@ namespace Snagshout\Promote\Model;
 class Deal extends AbstractModel
 {
     /**
-     * @var array
-     */
-    protected $relations = [
-        'media' => Medium::class,
-        'categories' => Category::class,
-    ];
-
-    /**
      * @var int
      */
     protected $campaignId;

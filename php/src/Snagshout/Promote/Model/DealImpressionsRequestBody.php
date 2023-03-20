@@ -14,13 +14,6 @@ namespace Snagshout\Promote\Model;
 class DealImpressionsRequestBody extends AbstractModel
 {
     /**
-     * @var array
-     */
-    protected $relations = [
-        'impressions' => Impression::class,
-    ];
-
-    /**
      * @var Impression[]
      */
     protected $impressions;
