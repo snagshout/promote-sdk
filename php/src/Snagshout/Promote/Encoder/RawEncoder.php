@@ -37,7 +37,7 @@ class RawEncoder implements DecoderInterface, EncoderInterface
     /**
      * {@inheritdoc}
      */
-    public function supportsDecoding($format)
+    public function supportsDecoding($format): bool
     {
         return self::FORMAT === $format;
     }
@@ -45,7 +45,7 @@ class RawEncoder implements DecoderInterface, EncoderInterface
     /**
      * {@inheritdoc}
      */
-    public function encode($data, $format, array $context = array())
+    public function encode($data, $format, array $context = array()): string
     {
         return $data;
     }
@@ -53,7 +53,7 @@ class RawEncoder implements DecoderInterface, EncoderInterface
     /**
      * {@inheritdoc}
      */
-    public function supportsEncoding($format)
+    public function supportsEncoding($format): bool
     {
         return self::FORMAT === $format;
     }
