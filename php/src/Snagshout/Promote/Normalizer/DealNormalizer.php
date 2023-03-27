@@ -42,14 +42,14 @@ class DealNormalizer extends AbstractNormalizer
         if (property_exists($data, 'categories')) {
             $values = [];
             foreach ($data->{'categories'} as $value) {
-                $values[] = $this->serializer->deserialize(json_encode($value), Category::class, 'raw', $context);
+                $values[] = $this->serializer->deserialize(json_encode($value), Category::class, 'json', $context);
             }
             $object->setCategories($values);
         }
         if (property_exists($data, 'media')) {
             $values_1 = [];
             foreach ($data->{'media'} as $value_1) {
-                $values_1[] = $this->serializer->deserialize(json_encode($value_1), Medium::class, 'raw', $context);
+                $values_1[] = $this->serializer->deserialize(json_encode($value_1), Medium::class, 'json', $context);
             }
             $object->setMedia($values_1);
         }
