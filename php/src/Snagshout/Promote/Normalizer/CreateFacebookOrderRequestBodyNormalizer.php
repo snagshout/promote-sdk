@@ -19,6 +19,8 @@ class CreateFacebookOrderRequestBodyNormalizer extends AbstractNormalizer
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
+        $data = (object) $data;
+
         $object = new CreateFacebookOrderRequestBody();
         if (property_exists($data, 'adId')) {
             $object->setAdId($data->{'adId'});

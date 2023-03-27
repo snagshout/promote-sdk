@@ -19,6 +19,8 @@ class ConfirmRebateRequestBodyNormalizer extends AbstractNormalizer
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
+        $data = (object) $data;
+
         $object = new ConfirmRebateRequestBody();
         if (property_exists($data, 'email')) {
             $object->setEmail($data->{'email'});

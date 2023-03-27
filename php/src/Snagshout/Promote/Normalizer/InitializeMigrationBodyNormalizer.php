@@ -19,6 +19,8 @@ class InitializeMigrationBodyNormalizer extends AbstractNormalizer
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
+        $data = (object) $data;
+
         $object = new InitializeMigrationBody();
         if (property_exists($data, 'userId')) {
             $object->setUserId($data->{'userId'});

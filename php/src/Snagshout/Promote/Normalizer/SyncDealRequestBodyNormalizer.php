@@ -19,6 +19,8 @@ class SyncDealRequestBodyNormalizer extends AbstractNormalizer
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
+        $data = (object) $data;
+
         $object = new SyncDealRequestBody();
         if (property_exists($data, 'url')) {
             $object->setUrl($data->{'url'});

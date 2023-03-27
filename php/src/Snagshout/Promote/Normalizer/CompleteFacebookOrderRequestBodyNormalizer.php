@@ -11,6 +11,8 @@
 
 namespace Snagshout\Promote\Normalizer;
 
+use Snagshout\Promote\Model\CompleteFacebookOrderRequestBody;
+
 class CompleteFacebookOrderRequestBodyNormalizer extends AbstractNormalizer
 {
     public function supportsDenormalization($data, $type, $format = null)
@@ -24,7 +26,7 @@ class CompleteFacebookOrderRequestBodyNormalizer extends AbstractNormalizer
 
     public function supportsNormalization($data, $format = null)
     {
-        if ($data instanceof \Snagshout\Promote\Model\CompleteFacebookOrderRequestBody) {
+        if ($data instanceof CompleteFacebookOrderRequestBody) {
             return true;
         }
 
@@ -33,7 +35,9 @@ class CompleteFacebookOrderRequestBodyNormalizer extends AbstractNormalizer
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        $object = new \Snagshout\Promote\Model\CompleteFacebookOrderRequestBody();
+        $data = (object) $data;
+
+        $object = new CompleteFacebookOrderRequestBody();
         if (property_exists($data, 'email')) {
             $object->setEmail($data->{'email'});
         }

@@ -21,6 +21,8 @@ class DealNormalizer extends AbstractNormalizer
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
+        $data = (object) $data;
+
         $object = new Deal();
         if (property_exists($data, 'campaignId')) {
             $object->setCampaignId($data->{'campaignId'});

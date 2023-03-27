@@ -19,6 +19,8 @@ class ImpressionNormalizer extends AbstractNormalizer
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
+        $data = (object) $data;
+
         $object = new Impression();
         if (property_exists($data, 'views')) {
             $object->setViews($data->{'views'});

@@ -19,6 +19,8 @@ class UnsyncDealRequestBodyNormalizer extends AbstractNormalizer
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
+        $data = (object) $data;
+
         $object = new UnsyncDealRequestBody();
         if (property_exists($data, 'note')) {
             $object->setNote($data->{'note'});

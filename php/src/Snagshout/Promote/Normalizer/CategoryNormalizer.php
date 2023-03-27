@@ -19,6 +19,8 @@ class CategoryNormalizer extends AbstractNormalizer
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
+        $data = (object) $data;
+
         $object = new Category();
         if (property_exists($data, 'id')) {
             $object->setId($data->{'id'});

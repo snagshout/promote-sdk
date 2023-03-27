@@ -20,6 +20,8 @@ class DealImpressionsRequestBodyNormalizer extends AbstractNormalizer
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
+        $data = (object) $data;
+
         $object = new DealImpressionsRequestBody();
         if (property_exists($data, 'impressions')) {
             $values = [];

@@ -19,6 +19,8 @@ class FlagDealRequestBodyNormalizer extends AbstractNormalizer
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
+        $data = (object) $data;
+
         $object = new FlagDealRequestBody();
         if (property_exists($data, 'type')) {
             $object->setType($data->{'type'});

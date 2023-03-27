@@ -19,6 +19,8 @@ class StoreFBImpressionRequestBodyNormalizer extends AbstractNormalizer
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
+        $data = (object) $data;
+
         $object = new StoreFBImpressionRequestBody();
         if (property_exists($data, 'fbAdId')) {
             $object->setFbAdId($data->{'fbAdId'});

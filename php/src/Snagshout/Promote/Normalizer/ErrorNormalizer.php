@@ -19,6 +19,8 @@ class ErrorNormalizer extends AbstractNormalizer
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
+        $data = (object) $data;
+
         $object = new Error();
         if (property_exists($data, 'message')) {
             $object->setMessage($data->{'message'});

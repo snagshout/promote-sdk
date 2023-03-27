@@ -19,6 +19,8 @@ class NotifyDealRequestBodyNormalizer extends AbstractNormalizer
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
+        $data = (object) $data;
+
         $object = new NotifyDealRequestBody();
         if (property_exists($data, 'type')) {
             $object->setType($data->{'type'});
