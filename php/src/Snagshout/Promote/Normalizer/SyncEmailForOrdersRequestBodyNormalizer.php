@@ -19,6 +19,8 @@ class SyncEmailForOrdersRequestBodyNormalizer extends AbstractNormalizer
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
+        $data = (object) $data;
+
         $object = new SyncEmailForOrders();
         if (property_exists($data, 'newEmail')) {
             $object->setNewEmail($data->{'newEmail'});

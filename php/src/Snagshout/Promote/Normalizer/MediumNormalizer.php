@@ -19,6 +19,8 @@ class MediumNormalizer extends AbstractNormalizer
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
+        $data = (object) $data;
+
         $object = new Medium();
         if (property_exists($data, 'id')) {
             $object->setId($data->{'id'});

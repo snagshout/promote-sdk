@@ -62,6 +62,7 @@ class Client
             new Serializer(
                 NormalizerFactory::create(),
                 [
+                    new RawEncoder(),
                     new JsonEncoder(new JsonEncode(), new JsonDecode()),
                 ]
             )

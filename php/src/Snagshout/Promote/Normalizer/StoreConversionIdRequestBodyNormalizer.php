@@ -19,6 +19,8 @@ class StoreConversionIdRequestBodyNormalizer extends AbstractNormalizer
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
+        $data = (object) $data;
+
         $object = new StoreConversionIdRequestBody();
         if (property_exists($data, 'conversionId')) {
             $object->setConversionId($data->{'conversionId'});

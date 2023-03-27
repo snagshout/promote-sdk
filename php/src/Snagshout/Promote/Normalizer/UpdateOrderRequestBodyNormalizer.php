@@ -19,6 +19,8 @@ class UpdateOrderRequestBodyNormalizer extends AbstractNormalizer
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
+        $data = (object) $data;
+
         $object = new UpdateOrderRequestBody();
         if (property_exists($data, 'status')) {
             $object->setStatus($data->{'status'});

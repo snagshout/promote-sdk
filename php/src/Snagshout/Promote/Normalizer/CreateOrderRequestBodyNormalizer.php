@@ -19,6 +19,8 @@ class CreateOrderRequestBodyNormalizer extends AbstractNormalizer
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
+        $data = (object) $data;
+
         $object = new CreateOrderRequestBody();
         if (property_exists($data, 'email')) {
             $object->setEmail($data->{'email'});

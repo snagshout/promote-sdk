@@ -19,6 +19,8 @@ class ReviewFoundRequestBodyNormalizer extends AbstractNormalizer
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
+        $data = (object) $data;
+
         $object = new ReviewFoundRequestBody();
         if (property_exists($data, 'createdAt')) {
             $object->setCreatedAt($data->{'createdAt'});

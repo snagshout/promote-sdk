@@ -19,6 +19,8 @@ class GetRebateOrPromoNormalizer extends AbstractNormalizer
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
+        $data = (object) $data;
+
         $object = new GetRebateOrPromo();
         if (property_exists($data, 'fbUserId')) {
             $object->setFbUserId($data->{'fbUserId'});

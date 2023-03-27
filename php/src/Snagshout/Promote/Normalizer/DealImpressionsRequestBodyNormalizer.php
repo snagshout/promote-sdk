@@ -20,11 +20,13 @@ class DealImpressionsRequestBodyNormalizer extends AbstractNormalizer
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
+        $data = (object) $data;
+
         $object = new DealImpressionsRequestBody();
         if (property_exists($data, 'impressions')) {
             $values = [];
             foreach ($data->{'impressions'} as $value) {
-                $values[] = $this->serializer->deserialize(json_encode($value), Impression::class, 'raw', $context);
+                $values[] = $this->serializer->deserialize(json_encode($value), Impression::class, 'json', $context);
             }
             $object->setImpressions($values);
         }
