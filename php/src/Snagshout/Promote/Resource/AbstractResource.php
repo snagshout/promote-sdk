@@ -55,7 +55,9 @@ abstract class AbstractResource
      */
     public function as(ResponseInterface $response, string $class)
     {
+        $data = $response->getBody()->getContents();
+
         return $this->serializer
-            ->deserialize($response->getBody()->getContents(), $class, 'json');
+            ->deserialize($data, $class, 'json');
     }
 }
