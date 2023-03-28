@@ -34,12 +34,13 @@ class CancelRebateRequestBodyNormalizer extends AbstractNormalizer
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
+
         if (null !== $object->getEmail()) {
-            $data->{'email'} = $object->getEmail();
+            $data['email'] = $object->getEmail();
         }
         if (null !== $object->getPromoteOrderId()) {
-            $data->{'promoteOrderId'} = $object->getPromoteOrderId();
+            $data['promoteOrderId'] = $object->getPromoteOrderId();
         }
 
         return $data;

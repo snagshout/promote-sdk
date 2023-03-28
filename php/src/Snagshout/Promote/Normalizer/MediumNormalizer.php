@@ -43,21 +43,22 @@ class MediumNormalizer extends AbstractNormalizer
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
+
         if (null !== $object->getId()) {
-            $data->{'id'} = $object->getId();
+            $data['id'] = $object->getId();
         }
         if (null !== $object->getUrl()) {
-            $data->{'url'} = $object->getUrl();
+            $data['url'] = $object->getUrl();
         }
         if (null !== $object->getType()) {
-            $data->{'type'} = $object->getType();
+            $data['type'] = $object->getType();
         }
         if (null !== $object->getTitle()) {
-            $data->{'title'} = $object->getTitle();
+            $data['title'] = $object->getTitle();
         }
         if (null !== $object->getMetadata()) {
-            $data->{'metadata'} = $object->getMetadata();
+            $data['metadata'] = $object->getMetadata();
         }
 
         return $data;

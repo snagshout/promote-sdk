@@ -34,12 +34,13 @@ class GetRebateOrPromoNormalizer extends AbstractNormalizer
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
+
         if (null !== $object->getFbUserId()) {
-            $data->{'fbUserId'} = $object->getFbUserId();
+            $data['fbUserId'] = $object->getFbUserId();
         }
         if (null !== $object->getAdId()) {
-            $data->{'adId'} = $object->getAdId();
+            $data['adId'] = $object->getAdId();
         }
 
         return $data;

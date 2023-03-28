@@ -50,12 +50,13 @@ class CompleteFacebookOrderRequestBodyNormalizer extends AbstractNormalizer
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
+
         if (null !== $object->getEmail()) {
-            $data->{'email'} = $object->getEmail();
+            $data['email'] = $object->getEmail();
         }
         if (null !== $object->getFbUserId()) {
-            $data->{'fbUserId'} = $object->getFbUserId();
+            $data['fbUserId'] = $object->getFbUserId();
         }
 
         return $data;

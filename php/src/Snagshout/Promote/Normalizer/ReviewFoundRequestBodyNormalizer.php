@@ -52,30 +52,31 @@ class ReviewFoundRequestBodyNormalizer extends AbstractNormalizer
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
+
         if (null !== $object->getCreatedAt()) {
-            $data->{'createdAt'} = $object->getCreatedAt();
+            $data['createdAt'] = $object->getCreatedAt();
         }
         if (null !== $object->getAsin()) {
-            $data->{'asin'} = $object->getAsin();
+            $data['asin'] = $object->getAsin();
         }
         if (null !== $object->getTitle()) {
-            $data->{'title'} = $object->getTitle();
+            $data['title'] = $object->getTitle();
         }
         if (null !== $object->getSummary()) {
-            $data->{'summary'} = $object->getSummary();
+            $data['summary'] = $object->getSummary();
         }
         if (null !== $object->getReviewerId()) {
-            $data->{'reviewerId'} = $object->getReviewerId();
+            $data['reviewerId'] = $object->getReviewerId();
         }
         if (null !== $object->getReviewId()) {
-            $data->{'reviewId'} = $object->getReviewId();
+            $data['reviewId'] = $object->getReviewId();
         }
         if (null !== $object->getUrl()) {
-            $data->{'url'} = $object->getUrl();
+            $data['url'] = $object->getUrl();
         }
         if (null !== $object->getStars()) {
-            $data->{'stars'} = $object->getStars();
+            $data['stars'] = $object->getStars();
         }
 
         return $data;

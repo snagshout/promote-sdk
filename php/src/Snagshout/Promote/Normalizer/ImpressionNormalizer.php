@@ -37,15 +37,16 @@ class ImpressionNormalizer extends AbstractNormalizer
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
+
         if (null !== $object->getViews()) {
-            $data->{'views'} = $object->getViews();
+            $data['views'] = $object->getViews();
         }
         if (null !== $object->getHour()) {
-            $data->{'hour'} = $object->getHour();
+            $data['hour'] = $object->getHour();
         }
         if (null !== $object->getDate()) {
-            $data->{'date'} = $object->getDate();
+            $data['date'] = $object->getDate();
         }
 
         return $data;

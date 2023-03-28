@@ -37,15 +37,16 @@ class FlagDealRequestBodyNormalizer extends AbstractNormalizer
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
+
         if (null !== $object->getType()) {
-            $data->{'type'} = $object->getType();
+            $data['type'] = $object->getType();
         }
         if (null !== $object->getReportedBy()) {
-            $data->{'reportedBy'} = $object->getReportedBy();
+            $data['reportedBy'] = $object->getReportedBy();
         }
         if (null !== $object->getComment()) {
-            $data->{'comment'} = $object->getComment();
+            $data['comment'] = $object->getComment();
         }
 
         return $data;

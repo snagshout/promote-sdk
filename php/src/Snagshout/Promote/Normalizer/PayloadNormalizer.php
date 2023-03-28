@@ -43,21 +43,22 @@ class PayloadNormalizer extends AbstractNormalizer
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
+
         if (null !== $object->getId()) {
-            $data->{'id'} = $object->getId();
+            $data['id'] = $object->getId();
         }
         if (null !== $object->getPayload()) {
-            $data->{'payload'} = $object->getPayload();
+            $data['payload'] = $object->getPayload();
         }
         if (null !== $object->getType()) {
-            $data->{'type'} = $object->getType();
+            $data['type'] = $object->getType();
         }
         if (null !== $object->getConfirmationEmail()) {
-            $data->{'confirmationEmail'} = $object->getConfirmationEmail();
+            $data['confirmationEmail'] = $object->getConfirmationEmail();
         }
         if (null !== $object->getCompleteBy()) {
-            $data->{'completeBy'} = $object->getCompleteBy();
+            $data['completeBy'] = $object->getCompleteBy();
         }
 
         return $data;

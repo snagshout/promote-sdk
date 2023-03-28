@@ -31,9 +31,10 @@ class InitializeMigrationBodyNormalizer extends AbstractNormalizer
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
+
         if (null !== $object->getUserId()) {
-            $data->{'userId'} = $object->getUserId();
+            $data['userId'] = $object->getUserId();
         }
 
         return $data;
