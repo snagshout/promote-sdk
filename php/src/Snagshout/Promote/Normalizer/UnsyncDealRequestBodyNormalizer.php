@@ -34,12 +34,13 @@ class UnsyncDealRequestBodyNormalizer extends AbstractNormalizer
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
+
         if (null !== $object->getNote()) {
-            $data->{'note'} = $object->getNote();
+            $data['note'] = $object->getNote();
         }
         if (null !== $object->getState()) {
-            $data->{'state'} = $object->getState();
+            $data['state'] = $object->getState();
         }
 
         return $data;

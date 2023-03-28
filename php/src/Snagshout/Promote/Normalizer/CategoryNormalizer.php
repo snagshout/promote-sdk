@@ -34,12 +34,13 @@ class CategoryNormalizer extends AbstractNormalizer
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
+
         if (null !== $object->getId()) {
-            $data->{'id'} = $object->getId();
+            $data['id'] = $object->getId();
         }
         if (null !== $object->getName()) {
-            $data->{'name'} = $object->getName();
+            $data['name'] = $object->getName();
         }
 
         return $data;

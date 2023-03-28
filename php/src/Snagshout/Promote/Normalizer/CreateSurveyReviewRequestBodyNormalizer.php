@@ -40,18 +40,19 @@ class CreateSurveyReviewRequestBodyNormalizer extends AbstractNormalizer
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
+
         if (null !== $object->getReviewClaimedLeft()) {
-            $data->{'reviewClaimedLeft'} = $object->getReviewClaimedLeft();
+            $data['reviewClaimedLeft'] = $object->getReviewClaimedLeft();
         }
         if (null !== $object->getReviewerName()) {
-            $data->{'reviewerName'} = $object->getReviewerName();
+            $data['reviewerName'] = $object->getReviewerName();
         }
         if (null !== $object->getTitle()) {
-            $data->{'title'} = $object->getTitle();
+            $data['title'] = $object->getTitle();
         }
         if (null !== $object->getReason()) {
-            $data->{'reason'} = $object->getReason();
+            $data['reason'] = $object->getReason();
         }
 
         return $data;

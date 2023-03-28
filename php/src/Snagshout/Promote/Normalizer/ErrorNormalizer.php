@@ -37,15 +37,16 @@ class ErrorNormalizer extends AbstractNormalizer
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
+
         if (null !== $object->getMessage()) {
-            $data->{'message'} = $object->getMessage();
+            $data['message'] = $object->getMessage();
         }
         if (null !== $object->getStatus()) {
-            $data->{'status'} = $object->getStatus();
+            $data['status'] = $object->getStatus();
         }
         if (null !== $object->getExtra()) {
-            $data->{'extra'} = $object->getExtra();
+            $data['extra'] = $object->getExtra();
         }
 
         return $data;

@@ -37,15 +37,16 @@ class FollowupNormalizer extends AbstractNormalizer
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
+
         if (null !== $object->getDays()) {
-            $data->{'days'} = $object->getDays();
+            $data['days'] = $object->getDays();
         }
         if (null !== $object->getSubject()) {
-            $data->{'subject'} = $object->getSubject();
+            $data['subject'] = $object->getSubject();
         }
         if (null !== $object->getBody()) {
-            $data->{'body'} = $object->getBody();
+            $data['body'] = $object->getBody();
         }
 
         return $data;

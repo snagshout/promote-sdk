@@ -43,21 +43,22 @@ class VersionNormalizer extends AbstractNormalizer
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
+
         if (null !== $object->getApi()) {
-            $data->{'api'} = $object->getApi();
+            $data['api'] = $object->getApi();
         }
         if (null !== $object->getApp()) {
-            $data->{'app'} = $object->getApp();
+            $data['app'] = $object->getApp();
         }
         if (null !== $object->getDate()) {
-            $data->{'date'} = $object->getDate();
+            $data['date'] = $object->getDate();
         }
         if (null !== $object->getPhp()) {
-            $data->{'php'} = $object->getPhp();
+            $data['php'] = $object->getPhp();
         }
         if (null !== $object->getExtensions()) {
-            $data->{'extensions'} = $object->getExtensions();
+            $data['extensions'] = $object->getExtensions();
         }
 
         return $data;

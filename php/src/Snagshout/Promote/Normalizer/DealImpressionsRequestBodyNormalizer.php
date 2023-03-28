@@ -36,13 +36,14 @@ class DealImpressionsRequestBodyNormalizer extends AbstractNormalizer
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
+
         if (null !== $object->getImpressions()) {
             $values = [];
             foreach ($object->getImpressions() as $value) {
                 $values[] = $this->serializer->serialize($value, 'raw', $context);
             }
-            $data->{'impressions'} = $values;
+            $data['impressions'] = $values;
         }
 
         return $data;

@@ -37,15 +37,16 @@ class CreateOrderRequestBodyNormalizer extends AbstractNormalizer
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
+
         if (null !== $object->getEmail()) {
-            $data->{'email'} = $object->getEmail();
+            $data['email'] = $object->getEmail();
         }
         if (null !== $object->getName()) {
-            $data->{'name'} = $object->getName();
+            $data['name'] = $object->getName();
         }
         if ($object->wasCompleteBySet()) {
-            $data->{'completeBy'} = $object->getCompleteBy();
+            $data['completeBy'] = $object->getCompleteBy();
         }
 
         return $data;

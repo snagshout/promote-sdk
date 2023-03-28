@@ -34,12 +34,13 @@ class UpdateReviewNameBodyNormalizer extends AbstractNormalizer
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
+
         if (null !== $object->getUserEmail()) {
-            $data->{'userEmail'} = $object->getUserEmail();
+            $data['userEmail'] = $object->getUserEmail();
         }
         if (null !== $object->getNewReviewerName()) {
-            $data->{'newReviewerName'} = $object->getNewReviewerName();
+            $data['newReviewerName'] = $object->getNewReviewerName();
         }
 
         return $data;

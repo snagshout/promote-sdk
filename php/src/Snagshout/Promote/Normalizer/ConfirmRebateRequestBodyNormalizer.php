@@ -40,18 +40,19 @@ class ConfirmRebateRequestBodyNormalizer extends AbstractNormalizer
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
+
         if (null !== $object->getEmail()) {
-            $data->{'email'} = $object->getEmail();
+            $data['email'] = $object->getEmail();
         }
         if (null !== $object->getCode()) {
-            $data->{'code'} = $object->getCode();
+            $data['code'] = $object->getCode();
         }
         if (null !== $object->getStatus()) {
-            $data->{'status'} = $object->getStatus();
+            $data['status'] = $object->getStatus();
         }
         if (null !== $object->getPromoteOrderId()) {
-            $data->{'promoteOrderId'} = $object->getPromoteOrderId();
+            $data['promoteOrderId'] = $object->getPromoteOrderId();
         }
 
         return $data;

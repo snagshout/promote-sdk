@@ -34,12 +34,13 @@ class SyncEmailForOrdersRequestBodyNormalizer extends AbstractNormalizer
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
+
         if (null !== $object->getNewEmail()) {
-            $data->{'newEmail'} = $object->getNewEmail();
+            $data['newEmail'] = $object->getNewEmail();
         }
         if (null !== $object->getOldEmail()) {
-            $data->{'oldEmail'} = $object->getOldEmail();
+            $data['oldEmail'] = $object->getOldEmail();
         }
 
         return $data;

@@ -31,9 +31,10 @@ class StoreFBImpressionRequestBodyNormalizer extends AbstractNormalizer
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
+
         if (null !== $object->getFbAdId()) {
-            $data->{'fbAdId'} = $object->getFbAdId();
+            $data['fbAdId'] = $object->getFbAdId();
         }
 
         return $data;

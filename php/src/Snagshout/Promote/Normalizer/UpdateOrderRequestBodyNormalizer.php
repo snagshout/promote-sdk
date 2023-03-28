@@ -31,9 +31,10 @@ class UpdateOrderRequestBodyNormalizer extends AbstractNormalizer
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
+
         if (null !== $object->getStatus()) {
-            $data->{'status'} = $object->getStatus();
+            $data['status'] = $object->getStatus();
         }
 
         return $data;
