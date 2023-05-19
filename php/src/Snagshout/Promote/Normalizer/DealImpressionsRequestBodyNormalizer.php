@@ -41,7 +41,8 @@ class DealImpressionsRequestBodyNormalizer extends AbstractNormalizer
         if (null !== $object->getImpressions()) {
             $values = [];
             foreach ($object->getImpressions() as $value) {
-                $values[] = $this->serializer->serialize($value, 'raw', $context);
+                $json = $this->serializer->serialize($value, 'json', $context);
+                $values[] = json_decode($json, true);
             }
             $data['impressions'] = $values;
         }

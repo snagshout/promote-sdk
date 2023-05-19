@@ -12,7 +12,6 @@
 namespace Tests\Snagshout\Promote\Normalizer;
 
 use PHPUnit\Framework\TestCase as BaseTestCase;
-use Snagshout\Promote\Encoder\RawEncoder;
 use Snagshout\Promote\Model\Category;
 use Snagshout\Promote\Model\Deal;
 use Snagshout\Promote\Model\Medium;
@@ -38,7 +37,6 @@ class DealNormalizerTest extends BaseTestCase
         return new Serializer(
             NormalizerFactory::create(),
             [
-                new RawEncoder(),
                 new JsonEncoder(
                     new JsonEncode(),
                     new JsonDecode()
